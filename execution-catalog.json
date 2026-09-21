@@ -1,0 +1,1263 @@
+{
+  "format": "lattivium-executables-v1",
+  "entries": {
+    "AccessContainerFlow": {
+      "kind": "Flow",
+      "description": "Approach and open a container.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "AcquireContainerItemsFlow": {
+      "kind": "Flow",
+      "description": "Acquire an exact count from a container in the current dimension.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "item": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483647E9
+          }
+        },
+        "required": [
+          "source",
+          "item",
+          "count"
+        ]
+      },
+      "example": {
+        "source": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        },
+        "item": "minecraft:stone",
+        "count": 64
+      }
+    },
+    "ApproachAreaFlow": {
+      "kind": "Flow",
+      "description": "Travel toward an area using a flight policy.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "arriveDistance": {
+            "type": "number",
+            "minimum": 1.0E-6,
+            "maximum": 1.7976931348623157E308,
+            "default": 0.6
+          },
+          "settlingTicks": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483647E9,
+            "default": 240
+          },
+          "cruiseHeight": {
+            "type": "integer",
+            "minimum": 321.0,
+            "maximum": 2.147483647E9,
+            "default": 325
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "AtlasProductionPreviewTask": {
+      "kind": "Task",
+      "description": "Preview material production without collecting or crafting items.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "deliveries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dimension": {
+                  "type": "string"
+                },
+                "position": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    },
+                    "y": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    },
+                    "z": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "z"
+                  ]
+                }
+              },
+              "required": [
+                "dimension",
+                "position"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 32
+          }
+        },
+        "required": [
+          "file",
+          "deliveries"
+        ]
+      },
+      "example": {
+        "file": "example.materials.json",
+        "deliveries": [
+          {
+            "dimension": "minecraft:overworld",
+            "position": {
+              "x": 0,
+              "y": 64,
+              "z": 0
+            }
+          }
+        ]
+      }
+    },
+    "AtlasSupplyTask": {
+      "kind": "Task",
+      "description": "Plan, acquire, craft and deliver materials using Atlas stock observations.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "deliveries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dimension": {
+                  "type": "string"
+                },
+                "position": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    },
+                    "y": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    },
+                    "z": {
+                      "type": "integer",
+                      "minimum": -2.147483648E9,
+                      "maximum": 2.147483647E9
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "z"
+                  ]
+                }
+              },
+              "required": [
+                "dimension",
+                "position"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 32
+          },
+          "useLooseCargo": {
+            "type": "boolean",
+            "default": false
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "REAL",
+              "DEBUG",
+              "SOURCE_PRESERVING_DEBUG"
+            ],
+            "default": "REAL"
+          }
+        },
+        "required": [
+          "file",
+          "deliveries"
+        ]
+      },
+      "example": {
+        "file": "example.materials.json",
+        "deliveries": [
+          {
+            "dimension": "minecraft:overworld",
+            "position": {
+              "x": 0,
+              "y": 64,
+              "z": 0
+            }
+          }
+        ]
+      }
+    },
+    "BuildSchematicFlow": {
+      "kind": "Flow",
+      "description": "Build a schematic at an origin in the current dimension.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "file",
+          "origin"
+        ]
+      },
+      "example": {
+        "file": "example.litematic",
+        "origin": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "DelayTask": {
+      "kind": "Task",
+      "description": "Wait for a bounded number of game ticks.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ticks": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 1200.0
+          }
+        },
+        "required": [
+          "ticks"
+        ]
+      },
+      "example": {
+        "ticks": 20
+      }
+    },
+    "ElytraFlightFlow": {
+      "kind": "Flow",
+      "description": "Fly toward a position using carried equipment and rockets.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 150,
+          "z": 0
+        }
+      }
+    },
+    "ExcavateAreaFlow": {
+      "kind": "Flow",
+      "description": "Clear an inclusive area and store drops in outside depots; optional seal depots supply liquid containment blocks.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "min": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "max": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "depots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 1024
+          },
+          "sealDepots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 1024,
+            "default": []
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "depots"
+        ]
+      },
+      "example": {
+        "min": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        },
+        "max": {
+          "x": 4,
+          "y": 66,
+          "z": 4
+        },
+        "depots": [
+          {
+            "x": 8,
+            "y": 64,
+            "z": 0
+          }
+        ]
+      }
+    },
+    "FireworkReserveFlow": {
+      "kind": "Flow",
+      "description": "Prepare carried rocket reserves for a horizontal distance, including carried shulker contents.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "horizontalDistance": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.7976931348623157E308
+          }
+        },
+        "required": [
+          "horizontalDistance"
+        ]
+      },
+      "example": {
+        "horizontalDistance": 1000
+      }
+    },
+    "FireworkUseFlow": {
+      "kind": "Flow",
+      "description": "Use one carried rocket.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "example": {}
+    },
+    "ItemRecordPlanTask": {
+      "kind": "Task",
+      "description": "Execute a legacy ItemRecord plan supplied by an in-game requester.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "planName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "packed": {
+            "type": "boolean",
+            "default": false
+          },
+          "debug": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": []
+      },
+      "example": {}
+    },
+    "JumpAction": {
+      "kind": "Action",
+      "description": "Press jump once.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "example": {}
+    },
+    "LookAction": {
+      "kind": "Action",
+      "description": "Look at a world position.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "toleranceDegrees": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 3.4028234663852886E38,
+            "default": 1.5
+          },
+          "maxAttempts": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483647E9,
+            "default": 3
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 65,
+          "z": 0
+        }
+      }
+    },
+    "MineBlockFlow": {
+      "kind": "Flow",
+      "description": "Mine one block under construction safety and drop rules.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "MouseAction": {
+      "kind": "Action",
+      "description": "Apply a mouse button input.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "button": {
+            "type": "string",
+            "enum": [
+              "LEFT",
+              "RIGHT"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "ONCE",
+              "CONTINUOUS"
+            ]
+          }
+        },
+        "required": [
+          "button",
+          "mode"
+        ]
+      },
+      "example": {
+        "button": "RIGHT",
+        "mode": "ONCE"
+      }
+    },
+    "MoveAction": {
+      "kind": "Action",
+      "description": "Hold directional input for a fixed number of ticks; does not find a path.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": [
+              "FORWARD",
+              "BACKWARD",
+              "LEFT",
+              "RIGHT"
+            ]
+          },
+          "ticks": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483637E9
+          },
+          "strength": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 1
+          },
+          "sprint": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "direction",
+          "ticks"
+        ]
+      },
+      "example": {
+        "direction": "FORWARD",
+        "ticks": 20
+      }
+    },
+    "MoveItemToOffhandAction": {
+      "kind": "Action",
+      "description": "Move a carried item into the offhand.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "item": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "item"
+        ]
+      },
+      "example": {
+        "item": "minecraft:firework_rocket"
+      }
+    },
+    "NavigateToPosFlow": {
+      "kind": "Flow",
+      "description": "Navigate to a position in the Bot's current dimension.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "OpenContainerFlow": {
+      "kind": "Flow",
+      "description": "Open a container within interaction reach.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "PortalJourneyFlow": {
+      "kind": "Flow",
+      "description": "Physically traverse the specified portal route; optionally continue to a destination.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "destinationDimension": {
+            "type": "string"
+          },
+          "entrance": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "exit": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "target": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "y": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "z": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Optional final destination after traversing the portal."
+          }
+        },
+        "required": [
+          "destinationDimension",
+          "entrance",
+          "exit"
+        ]
+      },
+      "example": {
+        "destinationDimension": "minecraft:the_nether",
+        "entrance": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        },
+        "exit": {
+          "x": 0,
+          "y": 129,
+          "z": 0
+        }
+      }
+    },
+    "ResumeExcavation": {
+      "kind": "Flow",
+      "description": "Resume excavation from a saved task UUID in this world.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "taskId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "taskId"
+        ]
+      },
+      "example": {
+        "taskId": "00000000-0000-0000-0000-000000000001"
+      }
+    },
+    "SelectHotbarAction": {
+      "kind": "Action",
+      "description": "Select a zero-based hotbar slot.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "slot": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 8.0
+          }
+        },
+        "required": [
+          "slot"
+        ]
+      },
+      "example": {
+        "slot": 0
+      }
+    },
+    "SupplyStepFlow": {
+      "kind": "Task",
+      "description": "Execute one legacy ItemRecord debug step; compatibility name for ItemRecordStepTask, requires an in-game requester.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "planName": {
+            "type": "string"
+          },
+          "step": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483647E9
+          }
+        },
+        "required": [
+          "planName",
+          "step"
+        ]
+      },
+      "example": {
+        "planName": "example",
+        "step": 1
+      }
+    },
+    "TransferAction": {
+      "kind": "Action",
+      "description": "Quick-move a half-open range of native menu slots.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "startSlotInclusive": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 2.147483647E9
+          },
+          "endSlotExclusive": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 2.147483647E9
+          }
+        },
+        "required": [
+          "startSlotInclusive",
+          "endSlotExclusive"
+        ]
+      },
+      "example": {
+        "startSlotInclusive": 0,
+        "endSlotExclusive": 1
+      }
+    },
+    "TransferItemsFlow": {
+      "kind": "Flow",
+      "description": "Transfer an exact item count through the currently open menu.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": [
+              "DEPOSIT",
+              "WITHDRAW"
+            ]
+          },
+          "item": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1.0,
+            "maximum": 2.147483647E9
+          }
+        },
+        "required": [
+          "direction",
+          "item",
+          "count"
+        ]
+      },
+      "example": {
+        "direction": "WITHDRAW",
+        "item": "minecraft:stone",
+        "count": 64
+      }
+    },
+    "UseFlow": {
+      "kind": "Flow",
+      "description": "Interact with a block using the selected hand.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "hand": {
+            "type": "string",
+            "enum": [
+              "MAIN_HAND",
+              "OFF_HAND"
+            ],
+            "default": "MAIN_HAND"
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    }
+  }
+}
