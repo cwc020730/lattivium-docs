@@ -230,7 +230,7 @@
         ]
       },
       "example": {
-        "file": "example.materials.json",
+        "file": "example.litematic",
         "deliveries": [
           {
             "dimension": "minecraft:overworld",
@@ -317,7 +317,7 @@
         ]
       },
       "example": {
-        "file": "example.materials.json",
+        "file": "example.litematic",
         "deliveries": [
           {
             "dimension": "minecraft:overworld",

@@ -2,12 +2,28 @@
 
 Each entry accepts the JSON object shown below. Defaults and constraints come from the runtime contract.
 
+## Use a .litematic file
+
+1. Place `machine.litematic` in the server world’s `lattivium-atlas/schematics/` directory. For a remote server, ask its administrator to upload the file.
+2. Choose an online Bot and an actual delivery container.
+3. Run the positional command below. The Bot reads the schematic and computes its material requirements.
+
+```text
+/ltv Worker exec AtlasSupplyTask machine.litematic minecraft:overworld 100 64 100
+```
+
+Replace `Worker`, the filename and delivery coordinates with your own values. The final coordinates identify the delivery container. JSON syntax below expresses the same command parameters; `.litematic` is read directly.
+
+```text
+/ltv Worker exec AtlasSupplyTask {"file":"machine.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":100,"y":64,"z":100}}]}
+```
+
 ## AtlasProductionPreviewTask
 
 Preview material production without collecting or crafting items.
 
 ```text
-/lattivium Worker exec AtlasProductionPreviewTask {"file":"example.materials.json","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
+/lattivium Worker exec AtlasProductionPreviewTask {"file":"example.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
 ```
 
 | Field | Type | Default | Constraints |
@@ -25,7 +41,7 @@ Preview material production without collecting or crafting items.
 Plan, acquire, craft and deliver materials using Atlas stock observations.
 
 ```text
-/lattivium Worker exec AtlasSupplyTask {"file":"example.materials.json","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
+/lattivium Worker exec AtlasSupplyTask {"file":"example.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
 ```
 
 | Field | Type | Default | Constraints |
