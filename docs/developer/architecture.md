@@ -1,62 +1,39 @@
 # 架构与术语
 
-## 职责层级
+命令将已声明的 Task、Flow 或 Action 提交给 Bot 调度器。调度器拥有根执行位和队列，ExecutionScope 推进 tick 并处理终态。Task 组合业务操作，Flow 编排具体交互，Action 与专用会话驱动原生控制。Atlas 提供事实，规划器据此生成请求和路线，trace 观察执行。
 
 ```text
-玩家 / 服务器控制台 / 集成代码
- ├─ 注册命令 → Task / Flow / Action
- └─ Bot API → EventHandle
-          ↓
-    Bot 单一根执行位
-          ↓
-    ExecutionScope：tick、预算、状态、取消与清理
-          ↓
-    Task：业务意图与持久化
-          ↓
-    Flow：有结果与生命周期的操作编排
-          ↓
-    Action / 专用执行会话：原生输入、交互、连续控制
-          ↓
-    Minecraft 实体 / 菜单 / 方块
-
-Atlas → 世界知识、库存、结构、传送连接、配方快照
-规划器 → 消费知识与策略，生成计划，不执行原生操作
-trace → 观察与诊断，不拥有游戏状态
+Command → BotEventScheduler → ExecutionScope
+                                  ├─ Task
+                                  ├─ Flow → child Flow / Action / Session
+                                  └─ Action
+Atlas → Planner → Execution request
 ```
-
-箭头表示调用和职责依赖，不是继承关系。Bot是实体能力边界；不把所有操作塞进Bot实现。
-飞行、挖掘等会话拥有专用控制状态；共享的是生命周期/预算契约，不需要人为设计一个万能Controller基类。
-Flow不能仅因“有很多分支”就无限拆子Flow；应按独立结果、所有权、取消清理和可恢复边界拆分。
 
 ## 语义词典
 
-| 名词 | 精确含义 |
+| 术语 | 含义 |
 | --- | --- |
-| Bot | 一个被调度的Carpet假人及其能力；actor仍出现在部分兼容字段/包中 |
-| Task | 根业务任务，例如原理图供给，拥有业务意图和长期状态 |
-| Flow | 编排具体操作，拥有子流程/动作的生命周期，输出操作结果 |
-| Action | 一个底层执行动作，例如看向、输入、选择槽位、原生挖掘动作 |
-| ExecutionScope | 统一推进一个执行单元并处理终态与清理 |
-| EventHandle | 外部观察和取消已提交事件的句柄，不是任务实现 |
-| Session | 专用持续操作的运行状态，例如规划或原生挖掘，不自动等同业务任务 |
-| Plan | 基于已知事实与策略生成的计划；不是已执行的证据 |
-| Step | 供给计划的一组来源容器，不是一个箱子、一个tick或一条路径边 |
-| SourceJob | 针对一个来源容器的物品数量分配 |
-| TravelRoute | 维度/地点之间的旅行路线提示，不是局部碰撞路径 |
-| NavigationRequest | 参考位置、候选脚位或探索目标、搜索策略 |
-| PathGoal | 完成条件；探索时reference位置可能只锚定搜索区域 |
-| NavigationResult | 实际到达脚位和可选路径节点，不是箱子坐标 |
-| MaterialLedger | 需求、持有、保留用途、取得/交付等物品账目 |
-| AcquisitionReceipt | 本次实际取货及部分副作用的回执，不等于交付 |
-| SupplyResult | 供给执行结果，包含真实交付、缺料及失败来源等 |
+| Bot | 受调度的 Carpet 假人及其能力边界 |
+| Task | 拥有业务意图与长期状态的根任务 |
+| Flow | 拥有子操作生命周期并输出具体结果的编排 |
+| Action | 底层输入或原生交互动作 |
+| ExecutionScope | 推进执行单元、管理预算、终态和清理 |
+| EventHandle | 观察或取消一次提交的句柄 |
+| Session | 专用持续操作的运行状态 |
+| Plan | 根据知识和策略生成的执行计划 |
+| Step | 供给计划的一组来源容器 |
+| SourceJob | 针对一个来源容器分配的物品及数量 |
+| TravelRoute | 地点与维度间的旅行提示 |
+| NavigationRequest | 局部导航位置、候选脚位与搜索策略 |
+| PathGoal | 导航的完成条件 |
+| NavigationResult | 导航实际到达脚位及可选路径节点 |
+| MaterialLedger | 需求、持有、用途预留与取得交付账目 |
+| AcquisitionReceipt | 本次实际取得物品及副作用的回执 |
+| SupplyResult | 交付、缺料和失败来源的业务结果 |
 | Obligation | 尚未完成的归还、回收、交付或清理责任 |
-| Checkpoint | 可校验的保存状态，不是任意程序栈快照 |
-| Atlas observation | 有来源和时间的世界事实快照；不保证实时、可达或可取 |
-| Unreachable | 策略/预算内无法取得，不是对世界所有路径的数学证明 |
+| Checkpoint | 包含校验信息的可恢复保存状态 |
+| Atlas observation | 带来源与观察时间的世界事实 |
+| Unreachable | 在指定策略与预算内无法取得的来源 |
 
-## 哪些类需要文档？
-
-手册完整列出注册入口和 `api.bot` / `api.task` 的对外契约，并解释关联导航类型。
-其余内部类按职责地图介绍；public 修饰符不代表稳定SDK承诺。
-类级实现细节由源码及IDE索引承担。若以后发布独立SDK，再对稳定包生成Javadoc。
-当前接口仍在演进，第三方集成应固定匹配版本。
+Flow 按独立结果、状态所有权和清理边界拆分。飞行与挖掘会话保留专用控制状态，在合适处共享生命周期契约。手册覆盖执行契约与公开 API 包，实现细节由源码提供。

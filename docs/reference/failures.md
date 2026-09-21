@@ -1,20 +1,8 @@
 # 状态与错误码
 
-`EventState` 是执行事件生命周期，不等于材料业务结果：
+执行从 `QUEUED` 进入 `RUNNING`；等待状态包括 `WAITING_FOR_CHUNK` 和 `WAITING_FOR_SERVER`。终态为 `SUCCEEDED`、`FAILED`、`CANCELLED`。供给结果还会记录实际交付量和缺料量。
 
-| 状态 | 含义 |
-| --- | --- |
-| QUEUED | 已受理排队 |
-| RUNNING | 执行中 |
-| WAITING_FOR_CHUNK | 等待区块 |
-| WAITING_FOR_SERVER | 等待服务端条件 |
-| SUCCEEDED | 事件成功终态；仍要查看业务缺料报告 |
-| FAILED | 失败终态，检查failure及剩余义务 |
-| CANCELLED | 取消终态，不表示世界已回滚 |
-
-后三种为终态。供给检查点的RUNNING/SUSPENDED/BLOCKED等是另一套持久化状态，不能混用。
-
-## BotFailureCode 完整列表
+## BotFailureCode
 
 | 代码 | 含义 |
 | --- | --- |
@@ -37,6 +25,3 @@
 | `TIMEOUT` | 操作或任务超时 |
 | `CANCELLED` | 取消 |
 | `INTERNAL_ERROR` | 内部错误 |
-
-错误码是分类，坐标、阶段和剩余义务在具体错误信息、trace及检查点中。
-不自动把所有 NO_PATH 当作可跳过：只有业务流程确认部分回执和清理义务安全时才允许换源或缺料结算。

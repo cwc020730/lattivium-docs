@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "fdcf6a87cf85625cef11f21ffb61461471bb080a",
+  "sourceCommit": "87b429fd91a3e2fc96fce9b4232792f53b57631b",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -12,7 +12,6 @@
     "ExcavateAreaFlow",
     "FireworkReserveFlow",
     "FireworkUseFlow",
-    "ItemRecordPlanTask",
     "JumpAction",
     "LookAction",
     "MineBlockFlow",
@@ -24,7 +23,6 @@
     "PortalJourneyFlow",
     "ResumeExcavation",
     "SelectHotbarAction",
-    "SupplyStepFlow",
     "TransferAction",
     "TransferItemsFlow",
     "UseFlow"
@@ -50,17 +48,10 @@
     "allowScaffolding",
     "netherRoofOnly",
     "excludedSupplyStructures",
-    "excludedSupplyContainers",
-    "itemRecordDeliveryDimension",
-    "itemRecordDeliveryTargets"
+    "excludedSupplyContainers"
   ],
   "httpActions": [
-    "arm",
-    "pause",
-    "next",
-    "resume",
-    "reset",
-    "replay"
+    "cancel"
   ],
   "apiTypes": [
     "Bot",
@@ -80,12 +71,12 @@
     "EventState"
   ],
   "sourceHashes": {
-    "src/main/java/cwc/autobuildbot/command/ExecutionCommandRegistry.java": "72f918331d8cfb034a2fb2768d7a8ba1d4a251f3d5815971ce378d8d44533885",
-    "src/main/java/cwc/autobuildbot/command/AutoBuildBotCommands.java": "666003025bb7f7b46a20dc339dfd57959940dce19dc8c38fb361b17002e44ba8",
-    "src/main/java/cwc/autobuildbot/config/AutoBuildBotConfig.java": "b6e0ef1ad8e79fa06407ffc0b70ec7eebbaf6744ca353247dc23a9506fa9fb85",
-    "src/main/java/cwc/autobuildbot/debug/ui/DebugUiHost.java": "fab909a3567bb26ac8e0e107643b3a4798caf25395845b4a2e21ba2f9a2d87b3",
+    "src/main/java/cwc/autobuildbot/command/ExecutionCommandRegistry.java": "29fc2288c4e41c30fad3e91a50b4855cdf186a53181abad0df24f2df93584364",
+    "src/main/java/cwc/autobuildbot/command/AutoBuildBotCommands.java": "d92605b1475eff04eddf15c37f2ffe04df816a4adf9599fa28f0d8cc00bd7f12",
+    "src/main/java/cwc/autobuildbot/config/AutoBuildBotConfig.java": "518084de7a0098c07034516c1396f6dd6fab611bbdf2b157ec36ad4f3d68ac89",
+    "src/main/java/cwc/autobuildbot/debug/ui/DebugUiHost.java": "e3fc9b72d303bc9185624fed47d64681eee6a06705efd27ebbbaf8bffa551c17",
     "src/main/java/cwc/autobuildbot/debug/performance/TickPerformance.java": "55828a6a5b5e3dca4e64d774ddddd7e85c598ce08597f8a98da9941317fbac67",
-    "src/main/resources/fabric.mod.json": "dc1d64cf360666719ea9291441e70ce59cd25d34078f28c943e0047f318ee999",
+    "src/main/resources/fabric.mod.json": "439d0964c3c91c160d734da6806623028211279bc259ced9867c71782705d476",
     "src/main/java/cwc/autobuildbot/api/bot/Bot.java": "e446e1340e61304c6ee62f35d633b7616a86aeac38b38fccf9612cdf48a130fa",
     "src/main/java/cwc/autobuildbot/api/bot/BotControl.java": "fe2140d315d90c50491dc44035e522f9a7d27ec3c2899658032cc08a46656d83",
     "src/main/java/cwc/autobuildbot/api/bot/BotSnapshot.java": "7132d3639b36448237d6d6c8353d1e604971a0508b63205eac8040898f50ceaf",
@@ -108,9 +99,10 @@
     "src/main/java/cwc/autobuildbot/command/ExecutionEntry.java": "32dec8e1b9c8bb207f883b67cc09429dcd2739434e4e121185ebc41a00c7fe24",
     "src/main/java/cwc/autobuildbot/command/Input.java": "598e08e8aa9c3ff904aac98eb297fa0af3e5ca7217fe8a3952e3b90b4f115e8f",
     "src/main/java/cwc/autobuildbot/command/JsonInputs.java": "8c3a61b3021a52acd59c73fbc69cb9d066a51bf612fb5c999e826829d5ffc3c5",
-    "src/main/java/cwc/autobuildbot/command/LegacyExecutionArguments.java": "d91c536ac6a128a62edbf23acff86a24f0b27963d3f70b375a7db6a8162f2adc",
     "src/main/java/cwc/autobuildbot/command/entries/InteractionEntries.java": "2d8f924581267d9607f6374bf0a646593a68741c9a5b60ee38fdfa53aa54af38",
     "src/main/java/cwc/autobuildbot/command/entries/NavigationEntries.java": "66119a5bf2c45651e7bf41bf2ed48597ec90e14f12ff3d60f526c4d413e7fa7f",
-    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "d978fae3d95e770c906ab0276c0319db5d86784f1570ea06886f6f77edd8b377"
+    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "53d6135a1760fe345752e0252ea8389fc8813e45c9b480d55ae4ef20fe759924",
+    "src/main/java/cwc/autobuildbot/execution/runtime/BotEventScheduler.java": "d128f9546c02d0ec8e66c2688ae85924af922b9cb372e199961cc87748784d6b",
+    "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "01f2916a7499fe2ab46173544b4dec8a2edb1970f0a2d89035b6430f6c29f507"
   }
 }

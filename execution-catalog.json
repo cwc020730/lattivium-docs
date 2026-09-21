@@ -629,36 +629,6 @@
       },
       "example": {}
     },
-    "ItemRecordPlanTask": {
-      "kind": "Task",
-      "description": "Execute a legacy ItemRecord plan supplied by an in-game requester.",
-      "parameters": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "planName": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "packed": {
-            "type": "boolean",
-            "default": false
-          },
-          "debug": {
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "required": []
-      },
-      "example": {}
-    },
     "JumpAction": {
       "kind": "Action",
       "description": "Press jump once.",
@@ -1114,32 +1084,6 @@
       },
       "example": {
         "slot": 0
-      }
-    },
-    "SupplyStepFlow": {
-      "kind": "Task",
-      "description": "Execute one legacy ItemRecord debug step; compatibility name for ItemRecordStepTask, requires an in-game requester.",
-      "parameters": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "planName": {
-            "type": "string"
-          },
-          "step": {
-            "type": "integer",
-            "minimum": 1.0,
-            "maximum": 2.147483647E9
-          }
-        },
-        "required": [
-          "planName",
-          "step"
-        ]
-      },
-      "example": {
-        "planName": "example",
-        "step": 1
       }
     },
     "TransferAction": {

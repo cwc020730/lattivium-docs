@@ -1,6 +1,6 @@
 # Java API
 
-这些源码级接口在服务端线程调用。每个 Bot 拥有一个根执行位。通过事件句柄提交高层操作，并在后续 tick 观察状态。输入控制具有明确的所有权，根任务终止时释放输入。
+Invoke these source-level interfaces on the server thread. Each Bot owns one root execution slot. Submit high-level work through event handles, then inspect state on subsequent ticks. Input controls retain explicit ownership; terminal cleanup releases root inputs.
 
 ## Bot
 

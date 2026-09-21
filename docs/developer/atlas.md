@@ -1,38 +1,27 @@
 # Atlas 世界知识库
 
-Atlas和Bot是两个独立模组。Atlas保存观察与索引，Bot决定材料分配、旅行、合成和施工。
-数据库位于世界目录的 `lattivium-atlas/atlas.db`，后台数据库队列有界。
-当前不存在“启动就自动扫完所有未加载区块”的玩家命令。
+Atlas 保存带来源和时间的世界观察，Lattivium 负责分配材料、规划旅行和执行。数据库位于世界 `lattivium-atlas/atlas.db`，后台队列和扫描都有预算。
 
-## 记录与查询语义
-
-| 知识入口 | 含义 |
+| 接口 | 用途 |
 | --- | --- |
-| AtlasSessions.get(server) | 获取异步世界会话，不在tick中阻塞等待 |
-| session.inventories() | 索引库存、评估候选与有限明细查询 |
-| session.observations() | 提交当前世界库存观察 |
-| session.structures() | 坐标的已记录结构归属，可能有多个或未知 |
-| session.traversals() | 真实穿门观测与统计 |
-| AtlasSessions.recipes(server) | 共享配方快照future |
-| AtlasSessions.recipeGeneration(server) | 数据包重载后的配方代号核验 |
+| `AtlasSessions.get(server)` | 异步世界会话 |
+| `session.inventories()` | 库存索引与候选查询 |
+| `session.observations()` | 提交库存观察 |
+| `session.structures()` | 已记录的结构归属 |
+| `session.traversals()` | 实际穿门记录 |
+| `AtlasSessions.recipes(server)` | 普通合成配方快照 |
+| `AtlasSessions.recipeGeneration(server)` | 数据包重载后的版本核验 |
 
-库存明细并不授予取货权限。调用方仍需核验保护、组件、嵌套容器和当前可交互性。
-已加载区块按有界扫描周期更新，卸载后后台读取原版存储队列；可能有遗漏和延迟。
-结构范围是生成部件元数据，不是“天然箱/人工箱”的准确分类；玩家改建后范围仍可能保留。
-未开战利品容器不应通过扫描来触发展开。
+Bot 使用候选前核对保护、物品组件和可交互性。结构范围来自生成部件元数据；玩家改建后仍可能保留。未展开战利品容器保留其未展开状态。
 
-## 离线存档导入（维护者）
+## 存档导入
 
-这是Atlas工程的Gradle工具，不是Minecraft游戏命令：
+在 Atlas 源码工程运行：
 
 ```sh
 ./gradlew importSavedWorld -PsnapshotWorld=/path/to/stopped-world -PatlasDatabase=/path/to/output/atlas.db -PscanRate=100
 ```
 
-使用已停机存档，输出数据库不得位于读取的存档内。导入完成后在服务端停止状态下部署到对应世界；不要覆盖较新的实际库存。
-如已有库存只缺结构，可加 `-PstructuresOnly`，只回填同一世界的结构事实。
-输出数据库旁的 `<数据库文件名>.pause` 可请求停止；续跑要满足快照身份校验。
-工具是开发入口，需要Atlas源码和匹配工具链；
+读取已停机存档，输出数据库放在输入存档外。服务端停止时部署到对应世界；已有库存仅需结构补充时使用 `-PstructuresOnly`。数据库旁的 `<数据库名>.pause` 请求停止，续跑核验快照身份。
 
-`/lattiviumatlas status` 用于查看状态，不触发加载或导入。
-配方快照只描述受支持的普通有序/无序合成，不代表Bot已有材料、工作台或执行资格。
+游戏内 `/lattiviumatlas status` 查询扫描和数据库状态。
