@@ -456,8 +456,3 @@ ticks>0；strength默认1且范围0–1；sprint默认false，给sprint时也须
 
 `/lattiviumatlas status`：权限等级2，输出扫描/观察/卸载/传送记录/数据库队列统计。
 它不主动扫描或加载区块；尚未就绪会返回错误。
-
-## 任务控制
-
-当前没有注册 `autobuildbot spawn`、`cancel`、`goto` 或通用 `resume` 子命令。
-假人生成由 Carpet 提供；取消、恢复的实际边界见[恢复指南](../guide/recovery)。
