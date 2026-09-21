@@ -41,4 +41,3 @@ Submit JSON parameters through `exec`, `enqueue` or `interrupt`. Each accepted s
 - [MoveItemToOffhandAction](./actions#moveitemtooffhandaction): Move a carried item into the offhand.
 - [SelectHotbarAction](./actions#selecthotbaraction): Select a zero-based hotbar slot.
 - [TransferAction](./actions#transferaction): Quick-move a half-open range of native menu slots.
-

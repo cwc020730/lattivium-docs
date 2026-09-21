@@ -87,7 +87,7 @@
 使用烟花推动飞行。
 
 ```text
-/lattivium <Bot> exec FireworkUseFlow 
+/lattivium <Bot> exec FireworkUseFlow
 ```
 
 ## JumpAction
@@ -95,7 +95,7 @@
 执行跳跃。
 
 ```text
-/lattivium <Bot> exec JumpAction 
+/lattivium <Bot> exec JumpAction
 ```
 
 ## LookAction

@@ -41,4 +41,3 @@
 - [MoveItemToOffhandAction](./actions#moveitemtooffhandaction): 将指定物品放入副手。
 - [SelectHotbarAction](./actions#selecthotbaraction): 选择快捷栏槽位。
 - [TransferAction](./actions#transferaction): 转移当前菜单中指定范围的物品。
-

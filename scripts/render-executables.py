@@ -7,6 +7,7 @@ catalog = json.loads((root/'execution-catalog.json').read_text(encoding='utf-8')
 translations = json.loads((root/'translations/zh.json').read_text(encoding='utf-8'))
 if set(translations) != set(catalog): raise SystemExit('Translate every execution entry')
 def write(path, text):
+    text = '\n'.join(line.rstrip() for line in text.splitlines()).rstrip() + '\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     if args.check:
         if not path.exists() or path.read_text(encoding='utf-8') != text: raise SystemExit(f'Stale generated page: {path}')

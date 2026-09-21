@@ -91,4 +91,3 @@
 | --- | --- | --- | --- |
 | `startSlotInclusive` | `integer` | `必填` | minimum: 0 |
 | `endSlotExclusive` | `integer` | `必填` | minimum: 0 |
-

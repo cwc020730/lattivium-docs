@@ -87,7 +87,7 @@ Prepare carried rocket reserves for a horizontal distance, including carried shu
 Use one carried rocket.
 
 ```text
-/lattivium <Bot> exec FireworkUseFlow 
+/lattivium <Bot> exec FireworkUseFlow
 ```
 
 ## JumpAction
@@ -95,7 +95,7 @@ Use one carried rocket.
 Press jump once.
 
 ```text
-/lattivium <Bot> exec JumpAction 
+/lattivium <Bot> exec JumpAction
 ```
 
 ## LookAction

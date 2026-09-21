@@ -91,4 +91,3 @@ Quick-move a half-open range of native menu slots.
 | --- | --- | --- | --- |
 | `startSlotInclusive` | `integer` | `Required` | minimum: 0 |
 | `endSlotExclusive` | `integer` | `Required` | minimum: 0 |
-

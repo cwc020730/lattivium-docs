@@ -237,4 +237,3 @@ Interact with a block using the selected hand.
 | `target.y` | `integer` | `Required` |  |
 | `target.z` | `integer` | `Required` |  |
 | `hand` | `string` | `"MAIN_HAND"` | `MAIN_HAND`, `OFF_HAND` |
-

@@ -230,4 +230,3 @@ public record NavigationResult(
 public record SearchPolicy(int maxExpandedNodes, int expansionsPerTick, boolean allowElytra, int cruiseHeight,
                            boolean allowLongDrops, boolean allowPartialPaths, int minimumFeetY);
 ```
-

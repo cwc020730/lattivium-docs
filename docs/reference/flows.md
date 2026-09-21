@@ -237,4 +237,3 @@
 | `target.y` | `integer` | `必填` |  |
 | `target.z` | `integer` | `必填` |  |
 | `hand` | `string` | `"MAIN_HAND"` | `MAIN_HAND`, `OFF_HAND` |
-

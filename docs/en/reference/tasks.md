@@ -51,4 +51,3 @@ Wait for a bounded number of game ticks.
 | Field | Type | Default | Constraints |
 | --- | --- | --- | --- |
 | `ticks` | `integer` | `Required` | minimum: 1; maximum: 1200 |
-
