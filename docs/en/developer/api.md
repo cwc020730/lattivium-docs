@@ -15,6 +15,8 @@ public interface Bot extends BotView {
 	EventHandle<OpenContainerResult> openContainer(OpenContainerRequest request);
 	EventHandle<TransferResult> transfer(TransferRequest request);
     EventHandle<NavigationResult> moveTo(cwc.autobuildbot.navigation.NavigationRequest request);
+
+    EventHandle<TravelArrival> travelTo(GlobalPos destination);
 	void stopCurrentTask();
 	void stopAll();
 }
@@ -230,3 +232,11 @@ public record NavigationResult(
 public record SearchPolicy(int maxExpandedNodes, int expansionsPerTick, boolean allowElytra, int cruiseHeight,
                            boolean allowLongDrops, boolean allowPartialPaths, int minimumFeetY);
 ```
+
+## TravelArrival
+
+```java
+public record TravelArrival(ResourceKey<Level> dimension, Vec3 feet) { }
+```
+
+`travelTo` completes a journey to destination feet, including portal selection and final approach. `moveTo` executes local navigation within the current dimension. Both return scheduler handles.

@@ -1,7 +1,7 @@
 {
   "AccessContainerFlow": "接近并打开容器。",
   "AcquireContainerItemsFlow": "从指定容器取得所需物品。",
-  "ApproachAreaFlow": "通过旅行与局部导航接近目标区域。",
+  "ApproachAreaFlow": "在当前维度内通过飞行或地面移动接近目标区域。",
   "AtlasProductionPreviewTask": "预览材料生产计划。",
   "AtlasSupplyTask": "根据 Atlas 库存规划、取货、合成并交付材料。",
   "BuildSchematicFlow": "在当前维度的指定原点建造原理图。",
@@ -16,12 +16,13 @@
   "MouseAction": "执行鼠标按键输入。",
   "MoveAction": "按指定方向、强度和时长移动。",
   "MoveItemToOffhandAction": "将指定物品放入副手。",
-  "NavigateToPosFlow": "导航到当前维度的目标脚位。",
+  "LocalNavigationFlow": "在当前维度内执行局部寻路，到达目标脚位。",
   "OpenContainerFlow": "打开触及范围内的容器。",
-  "PortalJourneyFlow": "根据入口和出口提示穿门，并前往可选的最终目标。",
+  "PortalJourneyFlow": "穿越指定传送路线并离开出口触发区；target 用于路线选择。",
   "ResumeExcavation": "从世界中保存的检查点恢复清场任务。",
   "SelectHotbarAction": "选择快捷栏槽位。",
   "TransferAction": "转移当前菜单中指定范围的物品。",
   "TransferItemsFlow": "按方向和数量转移指定物品。",
-  "UseFlow": "对目标方块使用指定手。"
+  "UseFlow": "对目标方块使用指定手。",
+  "TravelToFlow": "使用 Atlas 传送门路线与局部导航，到达指定维度的目标脚位。"
 }

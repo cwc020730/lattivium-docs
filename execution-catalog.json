@@ -640,6 +640,52 @@
       },
       "example": {}
     },
+    "LocalNavigationFlow": {
+      "kind": "Flow",
+      "description": "Navigate to a position in the Bot's current dimension.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1.7976931348623157E308,
+                "maximum": 1.7976931348623157E308
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "example": {
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
     "LookAction": {
       "kind": "Action",
       "description": "Look at a world position.",
@@ -837,52 +883,6 @@
         "item": "minecraft:firework_rocket"
       }
     },
-    "NavigateToPosFlow": {
-      "kind": "Flow",
-      "description": "Navigate to a position in the Bot's current dimension.",
-      "parameters": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "target": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "x": {
-                "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
-              },
-              "y": {
-                "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
-              },
-              "z": {
-                "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
-              }
-            },
-            "required": [
-              "x",
-              "y",
-              "z"
-            ]
-          }
-        },
-        "required": [
-          "target"
-        ]
-      },
-      "example": {
-        "target": {
-          "x": 0,
-          "y": 64,
-          "z": 0
-        }
-      }
-    },
     "OpenContainerFlow": {
       "kind": "Flow",
       "description": "Open a container within interaction reach.",
@@ -931,7 +931,7 @@
     },
     "PortalJourneyFlow": {
       "kind": "Flow",
-      "description": "Physically traverse the specified portal route; optionally continue to a destination.",
+      "description": "Traverse the specified portal route and clear the exit; target is a route-selection hint.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -1023,7 +1023,7 @@
                 "type": "null"
               }
             ],
-            "description": "Optional final destination after traversing the portal."
+            "description": "Optional destination hint for route selection; final movement belongs to TravelToFlow."
           }
         },
         "required": [
@@ -1147,6 +1147,57 @@
         "direction": "WITHDRAW",
         "item": "minecraft:stone",
         "count": 64
+      }
+    },
+    "TravelToFlow": {
+      "kind": "Flow",
+      "description": "Travel to destination feet in any dimension using Atlas portal routes and local navigation.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dimension": {
+            "type": "string"
+          },
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2.147483648E9,
+                "maximum": 2.147483647E9
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          }
+        },
+        "required": [
+          "dimension",
+          "target"
+        ]
+      },
+      "example": {
+        "dimension": "minecraft:overworld",
+        "target": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
       }
     },
     "UseFlow": {

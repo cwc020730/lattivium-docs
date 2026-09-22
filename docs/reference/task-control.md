@@ -1,4 +1,4 @@
-# 任务控制
+# 执行控制与队列
 
 `/ltv` 是 `/lattivium` 的简写。下列命令默认需要权限等级 2，可通过 `commandPermissionLevel` 调整。
 

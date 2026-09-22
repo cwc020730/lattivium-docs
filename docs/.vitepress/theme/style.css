@@ -1,0 +1,13 @@
+.execution-reference .vp-doc th {
+  white-space: nowrap;
+}
+.execution-reference .vp-doc th:nth-child(3),
+.execution-reference .vp-doc td:nth-child(3) {
+  min-width: 6rem;
+  white-space: nowrap;
+}
+.execution-reference .vp-doc th:nth-child(4),
+.execution-reference .vp-doc td:nth-child(4) {
+  min-width: 16rem;
+  overflow-wrap: anywhere;
+}

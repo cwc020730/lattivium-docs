@@ -1,4 +1,4 @@
-# Task control
+# Execution control and queues
 
 `/ltv` is the short alias for `/lattivium`. These commands require permission level 2 by default, configured through `commandPermissionLevel`.
 

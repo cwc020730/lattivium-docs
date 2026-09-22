@@ -12,7 +12,7 @@ Lattivium 通过服务端 Bot 收集材料、执行合成、跨维度旅行，�
 ## 命令与接口
 
 - [任务提交、队列与中断](./reference/task-control)
-- [JSON 执行入口](./reference/executables)：按 Task、Flow、Action 分类
-- [位置参数与诊断命令](./reference/commands)
+- [执行入口](./reference/executables)：按 Task、Flow、Action 分类
+- [诊断命令](./reference/commands)
 - [配置选项](./reference/config)与[输入文件](./reference/files)
 - [架构与术语](./developer/architecture)、[Java API](./developer/api)

@@ -8,12 +8,9 @@ const pages = [
     ['清场与建造','Construction','guide/construction'],
     ['恢复与排错','Recovery','guide/recovery']]],
   ['完整参考', 'Reference', [
-    ['任务控制与队列','Task control and queues','reference/task-control'],
-    ['JSON 执行入口','JSON execution entries','reference/executables'],
-    ['Task · 业务任务','Task','reference/tasks'],
-    ['Flow · 操作编排','Flow','reference/flows'],
-    ['Action · 底层动作','Action','reference/actions'],
-    ['位置参数与诊断','Positional commands','reference/commands'],
+    ['执行控制与队列','Execution control and queues','reference/task-control'],
+    ['执行入口','Execution entries','reference/executables'],
+    ['诊断命令','Diagnostic commands','reference/commands'],
     ['配置选项','Configuration','reference/config'],
     ['输入文件','Input files','reference/files'],
     ['调试 HTTP','Debug HTTP','reference/http'],
@@ -36,7 +33,14 @@ function theme(en: boolean) {
     ],
     sidebar: pages.map(group => ({
       text: group[en ? 1 : 0], collapsed: false,
-      items: group[2].map(page => ({ text: page[en ? 1 : 0], link: prefix + page[2] }))
+      items: group[2].map(page => ({
+        text: page[en ? 1 : 0], link: prefix + page[2],
+        ...(page[2] === 'reference/executables' ? { collapsed: false, items: [
+          { text: en ? 'Task' : 'Task · 业务任务', link: prefix + 'reference/tasks' },
+          { text: en ? 'Flow' : 'Flow · 操作编排', link: prefix + 'reference/flows' },
+          { text: en ? 'Action' : 'Action · 底层动作', link: prefix + 'reference/actions' }
+        ] } : {})
+      }))
     })),
     outline: { level: [2, 3] as [number, number], label: en ? 'On this page' : '本页目录' },
     docFooter: { prev: en ? 'Previous' : '上一页', next: en ? 'Next' : '下一页' },

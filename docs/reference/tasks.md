@@ -1,53 +1,56 @@
+---
+pageClass: execution-reference
+outline: 2
+---
+
 # Task
 
 各入口接受下列 JSON 参数。默认值与约束由运行时契约生成。
-
-## 直接使用 .litematic 原理图
-
-1. 将 `machine.litematic` 放入服务端世界目录的 `lattivium-atlas/schematics/`。远程服务器由管理员上传文件。
-2. 选择已在线的 Bot 和实际交付箱。
-3. 执行下列位置参数命令，Bot 会读取原理图并统计材料需求。
-
-```text
-/ltv Worker exec AtlasSupplyTask machine.litematic minecraft:overworld 100 64 100
-```
-
-将 `Worker`、文件名和交付坐标替换成实际值。末尾坐标指向交付箱。下列 JSON 表达相同的命令参数，原理图直接读取 `.litematic` 文件。
-
-```text
-/ltv Worker exec AtlasSupplyTask {"file":"machine.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":100,"y":64,"z":100}}]}
-```
 
 ## AtlasProductionPreviewTask
 
 预览材料生产计划。
 
+### 指令
+
 ```text
 /lattivium Worker exec AtlasProductionPreviewTask {"file":"example.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
 ```
 
+### 参数
+
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
-| `file` | `string` | `必填` |  |
-| `deliveries` | `array` | `必填` | minItems: 1; maxItems: 32 |
+| `file` | `string` | `必填` | 支持：.litematic, .materials.json; 服务端世界目录下的 `lattivium-atlas/schematics/`; 填写直属文件名 |
+| `deliveries` | `array` | `必填` | 各交付容器位置互不重复; minItems: 1; maxItems: 32 |
 | `deliveries[].dimension` | `string` | `必填` |  |
 | `deliveries[].position` | `object` | `必填` |  |
 | `deliveries[].position.x` | `integer` | `必填` |  |
 | `deliveries[].position.y` | `integer` | `必填` |  |
 | `deliveries[].position.z` | `integer` | `必填` |  |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec AtlasProductionPreviewTask <file.litematic|file.materials.json> <deliveryDimension> <x> <y> <z>
+```
+
 ## AtlasSupplyTask
 
 根据 Atlas 库存规划、取货、合成并交付材料。
+
+### 指令
 
 ```text
 /lattivium Worker exec AtlasSupplyTask {"file":"example.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":0,"y":64,"z":0}}]}
 ```
 
+### 参数
+
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
-| `file` | `string` | `必填` |  |
-| `deliveries` | `array` | `必填` | minItems: 1; maxItems: 32 |
+| `file` | `string` | `必填` | 支持：.litematic, .materials.json, .segment.json; 服务端世界目录下的 `lattivium-atlas/schematics/`; 填写直属文件名 |
+| `deliveries` | `array` | `必填` | 各交付容器位置互不重复; minItems: 1; maxItems: 32 |
 | `deliveries[].dimension` | `string` | `必填` |  |
 | `deliveries[].position` | `object` | `必填` |  |
 | `deliveries[].position.x` | `integer` | `必填` |  |
@@ -56,14 +59,30 @@
 | `useLooseCargo` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec AtlasSupplyTask <file> <deliveryDimension> <x> <y> <z> [USE_LOOSE_CARGO] [DEBUG|SOURCE_PRESERVING_DEBUG] [DELIVER_TO <dimension> <x> <y> <z>]...
+```
+
 ## DelayTask
 
 等待指定游戏刻数。
+
+### 指令
 
 ```text
 /lattivium Worker exec DelayTask {"ticks":20}
 ```
 
+### 参数
+
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
 | `ticks` | `integer` | `必填` | minimum: 1; maximum: 1200 |
+
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec DelayTask <durationTicks>
+```

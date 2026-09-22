@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "1c3d4228b3925dcc8c4a44381244cf6994cbc927",
+  "sourceCommit": "50971ebc0fa0ae05befb64f672ba610117552ebe",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -13,18 +13,19 @@
     "FireworkReserveFlow",
     "FireworkUseFlow",
     "JumpAction",
+    "LocalNavigationFlow",
     "LookAction",
     "MineBlockFlow",
     "MouseAction",
     "MoveAction",
     "MoveItemToOffhandAction",
-    "NavigateToPosFlow",
     "OpenContainerFlow",
     "PortalJourneyFlow",
     "ResumeExcavation",
     "SelectHotbarAction",
     "TransferAction",
     "TransferItemsFlow",
+    "TravelToFlow",
     "UseFlow"
   ],
   "configFields": [
@@ -68,7 +69,8 @@
     "BotFailure",
     "BotFailureCode",
     "EventHandle",
-    "EventState"
+    "EventState",
+    "TravelArrival"
   ],
   "sourceHashes": {
     "src/main/java/cwc/autobuildbot/command/ExecutionCommandRegistry.java": "29fc2288c4e41c30fad3e91a50b4855cdf186a53181abad0df24f2df93584364",
@@ -77,7 +79,7 @@
     "src/main/java/cwc/autobuildbot/debug/ui/DebugUiHost.java": "e3fc9b72d303bc9185624fed47d64681eee6a06705efd27ebbbaf8bffa551c17",
     "src/main/java/cwc/autobuildbot/debug/performance/TickPerformance.java": "55828a6a5b5e3dca4e64d774ddddd7e85c598ce08597f8a98da9941317fbac67",
     "src/main/resources/fabric.mod.json": "439d0964c3c91c160d734da6806623028211279bc259ced9867c71782705d476",
-    "src/main/java/cwc/autobuildbot/api/bot/Bot.java": "e446e1340e61304c6ee62f35d633b7616a86aeac38b38fccf9612cdf48a130fa",
+    "src/main/java/cwc/autobuildbot/api/bot/Bot.java": "16125bb9fbde7ed0795f2b52341c3bc42b4a5ffc518b5ebaf991f866e3817e17",
     "src/main/java/cwc/autobuildbot/api/bot/BotControl.java": "fe2140d315d90c50491dc44035e522f9a7d27ec3c2899658032cc08a46656d83",
     "src/main/java/cwc/autobuildbot/api/bot/BotSnapshot.java": "7132d3639b36448237d6d6c8353d1e604971a0508b63205eac8040898f50ceaf",
     "src/main/java/cwc/autobuildbot/api/bot/BotView.java": "026779518d01a161f0d788c21637b3bdb5fa2f2c9bb299cdecac2de4a8edcf41",
@@ -100,9 +102,10 @@
     "src/main/java/cwc/autobuildbot/command/Input.java": "598e08e8aa9c3ff904aac98eb297fa0af3e5ca7217fe8a3952e3b90b4f115e8f",
     "src/main/java/cwc/autobuildbot/command/JsonInputs.java": "8c3a61b3021a52acd59c73fbc69cb9d066a51bf612fb5c999e826829d5ffc3c5",
     "src/main/java/cwc/autobuildbot/command/entries/InteractionEntries.java": "2d8f924581267d9607f6374bf0a646593a68741c9a5b60ee38fdfa53aa54af38",
-    "src/main/java/cwc/autobuildbot/command/entries/NavigationEntries.java": "66119a5bf2c45651e7bf41bf2ed48597ec90e14f12ff3d60f526c4d413e7fa7f",
+    "src/main/java/cwc/autobuildbot/command/entries/NavigationEntries.java": "73e385b7c53d2c0ea9661e98678475833892f2ec5eb8e6aa4d9b10468d089839",
     "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "5587fdd3fea022488f8cb1b81e60cbb49ccf99b17cf06e954f503cf7af9974f0",
     "src/main/java/cwc/autobuildbot/execution/runtime/BotEventScheduler.java": "d128f9546c02d0ec8e66c2688ae85924af922b9cb372e199961cc87748784d6b",
-    "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "01f2916a7499fe2ab46173544b4dec8a2edb1970f0a2d89035b6430f6c29f507"
+    "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "b9ddf73a1a5435a099b8da4e1eff497a63f196fd5e4d65ad57b584a0b1ac344d",
+    "src/main/java/cwc/autobuildbot/navigation/TravelArrival.java": "7b9ca45518f4c4bcc320ae192edfd67d8a3ece153c790eb4902de8bfbfc2aee2"
   }
 }

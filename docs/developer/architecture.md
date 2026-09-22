@@ -14,6 +14,7 @@ Atlas → Planner → Execution request
 
 | 术语 | 含义 |
 | --- | --- |
+| Executable | 具有统一执行生命周期的操作，分为 Task、Flow 和 Action |
 | Bot | 受调度的 Carpet 假人及其能力边界 |
 | Task | 拥有业务意图与长期状态的根任务 |
 | Flow | 拥有子操作生命周期并输出具体结果的编排 |
@@ -37,3 +38,14 @@ Atlas → Planner → Execution request
 | Unreachable | 在指定策略与预算内无法取得的来源 |
 
 Flow 按独立结果、状态所有权和清理边界拆分。飞行与挖掘会话保留专用控制状态，在合适处共享生命周期契约。手册覆盖执行契约与公开 API 包，实现细节由源码提供。
+
+## 旅行编排
+
+```text
+TravelToFlow
+  ├─ PortalJourneyFlow
+  ├─ ApproachAreaFlow → ElytraFlightFlow / LocalNavigationFlow
+  └─ LocalNavigationFlow → PathEdgeExecFlow → Action
+```
+
+`TravelToFlow` 持有目标维度与最终到达条件。结果 `TravelArrival` 包含实际到达维度和脚位。穿门和区域接近是中间航段；库存、施工等业务提供到达条件，并持有交互与材料变更的责任。

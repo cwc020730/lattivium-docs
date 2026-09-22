@@ -13,4 +13,4 @@
 
 完整 Bot 状态包含 `activeTaskId`、`taskState`、`tasks`、`cleanupBlockedBy` 和 `trace`。`tasks` 中每项包含 `taskId`、`description`、`state`、`failure`。服务端在游戏线程生成状态快照。
 
-`savedTasks` 包含离线 Bot 的供给检查点；`recoveryIssues` 给出恢复阻塞原因。trace 记录观察、操作与结果，坐标含义以所属字段为准。取消任务遵循[任务控制](./task-control)的清理语义。
+`savedTasks` 包含离线 Bot 的供给检查点；`recoveryIssues` 给出恢复阻塞原因。trace 记录观察、操作与结果，坐标含义以所属字段为准。取消任务遵循[执行控制](./task-control)的清理语义。

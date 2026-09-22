@@ -13,4 +13,4 @@ Enable `debugUiEnabled` to listen on `127.0.0.1:<debugUiPort>`, port 8787 by def
 
 Full Bot state includes `activeTaskId`, `taskState`, `tasks`, `cleanupBlockedBy` and `trace`. Each task has `taskId`, `description`, `state` and `failure`. Snapshots are produced on the game thread.
 
-`savedTasks` includes supply checkpoints for offline Bots. `recoveryIssues` reports blocked recovery. Traces record observations, operations and outcomes; coordinate meanings follow their owning fields. Cancellation follows [task control](./task-control) cleanup semantics.
+`savedTasks` includes supply checkpoints for offline Bots. `recoveryIssues` reports blocked recovery. Traces record observations, operations and outcomes; coordinate meanings follow their owning fields. Cancellation follows [execution control](./task-control) cleanup semantics.

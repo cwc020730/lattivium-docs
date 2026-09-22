@@ -14,6 +14,7 @@ Atlas → Planner → Execution request
 
 | Term | Meaning |
 | --- | --- |
+| Executable | An operation with a shared execution lifecycle, implemented as Task, Flow or Action |
 | Bot | A scheduled Carpet fake player and its capability boundary |
 | Task | A root business objective with long-lived state |
 | Flow | An orchestration that owns child lifecycles and produces a concrete result |
@@ -37,3 +38,14 @@ Atlas → Planner → Execution request
 | Unreachable | A source unavailable under the selected policy and budget |
 
 Flows are separated by independently meaningful results, owned state and cleanup boundaries. Flight and mining sessions retain their specialized control state and share lifecycle contracts where useful. This manual documents executable contracts and public API packages; implementation details remain in source.
+
+## Travel composition
+
+```text
+TravelToFlow
+  ├─ PortalJourneyFlow
+  ├─ ApproachAreaFlow → ElytraFlightFlow / LocalNavigationFlow
+  └─ LocalNavigationFlow → PathEdgeExecFlow → Action
+```
+
+`TravelToFlow` owns the destination dimension and final arrival condition. Its result, `TravelArrival`, contains the observed dimension and feet position. Portal crossings and area approach are intermediate legs. Inventory and construction owners supply their arrival conditions and retain ownership of interactions and material changes.

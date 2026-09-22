@@ -1,3 +1,8 @@
+---
+pageClass: execution-reference
+outline: 2
+---
+
 # Action
 
 各入口接受下列 JSON 参数。默认值与约束由运行时契约生成。
@@ -6,17 +11,31 @@
 
 执行跳跃。
 
+### 指令
+
 ```text
 /lattivium Worker exec JumpAction {}
+```
+
+参数：`{}`。
+
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec JumpAction
 ```
 
 ## LookAction
 
 看向指定位置。
 
+### 指令
+
 ```text
 /lattivium Worker exec LookAction {"target":{"x":0,"y":65,"z":0}}
 ```
+
+### 参数
 
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
@@ -27,26 +46,46 @@
 | `toleranceDegrees` | `number` | `1.5` | minimum: 0 |
 | `maxAttempts` | `integer` | `3` | minimum: 1 |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec LookAction <x> <y> <z> [toleranceDegrees maxAttempts]
+```
+
 ## MouseAction
 
 执行鼠标按键输入。
 
+### 指令
+
 ```text
 /lattivium Worker exec MouseAction {"button":"RIGHT","mode":"ONCE"}
 ```
+
+### 参数
 
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
 | `button` | `string` | `必填` | `LEFT`, `RIGHT` |
 | `mode` | `string` | `必填` | `ONCE`, `CONTINUOUS` |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec MouseAction <LEFT|RIGHT> <ONCE|CONTINUOUS>
+```
+
 ## MoveAction
 
 按指定方向、强度和时长移动。
 
+### 指令
+
 ```text
 /lattivium Worker exec MoveAction {"direction":"FORWARD","ticks":20}
 ```
+
+### 参数
 
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
@@ -55,39 +94,75 @@
 | `strength` | `number` | `1` | minimum: 0; maximum: 1 |
 | `sprint` | `boolean` | `false` |  |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec MoveAction <FORWARD|BACKWARD|LEFT|RIGHT> <ticks> [strength] [sprint]
+```
+
 ## MoveItemToOffhandAction
 
 将指定物品放入副手。
+
+### 指令
 
 ```text
 /lattivium Worker exec MoveItemToOffhandAction {"item":"minecraft:firework_rocket"}
 ```
 
+### 参数
+
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
 | `item` | `string` | `必填` |  |
+
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec MoveItemToOffhandAction <item>
+```
 
 ## SelectHotbarAction
 
 选择快捷栏槽位。
 
+### 指令
+
 ```text
 /lattivium Worker exec SelectHotbarAction {"slot":0}
 ```
+
+### 参数
 
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
 | `slot` | `integer` | `必填` | minimum: 0; maximum: 8 |
 
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec SelectHotbarAction <zeroBasedSlot>
+```
+
 ## TransferAction
 
 转移当前菜单中指定范围的物品。
+
+### 指令
 
 ```text
 /lattivium Worker exec TransferAction {"startSlotInclusive":0,"endSlotExclusive":1}
 ```
 
+### 参数
+
 | 字段 | 类型 | 默认值 | 约束 |
 | --- | --- | --- | --- |
 | `startSlotInclusive` | `integer` | `必填` | minimum: 0 |
 | `endSlotExclusive` | `integer` | `必填` | minimum: 0 |
+
+### 位置参数写法
+
+```text
+/lattivium <Bot> exec TransferAction <startSlotInclusive> <endSlotExclusive>
+```

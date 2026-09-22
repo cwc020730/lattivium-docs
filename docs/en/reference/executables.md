@@ -1,6 +1,6 @@
-# JSON execution entries
+# Execution entries
 
-Submit JSON parameters through `exec`, `enqueue` or `interrupt`. Each accepted submission returns a task ID. Bot and world dependencies are supplied by the server. Fields and entry names are case-sensitive; coordinates are absolute. See [task control](./task-control) and [positional commands](./commands).
+Submit JSON parameters through `exec`, `enqueue` or `interrupt`. Each accepted submission returns a task ID. Bot and world dependencies are supplied by the server. Fields and entry names are case-sensitive; coordinates are absolute. See [execution control](./task-control) and [diagnostic commands](./commands).
 
 ```text
 /lattivium Worker exec DelayTask {"ticks":20}
@@ -8,21 +8,7 @@ Submit JSON parameters through `exec`, `enqueue` or `interrupt`. Each accepted s
 /ltv schema DelayTask
 ```
 
-## Use a .litematic file
-
-1. Place `machine.litematic` in the server world’s `lattivium-atlas/schematics/` directory. For a remote server, ask its administrator to upload the file.
-2. Choose an online Bot and an actual delivery container.
-3. Run the positional command below. The Bot reads the schematic and computes its material requirements.
-
-```text
-/ltv Worker exec AtlasSupplyTask machine.litematic minecraft:overworld 100 64 100
-```
-
-Replace `Worker`, the filename and delivery coordinates with your own values. The final coordinates identify the delivery container. JSON syntax below expresses the same command parameters; `.litematic` is read directly.
-
-```text
-/ltv Worker exec AtlasSupplyTask {"file":"machine.litematic","deliveries":[{"dimension":"minecraft:overworld","position":{"x":100,"y":64,"z":100}}]}
-```
+An **executable** is an operation with a lifecycle: Task, Flow or Action. Entries declared for independent execution have commands. JSON is the common parameter format; entries with positional syntax list it alongside their parameters.
 
 ## [Task](./tasks)
 
@@ -40,12 +26,13 @@ Replace `Worker`, the filename and delivery coordinates with your own values. Th
 - [ExcavateAreaFlow](./flows#excavateareaflow): Clear an inclusive area and store drops in outside depots; optional seal depots supply liquid containment blocks.
 - [FireworkReserveFlow](./flows#fireworkreserveflow): Prepare carried rocket reserves for a horizontal distance, including carried shulker contents.
 - [FireworkUseFlow](./flows#fireworkuseflow): Use one carried rocket.
+- [LocalNavigationFlow](./flows#localnavigationflow): Navigate to a position in the Bot's current dimension.
 - [MineBlockFlow](./flows#mineblockflow): Mine one block under construction safety and drop rules.
-- [NavigateToPosFlow](./flows#navigatetoposflow): Navigate to a position in the Bot's current dimension.
 - [OpenContainerFlow](./flows#opencontainerflow): Open a container within interaction reach.
-- [PortalJourneyFlow](./flows#portaljourneyflow): Physically traverse the specified portal route; optionally continue to a destination.
+- [PortalJourneyFlow](./flows#portaljourneyflow): Traverse the specified portal route and clear the exit; target is a route-selection hint.
 - [ResumeExcavation](./flows#resumeexcavation): Resume excavation from a saved task UUID in this world.
 - [TransferItemsFlow](./flows#transferitemsflow): Transfer an exact item count through the currently open menu.
+- [TravelToFlow](./flows#traveltoflow): Travel to destination feet in any dimension using Atlas portal routes and local navigation.
 - [UseFlow](./flows#useflow): Interact with a block using the selected hand.
 
 ## [Action](./actions)
