@@ -30,6 +30,12 @@ Strict recovery requires the corresponding drop obligations to be settled. Best-
 
 Tools, borrowed shulker boxes, sponges and delivery cargo retain their own return or delivery obligations. The owning task selects the recovery policy.
 
+### Product storage
+
+Excavation products can reside in L1 or in owned L2 transport boxes. `StoreExcavationCargoFlow` uses `EnsureInventoryReadyFlow` to prepare the next batch in L1, then deposits exact quantities through `TransferItemsFlow`. Each batch retains owned transport boxes and updates outstanding cargo from confirmed transfers.
+
+When a depot fills, the flow returns the quantity actually stored. The owner retains the remaining cargo obligation and selects another depot. Reusing a depot or restoring a task requires its physical contents to match existing receipts. See [inventory tiers](../supply/stock) for shared turnover.
+
 ## Fluids
 
 Internal fluids can be handled with finite fill material, with temporary fill recovered afterward. Declared sealing positions outside the volume isolate continuing inflow. Permanent seals are accounted for separately and retained.
