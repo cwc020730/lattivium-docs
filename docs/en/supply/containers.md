@@ -61,6 +61,8 @@ Source-preserving debug uses an accounted clone, extracts items and recovers tha
 
 This component finds and reaches a reusable shulker work position for unpacking, packing and resource maintenance.
 
+The parent declares existing work areas, such as a workstation platform, through `StockRequirements.bindWorkAreas(owner, positions)`. Search checks positions usable from the current stance, then declared areas, then nearby terrain. Each area has its own height range, allowing a Bot working below a platform to return there for box access. Navigation uses hints in the current dimension and checks physical reachability. A work-area declaration grants no external inventory transfer or terrain modification permission. The parent removes its declarations on completion, failure or cancellation.
+
 Candidates check support, opening space, entity occupancy, Bot stance, interaction reach and safe pickup after breaking. Entity collision checks follow native placement requirements and exclude cells occupied by animals. The reached position is revalidated. Before placing a box, changed terrain or occupancy triggers the same search again, with at most three reselections within the operation's original timeout.
 
 Access reuses local navigation with walking or Elytra flight. A staging flight uses loose rockets already prepared in L0; boxed stock remains sealed until the working position is reached. Insufficient direct fuel produces an explicit shortage, preventing recursive requests to open a fuel box to reach that same box's staging position.
