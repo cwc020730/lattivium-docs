@@ -141,6 +141,10 @@ Most values above come from class defaults and constants. Internal callers can p
 
 The current interface has no single total-task-budget parameter. Local search policies, an individual Flow timeout and a test runner's wall-time limit affect different layers.
 
+## Progress during construction resupply
+
+`ExcavationResourceTrip` forwards collection and return-travel progress to `ExcavateAreaFlow`. Reported phase transitions or movement update the excavation progress timer; continued waiting consumes that timer. Each execution scope also retains its total deadline. The owning flow settles child cleanup and propagates classified failures.
+
 ## Inspecting a timeout
 
 1. Identify the execution ID, failure code and reporting component.

@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "6f4f38091b4daff59647760857f22ea9fabaa710",
+  "sourceCommit": "804f3e3aa70a3a72d51ebc73b2441f01cf17fb2b",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -152,7 +152,7 @@
     "src/main/java/cwc/autobuildbot/integration/atlas/AtlasSupplyReplanner.java": "b64dffc0a2cbc4b1f50cd92ea66c77486b49029739c4fec01a14cdb0189eb394",
     "src/main/java/cwc/autobuildbot/flow/supply/ReplenishSuppliesFlow.java": "e1e84295bb6a32e4f1641a55fa7f295376361747e55999dcbf4831741afb8f20",
     "src/main/java/cwc/autobuildbot/construction/ExcavationSupplies.java": "bb258684b636c47ba9d510fe998b9645f92452bcac7a112ccf618d1ad6d7bc2d",
-    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "dd7813d24309ff3d50a24bec5d18db5b02b4e2a73180394490c010c4f6df9dbd",
+    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "2ac6b477b7becec78d3d17ef1b1b008e4f4a931312b28e1d08f1e15228f9f387",
     "src/main/java/cwc/autobuildbot/flow/construction/ReplaceDryColumnWithSandFlow.java": "f13d99c2c8ccab1a83a3966e44174a12a476fcbcfdd6610e5a1481fc9f24a0f3",
     "src/main/java/cwc/autobuildbot/flow/construction/PrepareSandWallStartDeckFlow.java": "0fadd339d193e666d6c2ab1a5d250597a31280bd60b005eb0b10b56c4d4c5559",
     "src/main/java/cwc/autobuildbot/navigation/pos/filter/ShulkerStagingPosFilter.java": "b4ae93ebc1d437e3470e793d2a3f7183f0f52eef851f32adb75b70316e39c722",
