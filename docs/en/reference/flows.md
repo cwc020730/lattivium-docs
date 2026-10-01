@@ -261,6 +261,7 @@ Clear a prepared sealed volume from top to bottom. Replace liquids within each l
 | `additionalDepots[].x` | `integer` | `Required` |  |
 | `additionalDepots[].y` | `integer` | `Required` |  |
 | `additionalDepots[].z` | `integer` | `Required` |  |
+| `sealBottom` | `boolean` | `false` |  |
 
 ## FireworkReserveFlow
 
@@ -410,7 +411,7 @@ Traverse the specified portal route and clear the exit; target is a route-select
 
 ## PrepareAndExcavatePerimeterFlow
 
-Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. The Bot carries all construction and excavation supplies.
+Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies acquires the required materials through shared supply flows.
 
 ### Command
 
@@ -431,6 +432,8 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `topY` | `integer` | `Required` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `sealBottom` | `boolean` | `false` |  |
+| `autonomousSupplies` | `boolean` | `false` |  |
 
 ## PreparePerimeterInfrastructureFlow
 

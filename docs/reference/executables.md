@@ -30,14 +30,14 @@
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
 - [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。
 - [ExcavateAreaFlow](./flows#excavateareaflow): 清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。
-- [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，并记录仓储与普通掉落物回执。
+- [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。
 - [FireworkReserveFlow](./flows#fireworkreserveflow): 根据行程距离补充烟花储备。
 - [FireworkUseFlow](./flows#fireworkuseflow): 使用烟花推动飞行。
 - [LocalNavigationFlow](./flows#localnavigationflow): 在当前维度内执行局部寻路，到达目标脚位。
 - [MineBlockFlow](./flows#mineblockflow): 按施工保护与掉落规则挖掘一个方块。
 - [OpenContainerFlow](./flows#opencontainerflow): 打开触及范围内的容器。
 - [PortalJourneyFlow](./flows#portaljourneyflow): 穿越指定传送路线并离开出口触发区；target 用于路线选择。
-- [PrepareAndExcavatePerimeterFlow](./flows#prepareandexcavateperimeterflow): 建造四边沙墙、脚手架井、道路和工作站，逐层填补液体并清空区域，最后返回工作站。
+- [PrepareAndExcavatePerimeterFlow](./flows#prepareandexcavateperimeterflow): 建造四边沙墙、脚手架井、道路和工作站，逐层处理液体并清空区域，最后返回工作站；sealBottom 声明底部永久隔离，autonomousSupplies 使用通用流程获取物资。
 - [PreparePerimeterInfrastructureFlow](./flows#prepareperimeterinfrastructureflow): 沿方形工地建四边沙墙、隔水脚手架井、永久道路和区外工作站。
 - [PrepareWorkstationFlow](./flows#prepareworkstationflow): 在施工区外搭建工作站并配置容器。
 - [ResumeExcavation](./flows#resumeexcavation): 从世界中保存的检查点恢复清场任务。

@@ -40,6 +40,12 @@ When a depot fills, the flow returns the quantity actually stored. The owner ret
 
 Internal fluids can be handled with finite fill material, with temporary fill recovered afterward. Declared sealing positions outside the volume isolate continuing inflow. Permanent seals are accounted for separately and retained.
 
+### Bottom sealing
+
+`ExcavateLayeredAreaFlow` and `PrepareAndExcavatePerimeterFlow` accept `sealBottom`, which defaults to `false`. Setting it to `true` authorizes the complete plane one block below the clearing volume, with the same horizontal bounds. A bottom layer at `y=47`, for example, declares a sealing plane at `y=46`.
+
+Before mining the last layer, the Bot checks this plane, retains existing dry solid blocks, and uses white concrete to seal gaps, fluids and supported aquatic vegetation. Permanent seals remain below the cleared volume; mining recovers temporary fill inside it. The receipt's `bottomSeals` lists the declared positions. Completion verifies both the dry-air volume and its bottom isolation. Machines, containers and other protected blocks retain their construction safeguards.
+
 ### Layered sponge drainage
 
 With `excavationDrainageMode` set to `SPONGE_GRID_WHEN_AVAILABLE`, continuous construction first builds one-block-high partitions on suitable wet layers. A partition every four blocks divides the interior into chambers no larger than 3×3. The Bot places a sponge in a chamber, retrieves the wet sponge, dries it with a furnace and fuel at the workstation, and continues clearing. The layer's mining pass recovers the grid and other temporary fill blocks.
@@ -92,10 +98,12 @@ The survey checks every column, its stable foundation, the shaft location, works
 `PrepareAndExcavatePerimeterFlow` builds the four-sided sand perimeter, scaffold shaft, access road and workstation in one execution. It then handles internal fluids and mines the interior layer by layer before returning to the workstation. Each layer must become dry air before the next begins. Completion checks the facilities, the entire cleared volume and the Bot's return position.
 
 ```text
-/ltv Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":100,"y":62,"z":100},"size":16,"bottomY":47,"topY":62}
+/ltv Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":100,"y":62,"z":100},"size":16,"bottomY":47,"topY":62,"sealBottom":true,"autonomousSupplies":true}
 ```
 
-`innerMin` is the northwest upper corner of the interior square. The example clears `x=100..115`, `z=100..115` and `y=47..62`. `outputBoxes` defaults to 2, and `headroom` defaults to 3. The Bot carries finite sand, white concrete, scaffolding, fill blocks, tools and shulker boxes for excavation products. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
+`innerMin` is the northwest upper corner of the interior square. The example clears `x=100..115`, `z=100..115` and `y=47..62`, and authorizes a bottom sealing plane at `y=46`. `outputBoxes` defaults to 2, and `headroom` defaults to 3.
+
+`autonomousSupplies` defaults to `false`, using finite construction materials carried by the Bot. When enabled, shared material demands, Atlas source planning, acquisition and crafting obtain sand, white concrete, scaffolding, fill material and product-storage shulker boxes. Enabling bottom sealing adds its fill budget to the material demand. Prepare tools and travel equipment before construction. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
 
 ## Excavation task recovery
 

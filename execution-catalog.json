@@ -943,6 +943,10 @@
             "minItems": 0,
             "maxItems": 16,
             "default": []
+          },
+          "sealBottom": {
+            "type": "boolean",
+            "default": false
           }
         },
         "required": [
@@ -1506,7 +1510,7 @@
     },
     "PrepareAndExcavatePerimeterFlow": {
       "kind": "Flow",
-      "description": "Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. The Bot carries all construction and excavation supplies.",
+      "description": "Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies acquires the required materials through shared supply flows.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -1563,6 +1567,14 @@
             "minimum": 2.0,
             "maximum": 6.0,
             "default": 3
+          },
+          "sealBottom": {
+            "type": "boolean",
+            "default": false
+          },
+          "autonomousSupplies": {
+            "type": "boolean",
+            "default": false
           }
         },
         "required": [

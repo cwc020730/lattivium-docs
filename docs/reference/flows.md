@@ -229,7 +229,7 @@ outline: 2
 
 ## ExcavateLayeredAreaFlow
 
-从上到下逐层清理已隔离场地，先填液体再挖掘，并记录仓储与普通掉落物回执。
+从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。
 
 ### 指令
 
@@ -261,6 +261,7 @@ outline: 2
 | `additionalDepots[].x` | `integer` | `必填` |  |
 | `additionalDepots[].y` | `integer` | `必填` |  |
 | `additionalDepots[].z` | `integer` | `必填` |  |
+| `sealBottom` | `boolean` | `false` |  |
 
 ## FireworkReserveFlow
 
@@ -410,7 +411,7 @@ outline: 2
 
 ## PrepareAndExcavatePerimeterFlow
 
-建造四边沙墙、脚手架井、道路和工作站，逐层填补液体并清空区域，最后返回工作站。
+建造四边沙墙、脚手架井、道路和工作站，逐层处理液体并清空区域，最后返回工作站；sealBottom 声明底部永久隔离，autonomousSupplies 使用通用流程获取物资。
 
 ### 指令
 
@@ -431,6 +432,8 @@ outline: 2
 | `topY` | `integer` | `必填` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `sealBottom` | `boolean` | `false` |  |
+| `autonomousSupplies` | `boolean` | `false` |  |
 
 ## PreparePerimeterInfrastructureFlow
 

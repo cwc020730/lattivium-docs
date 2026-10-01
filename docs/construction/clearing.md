@@ -40,6 +40,12 @@
 
 内部液体可使用有限填料处理，临时填料最终回收。外部持续来水通过已声明的区外封堵位置隔离，永久挡水块单独记账并保留。
 
+### 封底
+
+`ExcavateLayeredAreaFlow` 和 `PrepareAndExcavatePerimeterFlow` 接受 `sealBottom`，默认值为 `false`。设为 `true` 后，授权范围增加清场底部下一格的完整平面：例如最低层为 `y=47`，封底平面就是 `y=46`，水平范围与清场区域相同。
+
+Bot 在挖掘最后一层前核对该平面，保留已有的干燥实体方块，并用白色混凝土封住缺口、液体和可处理的水生植物位置。永久封底留在清场区域下方，区域内的临时填料随挖掘回收。回执中的 `bottomSeals` 记录声明的封底位置；完工核验同时检查区域内干燥空气与底部隔离。机器、容器及其他受保护方块仍遵循施工保护规则。
+
 ### 逐层海绵排水
 
 将配置项 `excavationDrainageMode` 设为 `SPONGE_GRID_WHEN_AVAILABLE` 后，连续施工会在合适的含水层内先建一格高的分隔网格。网格每四格设置一道隔墙，将内部划为不大于 3×3 的格室；Bot 在格室内放置海绵，回收湿海绵，带回工作站用熔炉和燃料烘干，再继续施工。网格方块和其余临时填料在该层挖掘时回收。
@@ -92,10 +98,12 @@ Y-1     地板  地板  地板  地板  地板
 `PrepareAndExcavatePerimeterFlow` 在同一次执行中建设四边沙墙、脚手架井、连接道路和工作站，随后逐层处理内部液体、挖除方块，最后返回工作站。每层成为干燥空气后才继续下一层；完成时检查设施、整个清场区域和 Bot 的返回位置。
 
 ```text
-/ltv Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":100,"y":62,"z":100},"size":16,"bottomY":47,"topY":62}
+/ltv Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":100,"y":62,"z":100},"size":16,"bottomY":47,"topY":62,"sealBottom":true,"autonomousSupplies":true}
 ```
 
-`innerMin` 指向内部方形的西北上角；示例清理 `x=100..115`、`z=100..115`、`y=47..62`。`outputBoxes` 默认 2，`headroom` 默认 3。Bot 需要携带有限的沙、白色混凝土、脚手架、填料、工具和产物仓储潜影盒。执行参数见[Flow 参考](../reference/flows#prepareandexcavateperimeterflow)。
+`innerMin` 指向内部方形的西北上角；示例清理 `x=100..115`、`z=100..115`、`y=47..62`，并授权 `y=46` 的封底平面。`outputBoxes` 默认 2，`headroom` 默认 3。
+
+`autonomousSupplies` 默认为 `false`，由 Bot 携带有限施工物资。设为 `true` 后，流程通过通用材料需求、Atlas 来源规划、取货及合成获取沙、白色混凝土、脚手架、填料和产物仓储潜影盒；启用封底时，材料需求同时计入底部平面的填料预算。工具及旅行所需装备应在施工前准备。执行参数见[Flow 参考](../reference/flows#prepareandexcavateperimeterflow)。
 
 ## 清场任务恢复
 
