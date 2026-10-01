@@ -111,6 +111,8 @@ Each layer retains its final footing near the shaft. Shared navigation reaches t
 
 `autonomousSupplies` defaults to `false`, using finite construction materials carried by the Bot. When enabled, shared material demands, Atlas source planning, acquisition and crafting obtain sand, white concrete, scaffolding, fill material and product-storage shulker boxes. Enabling bottom sealing adds its fill budget to the material demand. Initial fill stock covers the maximum demand of one layer. Between layers, construction checks carried stock, replenishes missing materials through the shared acquisition flow and returns to its work position. Sponge mode also prepares a sponge, furnace and per-layer drying fuel. Front and rear storage rows keep the workstation aisles and supply chests accessible; extra product boxes are acquired and placed when needed. For a solid 32³ volume, at least 6 initial output boxes provide up to 24 product-box positions. Prepare tools and travel equipment before construction. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
 
+Before construction, `AcquireMaterialsFlow` plans collection and crafting. During construction, additional finished supplies, such as empty product-storage boxes, use `ReplenishSuppliesFlow` to collect the observed deficit under the current material ledger. Cargo, fill and tool reservations remain protected, and `ExcavationResourceTrip` returns the Bot to its work position. Empty storage boxes are acquired as materials; transport boxes carrying stock retain their assigned role.
+
 ## Excavation task recovery
 
 ```text
