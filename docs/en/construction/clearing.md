@@ -16,6 +16,8 @@ The flow mines from top to bottom, verifies collection and deposits cargo when c
 
 `ExcavateLayeredAreaFlow` clears a prepared, isolated volume. On each layer, the Bot replaces internal fluid with fill material, mines the blocks, and verifies that the entire layer is dry air before descending. `egress` is an access cell inside the bottom layer. Existing empty shulker boxes receive the products; `additionalDepots` can specify supported spare positions.
 
+When liquid remains below the current layer, filler placement requires stable footing above that layer. Placement extends from existing support into adjacent fluid cells, gradually creating a walkable floor. Both placement navigation and the actual interaction check the footing height and grounded state, keeping the Bot on the completed layer before mining begins.
+
 Within a layer, the Bot may stand on remaining blocks or enter cleared cells with reliable support below. Movement, mining and product recovery share the current layer's height boundary. Mining also validates the actual footing, target reach and fluid safety. Ledge mining uses a verified adjacent support and capture pose.
 
 ```text
