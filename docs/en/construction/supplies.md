@@ -51,7 +51,7 @@ Site survey -> Construction demand
 
 Maintenance runs as a child operation. The parent retains its goal, progress and inventory obligations, then continues after the child and its cleanup finish. `ResourceMaintenance` owns active resource types and cumulative budgets, preventing same-resource recursion. Fuel maintenance restricts additional food-replenishment trips.
 
-Acquisition provides rocket and food policies. Infrastructure uses carried supplies. Layered excavation connects `ExcavationSupplies` to the shared `TaskFoodSupply`, `TaskFireworkSupply` and Atlas source lookup, and performs supply trips at safe boundaries. Each stage owns its maintenance lifecycle while sharing resource policies and acquisition components; see [resource maintenance](../guide/supply#resource-maintenance).
+Acquisition provides rocket and food policies. Infrastructure uses carried supplies. Layered excavation connects `ExcavationSupplies` to the shared `TaskFoodSupply`, `TaskFireworkSupply` and Atlas source lookup, and performs supply trips at safe boundaries. Maintenance observes L0, L1 and owned L2 transport-box contents together; mined cargo retains its reservation after packing. Each stage owns its maintenance lifecycle while sharing resource policies and acquisition components; see [resource maintenance](../guide/supply#resource-maintenance).
 
 ## Admission boundary
 
