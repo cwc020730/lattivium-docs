@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "ed497f772e0d6443f539dbac23127bd87b7e6458",
+  "sourceCommit": "1e24ab6c54429835fd94fb1df7e913beccecfa18",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -155,8 +155,8 @@
     "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "2ac6b477b7becec78d3d17ef1b1b008e4f4a931312b28e1d08f1e15228f9f387",
     "src/main/java/cwc/autobuildbot/flow/construction/ReplaceDryColumnWithSandFlow.java": "f13d99c2c8ccab1a83a3966e44174a12a476fcbcfdd6610e5a1481fc9f24a0f3",
     "src/main/java/cwc/autobuildbot/flow/construction/PrepareSandWallStartDeckFlow.java": "0fadd339d193e666d6c2ab1a5d250597a31280bd60b005eb0b10b56c4d4c5559",
-    "src/main/java/cwc/autobuildbot/navigation/pos/filter/ShulkerStagingPosFilter.java": "b4ae93ebc1d437e3470e793d2a3f7183f0f52eef851f32adb75b70316e39c722",
-    "src/main/java/cwc/autobuildbot/flow/inventory/shulker/AccessShulkerStagingFlow.java": "bf31c0759b2654f4859b90bcc8e6d29910af1852969273cbce552e8028d37089",
+    "src/main/java/cwc/autobuildbot/navigation/pos/filter/ShulkerStagingPosFilter.java": "bcb226f28cd54b0e527d1918fd79de6f7201a5b8e8eb224a9dbb8380e68c8f59",
+    "src/main/java/cwc/autobuildbot/flow/inventory/shulker/AccessShulkerStagingFlow.java": "b2e32cc4069409efe7c6f88b590e487b5aa7978f8733709458d531a8c68349e1",
     "src/main/java/cwc/autobuildbot/pathfinding/WaterSurfaceGeometry.java": "e7f227b5c6e61495563d407562fe2bd1c73bb17813ae31b47614a815fd06f99d",
     "src/main/java/cwc/autobuildbot/construction/MiningDropRecovery.java": "224e93037cf43fadd0a4fd11f2757f29e43d96c39ee1879dda1f4e3d6312ba8e",
     "src/main/java/cwc/autobuildbot/construction/WorkstationLayout.java": "ce6e884ef7f10c31c1a55d5da428d20b5f554e24564a863dff9524b29ee6a3e7",

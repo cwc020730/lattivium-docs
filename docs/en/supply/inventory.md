@@ -88,6 +88,14 @@ flowchart TD
 
 Each native operation verifies quantities, components, menu identity and box recovery. Turnover has a bounded operation budget and reports a specific failure when it cannot satisfy the request.
 
+## Working position for carried boxes
+
+`AccessShulkerStagingFlow` selects a position for placing and recovering a transport box. The placement cell and the cell above remain empty, with a supported 3×3 drop landing area below. Nearby chunks must be loaded, and portal clearance and entity occupancy checks must pass.
+
+When the current stance supports the operation, unpacking starts there. Otherwise, the discovered safe stance guides shared navigation and flight landing discovery; navigation can also reach another valid working position in the search area. Arrival rechecks the actual stance, interaction ray and placement space before unpacking. A Bot on a narrow wall can use nearby safe ground or a registered work area, then its parent flow returns it to the construction stance after turnover.
+
+Flight to a working position uses directly available rockets. The parent continues its next batch after menu, box recovery and inventory receipts are settled.
+
 ## Item obligations
 
 Inventory levels and obligations are separate. Tools, borrowed items, delivery cargo and boxes awaiting installation retain their responsibilities. Owned transport boxes provide L2 packing capacity. Borrowed boxes and whole-box delivery items remain protected task items.
