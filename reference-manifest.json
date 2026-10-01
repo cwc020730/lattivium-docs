@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "11402edd7937742acb964030169ea589dcdf36cf",
+  "sourceCommit": "6a22f8b831145631e89858053a516a6b5ed09493",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -131,7 +131,7 @@
     "src/main/java/cwc/autobuildbot/execution/runtime/BotEventScheduler.java": "8332c28a1a86d9425ff8db85336464d903daed2b0c633b377d402a82a182e860",
     "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "b9ddf73a1a5435a099b8da4e1eff497a63f196fd5e4d65ad57b584a0b1ac344d",
     "src/main/java/cwc/autobuildbot/navigation/TravelArrival.java": "c8dbf0f2b550da89d39a142c3ecf30a1071cba2ff59a179353472a443c5f84b7",
-    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateLayeredAreaFlow.java": "c77918eff7da3e45856e8890a2e4a27a6e1f908b1b9bf259387eb57c92895247",
+    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateLayeredAreaFlow.java": "811b752289e6178ebf27b1454f8dd7f833575830827f9c20c8a13ee236a4d2c0",
     "src/main/java/cwc/autobuildbot/flow/construction/PrepareAndExcavatePerimeterFlow.java": "672089718a71fc9e07bf2cfa63fe13ba7a6c7823e641df3760bed217225d1ab1",
     "src/main/java/cwc/autobuildbot/flow/construction/PreparePerimeterInfrastructureFlow.java": "434d220a9e4f3af3182bf07cf32f2cacc711fdc9f1d72a3176acd0cc4979087a",
     "src/main/java/cwc/autobuildbot/supply/FireworkSupplyPolicy.java": "dc9ee763e8000c83793f56b75f353efba9d8286488d07611775305dc90b3028a",
@@ -152,7 +152,7 @@
     "src/main/java/cwc/autobuildbot/integration/atlas/AtlasSupplyReplanner.java": "b64dffc0a2cbc4b1f50cd92ea66c77486b49029739c4fec01a14cdb0189eb394",
     "src/main/java/cwc/autobuildbot/flow/supply/ReplenishSuppliesFlow.java": "e1e84295bb6a32e4f1641a55fa7f295376361747e55999dcbf4831741afb8f20",
     "src/main/java/cwc/autobuildbot/construction/ExcavationSupplies.java": "68ca2cbe1b910b65de633c67028ef31e2206763c3166eaef48d2a9e8236e3e9e",
-    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "d8150fb1702293e77d00c631225fa395ca86104071bae2145e0d58b2af8332da",
+    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "7789dc7254d1f360761b0e24542aaa3926cda571242750360250be1c67f13057",
     "src/main/java/cwc/autobuildbot/flow/construction/ReplaceDryColumnWithSandFlow.java": "f13d99c2c8ccab1a83a3966e44174a12a476fcbcfdd6610e5a1481fc9f24a0f3",
     "src/main/java/cwc/autobuildbot/flow/construction/PrepareSandWallStartDeckFlow.java": "0fadd339d193e666d6c2ab1a5d250597a31280bd60b005eb0b10b56c4d4c5559",
     "src/main/java/cwc/autobuildbot/navigation/pos/filter/ShulkerStagingPosFilter.java": "b4ae93ebc1d437e3470e793d2a3f7183f0f52eef851f32adb75b70316e39c722",

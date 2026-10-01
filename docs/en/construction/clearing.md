@@ -44,7 +44,9 @@ Internal fluids can be handled with finite fill material, with temporary fill re
 
 `ExcavateLayeredAreaFlow` and `PrepareAndExcavatePerimeterFlow` accept `sealBottom`, which defaults to `false`. Setting it to `true` authorizes the complete plane one block below the clearing volume, with the same horizontal bounds. A bottom layer at `y=47`, for example, declares a sealing plane at `y=46`.
 
-Before mining the last layer, the Bot checks this plane, retains existing dry solid blocks, and uses white concrete to seal gaps, fluids and supported aquatic vegetation. Permanent seals remain below the cleared volume; mining recovers temporary fill inside it. The receipt's `bottomSeals` lists the declared positions. Completion verifies both the dry-air volume and its bottom isolation. Machines, containers and other protected blocks retain their construction safeguards.
+The Bot mines the last layer, then checks the exposed bottom plane, retains existing dry solid blocks, and places white concrete from supported edges to seal gaps, fluids and supported aquatic vegetation. The last layer permits fluid immediately below in the declared plane while retaining side-isolation requirements. Water below the layer stays below the cleared cells.
+
+Permanent seals remain below the cleared volume; mining recovers temporary fill inside it. The receipt's `bottomSeals` lists the declared positions. Completion verifies both the dry-air volume and its bottom isolation. Machines, containers and other protected blocks retain their construction safeguards. A sealing plane with no usable placement support reports that a supported seed is needed within its declared bounds.
 
 ### Layered sponge drainage
 
