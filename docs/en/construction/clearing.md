@@ -115,6 +115,8 @@ Each layer retains its final footing near the shaft. Shared navigation reaches t
 
 Before construction, `AcquireMaterialsFlow` plans collection and crafting. During construction, additional finished supplies, such as empty product-storage boxes, use `ReplenishSuppliesFlow` to collect the observed deficit under the current material ledger. Cargo, fill and tool reservations remain protected, and `ExcavationResourceTrip` returns the Bot to its work position. Empty storage boxes are acquired as materials; transport boxes carrying stock retain their assigned role.
 
+Between layers, missing construction materials also use `AcquireMaterialsFlow` for collection or crafting. A supply trip can cross dimensions and returns to its departure position at the site. The construction volume, product storage and block operations remain bound to their original dimension; checks and construction continue on the current layer after return.
+
 ## Excavation task recovery
 
 ```text

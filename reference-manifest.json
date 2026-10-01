@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "4b29b8c301104d40c90335d8054cdb329e69f119",
+  "sourceCommit": "90999af58d6fbf81e80bda738150b141ca1da283",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -132,7 +132,7 @@
     "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "b9ddf73a1a5435a099b8da4e1eff497a63f196fd5e4d65ad57b584a0b1ac344d",
     "src/main/java/cwc/autobuildbot/navigation/TravelArrival.java": "c8dbf0f2b550da89d39a142c3ecf30a1071cba2ff59a179353472a443c5f84b7",
     "src/main/java/cwc/autobuildbot/flow/construction/ExcavateLayeredAreaFlow.java": "1ce4003c3d01017388ae5d9c8cb184b0ec2a4d926b860e98ef32d26e9c97ebc9",
-    "src/main/java/cwc/autobuildbot/flow/construction/PrepareAndExcavatePerimeterFlow.java": "fc77264339d71abfb1bbcc5003515d100d042bb2a14419660d4ec092521a2aaa",
+    "src/main/java/cwc/autobuildbot/flow/construction/PrepareAndExcavatePerimeterFlow.java": "9122f944789b0dcf0dcef5842c09d5f6344d2e5c31348df8fd85ab607feddbfe",
     "src/main/java/cwc/autobuildbot/flow/construction/PreparePerimeterInfrastructureFlow.java": "220343023ada23462d0e512139c8b82b1f814b71c65735288a7e45e5d74acd78",
     "src/main/java/cwc/autobuildbot/supply/FireworkSupplyPolicy.java": "dc9ee763e8000c83793f56b75f353efba9d8286488d07611775305dc90b3028a",
     "src/main/java/cwc/autobuildbot/supply/StockRequirement.java": "46ef158374747f800285c0a9f8e43c6296a4770d5da51fb1cfca77a1b194e41d",
