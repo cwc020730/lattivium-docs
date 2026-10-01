@@ -3,10 +3,35 @@ import { defineConfig } from 'vitepress'
 const pages = [
   ['使用指南', 'Guides', [
     ['安装与第一个任务','Installation','guide/start'],
-    ['材料收集与合成','Supply and crafting','guide/supply'],
-    ['移动与跨维度','Navigation','guide/navigation'],
-    ['清场与建造','Construction','guide/construction'],
     ['恢复与排错','Recovery','guide/recovery']]],
+  ['材料收集', 'Material collection', [
+    ['总览与流程','Overview','guide/supply'],
+    ['需求与规划','Demand and planning','supply/planning'],
+    ['来源访问','Source access','supply/travel'],
+    ['容器取货与潜影盒','Containers and shulker boxes','supply/containers'],
+    ['合成与物资账目','Crafting and accounting','supply/crafting'],
+    ['库存分级','Inventory levels','supply/inventory'],
+    ['库存要求与水位','Inventory requirements and levels','supply/stock'],
+      ['补给与执行恢复','Maintenance and recovery','supply/maintenance'],
+    ['交付与结果','Delivery and results','supply/delivery']]],
+  ['寻路与旅行', 'Navigation and travel', [
+    ['总览与层次','Overview','guide/navigation'],
+    ['目的地与到达条件','Destinations and arrival','navigation/targets'],
+    ['路线与跨维度','Routes and dimensions','navigation/routes'],
+    ['局部寻路与移动','Local paths and movement','navigation/local'],
+    ['鞘翅飞行','Elytra flight','navigation/flight'],
+    ['烟花储备与补给','Rocket reserves and replenishment','navigation/fuel'],
+    ['预算','Budgets','navigation/budgets'],
+    ['观察与异常处理','Observation and failures','navigation/recovery']]],
+  ['建造', 'Construction', [
+    ['总览','Overview','guide/construction'],
+    ['布局与勘察','Layout and survey','construction/planning'],
+    ['施工物资与补给','Construction supplies','construction/supplies'],
+    ['井道','Shaft','construction/shaft'],
+    ['连接道路','Access road','construction/road'],
+    ['工作站','Workstation','construction/workstation'],
+    ['清场','Site clearing','construction/clearing'],
+    ['原理图施工','Schematic building','construction/schematic']]],
   ['完整参考', 'Reference', [
     ['执行控制与队列','Execution control and queues','reference/task-control'],
     ['执行入口','Execution entries','reference/executables'],
@@ -28,6 +53,9 @@ function theme(en: boolean) {
     siteTitle: 'Lattivium',
     nav: [
       { text: en ? 'Guide' : '指南', link: prefix + 'guide/start' },
+      { text: en ? 'Materials' : '材料收集', link: prefix + 'guide/supply' },
+      { text: en ? 'Travel' : '寻路与旅行', link: prefix + 'guide/navigation' },
+      { text: en ? 'Construction' : '建造', link: prefix + 'guide/construction' },
       { text: en ? 'Reference' : '参考', link: prefix + 'reference/executables' },
       { text: en ? 'Development' : '开发', link: prefix + 'developer/architecture' }
     ],

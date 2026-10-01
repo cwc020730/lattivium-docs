@@ -11,3 +11,12 @@
 ```
 
 `start` 开始服务端 tick 测量窗口，`report` 读取统计，`stop` 结束测量。`phase` 为最长 80 字符的单词。`watchcount` 监测已加载容器变化，在 JFR 中最多记录 256 次，坐标使用原版方块位置语法。Atlas 状态命令报告扫描和数据库队列。
+
+## 库存要求与实物
+
+```text
+/ltv Worker inventory
+/lattivium Worker inventory
+```
+
+查询携带实物、已登记工作站容器及当前执行的上下水位与缺口。响应字段见[库存要求与水位](../supply/stock)。

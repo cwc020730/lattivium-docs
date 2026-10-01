@@ -30,6 +30,8 @@ Atlas → Planner → Execution request
 | PathGoal | The navigation completion condition |
 | NavigationResult | Actual reached feet position and optional path nodes |
 | MaterialLedger | Demand, holdings, reservations, acquisition and delivery accounting |
+| ResourceMaintenance | Maintenance admission and cumulative budgets; resource policies select operations |
+| MaterialSourceLocator | Shared item-source lookup and filtering interface for acquisition and maintenance |
 | AcquisitionReceipt | Receipt for actual acquisition and associated effects |
 | SupplyResult | Business outcome containing delivery, shortages and failed sources |
 | Obligation | Outstanding return, recovery, delivery or cleanup responsibility |
@@ -49,3 +51,11 @@ TravelToFlow
 ```
 
 `TravelToFlow` owns the destination dimension and final arrival condition. Its result, `TravelArrival`, contains the observed dimension and feet position. Portal crossings and area approach are intermediate legs. Inventory and construction owners supply their arrival conditions and retain ownership of interactions and material changes.
+
+## Acquisition, delivery and construction
+
+`AtlasSupplyTask` and `AcquireMaterialsFlow` share `AtlasSupplyLoadFlow` and `AcquireProductionFlow`. The former owns delivery targets; the latter leaves materials in carried inventory for its caller. `PrepareAndExcavatePerimeterFlow` turns a site survey into material demand and invokes acquisition when autonomous supplies are enabled.
+
+Source access, precise shulker extraction, crafting and material reservations retain separate results and cleanup boundaries. `ResourceMaintenance` governs maintenance admission. `TaskFireworkSupply` and `TaskFoodSupply` select resource policies. The parent retains the original goal and continues after maintenance completes.
+
+See [supply and crafting](../guide/supply) and [construction supplies](../construction/supplies) for the call chain and integration boundaries.

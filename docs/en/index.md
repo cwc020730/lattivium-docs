@@ -5,9 +5,9 @@ Lattivium uses server-side Bots to collect materials, craft items, travel across
 ## Get started
 
 - [Installation and your first task](./guide/start)
-- [Supply and crafting](./guide/supply)
-- [Navigation and dimensions](./guide/navigation)
-- [Excavation and construction](./guide/construction)
+- [Material collection](./guide/supply)
+- [Navigation and travel](./guide/navigation)
+- [Construction](./guide/construction): layout, shaft, access road, workstation and clearing
 
 ## Commands and interfaces
 

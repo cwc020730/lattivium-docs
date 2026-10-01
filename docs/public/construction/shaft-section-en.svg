@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 370" role="img" aria-labelledby="title">
+<title id="title">Scaffold shaft: Working layer / Stable foundation</title><rect width="900" height="370" rx="18" fill="#121b2d"/>
+<g fill="#e5ecf8" font-family="system-ui,sans-serif" font-size="18">
+<rect x="370" y="112" width="420" height="171" fill="#303d4c"/>
+<path d="M294 66V310M325 66V310" stroke="#e9bc73" stroke-width="7"/>
+<path d="M294 89H325M294 119H325M294 149H325M294 179H325M294 209H325M294 239H325M294 269H325M294 299H325" stroke="#e9bc73" stroke-width="4"/>
+<rect x="285" y="313" width="49" height="18" fill="#d4e1ed"/>
+<path d="M325 94H790" stroke="#a9cdd4" stroke-width="10"/>
+<path d="M325 238H420" stroke="#67d4c4" stroke-width="6"/>
+<text x="470" y="63">Top entrance / road height</text>
+<rect x="430" y="207" width="330" height="53" rx="6" fill="#192a3e"/><text x="450" y="240">Working layer</text>
+<text x="447" y="314">Foundation may extend below the working layer</text>
+<path d="M437 307L344 320" stroke="#a1b1c6"/>
+<text x="55" y="242">Scaffold column</text>
+<text x="39" y="351" fill="#a1b1c6" font-size="13">Layer footing is checked separately; positions are schematic.</text>
+</g></svg>

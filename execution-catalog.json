@@ -14,18 +14,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -60,18 +60,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -86,7 +86,7 @@
           "count": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -118,18 +118,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -140,20 +140,20 @@
           },
           "arriveDistance": {
             "type": "number",
-            "minimum": 1.0E-6,
-            "maximum": 1.7976931348623157E308,
+            "minimum": 1e-06,
+            "maximum": 1.7976931348623157e+308,
             "default": 0.6
           },
           "settlingTicks": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 240
           },
           "cruiseHeight": {
             "type": "integer",
             "minimum": 321.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 325
           }
         },
@@ -194,18 +194,18 @@
                   "properties": {
                     "x": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "y": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "z": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     }
                   },
                   "required": [
@@ -268,18 +268,18 @@
                   "properties": {
                     "x": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "y": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "z": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     }
                   },
                   "required": [
@@ -330,6 +330,117 @@
         ]
       }
     },
+    "BuildPerimeterSandWallFlow": {
+      "kind": "Flow",
+      "description": "Mine each water-wall column into the original seabed, settle real sand around a 6-, 12- or 16-block inner square, and return to the starting deck. Wall height is at most 32 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "innerMin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 6.0,
+            "maximum": 16.0
+          },
+          "bottomY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "topY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "startDeck": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "minimumOriginalSeabedBlocks": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 96.0,
+            "default": 10
+          },
+          "resumeSandColumns": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 67.0,
+            "default": 0
+          }
+        },
+        "required": [
+          "innerMin",
+          "size",
+          "bottomY",
+          "topY",
+          "startDeck"
+        ]
+      },
+      "example": {
+        "innerMin": {
+          "x": 0,
+          "y": 62,
+          "z": 0
+        },
+        "size": 6,
+        "bottomY": 37,
+        "topY": 62,
+        "startDeck": {
+          "x": -2,
+          "y": 63,
+          "z": -1
+        }
+      }
+    },
     "BuildSchematicFlow": {
       "kind": "Flow",
       "description": "Build a schematic at an origin in the current dimension.",
@@ -346,18 +457,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -415,18 +526,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -448,6 +559,94 @@
         }
       }
     },
+    "EnsureInventoryReadyFlow": {
+      "kind": "Flow",
+      "description": "Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "demand": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "item": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1.0,
+                  "maximum": 2147483647.0
+                }
+              },
+              "required": [
+                "item",
+                "count"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "default": []
+          },
+          "emptySlots": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 36.0,
+            "default": 2
+          },
+          "incoming": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "item": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1.0,
+                  "maximum": 2147483647.0
+                }
+              },
+              "required": [
+                "item",
+                "count"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "default": []
+          },
+          "taskSlots": {
+            "type": "boolean",
+            "default": false
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "REAL",
+              "DEBUG",
+              "SOURCE_PRESERVING_DEBUG"
+            ],
+            "default": "REAL"
+          }
+        },
+        "required": []
+      },
+      "example": {
+        "demand": [
+          {
+            "item": "minecraft:sand",
+            "count": 64
+          }
+        ],
+        "emptySlots": 2,
+        "taskSlots": true
+      }
+    },
     "ExcavateAreaFlow": {
       "kind": "Flow",
       "description": "Clear an inclusive area and store drops in outside depots; optional seal depots supply liquid containment blocks.",
@@ -461,18 +660,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -487,18 +686,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -515,18 +714,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -546,18 +745,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -597,6 +796,265 @@
         ]
       }
     },
+    "ExcavateLayeredAreaFlow": {
+      "kind": "Flow",
+      "description": "Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried empty boxes.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "min": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "max": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "egress": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "depots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 8
+          },
+          "additionalDepots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 16,
+            "default": []
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "egress",
+          "depots"
+        ]
+      },
+      "example": {
+        "min": {
+          "x": 0,
+          "y": 47,
+          "z": 0
+        },
+        "max": {
+          "x": 15,
+          "y": 62,
+          "z": 15
+        },
+        "egress": {
+          "x": 0,
+          "y": 47,
+          "z": 7
+        },
+        "depots": [
+          {
+            "x": -6,
+            "y": 64,
+            "z": 7
+          }
+        ]
+      }
+    },
+    "ExcavateSiteTask": {
+      "kind": "Task",
+      "description": "Excavate a 16x16 site five blocks below surfaceOrigin.y, with an outside workstation and scaffold shaft. Survey water before work; raise the workstation deck one block when its floor meets water. foundationDepth authorizes support below that deck. Build and verify each layer entrance before clearing that layer.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "surfaceOrigin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "accessSide": {
+            "type": "string",
+            "enum": [
+              "NORTH",
+              "EAST",
+              "SOUTH",
+              "WEST"
+            ],
+            "default": "WEST"
+          },
+          "outputBoxes": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 8.0,
+            "default": 2
+          },
+          "headroom": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 6.0,
+            "default": 2
+          },
+          "material": {
+            "type": "string",
+            "default": "minecraft:white_concrete"
+          },
+          "foundationDepth": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 1
+          }
+        },
+        "required": [
+          "surfaceOrigin"
+        ]
+      },
+      "example": {
+        "surfaceOrigin": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
     "FireworkReserveFlow": {
       "kind": "Flow",
       "description": "Prepare carried rocket reserves for a horizontal distance, including carried shulker contents.",
@@ -607,7 +1065,7 @@
           "horizontalDistance": {
             "type": "number",
             "minimum": 0.0,
-            "maximum": 1.7976931348623157E308
+            "maximum": 1.7976931348623157e+308
           }
         },
         "required": [
@@ -653,18 +1111,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -699,18 +1157,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -722,13 +1180,13 @@
           "toleranceDegrees": {
             "type": "number",
             "minimum": 0.0,
-            "maximum": 3.4028234663852886E38,
+            "maximum": 3.4028234663852886e+38,
             "default": 1.5
           },
           "maxAttempts": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 3
           }
         },
@@ -757,18 +1215,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -841,7 +1299,7 @@
           "ticks": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483637E9
+            "maximum": 2147483637.0
           },
           "strength": {
             "type": "number",
@@ -896,18 +1354,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -945,18 +1403,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -971,18 +1429,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -999,18 +1457,18 @@
                 "properties": {
                   "x": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "y": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "z": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   }
                 },
                 "required": [
@@ -1044,6 +1502,513 @@
           "y": 129,
           "z": 0
         }
+      }
+    },
+    "PrepareAndExcavatePerimeterFlow": {
+      "kind": "Flow",
+      "description": "Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. The Bot carries all construction and excavation supplies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "innerMin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 6.0,
+            "maximum": 16.0
+          },
+          "bottomY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "topY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "outputBoxes": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 8.0,
+            "default": 2
+          },
+          "headroom": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 6.0,
+            "default": 3
+          }
+        },
+        "required": [
+          "innerMin",
+          "size",
+          "bottomY",
+          "topY"
+        ]
+      },
+      "example": {
+        "innerMin": {
+          "x": 0,
+          "y": 62,
+          "z": 0
+        },
+        "size": 16,
+        "bottomY": 47,
+        "topY": 62
+      }
+    },
+    "PreparePerimeterInfrastructureFlow": {
+      "kind": "Flow",
+      "description": "Build a sand perimeter around a 6-, 12- or 16-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 32 blocks. The Bot carries construction supplies; interior excavation has a separate entry.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "innerMin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 6.0,
+            "maximum": 16.0
+          },
+          "bottomY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "topY": {
+            "type": "integer",
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
+          },
+          "outputBoxes": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 8.0,
+            "default": 2
+          },
+          "headroom": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 6.0,
+            "default": 3
+          }
+        },
+        "required": [
+          "innerMin",
+          "size",
+          "bottomY",
+          "topY"
+        ]
+      },
+      "example": {
+        "innerMin": {
+          "x": 0,
+          "y": 62,
+          "z": 0
+        },
+        "size": 16,
+        "bottomY": 47,
+        "topY": 62
+      }
+    },
+    "PreparePlatformTask": {
+      "kind": "Task",
+      "description": "Clear above min.y and build a platform. foundationDepth=1 authorizes one layer below the floor for water landing or floor-plant footing, with separate material and placement receipts.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "min": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "max": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "material": {
+            "type": "string",
+            "default": "minecraft:white_concrete"
+          },
+          "foundationDepth": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ]
+      },
+      "example": {
+        "min": {
+          "x": 0,
+          "y": 63,
+          "z": 0
+        },
+        "max": {
+          "x": 4,
+          "y": 66,
+          "z": 6
+        }
+      }
+    },
+    "PrepareSiteInfrastructureTask": {
+      "kind": "Task",
+      "description": "Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation before construction. Build the facilities and verify a native station-to-shaft-bottom round trip.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "surfaceOrigin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "outputBoxes": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 8.0,
+            "default": 4
+          },
+          "headroom": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 6.0,
+            "default": 4
+          },
+          "material": {
+            "type": "string",
+            "default": "minecraft:white_concrete"
+          },
+          "emptyBoxes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 16.0,
+            "default": 0
+          },
+          "fillStock": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 0
+          },
+          "sandStock": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 0
+          },
+          "scaffoldStock": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 0
+          }
+        },
+        "required": [
+          "surfaceOrigin"
+        ]
+      },
+      "example": {
+        "surfaceOrigin": {
+          "x": 0,
+          "y": 64,
+          "z": 0
+        }
+      }
+    },
+    "PrepareWorkstationFlow": {
+      "kind": "Flow",
+      "description": "Prepare a workstation outside an excavation area and stock its containers. foundationDepth=1 additionally authorizes a single layer of water-landing or floor-plant foundations below the floor.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "origin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "excavationMin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "excavationMax": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "y": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "outputBoxes": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 8.0,
+            "default": 2
+          },
+          "emptyBoxes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 16.0,
+            "default": 4
+          },
+          "floor": {
+            "type": "string",
+            "default": ""
+          },
+          "fillBlocks": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 16
+          },
+          "sand": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 16
+          },
+          "scaffolding": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1728.0,
+            "default": 16
+          },
+          "foundationDepth": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0
+          },
+          "headroom": {
+            "type": "integer",
+            "minimum": 2.0,
+            "maximum": 6.0,
+            "default": 4
+          }
+        },
+        "required": [
+          "origin",
+          "excavationMin",
+          "excavationMax"
+        ]
+      },
+      "example": {
+        "origin": {
+          "x": 8,
+          "y": 64,
+          "z": 0
+        },
+        "excavationMin": {
+          "x": 0,
+          "y": 60,
+          "z": 0
+        },
+        "excavationMax": {
+          "x": 4,
+          "y": 64,
+          "z": 4
+        }
+      }
+    },
+    "ResumeExcavateSiteTask": {
+      "kind": "Task",
+      "description": "Resume a site excavation checkpoint or verify an already completed site. Partial workstation and scaffold assembly require reconciliation.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "taskId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "taskId"
+        ]
+      },
+      "example": {
+        "taskId": "00000000-0000-0000-0000-000000000001"
       }
     },
     "ResumeExcavation": {
@@ -1096,12 +2061,12 @@
           "startSlotInclusive": {
             "type": "integer",
             "minimum": 0.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           },
           "endSlotExclusive": {
             "type": "integer",
             "minimum": 0.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -1134,7 +2099,7 @@
           "count": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -1165,18 +2130,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1213,18 +2178,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [

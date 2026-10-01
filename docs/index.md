@@ -5,9 +5,9 @@ Lattivium 通过服务端 Bot 收集材料、执行合成、跨维度旅行，�
 ## 开始使用
 
 - [安装与第一个任务](./guide/start)
-- [材料收集与合成](./guide/supply)
-- [移动与跨维度](./guide/navigation)
-- [清场与建造](./guide/construction)
+- [材料收集](./guide/supply)
+- [寻路与旅行](./guide/navigation)
+- [建造](./guide/construction)：布局、井道、连接道路、工作站与清场
 
 ## 命令与接口
 

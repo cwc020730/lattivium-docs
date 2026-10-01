@@ -87,6 +87,34 @@ Travel toward an area using a flight policy.
 /lattivium <Bot> exec ApproachAreaFlow <x> <y> <z> [arriveDistance settlingTicks cruiseHeight]
 ```
 
+## BuildPerimeterSandWallFlow
+
+Mine each water-wall column into the original seabed, settle real sand around a 6-, 12- or 16-block inner square, and return to the starting deck. Wall height is at most 32 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.
+
+### Command
+
+```text
+/lattivium Worker exec BuildPerimeterSandWallFlow {"innerMin":{"x":0,"y":62,"z":0},"size":6,"bottomY":37,"topY":62,"startDeck":{"x":-2,"y":63,"z":-1}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `innerMin` | `object` | `Required` |  |
+| `innerMin.x` | `integer` | `Required` |  |
+| `innerMin.y` | `integer` | `Required` |  |
+| `innerMin.z` | `integer` | `Required` |  |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `bottomY` | `integer` | `Required` |  |
+| `topY` | `integer` | `Required` |  |
+| `startDeck` | `object` | `Required` |  |
+| `startDeck.x` | `integer` | `Required` |  |
+| `startDeck.y` | `integer` | `Required` |  |
+| `startDeck.z` | `integer` | `Required` |  |
+| `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
+| `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 67 |
+
 ## BuildSchematicFlow
 
 Build a schematic at an origin in the current dimension.
@@ -138,6 +166,30 @@ Fly toward a position using carried equipment and rockets.
 /lattivium <Bot> exec ElytraFlightFlow <x> <y> <z>
 ```
 
+## EnsureInventoryReadyFlow
+
+Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.
+
+### Command
+
+```text
+/lattivium Worker exec EnsureInventoryReadyFlow {"demand":[{"item":"minecraft:sand","count":64}],"emptySlots":2,"taskSlots":true}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `demand` | `array` | `[]` | minItems: 0; maxItems: 128 |
+| `demand[].item` | `string` | `Required` |  |
+| `demand[].count` | `integer` | `Required` | minimum: 1 |
+| `emptySlots` | `integer` | `2` | minimum: 0; maximum: 36 |
+| `incoming` | `array` | `[]` | minItems: 0; maxItems: 128 |
+| `incoming[].item` | `string` | `Required` |  |
+| `incoming[].count` | `integer` | `Required` | minimum: 1 |
+| `taskSlots` | `boolean` | `false` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+
 ## ExcavateAreaFlow
 
 Clear an inclusive area and store drops in outside depots; optional seal depots supply liquid containment blocks.
@@ -174,6 +226,41 @@ Clear an inclusive area and store drops in outside depots; optional seal depots 
 ```text
 /lattivium <Bot> exec ExcavateAreaFlow <taskUUID> | <minX minY minZ> <maxX maxY maxZ> <depot triples> [--seal <outside seal triples>]
 ```
+
+## ExcavateLayeredAreaFlow
+
+Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried empty boxes.
+
+### Command
+
+```text
+/lattivium Worker exec ExcavateLayeredAreaFlow {"min":{"x":0,"y":47,"z":0},"max":{"x":15,"y":62,"z":15},"egress":{"x":0,"y":47,"z":7},"depots":[{"x":-6,"y":64,"z":7}]}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `min` | `object` | `Required` |  |
+| `min.x` | `integer` | `Required` |  |
+| `min.y` | `integer` | `Required` |  |
+| `min.z` | `integer` | `Required` |  |
+| `max` | `object` | `Required` |  |
+| `max.x` | `integer` | `Required` |  |
+| `max.y` | `integer` | `Required` |  |
+| `max.z` | `integer` | `Required` |  |
+| `egress` | `object` | `Required` |  |
+| `egress.x` | `integer` | `Required` |  |
+| `egress.y` | `integer` | `Required` |  |
+| `egress.z` | `integer` | `Required` |  |
+| `depots` | `array` | `Required` | minItems: 1; maxItems: 8 |
+| `depots[].x` | `integer` | `Required` |  |
+| `depots[].y` | `integer` | `Required` |  |
+| `depots[].z` | `integer` | `Required` |  |
+| `additionalDepots` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `additionalDepots[].x` | `integer` | `Required` |  |
+| `additionalDepots[].y` | `integer` | `Required` |  |
+| `additionalDepots[].z` | `integer` | `Required` |  |
 
 ## FireworkReserveFlow
 
@@ -320,6 +407,89 @@ Traverse the specified portal route and clear the exit; target is a route-select
 ```text
 /lattivium <Bot> exec PortalJourneyFlow <destinationDimension> <entranceX> <entranceY> <entranceZ> <exitX> <exitY> <exitZ> [targetX targetY targetZ]
 ```
+
+## PrepareAndExcavatePerimeterFlow
+
+Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. The Bot carries all construction and excavation supplies.
+
+### Command
+
+```text
+/lattivium Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":0,"y":62,"z":0},"size":16,"bottomY":47,"topY":62}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `innerMin` | `object` | `Required` |  |
+| `innerMin.x` | `integer` | `Required` |  |
+| `innerMin.y` | `integer` | `Required` |  |
+| `innerMin.z` | `integer` | `Required` |  |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `bottomY` | `integer` | `Required` |  |
+| `topY` | `integer` | `Required` |  |
+| `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
+| `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+
+## PreparePerimeterInfrastructureFlow
+
+Build a sand perimeter around a 6-, 12- or 16-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 32 blocks. The Bot carries construction supplies; interior excavation has a separate entry.
+
+### Command
+
+```text
+/lattivium Worker exec PreparePerimeterInfrastructureFlow {"innerMin":{"x":0,"y":62,"z":0},"size":16,"bottomY":47,"topY":62}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `innerMin` | `object` | `Required` |  |
+| `innerMin.x` | `integer` | `Required` |  |
+| `innerMin.y` | `integer` | `Required` |  |
+| `innerMin.z` | `integer` | `Required` |  |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `bottomY` | `integer` | `Required` |  |
+| `topY` | `integer` | `Required` |  |
+| `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
+| `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+
+## PrepareWorkstationFlow
+
+Prepare a workstation outside an excavation area and stock its containers. foundationDepth=1 additionally authorizes a single layer of water-landing or floor-plant foundations below the floor.
+
+### Command
+
+```text
+/lattivium Worker exec PrepareWorkstationFlow {"origin":{"x":8,"y":64,"z":0},"excavationMin":{"x":0,"y":60,"z":0},"excavationMax":{"x":4,"y":64,"z":4}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `origin` | `object` | `Required` |  |
+| `origin.x` | `integer` | `Required` |  |
+| `origin.y` | `integer` | `Required` |  |
+| `origin.z` | `integer` | `Required` |  |
+| `excavationMin` | `object` | `Required` |  |
+| `excavationMin.x` | `integer` | `Required` |  |
+| `excavationMin.y` | `integer` | `Required` |  |
+| `excavationMin.z` | `integer` | `Required` |  |
+| `excavationMax` | `object` | `Required` |  |
+| `excavationMax.x` | `integer` | `Required` |  |
+| `excavationMax.y` | `integer` | `Required` |  |
+| `excavationMax.z` | `integer` | `Required` |  |
+| `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
+| `emptyBoxes` | `integer` | `4` | minimum: 0; maximum: 16 |
+| `floor` | `string` | `""` |  |
+| `fillBlocks` | `integer` | `16` | minimum: 0; maximum: 1728 |
+| `sand` | `integer` | `16` | minimum: 0; maximum: 1728 |
+| `scaffolding` | `integer` | `16` | minimum: 0; maximum: 1728 |
+| `foundationDepth` | `integer` | `0` | minimum: 0; maximum: 1 |
+| `headroom` | `integer` | `4` | minimum: 2; maximum: 6 |
 
 ## ResumeExcavation
 

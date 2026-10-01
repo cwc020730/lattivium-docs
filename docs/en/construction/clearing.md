@@ -1,0 +1,106 @@
+# Site clearing
+
+Clearing empties a selected volume and accounts for excavation products, fluid operations and outstanding obligations. It can run on its own or as part of one execution that also builds the perimeter, shaft, road and workstation.
+
+## Area clearing
+
+`ExcavateAreaFlow` accepts inclusive bounds in the current dimension, with a maximum of 64 blocks per axis and 32,768 blocks in total. Prepare tools, finite empty shulker boxes, fill material and storage positions outside the area.
+
+```text
+/ltv Worker exec ExcavateAreaFlow 100 64 100 104 66 104 98 64 100
+```
+
+The flow mines from top to bottom, verifies collection and deposits cargo when capacity is limited. Protection conflicts involving machines, containers or portals report their positions. See the [Flow reference](../reference/flows#excavateareaflow) for parameters.
+
+### Layered clearing
+
+`ExcavateLayeredAreaFlow` clears a prepared, isolated volume. On each layer, the Bot replaces internal fluid with fill material, mines the blocks, and verifies that the entire layer is dry air before descending. `egress` is an access cell inside the bottom layer. Existing empty shulker boxes receive the products; `additionalDepots` can specify supported spare positions.
+
+Within a layer, the Bot may stand on remaining blocks or enter cleared cells with reliable support below. Movement, mining and product recovery share the current layer's height boundary. Mining also validates the actual footing, target reach and fluid safety. Ledge mining uses a verified adjacent support and capture pose.
+
+```text
+/ltv Worker exec ExcavateLayeredAreaFlow {"min":{"x":100,"y":47,"z":100},"max":{"x":115,"y":62,"z":115},"egress":{"x":100,"y":47,"z":107},"depots":[{"x":94,"y":64,"z":107}]}
+```
+
+The receipt lists completed layers, mined cells, fluid-preparation cells, depot contents, and any ordinary drops abandoned under best-effort recovery. The perimeter seal, scaffold shaft, road and workstation are prepared through [site planning](./planning). See the [Flow reference](../reference/flows#excavatelayeredareaflow) for all parameters.
+
+## Product recovery
+
+Strict recovery requires the corresponding drop obligations to be settled. Best-effort recovery collects ordinary excavation products within configured distance and active-time budgets, recording abandoned items and coordinates.
+
+Tools, borrowed shulker boxes, sponges and delivery cargo retain their own return or delivery obligations. The owning task selects the recovery policy.
+
+## Fluids
+
+Internal fluids can be handled with finite fill material, with temporary fill recovered afterward. Declared sealing positions outside the volume isolate continuing inflow. Permanent seals are accounted for separately and retained.
+
+### Layered sponge drainage
+
+With `excavationDrainageMode` set to `SPONGE_GRID_WHEN_AVAILABLE`, continuous construction first builds one-block-high partitions on suitable wet layers. A partition every four blocks divides the interior into chambers no larger than 3×3. The Bot places a sponge in a chamber, retrieves the wet sponge, dries it with a furnace and fuel at the workstation, and continues clearing. The layer's mining pass recovers the grid and other temporary fill blocks.
+
+This top-down view shows two rows of chambers. `#` marks a partition, `·` a chamber cell, and `S` one possible sponge position. The actual position depends on the water and reachable placement poses.
+
+```text
+···#···#
+·S·#···#
+···#···#
+########
+···#···#
+···#···#
+···#···#
+########
+```
+
+In cross-section, the partition, chamber water, and sponge occupy the same active layer `Y`; the sponge is inside the chamber. The cleared layer `Y+1` is air, and `Y-1` provides a dry solid floor:
+
+```text
+Y+1     air   air    air    air   air
+Y       wall  water  sponge water wall
+Y-1     floor floor  floor  floor floor
+```
+
+A sponge chamber needs a dry solid floor and a usable return position. Other fluid cells use fill material. Every completed layer is verified as dry air. The mode uses physically carried sponges, furnace and fuel, with receipts for placement, recovery and drying.
+
+The shallow-pit water-column exit applies to an already cleared volume up to four blocks deep and 8×8 horizontally, with a sealed floor and sides in a dimension that permits water. The Bot places water, swims out, collects it and verifies 100 consecutive empty ticks.
+
+### Deep-water sand perimeter
+
+`BuildPerimeterSandWallFlow` builds a one-block-thick sand ring around an inner square of 6, 12 or 16 blocks per side. Each column can be up to 96 blocks tall. For each column, the Bot mines the authorized seabed from the top down, drops real sand from a dry working deck, then uses the completed wall top as the next deck. `bottomY` and `topY` set the wall height; `minimumOriginalSeabedBlocks` sets the minimum penetration into the original seabed for every column.
+
+The plan needs a supported starting deck, a solid foundation beneath every column, a continuous outer water lane for mining and return, enough sand and tools, and underwater survival supplies. Preflight reports the position of any unmet condition. Completion checks the physical blocks, remaining supplies and the Bot's return to the starting deck.
+
+`innerMin` is the northwest corner of the inner square. Construction starts at the northwest corner of the outer ring and proceeds along its north edge. `startDeck` is the Bot's feet position, west of the first outer column and one block above `topY`. Build its supported floor before invoking the entry; preflight checks the starting position and supplies. The exterior water lane must remain continuous, or preflight reports the blocked coordinate.
+
+When submerged seagrass obstructs the view of solid seabed, the Bot removes it from above before mining downward. Thin aquatic cover that disappears naturally is recorded in the receipt; every required solid block of original seabed must still be mined.
+
+Ordinary mining drops follow the site's recovery policy. In best-effort mode, drops that remain uncollected or merge with other entities and lose precise attribution are recorded as unresolved without stopping wall construction. `resumeSandColumns` continues only a complete prefix physically verified as sand; the precise original seabed height is no longer observable after replacement. Use `/ltv schema BuildPerimeterSandWallFlow` for the entry parameters.
+
+### Perimeter, shaft and workstation
+
+`PreparePerimeterInfrastructureFlow` joins four-sided trench replacement, an isolated scaffold shaft, a white-concrete access road and an outside workstation in one site-preparation operation. It builds the wall's starting footing when needed. Perimeter columns can be open water or continuous solid dry ground. The plan selects a cell in the west wall, fills one sand column on either side of it, then replaces the center with scaffolding. The inner seal remains for interior drainage.
+
+The survey checks every column, its stable foundation, the shaft location, workstation space and the material budget before building. Completion verifies physical blocks and a Bot round trip between the workstation and shaft entrance.
+
+### Continuous construction and clearing
+
+`PrepareAndExcavatePerimeterFlow` builds the four-sided sand perimeter, scaffold shaft, access road and workstation in one execution. It then handles internal fluids and mines the interior layer by layer before returning to the workstation. Each layer must become dry air before the next begins. Completion checks the facilities, the entire cleared volume and the Bot's return position.
+
+```text
+/ltv Worker exec PrepareAndExcavatePerimeterFlow {"innerMin":{"x":100,"y":62,"z":100},"size":16,"bottomY":47,"topY":62}
+```
+
+`innerMin` is the northwest upper corner of the interior square. The example clears `x=100..115`, `z=100..115` and `y=47..62`. `outputBoxes` defaults to 2, and `headroom` defaults to 3. The Bot carries finite sand, white concrete, scaffolding, fill blocks, tools and shulker boxes for excavation products. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
+
+## Excavation task recovery
+
+```text
+/ltv Worker exec ResumeExcavation {"taskId":"00000000-0000-0000-0000-000000000001"}
+```
+
+`ResumeExcavation` restores an `ExcavateAreaFlow` area checkpoint by its excavation business `taskId` from the world's `lattivium/excavations/` directory. Checkpoints retain inventory, native drop identities and outstanding recovery obligations. Recovery reconciles these receipts with physical state.
+
+`ExcavateSiteTask` stores its site orchestration checkpoints under `lattivium/sites/`, identified by execution ID, including phases and child task relationships.
+
+## Relationship to infrastructure
+
+`ExcavateSiteTask` orchestrates site excavation. `PrepareAndExcavatePerimeterFlow` joins facility construction and layered clearing under one entry; its receipt records infrastructure and excavation results separately.

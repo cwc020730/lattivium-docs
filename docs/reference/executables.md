@@ -15,21 +15,31 @@
 - [AtlasProductionPreviewTask](./tasks#atlasproductionpreviewtask): 预览材料生产计划。
 - [AtlasSupplyTask](./tasks#atlassupplytask): 根据 Atlas 库存规划、取货、合成并交付材料。
 - [DelayTask](./tasks#delaytask): 等待指定游戏刻数。
+- [ExcavateSiteTask](./tasks#excavatesitetask): 准备区外工作站与脚手架井，分层清空 16×16、深 5 格的施工区域。
+- [PreparePlatformTask](./tasks#prepareplatformtask): 清理平台上方空间并铺设地板；可授权一层地基。
+- [PrepareSiteInfrastructureTask](./tasks#preparesiteinfrastructuretask): 勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。
+- [ResumeExcavateSiteTask](./tasks#resumeexcavatesitetask): 接续工地清场检查点，或复核已完成的工地。
 
 ## [Flow](./flows)
 
 - [AccessContainerFlow](./flows#accesscontainerflow): 接近并打开容器。
 - [AcquireContainerItemsFlow](./flows#acquirecontaineritemsflow): 从指定容器取得所需物品。
 - [ApproachAreaFlow](./flows#approachareaflow): 在当前维度内通过飞行或地面移动接近目标区域。
+- [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): 逐列挖掘外围沟并填入真实沙子，建成指定高度的沙墙。
 - [BuildSchematicFlow](./flows#buildschematicflow): 在当前维度的指定原点建造原理图。
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
+- [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。
 - [ExcavateAreaFlow](./flows#excavateareaflow): 清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。
+- [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，并记录仓储与普通掉落物回执。
 - [FireworkReserveFlow](./flows#fireworkreserveflow): 根据行程距离补充烟花储备。
 - [FireworkUseFlow](./flows#fireworkuseflow): 使用烟花推动飞行。
 - [LocalNavigationFlow](./flows#localnavigationflow): 在当前维度内执行局部寻路，到达目标脚位。
 - [MineBlockFlow](./flows#mineblockflow): 按施工保护与掉落规则挖掘一个方块。
 - [OpenContainerFlow](./flows#opencontainerflow): 打开触及范围内的容器。
 - [PortalJourneyFlow](./flows#portaljourneyflow): 穿越指定传送路线并离开出口触发区；target 用于路线选择。
+- [PrepareAndExcavatePerimeterFlow](./flows#prepareandexcavateperimeterflow): 建造四边沙墙、脚手架井、道路和工作站，逐层填补液体并清空区域，最后返回工作站。
+- [PreparePerimeterInfrastructureFlow](./flows#prepareperimeterinfrastructureflow): 沿方形工地建四边沙墙、隔水脚手架井、永久道路和区外工作站。
+- [PrepareWorkstationFlow](./flows#prepareworkstationflow): 在施工区外搭建工作站并配置容器。
 - [ResumeExcavation](./flows#resumeexcavation): 从世界中保存的检查点恢复清场任务。
 - [TransferItemsFlow](./flows#transferitemsflow): 按方向和数量转移指定物品。
 - [TravelToFlow](./flows#traveltoflow): 使用 Atlas 传送门路线与局部导航，到达指定维度的目标脚位。

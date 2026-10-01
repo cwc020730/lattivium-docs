@@ -1,33 +1,45 @@
-# Excavation and construction
+# Construction
 
-## Clear an area
+Construction combines site layout, infrastructure, clearing and schematic building. The workstation stores materials, the shaft provides vertical access, and the access road connects them.
 
-`ExcavateAreaFlow` clears an inclusive region in the current dimension, up to 64 blocks per axis and 32768 blocks total. Use survival mode and supply tools, empty shulker boxes and fill blocks. Distinct outside depot positions hold boxes for collected drops.
+![Site section showing the shaft, permanent access road, workstation and planned clearing volume](/construction/site-section-en.svg)
 
-```text
-/ltv Worker exec ExcavateAreaFlow 100 64 100 104 66 104 98 64 100
-```
+## Stages
 
-The workflow mines from the top down, verifies pickup, deposits when capacity is low, then checks that the region is empty and liquid-stable. Protection conflicts involving machinery, containers or portals report coordinates.
+| Stage | Result | Responsibility |
+| --- | --- | --- |
+| [Layout and survey](../construction/planning) | Frozen shaft, workstation and buildable route | Check material budgets and mutation boundaries |
+| [Construction supplies](../construction/supplies) | Materials and carrying capacity | Autonomous acquisition reuses shared collection and crafting |
+| [Shaft](../construction/shaft) | Scaffold column with a stable base and usable exits | Verify actual ascent and descent |
+| [Access road](../construction/road) | Permanent connection to the workstation | Place each segment and check body clearance |
+| [Workstation](../construction/workstation) | Floor, storage and walking space | Extend the platform from the road |
+| [Site clearing](../construction/clearing) | Cleared volume and accounted excavation products | Work by layer and manage storage and fluids |
+| [Schematic building](../construction/schematic) | Verified target block states | Read a schematic and use supported building operations |
 
-## Liquids and exits
+## Availability
 
-Finite fill blocks handle interior liquids and are recovered afterward. Use `--seal` to authorize outside sealing positions for continuing inflow. Permanent seals have separate accounting and remain in place.
+Area clearing and schematic building have their own [execution entries](../reference/flows). Site preparation uses the shaft, access road, workstation and platform components.
 
-The shallow-pit water exit supports fully cleared pits up to 4 blocks deep and 8×8 horizontally, with enclosed sides and floor in a dimension where water persists. The Bot places water, swims out, retrieves it and verifies 100 consecutive empty ticks. Other exits use available navigation and flight capabilities.
+`PreparePerimeterInfrastructureFlow` excavates the four sides of a square work area and fills them as a sand perimeter. It then builds an isolated scaffold shaft in one wall, a permanent white-concrete road and a workstation outside the work area. `PrepareAndExcavatePerimeterFlow` joins these facilities with layered interior clearing in one execution. `PrepareSiteInfrastructureTask` can also plan a shaft, road and workstation for a dry site.
 
-## Resume excavation
-
-```text
-/ltv Worker exec ResumeExcavation {"taskId":"00000000-0000-0000-0000-000000000001"}
-```
-
-Use the business `taskId` from the excavation trace. Checkpoints live in `lattivium/excavations/`; recovery validates identity, inventory, receipts and remaining obligations.
-
-## Build a schematic
+## Combined construction sequence
 
 ```text
-/ltv Worker exec BuildSchematicFlow small.litematic 100 65 100
+Survey and material demand
+  -> Acquire supplies and return to the start (when autonomous acquisition is enabled)
+  -> Excavate the perimeter and fill each column with sand
+  -> Convert the isolated shaft center to scaffolding
+  -> Build the access road and workstation
+  -> Verify round-trip access and organize inventory headroom
+  -> From the top: drain or replace liquids -> excavate the layer -> verify dry air
+  -> Repeat through the bottom layer
+  -> Return to the workstation and verify the cleared volume and retained facilities
 ```
 
-The workflow loads a supported bounded schematic, replenishes materials, travels, surveys, builds and verifies final states. Correct existing blocks are currently retained. Layered clearance, movement space and more complex construction are evolving capabilities. Input files live in the world's `lattivium-atlas/schematics/`; the origin belongs to the Bot's dimension at submission.
+Each phase has a concrete completion condition. Infrastructure checks physical blocks and actual access. Clearing checks air and liquid state for every layer. Final verification checks both facilities and the Bot's return position. See [construction supplies](../construction/supplies) and [supply and crafting](./supply) for acquisition, construction and delivery ownership.
+
+## Execution layers
+
+A Task owns business progress, recovery and results. A Flow coordinates a reusable operation. An Action performs a concrete interaction. Higher-level tasks supply internal construction components with the selected layout and runtime dependencies.
+
+Existing components include `PrepareScaffoldAccessFlow`, `PreparePlatformFlow`, `PrepareWorkstationFlow` and `BuildBlockFlow`. The stage pages describe their roles. Independently executable types and parameters are listed under [execution entries](../reference/executables).

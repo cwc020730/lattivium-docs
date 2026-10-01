@@ -86,3 +86,94 @@ Wait for a bounded number of game ticks.
 ```text
 /lattivium <Bot> exec DelayTask <durationTicks>
 ```
+
+## ExcavateSiteTask
+
+Excavate a 16x16 site five blocks below surfaceOrigin.y, with an outside workstation and scaffold shaft. Survey water before work; raise the workstation deck one block when its floor meets water. foundationDepth authorizes support below that deck. Build and verify each layer entrance before clearing that layer.
+
+### Command
+
+```text
+/lattivium Worker exec ExcavateSiteTask {"surfaceOrigin":{"x":0,"y":64,"z":0}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `surfaceOrigin` | `object` | `Required` |  |
+| `surfaceOrigin.x` | `integer` | `Required` |  |
+| `surfaceOrigin.y` | `integer` | `Required` |  |
+| `surfaceOrigin.z` | `integer` | `Required` |  |
+| `accessSide` | `string` | `"WEST"` | `NORTH`, `EAST`, `SOUTH`, `WEST` |
+| `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
+| `headroom` | `integer` | `2` | minimum: 2; maximum: 6 |
+| `material` | `string` | `"minecraft:white_concrete"` |  |
+| `foundationDepth` | `integer` | `1` | minimum: 0; maximum: 1 |
+
+## PreparePlatformTask
+
+Clear above min.y and build a platform. foundationDepth=1 authorizes one layer below the floor for water landing or floor-plant footing, with separate material and placement receipts.
+
+### Command
+
+```text
+/lattivium Worker exec PreparePlatformTask {"min":{"x":0,"y":63,"z":0},"max":{"x":4,"y":66,"z":6}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `min` | `object` | `Required` |  |
+| `min.x` | `integer` | `Required` |  |
+| `min.y` | `integer` | `Required` |  |
+| `min.z` | `integer` | `Required` |  |
+| `max` | `object` | `Required` |  |
+| `max.x` | `integer` | `Required` |  |
+| `max.y` | `integer` | `Required` |  |
+| `max.z` | `integer` | `Required` |  |
+| `material` | `string` | `"minecraft:white_concrete"` |  |
+| `foundationDepth` | `integer` | `0` | minimum: 0; maximum: 1 |
+
+## PrepareSiteInfrastructureTask
+
+Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation before construction. Build the facilities and verify a native station-to-shaft-bottom round trip.
+
+### Command
+
+```text
+/lattivium Worker exec PrepareSiteInfrastructureTask {"surfaceOrigin":{"x":0,"y":64,"z":0}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `surfaceOrigin` | `object` | `Required` |  |
+| `surfaceOrigin.x` | `integer` | `Required` |  |
+| `surfaceOrigin.y` | `integer` | `Required` |  |
+| `surfaceOrigin.z` | `integer` | `Required` |  |
+| `outputBoxes` | `integer` | `4` | minimum: 2; maximum: 8 |
+| `headroom` | `integer` | `4` | minimum: 2; maximum: 6 |
+| `material` | `string` | `"minecraft:white_concrete"` |  |
+| `emptyBoxes` | `integer` | `0` | minimum: 0; maximum: 16 |
+| `fillStock` | `integer` | `0` | minimum: 0; maximum: 1728 |
+| `sandStock` | `integer` | `0` | minimum: 0; maximum: 1728 |
+| `scaffoldStock` | `integer` | `0` | minimum: 0; maximum: 1728 |
+
+## ResumeExcavateSiteTask
+
+Resume a site excavation checkpoint or verify an already completed site. Partial workstation and scaffold assembly require reconciliation.
+
+### Command
+
+```text
+/lattivium Worker exec ResumeExcavateSiteTask {"taskId":"00000000-0000-0000-0000-000000000001"}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `taskId` | `string` | `Required` |  |

@@ -1,30 +1,66 @@
-# Supply and crafting
+# Material collection
 
-Place `.litematic` or `.materials.json` files in the server world's `lattivium-atlas/schematics/` directory. Delivery coordinates identify container blocks. Atlas supplies stock observations; the Bot checks actual contents and access during collection.
+Material collection turns item demand into physically acquired supplies. It owns demand planning, source selection, container transfers, necessary crafting and settlement. The caller decides whether materials stay with the Bot for work or are delivered to containers.
+
+## Start collecting
+
+Place `.litematic` or `.materials.json` files in the server world's `lattivium-atlas/schematics/` directory. These commands preview production and execute material delivery. The final coordinates identify the delivery container.
 
 ```text
 /ltv Worker exec AtlasProductionPreviewTask machine.litematic minecraft:overworld 100 64 100
 /ltv Worker exec AtlasSupplyTask machine.litematic minecraft:overworld 100 64 100
 ```
 
-Preview computes a production plan. Supply execution plans, replenishes resources, collects inputs, crafts as needed, transports and verifies delivery. Supported recipes use ordinary 2×2 inventory or 3×3 crafting-table grids. The workflow finds or prepares a table. Recipe expansion has finite budgets and cycle checks.
+See the [Task reference](../reference/tasks) for complete parameters. Atlas supplies stock observations; the Bot checks physical inventory and access at each source.
+
+## Reading order
+
+| Chapter | Covers |
+| --- | --- |
+| [Demand and planning](../supply/planning) | Demand maps, ingredients, allocations, Steps, plans and return positions |
+| [Source access](../supply/travel) | How a source job invokes travel, opens its container and handles access failure |
+| [Containers and shulker boxes](../supply/containers) | Direct transfers, borrowed-box extraction and return, transport boxes and capacity |
+| [Crafting and accounting](../supply/crafting) | Recipes, batches, inventory and table crafting, purpose reservations |
+| [Maintenance and recovery](../supply/maintenance) | Rocket and food maintenance, triggers and resuming the original goal |
+| [Delivery and results](../supply/delivery) | Physical delivery, shortages, source failures and execution modes |
+
+Destinations, portals, local paths and flight are described under [Navigation and travel](./navigation). Material workflows define the access goal; travel components handle arrival.
+
+## Shared components
+
+Schematic delivery and preconstruction acquisition share planning, collection and crafting components.
+
+![Shared acquisition chain for schematic delivery and construction](/construction/supply-chain-en.svg)
+
+| Component | Responsibility | Details |
+| --- | --- | --- |
+| `AtlasSupplyLoadFlow` | Load demand, allocate sources and prepare carrying capacity | [Planning](../supply/planning#atlassupplyloadflow) |
+| `AcquireProductionFlow` | Collect ingredients, replan against physical stock, craft and settle | [Production](../supply/crafting#acquireproductionflow) |
+| `SupplySourceFlow` | Own travel and acquisition for one source | [Source access](../supply/travel#supplysourceflow) |
+| `AcquireContainerItemsFlow` | Acquire specified items from a selected container | [Container transfers](../supply/containers#acquirecontaineritemsflow) |
+| `BorrowSourceShulkerFlow` | Extract exact quantities and return the box with its remainder | [Borrowing](../supply/containers#borrowsourceshulkerflow) |
+| `ProduceCarriedMaterialsFlow` | Execute batches funded by carried ingredients | [Crafting](../supply/crafting#producecarriedmaterialsflow) |
+| `MaterialLedger` | Observe quantities, reserve purposes and settle operations | [Accounting](../supply/crafting#materialledger) |
+| `TravelToFlow` | Reach a destination dimension and arrival condition | [Travel targets](../navigation/targets#traveltoflow) |
+
+`AtlasSupplyTask` arranges physical delivery after acquisition. The internal `AcquireMaterialsFlow` takes a demand map, obtains supplies and can return to specified feet coordinates for a caller such as construction. Each chapter explains inputs, outputs and completion conditions. Registered commands are listed in [execution entries](../reference/executables).
+
+## Planning and execution
+
+The main sequence reads demand, plans sources and production, prepares capacity, collects, crafts against actual ingredients and settles the result. Collection currently precedes production. Differences between indexed and physical stock preserve acquired quantities and trigger bounded source reselection. See [planning](../supply/planning) and [crafting](../supply/crafting).
+
+## Resource maintenance
+
+Travel and inventory operations check resources at supported boundaries. Callers provide maintenance policies. The parent retains its goal and progress, then resumes after replenishment and cleanup. See [maintenance and recovery](../supply/maintenance) for triggers, budgets and waiting states.
 
 ## Execution modes
 
-| Mode | Behavior |
-| --- | --- |
-| `REAL` | Transfer and deliver items, reducing source stock |
-| `DEBUG` | Exercise travel and container access while skipping transfers |
-| `SOURCE_PRESERVING_DEBUG` | Copy items for testing while preserving source stock; delivery and temporary facilities still change the world |
-
-Existing personal loose items are protected by default. `USE_LOOSE_CARGO` permits eligible items to count toward demand. Append delivery containers with `DELIVER_TO`, up to 32 distinct locations. See the [Task reference](../reference/tasks).
+`REAL` physically transfers items. `DEBUG` exercises access and skips transfers. `SOURCE_PRESERVING_DEBUG` copies acquired items while preserving source stock; delivery and temporary facilities still change the world. See [delivery and results](../supply/delivery#execution-modes) for the full boundaries.
 
 ## Shulker boxes and capacity
 
-To collect 10 items from a box containing 64, the workflow borrows the box, places and opens it, extracts 10, then returns the box with the remainder. Shulker boxes requested as building materials must be empty.
-
-Capacity maintenance organizes transport boxes. Supply execution can also make a bounded intermediate delivery of collected loose cargo and return. Transport-box unloading and production batching remain subject to each workflow's supported operations.
+Source boxes can be borrowed, placed, opened, partially emptied, recovered and returned. A demand of 10 from a box containing 64 acquires 10 and returns the box with 54. Boxes requested as building materials must be empty. See [containers and shulker boxes](../supply/containers) for carrying capacity and packed inventory access.
 
 ## Results
 
-Demand, allocation, acquisition, delivery and shortages have separate ledger entries. An unreachable source triggers bounded alternative selection. If alternatives are exhausted, record the shortage and coordinates, then settle remaining obligations. Box returns, temporary facilities and acquired cargo remain owned by their workflows. Inspect receipts to distinguish full delivery, completion with shortages and failure.
+Demand, allocation, acquisition, delivery, shortages and unsettled obligations are recorded separately. Unreachable sources trigger alternatives or shortage reporting. Box return, inventory consistency and acquired cargo still need settlement. See [delivery and results](../supply/delivery).

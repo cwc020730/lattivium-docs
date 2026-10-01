@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
+<title id="title">Workstation · Scaffold shaft</title><desc id="desc">Diagram: relative positions; not to scale</desc>
+<rect width="900" height="440" rx="18" fill="#121b2d"/>
+<g font-family="system-ui,sans-serif" font-size="17" fill="#e5ecf8">
+<path d="M40 225H860V404H40Z" fill="#303d4c"/>
+<rect x="378" y="234" width="435" height="132" rx="4" fill="#192a3e" stroke="#7ca4d2" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="500" y="298">Planned clearing volume</text>
+<path d="M327 148V381M353 148V381" stroke="#e9bc73" stroke-width="7"/>
+<path d="M327 172H353M327 199H353M327 226H353M327 253H353M327 280H353M327 307H353M327 334H353M327 361H353" stroke="#e9bc73" stroke-width="4"/>
+<rect x="321" y="382" width="39" height="15" fill="#c7d6e4"/>
+<path d="M342 148H588" stroke="#a9cdd4" stroke-width="14"/>
+<path d="M588 148H825" stroke="#e3edf5" stroke-width="17"/>
+<rect x="615" y="109" width="33" height="30" rx="4" fill="#b4a2e2"/><rect x="666" y="109" width="33" height="30" rx="4" fill="#b4a2e2"/><rect x="747" y="109" width="37" height="30" rx="3" fill="#d5a66b"/>
+<path d="M353 345H390" stroke="#67d4c4" stroke-width="7"/>
+<text x="655" y="76">Workstation</text>
+<text x="375" y="115">Permanent access road</text>
+<text x="75" y="181">Scaffold shaft</text><path d="M200 177L315 207" stroke="#a1b1c6" fill="none"/>
+<text x="79" y="306">Layer connection</text><path d="M205 302L375 345" stroke="#a1b1c6" fill="none"/>
+<text x="79" y="377">Stable foundation</text><path d="M205 373L312 388" stroke="#a1b1c6" fill="none"/>
+<text x="40" y="425" font-size="13" fill="#a1b1c6">Diagram: relative positions; not to scale</text>
+</g></svg>

@@ -1,0 +1,21 @@
+# 原理图施工
+
+`BuildSchematicFlow` 读取受支持的原理图，准备材料并施工，最后核对方块状态。
+
+## 文件与执行
+
+将原理图放在服务端世界目录的 `lattivium-atlas/schematics/`。
+
+```text
+/ltv Worker exec BuildSchematicFlow small.litematic 100 65 100
+```
+
+原点使用 Bot 提交任务时所在的维度。JSON 参数与其他输入约束见 [BuildSchematicFlow](../reference/flows#buildschematicflow)。
+
+## 流程
+
+读取原理图与材料需求，准备材料，前往施工点，勘察并逐块放置，最后核验目标状态。现有实现保留原本已经符合目标的方块。
+
+## 与场地准备的关系
+
+工作站、井道和清场提供施工所需的物流与空间条件。把原理图施工完整接入统一场地准备，以及更复杂的层间通行，是后续集成方向。
