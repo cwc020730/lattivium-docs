@@ -79,7 +79,7 @@ The shallow-pit water-column exit applies to an already cleared volume up to fou
 
 ### Deep-water sand perimeter
 
-`BuildPerimeterSandWallFlow` builds a one-block-thick sand ring around an inner square of 6, 12 or 16 blocks per side. Each column can be up to 96 blocks tall. For each column, the Bot mines the authorized seabed from the top down, drops real sand from a dry working deck, then uses the completed wall top as the next deck. `bottomY` and `topY` set the wall height; `minimumOriginalSeabedBlocks` sets the minimum penetration into the original seabed for every column.
+`BuildPerimeterSandWallFlow` builds a one-block-thick sand ring around an inner square of 6, 12, 16 or 32 blocks per side. Each column can be up to 96 blocks tall. For each column, the Bot mines the authorized seabed from the top down, drops real sand from a dry working deck, then uses the completed wall top as the next deck. `bottomY` and `topY` set the wall height; `minimumOriginalSeabedBlocks` sets the minimum penetration into the original seabed for every column.
 
 The plan needs a supported starting deck, a solid foundation beneath every column, a continuous outer water lane for mining and return, enough sand and tools, and underwater survival supplies. Preflight reports the position of any unmet condition. Completion checks the physical blocks, remaining supplies and the Bot's return to the starting deck.
 
@@ -105,7 +105,7 @@ The survey checks every column, its stable foundation, the shaft location, works
 
 `innerMin` is the northwest upper corner of the interior square. The example clears `x=100..115`, `z=100..115` and `y=47..62`, and authorizes a bottom sealing plane at `y=46`. `outputBoxes` defaults to 2, and `headroom` defaults to 3.
 
-`autonomousSupplies` defaults to `false`, using finite construction materials carried by the Bot. When enabled, shared material demands, Atlas source planning, acquisition and crafting obtain sand, white concrete, scaffolding, fill material and product-storage shulker boxes. Enabling bottom sealing adds its fill budget to the material demand. Prepare tools and travel equipment before construction. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
+`autonomousSupplies` defaults to `false`, using finite construction materials carried by the Bot. When enabled, shared material demands, Atlas source planning, acquisition and crafting obtain sand, white concrete, scaffolding, fill material and product-storage shulker boxes. Enabling bottom sealing adds its fill budget to the material demand. Initial fill stock covers the maximum demand of one layer. Between layers, construction checks carried stock, replenishes missing materials through the shared acquisition flow and returns to its work position. Sponge mode also prepares a sponge, furnace and per-layer drying fuel. Front and rear storage rows keep the workstation aisles and supply chests accessible; extra product boxes are acquired and placed when needed. For a solid 32³ volume, at least 6 initial output boxes provide up to 24 product-box positions. Prepare tools and travel equipment before construction. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
 
 ## Excavation task recovery
 

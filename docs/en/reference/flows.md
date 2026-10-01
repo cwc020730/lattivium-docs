@@ -89,7 +89,7 @@ Travel toward an area using a flight policy.
 
 ## BuildPerimeterSandWallFlow
 
-Mine each water-wall column into the original seabed, settle real sand around a 6-, 12- or 16-block inner square, and return to the starting deck. Wall height is at most 32 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.
+Mine each water-wall column into the original seabed, settle real sand around a 6-, 12-, 16- or 32-block inner square, and return to the starting deck. Wall height is at most 96 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.
 
 ### Command
 
@@ -105,7 +105,7 @@ Mine each water-wall column into the original seabed, settle real sand around a 
 | `innerMin.x` | `integer` | `Required` |  |
 | `innerMin.y` | `integer` | `Required` |  |
 | `innerMin.z` | `integer` | `Required` |  |
-| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `Required` |  |
 | `topY` | `integer` | `Required` |  |
 | `startDeck` | `object` | `Required` |  |
@@ -113,7 +113,7 @@ Mine each water-wall column into the original seabed, settle real sand around a 
 | `startDeck.y` | `integer` | `Required` |  |
 | `startDeck.z` | `integer` | `Required` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
-| `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 67 |
+| `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
 
 ## BuildSchematicFlow
 
@@ -257,11 +257,12 @@ Clear a prepared sealed volume from top to bottom. Replace liquids within each l
 | `depots[].x` | `integer` | `Required` |  |
 | `depots[].y` | `integer` | `Required` |  |
 | `depots[].z` | `integer` | `Required` |  |
-| `additionalDepots` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `additionalDepots` | `array` | `[]` | minItems: 0; maxItems: 32 |
 | `additionalDepots[].x` | `integer` | `Required` |  |
 | `additionalDepots[].y` | `integer` | `Required` |  |
 | `additionalDepots[].z` | `integer` | `Required` |  |
 | `sealBottom` | `boolean` | `false` |  |
+| `autonomousSupplies` | `boolean` | `false` |  |
 
 ## FireworkReserveFlow
 
@@ -411,7 +412,7 @@ Traverse the specified portal route and clear the exit; target is a route-select
 
 ## PrepareAndExcavatePerimeterFlow
 
-Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies acquires the required materials through shared supply flows.
+Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies maintains layer materials and acquires extra empty depot boxes through shared supply flows.
 
 ### Command
 
@@ -427,7 +428,7 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `innerMin.x` | `integer` | `Required` |  |
 | `innerMin.y` | `integer` | `Required` |  |
 | `innerMin.z` | `integer` | `Required` |  |
-| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `Required` |  |
 | `topY` | `integer` | `Required` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
@@ -437,7 +438,7 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 
 ## PreparePerimeterInfrastructureFlow
 
-Build a sand perimeter around a 6-, 12- or 16-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 32 blocks. The Bot carries construction supplies; interior excavation has a separate entry.
+Build a sand perimeter around a 6-, 12-, 16- or 32-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 96 blocks. The Bot carries construction supplies; interior excavation has a separate entry.
 
 ### Command
 
@@ -453,7 +454,7 @@ Build a sand perimeter around a 6-, 12- or 16-block inner square, isolate and co
 | `innerMin.x` | `integer` | `Required` |  |
 | `innerMin.y` | `integer` | `Required` |  |
 | `innerMin.z` | `integer` | `Required` |  |
-| `size` | `integer` | `Required` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `Required` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `Required` |  |
 | `topY` | `integer` | `Required` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |

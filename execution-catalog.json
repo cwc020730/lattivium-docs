@@ -332,7 +332,7 @@
     },
     "BuildPerimeterSandWallFlow": {
       "kind": "Flow",
-      "description": "Mine each water-wall column into the original seabed, settle real sand around a 6-, 12- or 16-block inner square, and return to the starting deck. Wall height is at most 32 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.",
+      "description": "Mine each water-wall column into the original seabed, settle real sand around a 6-, 12-, 16- or 32-block inner square, and return to the starting deck. Wall height is at most 96 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -366,7 +366,7 @@
           "size": {
             "type": "integer",
             "minimum": 6.0,
-            "maximum": 16.0
+            "maximum": 32.0
           },
           "bottomY": {
             "type": "integer",
@@ -413,7 +413,7 @@
           "resumeSandColumns": {
             "type": "integer",
             "minimum": 0.0,
-            "maximum": 67.0,
+            "maximum": 131.0,
             "default": 0
           }
         },
@@ -941,10 +941,14 @@
               ]
             },
             "minItems": 0,
-            "maxItems": 16,
+            "maxItems": 32,
             "default": []
           },
           "sealBottom": {
+            "type": "boolean",
+            "default": false
+          },
+          "autonomousSupplies": {
             "type": "boolean",
             "default": false
           }
@@ -1510,7 +1514,7 @@
     },
     "PrepareAndExcavatePerimeterFlow": {
       "kind": "Flow",
-      "description": "Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies acquires the required materials through shared supply flows.",
+      "description": "Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; then fill liquids and excavate the inner square layer by layer before returning to the workstation. sealBottom authorizes permanent isolation directly below the excavation; autonomousSupplies maintains layer materials and acquires extra empty depot boxes through shared supply flows.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -1544,7 +1548,7 @@
           "size": {
             "type": "integer",
             "minimum": 6.0,
-            "maximum": 16.0
+            "maximum": 32.0
           },
           "bottomY": {
             "type": "integer",
@@ -1597,7 +1601,7 @@
     },
     "PreparePerimeterInfrastructureFlow": {
       "kind": "Flow",
-      "description": "Build a sand perimeter around a 6-, 12- or 16-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 32 blocks. The Bot carries construction supplies; interior excavation has a separate entry.",
+      "description": "Build a sand perimeter around a 6-, 12-, 16- or 32-block inner square, isolate and convert one west-edge sand column into a dry scaffold shaft, then build a permanent concrete road and outside workstation. Wall height is at most 96 blocks. The Bot carries construction supplies; interior excavation has a separate entry.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -1631,7 +1635,7 @@
           "size": {
             "type": "integer",
             "minimum": 6.0,
-            "maximum": 16.0
+            "maximum": 32.0
           },
           "bottomY": {
             "type": "integer",

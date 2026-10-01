@@ -89,7 +89,7 @@ outline: 2
 
 ## BuildPerimeterSandWallFlow
 
-逐列挖掘外围沟并填入真实沙子，建成指定高度的沙墙。
+围绕边长为 6、12、16 或 32 格的内方形挖沟并落沙封边，每柱最多 96 格高，完成后返回起始工作位。Bot 从有支撑的干燥工作位出发，携带沙、工具及水下生存物资。
 
 ### 指令
 
@@ -105,7 +105,7 @@ outline: 2
 | `innerMin.x` | `integer` | `必填` |  |
 | `innerMin.y` | `integer` | `必填` |  |
 | `innerMin.z` | `integer` | `必填` |  |
-| `size` | `integer` | `必填` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `必填` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `必填` |  |
 | `topY` | `integer` | `必填` |  |
 | `startDeck` | `object` | `必填` |  |
@@ -113,7 +113,7 @@ outline: 2
 | `startDeck.y` | `integer` | `必填` |  |
 | `startDeck.z` | `integer` | `必填` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
-| `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 67 |
+| `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
 
 ## BuildSchematicFlow
 
@@ -257,11 +257,12 @@ outline: 2
 | `depots[].x` | `integer` | `必填` |  |
 | `depots[].y` | `integer` | `必填` |  |
 | `depots[].z` | `integer` | `必填` |  |
-| `additionalDepots` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `additionalDepots` | `array` | `[]` | minItems: 0; maxItems: 32 |
 | `additionalDepots[].x` | `integer` | `必填` |  |
 | `additionalDepots[].y` | `integer` | `必填` |  |
 | `additionalDepots[].z` | `integer` | `必填` |  |
 | `sealBottom` | `boolean` | `false` |  |
+| `autonomousSupplies` | `boolean` | `false` |  |
 
 ## FireworkReserveFlow
 
@@ -411,7 +412,7 @@ outline: 2
 
 ## PrepareAndExcavatePerimeterFlow
 
-建造四边沙墙、脚手架井、道路和工作站，逐层处理液体并清空区域，最后返回工作站；sealBottom 声明底部永久隔离，autonomousSupplies 使用通用流程获取物资。
+建造四面沙墙、干燥脚手架井、道路及工作站，逐层填液体并向下挖掘，完成后返回工作站。sealBottom 授权底部下一格的永久封底；autonomousSupplies 使用通用取货流程维持每层建材，并按需获取额外产物空盒。
 
 ### 指令
 
@@ -427,7 +428,7 @@ outline: 2
 | `innerMin.x` | `integer` | `必填` |  |
 | `innerMin.y` | `integer` | `必填` |  |
 | `innerMin.z` | `integer` | `必填` |  |
-| `size` | `integer` | `必填` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `必填` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `必填` |  |
 | `topY` | `integer` | `必填` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
@@ -437,7 +438,7 @@ outline: 2
 
 ## PreparePerimeterInfrastructureFlow
 
-沿方形工地建四边沙墙、隔水脚手架井、永久道路和区外工作站。
+建造边长为 6、12、16 或 32 格的沙墙，隔水并将西侧一根沙柱改为脚手架井，再建造永久混凝土道路和区外工作站。每柱最多 96 格高，Bot 携带施工物资。内部清场使用独立入口。
 
 ### 指令
 
@@ -453,7 +454,7 @@ outline: 2
 | `innerMin.x` | `integer` | `必填` |  |
 | `innerMin.y` | `integer` | `必填` |  |
 | `innerMin.z` | `integer` | `必填` |  |
-| `size` | `integer` | `必填` | minimum: 6; maximum: 16 |
+| `size` | `integer` | `必填` | minimum: 6; maximum: 32 |
 | `bottomY` | `integer` | `必填` |  |
 | `topY` | `integer` | `必填` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |

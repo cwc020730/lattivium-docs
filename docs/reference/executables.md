@@ -25,7 +25,7 @@
 - [AccessContainerFlow](./flows#accesscontainerflow): 接近并打开容器。
 - [AcquireContainerItemsFlow](./flows#acquirecontaineritemsflow): 从指定容器取得所需物品。
 - [ApproachAreaFlow](./flows#approachareaflow): 在当前维度内通过飞行或地面移动接近目标区域。
-- [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): 逐列挖掘外围沟并填入真实沙子，建成指定高度的沙墙。
+- [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): 围绕边长为 6、12、16 或 32 格的内方形挖沟并落沙封边，每柱最多 96 格高，完成后返回起始工作位。Bot 从有支撑的干燥工作位出发，携带沙、工具及水下生存物资。
 - [BuildSchematicFlow](./flows#buildschematicflow): 在当前维度的指定原点建造原理图。
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
 - [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。
@@ -37,8 +37,8 @@
 - [MineBlockFlow](./flows#mineblockflow): 按施工保护与掉落规则挖掘一个方块。
 - [OpenContainerFlow](./flows#opencontainerflow): 打开触及范围内的容器。
 - [PortalJourneyFlow](./flows#portaljourneyflow): 穿越指定传送路线并离开出口触发区；target 用于路线选择。
-- [PrepareAndExcavatePerimeterFlow](./flows#prepareandexcavateperimeterflow): 建造四边沙墙、脚手架井、道路和工作站，逐层处理液体并清空区域，最后返回工作站；sealBottom 声明底部永久隔离，autonomousSupplies 使用通用流程获取物资。
-- [PreparePerimeterInfrastructureFlow](./flows#prepareperimeterinfrastructureflow): 沿方形工地建四边沙墙、隔水脚手架井、永久道路和区外工作站。
+- [PrepareAndExcavatePerimeterFlow](./flows#prepareandexcavateperimeterflow): 建造四面沙墙、干燥脚手架井、道路及工作站，逐层填液体并向下挖掘，完成后返回工作站。sealBottom 授权底部下一格的永久封底；autonomousSupplies 使用通用取货流程维持每层建材，并按需获取额外产物空盒。
+- [PreparePerimeterInfrastructureFlow](./flows#prepareperimeterinfrastructureflow): 建造边长为 6、12、16 或 32 格的沙墙，隔水并将西侧一根沙柱改为脚手架井，再建造永久混凝土道路和区外工作站。每柱最多 96 格高，Bot 携带施工物资。内部清场使用独立入口。
 - [PrepareWorkstationFlow](./flows#prepareworkstationflow): 在施工区外搭建工作站并配置容器。
 - [ResumeExcavation](./flows#resumeexcavation): 从世界中保存的检查点恢复清场任务。
 - [TransferItemsFlow](./flows#transferitemsflow): 按方向和数量转移指定物品。
