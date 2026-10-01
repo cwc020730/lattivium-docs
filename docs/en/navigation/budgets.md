@@ -145,6 +145,8 @@ The current interface has no single total-task-budget parameter. Local search po
 
 `ExcavationResourceTrip` forwards collection and return-travel progress to `ExcavateAreaFlow`. Reported phase transitions or movement update the excavation progress timer; continued waiting consumes that timer. Each execution scope also retains its total deadline. The owning flow settles child cleanup and propagates classified failures.
 
+Excavation cargo storage includes container access and local transfer time. `StoreExcavationCargoFlow` reuses the access allowance from `AccessContainerFlow.budgetTicks()` and adds 2400 ticks for local transfers. The access allowance is 9600 ticks plus the shared distance allowance, captured when the flow is created. Navigation retains its safe landing reserve during flights to elevated workstations. The enclosing excavation's total and no-progress limits also apply to storage.
+
 ## Inspecting a timeout
 
 1. Identify the execution ID, failure code and reporting component.
