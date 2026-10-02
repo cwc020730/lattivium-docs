@@ -1987,7 +1987,7 @@
     },
     "PrepareSiteInfrastructureTask": {
       "kind": "Task",
-      "description": "Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation before construction. Build the facilities and verify a native station-to-shaft-bottom round trip.",
+      "description": "Within explicitly admitted chunk coordinates, survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation. Build the facilities and verify a native station-to-shaft-bottom round trip. No local manifest files or implicit chunk expansion are used.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -2017,6 +2017,32 @@
               "y",
               "z"
             ]
+          },
+          "admittedChunks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -1875000.0,
+                  "maximum": 1874999.0
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -1875000.0,
+                  "maximum": 1874999.0
+                }
+              },
+              "required": [
+                "x",
+                "z"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 81,
+            "description": "Explicit chunk coordinates admitted for the bounded survey and construction."
           },
           "outputBoxes": {
             "type": "integer",
@@ -2060,7 +2086,8 @@
           }
         },
         "required": [
-          "surfaceOrigin"
+          "surfaceOrigin",
+          "admittedChunks"
         ]
       },
       "example": {
@@ -2068,7 +2095,45 @@
           "x": 0,
           "y": 64,
           "z": 0
-        }
+        },
+        "admittedChunks": [
+          {
+            "x": -1,
+            "z": -1
+          },
+          {
+            "x": -1,
+            "z": 0
+          },
+          {
+            "x": -1,
+            "z": 1
+          },
+          {
+            "x": 0,
+            "z": -1
+          },
+          {
+            "x": 0,
+            "z": 0
+          },
+          {
+            "x": 0,
+            "z": 1
+          },
+          {
+            "x": 1,
+            "z": -1
+          },
+          {
+            "x": 1,
+            "z": 0
+          },
+          {
+            "x": 1,
+            "z": 1
+          }
+        ]
       }
     },
     "PrepareWorkstationFlow": {

@@ -138,12 +138,12 @@ Clear above min.y and build a platform. foundationDepth=1 authorizes one layer b
 
 ## PrepareSiteInfrastructureTask
 
-Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation before construction. Build the facilities and verify a native station-to-shaft-bottom round trip.
+Within explicitly admitted chunk coordinates, survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation. Build the facilities and verify a native station-to-shaft-bottom round trip. No local manifest files or implicit chunk expansion are used.
 
 ### Command
 
 ```text
-/lattivium Worker exec PrepareSiteInfrastructureTask {"surfaceOrigin":{"x":0,"y":64,"z":0}}
+/lattivium Worker exec PrepareSiteInfrastructureTask {"surfaceOrigin":{"x":0,"y":64,"z":0},"admittedChunks":[{"x":-1,"z":-1},{"x":-1,"z":0},{"x":-1,"z":1},{"x":0,"z":-1},{"x":0,"z":0},{"x":0,"z":1},{"x":1,"z":-1},{"x":1,"z":0},{"x":1,"z":1}]}
 ```
 
 ### Parameters
@@ -154,6 +154,9 @@ Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an a
 | `surfaceOrigin.x` | `integer` | `Required` |  |
 | `surfaceOrigin.y` | `integer` | `Required` |  |
 | `surfaceOrigin.z` | `integer` | `Required` |  |
+| `admittedChunks` | `array` | `Required` | minItems: 1; maxItems: 81 |
+| `admittedChunks[].x` | `integer` | `Required` | minimum: -1.875e+06; maximum: 1.875e+06 |
+| `admittedChunks[].z` | `integer` | `Required` | minimum: -1.875e+06; maximum: 1.875e+06 |
 | `outputBoxes` | `integer` | `4` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `4` | minimum: 2; maximum: 6 |
 | `material` | `string` | `"minecraft:white_concrete"` |  |

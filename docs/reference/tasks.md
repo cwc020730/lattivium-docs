@@ -138,12 +138,12 @@ outline: 2
 
 ## PrepareSiteInfrastructureTask
 
-勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。
+在显式允许的区块内勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。
 
 ### 指令
 
 ```text
-/lattivium Worker exec PrepareSiteInfrastructureTask {"surfaceOrigin":{"x":0,"y":64,"z":0}}
+/lattivium Worker exec PrepareSiteInfrastructureTask {"surfaceOrigin":{"x":0,"y":64,"z":0},"admittedChunks":[{"x":-1,"z":-1},{"x":-1,"z":0},{"x":-1,"z":1},{"x":0,"z":-1},{"x":0,"z":0},{"x":0,"z":1},{"x":1,"z":-1},{"x":1,"z":0},{"x":1,"z":1}]}
 ```
 
 ### 参数
@@ -154,6 +154,9 @@ outline: 2
 | `surfaceOrigin.x` | `integer` | `必填` |  |
 | `surfaceOrigin.y` | `integer` | `必填` |  |
 | `surfaceOrigin.z` | `integer` | `必填` |  |
+| `admittedChunks` | `array` | `必填` | minItems: 1; maxItems: 81 |
+| `admittedChunks[].x` | `integer` | `必填` | minimum: -1.875e+06; maximum: 1.875e+06 |
+| `admittedChunks[].z` | `integer` | `必填` | minimum: -1.875e+06; maximum: 1.875e+06 |
 | `outputBoxes` | `integer` | `4` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `4` | minimum: 2; maximum: 6 |
 | `material` | `string` | `"minecraft:white_concrete"` |  |

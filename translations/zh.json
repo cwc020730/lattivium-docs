@@ -25,7 +25,7 @@
   "PreparePerimeterInfrastructureFlow": "建造边长为 6、12、16 或 32 格的沙墙，隔水并将西侧一根沙柱改为脚手架井，再建造永久混凝土道路和区外工作站。每柱最多 96 格高，Bot 携带施工物资。内部清场使用独立入口。",
   "PrepareAndExcavatePerimeterFlow": "建造四面沙墙、干燥脚手架井、道路及工作站，逐层填液体并向下挖掘，完成后返回工作站。sealBottom 授权底部下一格的永久封底；autonomousSupplies 使用通用取货流程维持每层建材，并按需获取额外产物空盒。",
   "PreparePlatformTask": "清理平台上方空间并铺设地板；可授权一层地基。",
-  "PrepareSiteInfrastructureTask": "勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。",
+  "PrepareSiteInfrastructureTask": "在显式允许的区块内勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。",
   "PrepareWorkstationFlow": "在施工区外搭建工作站并配置容器。",
   "ResumeExcavation": "从世界中保存的检查点恢复清场任务。",
   "ResumeExcavateSiteTask": "接续工地清场检查点，或复核已完成的工地。",

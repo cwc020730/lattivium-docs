@@ -17,7 +17,7 @@ An **executable** is an operation with a lifecycle: Task, Flow or Action. Entrie
 - [DelayTask](./tasks#delaytask): Wait for a bounded number of game ticks.
 - [ExcavateSiteTask](./tasks#excavatesitetask): Excavate a 16x16 site five blocks below surfaceOrigin.y, with an outside workstation and scaffold shaft. Survey water before work; raise the workstation deck one block when its floor meets water. foundationDepth authorizes support below that deck. Build and verify each layer entrance before clearing that layer.
 - [PreparePlatformTask](./tasks#prepareplatformtask): Clear above min.y and build a platform. foundationDepth=1 authorizes one layer below the floor for water landing or floor-plant footing, with separate material and placement receipts.
-- [PrepareSiteInfrastructureTask](./tasks#preparesiteinfrastructuretask): Survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation before construction. Build the facilities and verify a native station-to-shaft-bottom round trip.
+- [PrepareSiteInfrastructureTask](./tasks#preparesiteinfrastructuretask): Within explicitly admitted chunk coordinates, survey and freeze one liquid-free edge shaft, a permanent one-wide road and an air-volume workstation. Build the facilities and verify a native station-to-shaft-bottom round trip. No local manifest files or implicit chunk expansion are used.
 - [ResumeExcavateSiteTask](./tasks#resumeexcavatesitetask): Resume a site excavation checkpoint or verify an already completed site. Partial workstation and scaffold assembly require reconciliation.
 
 ## [Flow](./flows)

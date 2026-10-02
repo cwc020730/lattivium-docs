@@ -57,6 +57,12 @@ python scripts/testctl.py artifacts prune --keep-days 7
 
 需要水下呼吸或防火时，在冻结场景中声明 `effects`，每项为 `id`、`seconds`、`amplifier`。这些属于测试条件，不会改变正式施工的补给规则。旧沙墙已有前缀可通过 `resumeSandColumns` 继续，但冻结原地形必须逐格证明该前缀已填满沙；完整物理验收仍覆盖整圈。检查点回放用于重跑同一操作，不依赖固定测试工地编号。
 
+### 干燥井、道路与工作站
+
+`PrepareSiteInfrastructureTask` 使用显式 `admittedChunks`，每项为区块坐标 `x`、`z`，不是方块坐标。规划和 Bot 行动限于这些已加载区块，不读取本地工地清单，也不自动扩大施工范围。井根部、底部站姿、道路及工作站必须组成可安全往返的完整布局。
+
+`construction-survey` 的干燥场地请求包含 `entry`、`arguments` 和 `preferredStart`。它只读取地形；冻结返回的布局后，`construction` 场景执行相同公开指令，并验收脚手架、道路净空、地板、容器与工作站到井底往返。只读观察超过预算时会明确报告，不能把它解释为地形一定无解。合成场地的 `seed` 阶段只准备地形，不算施工成功；执行阶段仍需冻结的完整布局。
+
 ### 自主补给的来源审计
 
 完整施工场景可设置 `autonomousSupplies: true`，并声明 `stockSources`，每项包含 `dimension` 与 `position`。这些是现有仓储位置，不是给 Bot 发物资的指令；取货仍由通用材料获取流程执行。来源必须位于施工授权范围外，其邻接区块纳入测试环境的检查点范围。

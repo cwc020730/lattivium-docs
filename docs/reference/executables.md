@@ -17,7 +17,7 @@
 - [DelayTask](./tasks#delaytask): 等待指定游戏刻数。
 - [ExcavateSiteTask](./tasks#excavatesitetask): 准备区外工作站与脚手架井，分层清空 16×16、深 5 格的施工区域。
 - [PreparePlatformTask](./tasks#prepareplatformtask): 清理平台上方空间并铺设地板；可授权一层地基。
-- [PrepareSiteInfrastructureTask](./tasks#preparesiteinfrastructuretask): 勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。
+- [PrepareSiteInfrastructureTask](./tasks#preparesiteinfrastructuretask): 在显式允许的区块内勘察并建造干燥贴边脚手架井、道路和工作站，验证井底往返。
 - [ResumeExcavateSiteTask](./tasks#resumeexcavatesitetask): 接续工地清场检查点，或复核已完成的工地。
 
 ## [Flow](./flows)

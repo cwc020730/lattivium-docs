@@ -57,6 +57,12 @@ The same `construction` fixture can select `ClearAndSettleWaterColumnFlow` or `B
 
 Declare underwater breathing or fire resistance in the scene's `effects` list, with `id`, `seconds` and `amplifier`. These are test conditions, not changes to production supply rules. `resumeSandColumns` admits an existing wall prefix only when the frozen terrain proves every prefix cell is already sand; the physical audit still covers the whole wall. Checkpoint replay repeats the same operation without fixed historical test-site identifiers.
 
+### Dry shaft, road and workstation
+
+`PrepareSiteInfrastructureTask` takes explicit `admittedChunks`: each `x`, `z` pair is a chunk coordinate, not a block coordinate. Surveying and Bot movement stay inside these loaded chunks. The command does not read local site manifests or expand permission implicitly. The shaft root, bottom stance, road and workstation must form one safely traversable layout.
+
+A dry `construction-survey` request declares `entry`, `arguments` and `preferredStart`. This read-only stage returns the layout to freeze. The common `construction` fixture then submits the same public command and checks scaffolds, road clearance, floor, containers and the station-to-bottom round trip. An observation-budget refusal is diagnostic, not proof that the terrain has no solution. Synthetic `seed` only prepares terrain; execution still needs its complete frozen layout.
+
 ### Autonomous source audits
 
 Complete construction scenes can enable `autonomousSupplies: true` and declare `stockSources`, each with a `dimension` and `position`. These are existing storage locations, not inventory grants. The common material-acquisition flow performs withdrawals. Sources must be outside the authorized construction footprint, with their neighborhoods included in the environment's checkpoint regions.
