@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "073a9c51afdec3350a4fe18b9534784708f51c06",
+  "sourceCommit": "99ed97a5101583a29356f89176e30d3c80c28012",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -168,7 +168,10 @@
     "src/main/java/cwc/autobuildbot/flow/construction/ClearAndSettleWaterColumnFlow.java": "19de0ba66d71c7cadeb1c67a6800f20848f1bbbfd852941b55d15c979fbc9ee4",
     "src/main/java/cwc/autobuildbot/AutoBuildBot.java": "68739578ae7cbb2c71024fda456409aab9855149e0ad7bfd742a37d4ff94a463",
     "src/main/java/cwc/autobuildbot/debug/testing/DevelopmentHostileSuppression.java": "6a6803f81d037de9607358b2006cf0605f0302734afdc37afa9e53726016dc89",
-    "scripts/testing/construction.py": "796b7728f9e99201713ab5bf011ef4837161d013548d72de21b5b5c501922b80",
-    "scripts/testing/fullsite.py": "c10fddf531a5612196aa1f15a46aa05b03b10bf82cffd040f3b41f5c1ce5f903"
+    "scripts/testing/construction.py": "26683a8040e63f02ae96251dff7a73f6916ce0e05699ca03a0d0e19234e93177",
+    "scripts/testing/fullsite.py": "c10fddf531a5612196aa1f15a46aa05b03b10bf82cffd040f3b41f5c1ce5f903",
+    "scripts/testctl.py": "0bb9f8b0fe80be5bd7d1db1a461c4921d910175a19d4d73a8cc755cc072cabea",
+    "scripts/testing/perimeter.py": "078710a204887752be00ed8f2d16bb854be5fc584eec529baaca55c984026271",
+    "scripts/testing/survey.py": "4ee07fe89e498f99496eb70812b46c5e2696d61ce2ddc3133bc13eab4b62b525"
   }
 }

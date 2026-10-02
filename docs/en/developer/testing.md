@@ -69,9 +69,13 @@ A dry `construction-survey` request declares `entry`, `arguments` and `preferred
 
 The frozen `kit` may contain full shulker boxes. Before startup or world mutation, the controller checks each complete RCON command's length. An oversized atomic item command is refused explicitly; provisions are never silently reduced. Replay uses the same offline checkpoint with a new attempt identity and retains the original failure.
 
+Full perimeter construction may deploy additional output shulker boxes in the workstation's reserved positions. The audit derives those positions from the frozen layout and checks physical boxes, contents and task receipts. Unused empty positions do not count as boxes. Long excavations therefore retain the same inventory and physical acceptance rules.
+
 ### Hostile suppression in construction tests
 
 Construction tests retain Hard difficulty, hunger and survival while disabling natural mob spawning, spawners, phantoms, patrols, wardens and raids. Isolated development environments owned by `testctl` also remove existing and newly loaded hostile-category entities while preserving passive mobs, drops, containers and terrain. This is a test condition, not production combat or avoidance behavior. A mismatching environment identity or world path refuses protection rather than treating a production world as a test environment.
+
+Real-terrain acceptance sets `withoutSaturation: true` at the scene's top level. Before execution and at completion, the fixture reads the Bot's actual game mode and effects, requiring survival without saturation. When omitted, short fixtures use saturation to isolate other features; they do not establish real-hunger supply acceptance. Explicit water-breathing and fire-resistance `effects` are recorded separately.
 
 ### Autonomous source audits
 
