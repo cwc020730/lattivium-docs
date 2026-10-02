@@ -47,6 +47,8 @@ See [inventory levels](./inventory) for slot allocation, readiness and turnover.
 
 A material batch needed immediately declares `L0` and `L1`, with its minimum updated as the operation progresses. Inventory turnover retains that loose batch through nested operations such as rocket promotion and box access. A sand-column operation can declare the sand still needed for its current column.
 
+Empty shulker boxes reserved for placement are also direct task items. Inventory assignment satisfies these requirements before classifying the remaining boxes as `L2` transport capacity. For example, workstation output boxes remain protected throughout infrastructure preparation and cannot first be filled with mining drops. Their owner's requirement is released after placement completes.
+
 Requirements that include `L2` or `L3` count stock in those locations and allow turnover into carried boxes or authorized external containers. The owning operation removes its requirements on completion, failure or cancellation. Ownership and delivery obligations retain their own accounting.
 
 ## Accounting
