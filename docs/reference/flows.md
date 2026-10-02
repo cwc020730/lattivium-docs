@@ -114,6 +114,7 @@ outline: 2
 | `startDeck.z` | `integer` | `必填` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
 | `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## BuildSchematicFlow
 
@@ -140,6 +141,42 @@ outline: 2
 ```text
 /lattivium <Bot> exec BuildSchematicFlow <file.litematic> <x> <y> <z>
 ```
+
+## ClearAndSettleWaterColumnFlow
+
+在已调查的有水竖柱内清除障碍，回到相邻干平台后落沙封满；明确指定操作水柱、独立返回水道及上下界，每柱最多 96 格高。
+
+### 指令
+
+```text
+/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"returnLanding":{"x":2,"y":62,"z":2},"deck":{"x":3,"y":63,"z":2}}
+```
+
+### 参数
+
+| 字段 | 类型 | 默认值 | 约束 |
+| --- | --- | --- | --- |
+| `top` | `object` | `必填` |  |
+| `top.x` | `integer` | `必填` |  |
+| `top.y` | `integer` | `必填` |  |
+| `top.z` | `integer` | `必填` |  |
+| `bottom` | `object` | `必填` |  |
+| `bottom.x` | `integer` | `必填` |  |
+| `bottom.y` | `integer` | `必填` |  |
+| `bottom.z` | `integer` | `必填` |  |
+| `operationSurface` | `object` | `必填` |  |
+| `operationSurface.x` | `integer` | `必填` |  |
+| `operationSurface.y` | `integer` | `必填` |  |
+| `operationSurface.z` | `integer` | `必填` |  |
+| `returnLanding` | `object` | `必填` |  |
+| `returnLanding.x` | `integer` | `必填` |  |
+| `returnLanding.y` | `integer` | `必填` |  |
+| `returnLanding.z` | `integer` | `必填` |  |
+| `deck` | `object` | `必填` |  |
+| `deck.x` | `integer` | `必填` |  |
+| `deck.y` | `integer` | `必填` |  |
+| `deck.z` | `integer` | `必填` |  |
+| `returnViaNewColumn` | `boolean` | `false` |  |
 
 ## ElytraFlightFlow
 
@@ -402,7 +439,7 @@ outline: 2
 | `exit.x` | `integer` | `必填` |  |
 | `exit.y` | `integer` | `必填` |  |
 | `exit.z` | `integer` | `必填` |  |
-| `target` | `optional` | `null` | 路线选择参考点；完成条件为离开传送出口触发区 |
+| `target` | `optional` | `必填` | 路线选择参考点；完成条件为离开传送出口触发区 |
 
 ### 位置参数写法
 
@@ -436,7 +473,7 @@ outline: 2
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
-| `drainageMode` | `optional` | `null` |  |
+| `drainageMode` | `optional` | `必填` |  |
 
 ## PreparePerimeterInfrastructureFlow
 

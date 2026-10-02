@@ -51,6 +51,12 @@ python scripts/testctl.py artifacts prune --keep-days 7
 
 施工结束后检查 Bot 返回、工具和盒子保护，正常停服，再直接读取地图方块与容器库存。准备场地与完整施工分别验收。`mode: "SOURCE_PRESERVING_DEBUG"` 使用通用取货流程的无损测试模式；自主补给还必须通过相应来源库存审计，不能用预发物资场景代替。
 
+### 水柱与沙墙组件
+
+同一 `construction` 场景也可选择 `ClearAndSettleWaterColumnFlow` 或 `BuildPerimeterSandWallFlow`。水柱明确指定顶部、底部、水下操作通道、返回通道与干平台；沙墙明确指定内区尺寸、上下界及起始平台。场景逐格声明最终沙子，同时声明返回平台的底座和净空。返回检查沿用原生安全站姿：身体可站在平台边缘，但必须接触该平台、落地且存活。
+
+需要水下呼吸或防火时，在冻结场景中声明 `effects`，每项为 `id`、`seconds`、`amplifier`。这些属于测试条件，不会改变正式施工的补给规则。旧沙墙已有前缀可通过 `resumeSandColumns` 继续，但冻结原地形必须逐格证明该前缀已填满沙；完整物理验收仍覆盖整圈。检查点回放用于重跑同一操作，不依赖固定测试工地编号。
+
 ### 自主补给的来源审计
 
 完整施工场景可设置 `autonomousSupplies: true`，并声明 `stockSources`，每项包含 `dimension` 与 `position`。这些是现有仓储位置，不是给 Bot 发物资的指令；取货仍由通用材料获取流程执行。来源必须位于施工授权范围外，其邻接区块纳入测试环境的检查点范围。

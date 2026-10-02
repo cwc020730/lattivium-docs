@@ -34,5 +34,6 @@
   "TransferItemsFlow": "按方向和数量转移指定物品。",
   "UseFlow": "对目标方块使用指定手。",
   "TravelToFlow": "使用 Atlas 传送门路线与局部导航，到达指定维度的目标脚位。",
-  "EnsureInventoryReadyFlow": "准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。"
+  "EnsureInventoryReadyFlow": "准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。",
+  "ClearAndSettleWaterColumnFlow": "在已调查的有水竖柱内清除障碍，回到相邻干平台后落沙封满；明确指定操作水柱、独立返回水道及上下界，每柱最多 96 格高。"
 }

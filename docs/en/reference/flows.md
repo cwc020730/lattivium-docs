@@ -114,6 +114,7 @@ Mine each water-wall column into the original seabed, settle real sand around a 
 | `startDeck.z` | `integer` | `Required` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
 | `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## BuildSchematicFlow
 
@@ -140,6 +141,42 @@ Build a schematic at an origin in the current dimension.
 ```text
 /lattivium <Bot> exec BuildSchematicFlow <file.litematic> <x> <y> <z>
 ```
+
+## ClearAndSettleWaterColumnFlow
+
+Clear one declared flooded column, return to a supported dry deck horizontally adjacent to its top, then settle sand into every declared Y and return. Declare an adjacent water operation lane and a separate return lane; height is at most 96 blocks. The Bot carries sand, tools and underwater survival supplies.
+
+### Command
+
+```text
+/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"returnLanding":{"x":2,"y":62,"z":2},"deck":{"x":3,"y":63,"z":2}}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `top` | `object` | `Required` |  |
+| `top.x` | `integer` | `Required` |  |
+| `top.y` | `integer` | `Required` |  |
+| `top.z` | `integer` | `Required` |  |
+| `bottom` | `object` | `Required` |  |
+| `bottom.x` | `integer` | `Required` |  |
+| `bottom.y` | `integer` | `Required` |  |
+| `bottom.z` | `integer` | `Required` |  |
+| `operationSurface` | `object` | `Required` |  |
+| `operationSurface.x` | `integer` | `Required` |  |
+| `operationSurface.y` | `integer` | `Required` |  |
+| `operationSurface.z` | `integer` | `Required` |  |
+| `returnLanding` | `object` | `Required` |  |
+| `returnLanding.x` | `integer` | `Required` |  |
+| `returnLanding.y` | `integer` | `Required` |  |
+| `returnLanding.z` | `integer` | `Required` |  |
+| `deck` | `object` | `Required` |  |
+| `deck.x` | `integer` | `Required` |  |
+| `deck.y` | `integer` | `Required` |  |
+| `deck.z` | `integer` | `Required` |  |
+| `returnViaNewColumn` | `boolean` | `false` |  |
 
 ## ElytraFlightFlow
 
@@ -402,7 +439,7 @@ Traverse the specified portal route and clear the exit; target is a route-select
 | `exit.x` | `integer` | `Required` |  |
 | `exit.y` | `integer` | `Required` |  |
 | `exit.z` | `integer` | `Required` |  |
-| `target` | `optional` | `null` | Route-selection hint; travel ends after clearing the portal exit |
+| `target` | `optional` | `Required` | Route-selection hint; travel ends after clearing the portal exit |
 
 ### Positional syntax
 
@@ -436,7 +473,7 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
-| `drainageMode` | `optional` | `null` |  |
+| `drainageMode` | `optional` | `Required` |  |
 
 ## PreparePerimeterInfrastructureFlow
 
