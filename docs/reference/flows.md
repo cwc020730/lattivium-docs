@@ -114,6 +114,10 @@ outline: 2
 | `startDeck.z` | `integer` | `必填` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
 | `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `必填` |  |
+| `stagingAreas[].y` | `integer` | `必填` |  |
+| `stagingAreas[].z` | `integer` | `必填` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## BuildSchematicFlow

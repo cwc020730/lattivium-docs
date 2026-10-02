@@ -114,6 +114,10 @@ Mine each water-wall column into the original seabed, settle real sand around a 
 | `startDeck.z` | `integer` | `Required` |  |
 | `minimumOriginalSeabedBlocks` | `integer` | `10` | minimum: 0; maximum: 96 |
 | `resumeSandColumns` | `integer` | `0` | minimum: 0; maximum: 131 |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `Required` |  |
+| `stagingAreas[].y` | `integer` | `Required` |  |
+| `stagingAreas[].z` | `integer` | `Required` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## BuildSchematicFlow

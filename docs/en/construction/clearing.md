@@ -93,6 +93,8 @@ When returning from a flooded pocket beneath the seabed, `SwimToDeckFlow` first 
 
 Ordinary mining drops follow the site's recovery policy. In best-effort mode, drops that remain uncollected or merge with other entities and lose precise attribution are recorded as unresolved without stopping wall construction. `resumeSandColumns` continues only a complete prefix physically verified as sand; the precise original seabed height is no longer observable after replacement. Use `/ltv schema BuildPerimeterSandWallFlow` for the entry parameters.
 
+Optional `stagingAreas` supplies up to 16 block-position hints for carried-box operations (empty by default). The shared inventory navigator still checks footing, placement clearance, drop recovery support and reachability. Hints grant no external-inventory access or terrain modification. When continuing a wall whose earlier staging area is distant, supply that hint as well: restoring carried items does not restore an old task’s routing context.
+
 ### Perimeter, shaft and workstation
 
 `PreparePerimeterInfrastructureFlow` joins four-sided trench replacement, an isolated scaffold shaft, a white-concrete access road and an outside workstation in one site-preparation operation. It builds the wall's starting footing when needed. Perimeter columns can be open water or continuous solid dry ground. The plan selects a cell in the west wall, fills one sand column on either side of it, then replaces the center with scaffolding. The inner seal remains for interior drainage.
