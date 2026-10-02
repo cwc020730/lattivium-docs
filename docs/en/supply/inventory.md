@@ -63,6 +63,10 @@ The first request exposes owned stock for direct use, from carried inventory or 
 
 After acquiring transport boxes away from the caller, readiness uses `TravelToFlow` to return to the calling area before continuing. Bounded observed transport time contributes to the parent budget.
 
+Source-backed boundaries using `.withSupplySources(...)` also retain packing headroom. `inventoryPackedSpareSlots` defaults to 27 empty slots across owned transport boxes for later mining drops, working-slot cleanup and material promotion; set it to 0 to disable this reserve. Incoming transport capacity includes this allowance, and readiness checks it again after packing. Missing boxes use shared acquisition. Boxes awaiting workstation installation, borrowed boxes and delivery boxes do not contribute this capacity.
+
+The reserve is established at safe boundaries with source lookup. Construction batches without source lookup use existing carried capacity and authorized L3 storage; they do not gain access to arbitrary external containers. Empty player slots and empty carried-box slots are checked separately. Unoccupied L2 player slots cannot directly hold loose items.
+
 Packing and unpacking select a safe working position, which may move the Bot. Readiness reports inventory state; before continuing construction, the parent uses shared navigation to reach its required stance again. Declare an active loose batch through a [direct material requirement](./stock#direct-materials-for-the-active-operation) when nested turnover must retain it.
 
 ```mermaid
