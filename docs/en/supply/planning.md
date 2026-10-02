@@ -43,7 +43,9 @@ Travel cost = outbound ticks + return ticks when a return position is declared
 Source score = Coverage^(coverage weight / weight sum) / (1 + travel cost)^(travel weight / weight sum)
 ```
 
-Weights default to 0.5 each and are configured with `supplySourceTravelWeight` and `supplySourceCoverageWeight`. Indexed direct and boxed stock both contribute coverage. Detail admission follows the same weighted order and stops when verified sources fund demand and satisfy travel constraints. Actual admissible contents determine allocation.
+Weights default to 0.5 each and are configured with `supplySourceTravelWeight` and `supplySourceCoverageWeight`. Indexed direct and boxed stock both contribute coverage. Actual admissible contents determine allocation.
+
+Inventory details have a separate finite read budget. After each container is checked, remaining product quantities are updated. Unmet products and recipe inputs with fewer inspected candidates get the next exploration round; candidates within that round use the weights above. Common stock cannot monopolize the detail budget while another material remains unexplored. Covered products move to the candidate tail. Recipe inputs can still require multiple containers, so finding a small quantity does not establish sufficiency. Indexed quantities only rank candidates: component and protection checks admit usable stock, and reading stops only when that stock funds a plan satisfying quantities and travel constraints.
 
 | Weights | Preference |
 | --- | --- |
