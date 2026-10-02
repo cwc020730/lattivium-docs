@@ -63,6 +63,16 @@ Declare underwater breathing or fire resistance in the scene's `effects` list, w
 
 A dry `construction-survey` request declares `entry`, `arguments` and `preferredStart`. This read-only stage returns the layout to freeze. The common `construction` fixture then submits the same public command and checks scaffolds, road clearance, floor, containers and the station-to-bottom round trip. An observation-budget refusal is diagnostic, not proof that the terrain has no solution. Synthetic `seed` only prepares terrain; execution still needs its complete frozen layout.
 
+### Fixed-size complete site execution
+
+`ExcavateSiteTask` shares read-only observation, frozen layouts, execution and checkpoint replay. Its public entry has a fixed 16×16×5 excavation. Acceptance checks all 1,280 dry-air cells, bottom supports, scaffolds, roads, workstation containers and the Bot's return, rather than trusting task success alone. Partially precleared small scenes verify the lifecycle and do not replace full-solid or real-terrain acceptance.
+
+The frozen `kit` may contain full shulker boxes. Before startup or world mutation, the controller checks each complete RCON command's length. An oversized atomic item command is refused explicitly; provisions are never silently reduced. Replay uses the same offline checkpoint with a new attempt identity and retains the original failure.
+
+### Hostile suppression in construction tests
+
+Construction tests retain Hard difficulty, hunger and survival while disabling natural mob spawning, spawners, phantoms, patrols, wardens and raids. Isolated development environments owned by `testctl` also remove existing and newly loaded hostile-category entities while preserving passive mobs, drops, containers and terrain. This is a test condition, not production combat or avoidance behavior. A mismatching environment identity or world path refuses protection rather than treating a production world as a test environment.
+
 ### Autonomous source audits
 
 Complete construction scenes can enable `autonomousSupplies: true` and declare `stockSources`, each with a `dimension` and `position`. These are existing storage locations, not inventory grants. The common material-acquisition flow performs withdrawals. Sources must be outside the authorized construction footprint, with their neighborhoods included in the environment's checkpoint regions.
