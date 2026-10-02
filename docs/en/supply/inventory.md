@@ -96,6 +96,8 @@ Each native operation verifies quantities, components, menu identity and box rec
 
 `AccessShulkerStagingFlow` selects a position for placing and recovering a transport box. The placement cell and the cell above remain empty, with a supported 3×3 drop landing area below. Nearby chunks must be loaded, and portal clearance and entity occupancy checks must pass.
 
+The current task also remembers its most recently validated staging position. If nearby discovery fails, it searches around that position in the same dimension and uses the existing navigation flow to return. Loaded terrain, support, entity occupancy and interaction rays are checked again. This routing hint does not authorize external inventory transfers and is cleared when the task ends or changes.
+
 When the current stance supports the operation, unpacking starts there. Otherwise, the discovered safe stance guides shared navigation and flight landing discovery; navigation can also reach another valid working position in the search area. Arrival rechecks the actual stance, interaction ray and placement space before unpacking. A Bot on a narrow wall can use nearby safe ground or a registered work area, then its parent flow returns it to the construction stance after turnover.
 
 Flight to a working position uses directly available rockets. The parent continues its next batch after menu, box recovery and inventory receipts are settled.
