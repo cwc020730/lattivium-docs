@@ -111,7 +111,7 @@ The survey checks every column, its stable foundation, the shaft location, works
 
 `innerMin` is the northwest upper corner of the interior square. The example clears `x=100..115`, `z=100..115` and `y=47..62`, and authorizes a bottom sealing plane at `y=46`. `outputBoxes` defaults to 2, and `headroom` defaults to 3.
 
-The perimeter wall checks hunger at a safe standing position between columns. With `automaticFood` enabled, shared food maintenance eats carried food, unpacks carried stock or visits an inventory source, then returns to the work position before wall construction continues.
+The perimeter wall checks hunger at a safe standing position between columns. An active box-unpacking or inventory-turnover operation finishes and returns to the column footing before newly actionable food maintenance starts. The two operations run sequentially. With `automaticFood` enabled, shared food maintenance eats carried food, unpacks carried stock or visits an inventory source, then returns to the work position before wall construction continues.
 
 Each layer retains its final footing near the shaft. Shared navigation reaches that position, using flight equipment when an isolated footing requires it. The Bot lands and aligns before removing the block underfoot through controlled descent onto a verified support surface.
 
