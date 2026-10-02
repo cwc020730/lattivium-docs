@@ -402,7 +402,7 @@ Traverse the specified portal route and clear the exit; target is a route-select
 | `exit.x` | `integer` | `Required` |  |
 | `exit.y` | `integer` | `Required` |  |
 | `exit.z` | `integer` | `Required` |  |
-| `target` | `optional` | `Required` | Route-selection hint; travel ends after clearing the portal exit |
+| `target` | `optional` | `null` | Route-selection hint; travel ends after clearing the portal exit |
 
 ### Positional syntax
 
@@ -435,6 +435,8 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+| `drainageMode` | `optional` | `null` |  |
 
 ## PreparePerimeterInfrastructureFlow
 
@@ -459,6 +461,7 @@ Build a sand perimeter around a 6-, 12-, 16- or 32-block inner square, isolate a
 | `topY` | `integer` | `Required` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## PrepareWorkstationFlow
 

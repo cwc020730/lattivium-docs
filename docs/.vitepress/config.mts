@@ -43,6 +43,7 @@ const pages = [
   ['开发与语义', 'Development', [
     ['架构与术语','Architecture','developer/architecture'],
     ['声明执行入口','Declare an entry','developer/executables'],
+    ['开发测试','Development tests','developer/testing'],
     ['Java API','Java API','developer/api'],
     ['Atlas 知识库','Atlas knowledge','developer/atlas'],
     ['覆盖范围与版本','Coverage and version','reference/coverage']]]

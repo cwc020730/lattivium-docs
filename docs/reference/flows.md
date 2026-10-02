@@ -402,7 +402,7 @@ outline: 2
 | `exit.x` | `integer` | `必填` |  |
 | `exit.y` | `integer` | `必填` |  |
 | `exit.z` | `integer` | `必填` |  |
-| `target` | `optional` | `必填` | 路线选择参考点；完成条件为离开传送出口触发区 |
+| `target` | `optional` | `null` | 路线选择参考点；完成条件为离开传送出口触发区 |
 
 ### 位置参数写法
 
@@ -435,6 +435,8 @@ outline: 2
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+| `drainageMode` | `optional` | `null` |  |
 
 ## PreparePerimeterInfrastructureFlow
 
@@ -459,6 +461,7 @@ outline: 2
 | `topY` | `integer` | `必填` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## PrepareWorkstationFlow
 
