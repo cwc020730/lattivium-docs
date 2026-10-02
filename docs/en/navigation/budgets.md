@@ -104,6 +104,8 @@ The `TravelToFlow` base does not directly grow with total distance. Portal and a
 | `ReplenishSuppliesFlow` | At most 24000 active ticks per instance, preserving partial acquisition and source replacement |
 | Source lookup rounds | At most three per replenishment instance |
 
+Rocket replenishment may acquire transport boxes or arrange inventory before and after pickup. `RefillTravelFuelFlow` records this preparation separately, adding at most 24000 cumulative ticks. Preparation still blocks recursive fuel acquisition without charging `fuelTicks`. Rocket acquisition retains its existing 24000-tick cumulative consumption limit and child deadlines. Completion, source replacement and suspension never reset spent budgets.
+
 `BoundedTimeAllowance` adds observed preparation time to a parent operation's timeout, subject to a cumulative ceiling. Completed episodes, source changes and replanning retain recorded allowances.
 
 The allowance compensates the parent for extra work already performed. Resource policy separately limits consumed time and episode count. For example, a completed 2000-tick replenishment can add recorded parent allowance while those 2000 ticks remain charged to its resource context.
