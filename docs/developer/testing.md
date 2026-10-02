@@ -50,3 +50,13 @@ python scripts/testctl.py artifacts prune --keep-days 7
 `construction` 场景复用同一服务端生命周期，通过公开的 `ExcavateLayeredAreaFlow`、`PreparePerimeterInfrastructureFlow` 或 `PrepareAndExcavatePerimeterFlow` 指令执行。冻结输入声明启动物资、原始地形、允许变化范围和最终方块；围墙方案还包含原生规划出的井、道路和工作站布局。
 
 施工结束后检查 Bot 返回、工具和盒子保护，正常停服，再直接读取地图方块与容器库存。准备场地与完整施工分别验收。`mode: "SOURCE_PRESERVING_DEBUG"` 使用通用取货流程的无损测试模式；自主补给还必须通过相应来源库存审计，不能用预发物资场景代替。
+
+### 自主补给的来源审计
+
+完整施工场景可设置 `autonomousSupplies: true`，并声明 `stockSources`，每项包含 `dimension` 与 `position`。这些是现有仓储位置，不是给 Bot 发物资的指令；取货仍由通用材料获取流程执行。来源必须位于施工授权范围外，其邻接区块纳入测试环境的检查点范围。
+
+启动后通过原生 Atlas 观察器确认来源可取，避免沿用上一个服务端进程留下的过期分类。停服前后的审计直接读取全部已索引容器的地图 NBT，比较数量及组件；仅允许声明的工作站与输出箱变化。保护分类变化单独列出。如果途中发现授权施工范围外的新来源而没有原始库存基线，需重新调查并冻结基线后再验收。
+
+### 原生测试时钟
+
+原生 GameTest 默认尽快运行。等待异步区块或 POI 读取的场景可设置 `parameters: {"ticksPerSecond":20}`，按普通游戏速率推进，同时保留原断言与 tick 上限。这仅影响测试服务器；省略或设为 `0` 时仍快速运行，允许的正整数范围为 `1–200`。
