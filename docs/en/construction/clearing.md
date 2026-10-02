@@ -95,6 +95,8 @@ Ordinary mining drops follow the site's recovery policy. In best-effort mode, dr
 
 `PreparePerimeterInfrastructureFlow` joins four-sided trench replacement, an isolated scaffold shaft, a white-concrete access road and an outside workstation in one site-preparation operation. It builds the wall's starting footing when needed. Perimeter columns can be open water or continuous solid dry ground. The plan selects a cell in the west wall, fills one sand column on either side of it, then replaces the center with scaffolding. The inner seal remains for interior drainage.
 
+For a water start, `PrepareSandWallStartDeckFlow` raises a sand pillar from a stable seabed. It selects an adjacent continuous water column with open surface headroom and clear placement rays for diving, placing sand and returning to the deck. Kelp does not block swimming but can intercept native clicks, so the flow selects another usable column and preserves neighboring plants. If every adjacent column is obstructed, preflight reports that assistance is needed.
+
 The survey checks every column, its stable foundation, the shaft location, workstation space and the material budget before building. Completion verifies physical blocks and a Bot round trip between the workstation and shaft entrance.
 
 ### Continuous construction and clearing

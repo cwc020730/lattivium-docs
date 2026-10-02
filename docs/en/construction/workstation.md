@@ -26,6 +26,8 @@ Each placement prepares directly usable material before approaching the working 
 
 ## Supplies and completion checks
 
+Preflight counts loose stock and material inside carried transport boxes. Construction prepares the current phase's batch: floor material first, the relevant container before placement, and one stack at a time for stocking. The whole station's material does not need to occupy direct task slots together. Reserved output boxes remain protected, and each transfer is checked against its physical receipt.
+
 After the floor is ready, place output boxes and storage chests, then deposit the supplies requested by the task. Completion checks verify:
 
 - Physical floor blocks match the plan.
