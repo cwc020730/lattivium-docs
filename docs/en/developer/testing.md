@@ -43,7 +43,9 @@ python scripts/testctl.py --env dev env stop
 python scripts/testctl.py artifacts prune --keep-days 7
 ```
 
-Method-body changes can use the existing HotSwap support. Signature, field and entry-index changes require restart. Do not edit Java, build or restore worlds during frozen acceptance runs. After controller interruption, reconcile its owned tasks, Bots, measurement windows and chunk tickets before starting another attempt. Cleanup previews do not delete worlds or protected baselines.
+Method-body changes can use the existing HotSwap support. Signature, field and entry-index changes require restart. Do not edit Java, test-framework sources or build outputs, or restore worlds during frozen acceptance runs. After controller interruption, reconcile its owned tasks, Bots, measurement windows and chunk tickets before starting another attempt. Cleanup previews do not delete worlds or protected baselines.
+
+New evidence files use compact UTF-8 JSON; CLI output remains indented. This removes formatting whitespace while preserving all fields, traces, counts and components. Historical indented files remain readable, and saved failure reports and signatures are not rewritten. The environment's `maxArtifactBytes` bounds retained evidence. Inspect actual usage, retention dependencies and free disk space before pruning or adjusting this budget.
 
 ## Work while long tests run
 
