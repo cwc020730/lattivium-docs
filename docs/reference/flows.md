@@ -270,7 +270,7 @@ outline: 2
 
 ## ExcavateLayeredAreaFlow
 
-从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。
+从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。 mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。
 
 ### 指令
 
@@ -304,6 +304,10 @@ outline: 2
 | `additionalDepots[].z` | `integer` | `必填` |  |
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+| `drainageMode` | `string` | `"SOLID_FILL"` | `SOLID_FILL`, `SPONGE_GRID_WHEN_AVAILABLE` |
+| `furnace` | `optional` | `必填` |  |
+| `furnaceFeet` | `optional` | `必填` |  |
 
 ## FireworkReserveFlow
 

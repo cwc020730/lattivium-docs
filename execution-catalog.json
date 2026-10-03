@@ -1017,7 +1017,7 @@
     },
     "ExcavateLayeredAreaFlow": {
       "kind": "Flow",
-      "description": "Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried empty boxes.",
+      "description": "Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried empty boxes. mode controls shared supply execution; sponge-grid drainage requires declared furnace and furnaceFeet positions.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -1170,6 +1170,89 @@
           "autonomousSupplies": {
             "type": "boolean",
             "default": false
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "REAL",
+              "DEBUG",
+              "SOURCE_PRESERVING_DEBUG"
+            ],
+            "default": "REAL"
+          },
+          "drainageMode": {
+            "type": "string",
+            "enum": [
+              "SOLID_FILL",
+              "SPONGE_GRID_WHEN_AVAILABLE"
+            ],
+            "default": "SOLID_FILL"
+          },
+          "furnace": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "y": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "z": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "furnaceFeet": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "y": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  },
+                  "z": {
+                    "type": "integer",
+                    "minimum": -2.147483648E9,
+                    "maximum": 2.147483647E9
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
