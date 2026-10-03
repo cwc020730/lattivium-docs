@@ -27,6 +27,8 @@ Demand combines `PerimeterInfrastructurePlan` with observed liquids:
 
 Planning observes liquids in each layer and takes the **maximum layer demand for each item**. A wet layer requires its liquid-cell count plus 64 filler blocks; sponge mode adds that layer's partition-cell count. Dry layers add no liquid-processing demand. This is a working reserve for a layer, rather than a limit on total consumption: later shortages still use the shared acquisition chain.
 
+Drying currently uses a single-sponge transaction. After absorption and wet-sponge recovery, the Bot returns to the workstation, prepares one wet sponge, one furnace and one coal, then recovers the dry sponge and furnace before continuing. Fuel demand therefore counts drying operations at one coal each; the sponge and furnace are reused.
+
 Facility concrete demand is the workstation floor-cell count plus two blocks. Floor sealing adds the entire bottom-plane count; execution preserves qualifying existing solid blocks, so some budget can remain unused. Shared inventory preparation maintains transport-box capacity separately from the output boxes intended for workstation placement. Construction demand has no additional fixed `outputBoxes + 1` transport-box rule.
 
 ## Shared acquisition chain
