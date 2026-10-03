@@ -100,7 +100,7 @@ The current task also remembers its most recently validated staging position. If
 
 When the current stance supports the operation, unpacking starts there. Otherwise, the discovered safe stance guides shared navigation and flight landing discovery; navigation can also reach another valid working position in the search area. Arrival rechecks the actual stance, interaction ray and placement space before unpacking. A Bot on a narrow wall can use nearby safe ground or a registered work area, then its parent flow returns it to the construction stance after turnover.
 
-Flight to a working position uses directly available rockets. The parent continues its next batch after menu, box recovery and inventory receipts are settled.
+Flight to a working position uses directly available rockets; an unopened box cannot fund its own approach. If loose fuel is insufficient before takeoff, the Bot is landed and child cleanup has settled, staging keeps the discovered safe position and replans once through existing ground/water navigation. A missing route remains a failure. This does not open boxes in flight or relax safety checks. The parent continues its next batch after menu, box recovery and inventory receipts are settled.
 
 ## Item obligations
 
