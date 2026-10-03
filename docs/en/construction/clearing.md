@@ -20,6 +20,8 @@ When liquid remains below the current layer, filler placement requires stable fo
 
 Within a layer, the Bot may stand on remaining blocks or enter cleared cells with reliable support below. Movement, mining and product recovery share the current layer's height boundary. Mining also validates the actual footing, target reach and fluid safety. Ledge mining uses a verified adjacent support and capture pose.
 
+A double-height plant can span two layers. Mining its upper half may also remove the lower half when both lie within the parent flow's authorized excavation volume. The mining target must still belong to the active layer, and this permission does not authorize removing the plant's support block. A standalone single-layer operation still refuses a plant half outside its declared volume.
+
 ```text
 /ltv Worker exec ExcavateLayeredAreaFlow {"min":{"x":100,"y":47,"z":100},"max":{"x":115,"y":62,"z":115},"egress":{"x":100,"y":47,"z":107},"depots":[{"x":94,"y":64,"z":107}]}
 ```

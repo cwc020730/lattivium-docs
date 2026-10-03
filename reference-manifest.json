@@ -153,7 +153,7 @@
     "src/main/java/cwc/autobuildbot/integration/atlas/AtlasSupplyReplanner.java": "b64dffc0a2cbc4b1f50cd92ea66c77486b49029739c4fec01a14cdb0189eb394",
     "src/main/java/cwc/autobuildbot/flow/supply/ReplenishSuppliesFlow.java": "e1e84295bb6a32e4f1641a55fa7f295376361747e55999dcbf4831741afb8f20",
     "src/main/java/cwc/autobuildbot/construction/ExcavationSupplies.java": "bb258684b636c47ba9d510fe998b9645f92452bcac7a112ccf618d1ad6d7bc2d",
-    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "2ac6b477b7becec78d3d17ef1b1b008e4f4a931312b28e1d08f1e15228f9f387",
+    "src/main/java/cwc/autobuildbot/flow/construction/ExcavateAreaFlow.java": "dec5436257dfd2e75bfe20424f8ab6b3c0b7cf1f7afe800b9ce05d1c6dced9e0",
     "src/main/java/cwc/autobuildbot/flow/construction/ReplaceDryColumnWithSandFlow.java": "f13d99c2c8ccab1a83a3966e44174a12a476fcbcfdd6610e5a1481fc9f24a0f3",
     "src/main/java/cwc/autobuildbot/flow/construction/PrepareSandWallStartDeckFlow.java": "b0600d17d8c2d45c2e70a5a6454e111142644264fd05efeaf24f815cb35230e8",
     "src/main/java/cwc/autobuildbot/navigation/pos/filter/ShulkerStagingPosFilter.java": "87ed3127dea122ca159cf3a8ab4c785de1a619e23f9057765baf8392f4aebfae",
