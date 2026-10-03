@@ -66,7 +66,9 @@ python scripts/testctl.py run wait <run-id> --timeout 60
 
 The `construction` fixture shares the same server lifecycle and submits public `ExcavateLayeredAreaFlow`, `PreparePerimeterInfrastructureFlow` or `PrepareAndExcavatePerimeterFlow` commands. Frozen input declares starter stock, original terrain, permitted changes and final blocks. Perimeter scenes also freeze the native shaft, road and workstation plan.
 
-After construction, audit the Bot's return and protected tools/boxes, stop normally and independently decode saved blocks and container inventories. Facility preparation and complete construction have separate acceptance. `mode: "SOURCE_PRESERVING_DEBUG"` uses the common acquisition flow's source-preserving test mode; autonomous supplies additionally require source inventory evidence and cannot be established by a pre-equipped fixture.
+After construction, audit the selected entry's receipts and protected tools/boxes, stop normally and independently decode saved blocks and container inventories. Facility preparation and complete construction have separate acceptance. `mode: "SOURCE_PRESERVING_DEBUG"` uses the common acquisition flow's source-preserving test mode; autonomous supplies additionally require source inventory evidence and cannot be established by a pre-equipped fixture.
+
+A prepared `ExcavateLayeredAreaFlow` scene checks completed layers, dry air, output depots and inventory protection. This component entry has no workstation-return assertion, and its current scene validator rejects `sealBottom: true`. The production Flow supports bottom sealing; the restriction belongs to the test adapter's coverage. Complete `PrepareAndExcavatePerimeterFlow` scenes additionally verify workstation return. When sealing is enabled, they require independent final-block expectations for the whole floor and verify every `bottomSeals` receipt position. A retained-field component continuation cannot replace these full-flow proofs.
 
 ### Water-column and sand-wall components
 
@@ -109,3 +111,5 @@ Native GameTests run unpaced by default. A case waiting for asynchronous chunk o
 Field construction scenes instead use `parameters.tickRate`, which defaults to `20`, accepts `1–200` and rejects `0`. Faster game ticks do not proportionally accelerate asynchronous database planning or chunk reads, but do spend tick-based operation budgets faster. Start cold autonomous acquisition at `20`; accelerate physical construction only after acquisition and return complete. Recheck the rate if another cold asynchronous supply operation begins.
 
 The framework currently sets the initial scene rate; it does not automatically recognize child flows and switch rates. Record server acknowledgements and the actual phase for additional adjustments, preserving the attempt's original time limit. Distinguish wall time, game ticks and rate in reports; accelerated minutes do not represent construction time at the ordinary game rate.
+
+Long construction can travel for supplies again between layers. If those transitions cannot be tracked reliably, keep the entire autonomous-supply scene at `20` rather than leaving it accelerated after its first collection. Historical trace nodes still marked `STARTED` may already have ended; they alone cannot establish the active child operation or justify a rate change.
