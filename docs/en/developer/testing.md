@@ -45,6 +45,12 @@ python scripts/testctl.py artifacts prune --keep-days 7
 
 Method-body changes can use the existing HotSwap support. Signature, field and entry-index changes require restart. Do not edit Java, build or restore worlds during frozen acceptance runs. After controller interruption, reconcile its owned tasks, Bots, measurement windows and chunk tickets before starting another attempt. Cleanup previews do not delete worlds or protected baselines.
 
+## Work while long tests run
+
+Use waiting time for documentation corrections, reviews of shared responsibilities or small preparations for the next stage. Choose an independent task that can produce a result in roughly 5–10 minutes; record findings that still need validation and avoid unbounded repository-wide refactoring. Freeze the running Java, build outputs and world state. Verify independent changes separately rather than using an older candidate's pass as evidence for new code.
+
+Record the test's actual start time, estimated duration and progress signals, and review progress about every 10 minutes. Prioritize verification and continuation when it completes or fails. Keep using `testctl` results and run identities; avoid duplicate attempts or frequent full-trace reads.
+
 ## Construction scenes
 
 The `construction` fixture shares the same server lifecycle and submits public `ExcavateLayeredAreaFlow`, `PreparePerimeterInfrastructureFlow` or `PrepareAndExcavatePerimeterFlow` commands. Frozen input declares starter stock, original terrain, permitted changes and final blocks. Perimeter scenes also freeze the native shaft, road and workstation plan.

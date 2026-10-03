@@ -4,26 +4,30 @@ Construction uses materials consumed by facilities and excavation, plus rockets,
 
 ## From site to material demand
 
-`PrepareAndExcavatePerimeterFlow` has two integration paths:
+`PrepareAndExcavatePerimeterFlow` selects its startup behavior through the autonomous-supply option:
 
 | Integration | Before construction |
 | --- | --- |
-| Registered command | Use supplies already carried by the Bot and start infrastructure |
-| Java call to `withAutonomousSupplies(mode)` | Survey, acquire the full demand through `AcquireMaterialsFlow`, return to the starting position, then start infrastructure |
+| `autonomousSupplies: false` (default) | Use supplies already carried by the Bot and start infrastructure |
+| `autonomousSupplies: true`, or Java call to `withAutonomousSupplies(mode)` | Survey, acquire demand through `AcquireMaterialsFlow`, return to the starting position, then start infrastructure |
 
-The registered command accepts the region, output-box count and headroom. Autonomous acquisition is enabled through Java. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for command parameters.
+The registered command also accepts autonomous acquisition, `mode`, `sealBottom` and `drainageMode`, alongside the region, output-box count and headroom. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for command parameters.
 
 Demand combines `PerimeterInfrastructurePlan` with observed liquids:
 
 | Resource | Current calculation | Purpose |
 | --- | --- | --- |
-| Sand | Planned perimeter and isolation columns | Perimeter sealing and shaft isolation |
-| White concrete | Facility demand plus interior liquid cells, grid allowance and 64 spare blocks | Road, platform, liquid replacement and partitions |
+| Sand | Perimeter, two shaft-isolation columns and starting-deck shortfall; a verified reused wall removes perimeter demand | Perimeter sealing and shaft isolation |
+| White concrete | Facilities, optional floor sealing and maximum single-layer liquid-processing demand | Road, platform, liquid replacement and partitions |
 | Scaffolding | Planned shaft demand | Vertical access |
-| Chests and empty shulker boxes | Facility demand plus `outputBoxes + 1` extra empty boxes | Workstation storage, excavation products and carrying capacity |
-| Rockets | Travel maintenance estimates the route | Flight and onward reserves |
+| Chests and empty shulker boxes | Two chests and the workstation plan's output-box count | Workstation storage and product containers |
+| Rockets | Shared FIXED or AUTO stock policy | Flight and onward reserves |
+| Food | Shared food policy and stock requirements | Eating under real hunger and maintaining reserves |
+| Sponge, furnace and coal | Wet-layer sponge mode: one dry sponge, one furnace and coal for the maximum chamber count in a layer | Absorption, recovery and workstation drying |
 
-The grid allowance multiplies the number of layers containing liquid by the partition-cell count per layer. Liquid-replacement stock covers all observed liquid cells. Sponge mode retains filler stock for layers or chambers that cannot safely use a sponge.
+Planning observes liquids in each layer and takes the **maximum layer demand for each item**. A wet layer requires its liquid-cell count plus 64 filler blocks; sponge mode adds that layer's partition-cell count. Dry layers add no liquid-processing demand. This is a working reserve for a layer, rather than a limit on total consumption: later shortages still use the shared acquisition chain.
+
+Facility concrete demand is the workstation floor-cell count plus two blocks. Floor sealing adds the entire bottom-plane count; execution preserves qualifying existing solid blocks, so some budget can remain unused. Shared inventory preparation maintains transport-box capacity separately from the output boxes intended for workstation placement. Construction demand has no additional fixed `outputBoxes + 1` transport-box rule.
 
 ## Shared acquisition chain
 
@@ -57,7 +61,7 @@ Acquisition provides rocket and food policies. Infrastructure uses carried suppl
 
 Autonomous acquisition requires all demand to be fulfilled and inventory obligations settled, followed by return to the starting position. Missing supplies produce item counts and source failures while infrastructure remains unstarted.
 
-Food and rockets are maintained through the shared stock policies. Optional sponge mode uses already available sponge, furnace and fuel; solid filler remains the fallback. Material planning includes return travel while retaining cargo on the Bot.
+Food and rockets are maintained through shared stock policies. Sponge mode includes sponge, furnace and fuel in wet-layer demand; chambers that cannot safely use a sponge still use solid filler and are recorded separately. After acquisition, `AcquireMaterialsFlow` explicitly returns to the starting position with cargo retained. This return belongs to the construction acquisition workflow. `TravelToFlow` executes the one-way destination it receives and does not automatically add return travel to every trip.
 
 Rocket maintenance first collects existing plain propulsion rockets, then attempts bounded crafting when stock is insufficient. If departure reserves remain unmet, it enters `WAITING_FOR_RESOURCE` at a grounded, settled inventory boundary and reports the deficit and Bot position. Adding plain rockets and passing renewed inventory and route checks resumes the original goal.
 

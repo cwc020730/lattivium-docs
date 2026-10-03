@@ -64,6 +64,8 @@ Workstations currently register output depots. Only explicitly declared workstat
 
 At safe boundaries, the parent calls a resource policy. The policy evaluates its requirement and uses existing carried-box unpacking, `ReplenishSuppliesFlow` and crafting operations. Food also reacts to real hunger; rocket policy maintains travel fuel.
 
+Observation reads current physical stock and requirement functions recalculate their levels, but queries and quantity updates do not start turnover. `EnsureInventoryReadyFlow` performs organization; the parent must invoke it at a safe boundary. Updated counts therefore do not mean space has already been released: a missing readiness call can still leave an operation with a full inventory. There is currently no background organizer that can arbitrarily interrupt flight, an open container or a borrowed-box transaction.
+
 ```mermaid
 flowchart TD
     A[Parent reaches a safe boundary] --> B[Evaluate requirements and levels]
