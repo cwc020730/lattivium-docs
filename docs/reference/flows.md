@@ -476,6 +476,11 @@ outline: 2
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
+| `reuseSandWall` | `boolean` | `false` |  |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `必填` |  |
+| `stagingAreas[].y` | `integer` | `必填` |  |
+| `stagingAreas[].z` | `integer` | `必填` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 | `drainageMode` | `optional` | `必填` |  |
 
@@ -502,6 +507,11 @@ outline: 2
 | `topY` | `integer` | `必填` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `reuseSandWall` | `boolean` | `false` |  |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `必填` |  |
+| `stagingAreas[].y` | `integer` | `必填` |  |
+| `stagingAreas[].z` | `integer` | `必填` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## PrepareWorkstationFlow

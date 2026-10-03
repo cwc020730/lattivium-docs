@@ -1799,6 +1799,42 @@
             "type": "boolean",
             "default": false
           },
+          "reuseSandWall": {
+            "type": "boolean",
+            "default": false
+          },
+          "stagingAreas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 16,
+            "default": []
+          },
           "mode": {
             "type": "string",
             "enum": [
@@ -1900,6 +1936,42 @@
             "minimum": 2.0,
             "maximum": 6.0,
             "default": 3
+          },
+          "reuseSandWall": {
+            "type": "boolean",
+            "default": false
+          },
+          "stagingAreas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                },
+                "z": {
+                  "type": "integer",
+                  "minimum": -2.147483648E9,
+                  "maximum": 2.147483647E9
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 16,
+            "default": []
           },
           "mode": {
             "type": "string",

@@ -476,6 +476,11 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
 | `sealBottom` | `boolean` | `false` |  |
 | `autonomousSupplies` | `boolean` | `false` |  |
+| `reuseSandWall` | `boolean` | `false` |  |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `Required` |  |
+| `stagingAreas[].y` | `integer` | `Required` |  |
+| `stagingAreas[].z` | `integer` | `Required` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 | `drainageMode` | `optional` | `Required` |  |
 
@@ -502,6 +507,11 @@ Build a sand perimeter around a 6-, 12-, 16- or 32-block inner square, isolate a
 | `topY` | `integer` | `Required` |  |
 | `outputBoxes` | `integer` | `2` | minimum: 2; maximum: 8 |
 | `headroom` | `integer` | `3` | minimum: 2; maximum: 6 |
+| `reuseSandWall` | `boolean` | `false` |  |
+| `stagingAreas` | `array` | `[]` | minItems: 0; maxItems: 16 |
+| `stagingAreas[].x` | `integer` | `Required` |  |
+| `stagingAreas[].y` | `integer` | `Required` |  |
+| `stagingAreas[].z` | `integer` | `Required` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## PrepareWorkstationFlow

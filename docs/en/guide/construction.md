@@ -22,6 +22,8 @@ Area clearing and schematic building have their own [execution entries](../refer
 
 `PreparePerimeterInfrastructureFlow` excavates the four sides of a square work area and fills them as a sand perimeter. It then builds an isolated scaffold shaft in one wall, a permanent white-concrete road and a workstation outside the work area. `PrepareAndExcavatePerimeterFlow` joins these facilities with layered interior clearing in one execution. `PrepareSiteInfrastructureTask` can also plan a shaft, road and workstation for a dry site.
 
+Both perimeter entries build from scratch by default. Explicit `reuseSandWall=true` first checks the entire sand ring at the requested heights and its dry supporting foundations, then skips only the wall construction and its sand demand. The inner and outer shaft caps, scaffolding, road, workstation and interior clearing must still complete. This option does not restore a partial wall or an existing shaft/workstation. `stagingAreas` can provide known box-access positions as routing hints; the shared inventory flow still checks placement and interaction. Development continuation is recorded separately from full autonomous acceptance starting with the initial kit.
+
 ## Combined construction sequence
 
 ```text
