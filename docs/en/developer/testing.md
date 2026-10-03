@@ -68,7 +68,14 @@ The `construction` fixture shares the same server lifecycle and submits public `
 
 After construction, audit the selected entry's receipts and protected tools/boxes, stop normally and independently decode saved blocks and container inventories. Facility preparation and complete construction have separate acceptance. `mode: "SOURCE_PRESERVING_DEBUG"` uses the common acquisition flow's source-preserving test mode; autonomous supplies additionally require source inventory evidence and cannot be established by a pre-equipped fixture.
 
-A prepared `ExcavateLayeredAreaFlow` scene checks completed layers, dry air, output depots and inventory protection. This component entry has no workstation-return assertion, and its current scene validator rejects `sealBottom: true`. The production Flow supports bottom sealing; the restriction belongs to the test adapter's coverage. Complete `PrepareAndExcavatePerimeterFlow` scenes additionally verify workstation return. When sealing is enabled, they require independent final-block expectations for the whole floor and verify every `bottomSeals` receipt position. A retained-field component continuation cannot replace these full-flow proofs.
+A prepared `ExcavateLayeredAreaFlow` scene checks completed layers, dry air, output depots and inventory protection, and supports `sealBottom: true`. It shares the bottom contract with `PrepareAndExcavatePerimeterFlow`: observe and authorize the complete plane at `minY-1`, independently declare its dry final blocks, and verify every native `bottomSeals` position without omissions, duplicates or foreign cells. Existing dry solid floor keeps its original material; water and air holes explicitly declare their fill. The saved full-state audit still checks waterlogging and changes outside the footprint after normal shutdown.
+
+```powershell
+python scripts/testctl.py --env native run start construction-bottom-contracts
+python scripts/testctl.py --env dev run start construction-bottom
+```
+
+The first case runs the framework contracts and existing native wet, aquatic, buried and connected-pocket floor tests. The second shares the scene seed/execute lifecycle and verifies eight preserved natural stone cells plus one filled water hole. Wait for and verify the returned run IDs sequentially. The prepared component still has no workstation-return assertion; complete construction checks the actual return separately. A retained-field component continuation also cannot replace fresh autonomous whole-site acceptance.
 
 ### Water-column and sand-wall components
 

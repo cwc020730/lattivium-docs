@@ -68,7 +68,14 @@ python scripts/testctl.py run wait <run-id> --timeout 60
 
 施工结束后按所选入口检查对应回执、工具和盒子保护，正常停服，再直接读取地图方块与容器库存。准备场地与完整施工分别验收。`mode: "SOURCE_PRESERVING_DEBUG"` 使用通用取货流程的无损测试模式；自主补给还必须通过相应来源库存审计，不能用预发物资场景代替。
 
-已准备场地的 `ExcavateLayeredAreaFlow` 场景检查逐层完成、干燥空气、产物箱及库存保护；这个组件入口没有工作站返回断言，当前场景校验也拒绝 `sealBottom: true`。正式 Flow 本身支持封底，这项限制属于测试适配器的覆盖范围。`PrepareAndExcavatePerimeterFlow` 完整场景另行核验工作站返回；启用封底时，还要求独立声明整个底面最终方块，并核对回执中的全部 `bottomSeals`。保留现场的组件接续通过不能代替这些完整流程证据。
+已准备场地的 `ExcavateLayeredAreaFlow` 场景检查逐层完成、干燥空气、产物箱及库存保护，并支持 `sealBottom: true`。它与 `PrepareAndExcavatePerimeterFlow` 共用封底校验：整个 `minY-1` 平面必须纳入观察与允许变化范围，独立声明最终干燥方块，并核对原生回执中全部 `bottomSeals`，拒绝缺漏、重复或越界位置。天然干燥实心底面保留原材料；水孔、空洞明确声明填料。停服后的完整方块状态审计仍检查含水状态和范围外变化。
+
+```powershell
+python scripts/testctl.py --env native run start construction-bottom-contracts
+python scripts/testctl.py --env dev run start construction-bottom
+```
+
+前者运行框架契约及已有的湿底、水生植物、覆土和连通水穴原生测试；后者复用同一场景的 seed/execute 生命周期，核验保留八格天然石底、填上一格水孔。按返回的 run ID 等待并核验，串行执行这两个案例。已准备场地的组件入口仍没有工作站返回断言；完整施工另行核验实际返回。保留现场的组件接续通过也不能代替新的自主开局完整验收。
 
 ### 水柱与沙墙组件
 
