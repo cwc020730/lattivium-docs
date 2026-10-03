@@ -81,6 +81,8 @@ Y-1     floor floor  floor  floor floor
 
 A sponge chamber needs a dry solid floor and a usable return position. Other fluid cells use fill material. Every completed layer is verified as dry air. The mode uses physically carried sponges, furnace and fuel, with receipts for placement, recovery and drying.
 
+Before drying, shared inventory readiness prepares the furnace, wet sponge and fuel together as directly usable stock. Drying waits for an active unpacking or packing operation to settle before checking the temporary furnace location again. Stock may temporarily be in a placed box during that operation, so carried counts alone cannot establish a shortage. If failure or cancellation leaves a box unrecovered, its location and recovery obligation remain explicit; construction cannot treat that as an optional drying failure and continue.
+
 The shallow-pit water-column exit applies to an already cleared volume up to four blocks deep and 8×8 horizontally, with a sealed floor and sides in a dimension that permits water. The Bot places water, swims out, collects it and verifies 100 consecutive empty ticks.
 
 ### Deep-water sand perimeter
