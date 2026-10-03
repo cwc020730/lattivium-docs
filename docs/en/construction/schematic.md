@@ -2,6 +2,8 @@
 
 `BuildSchematicFlow` reads a supported schematic, prepares materials, builds it and verifies the resulting block states.
 
+The current entry accepts at most 256 solid blocks within a 16×8×16 extent. It supports full blocks without state properties, such as stone and glass. Directional, openable or configurable blocks, including trapdoors, fence gates and redstone components, are not yet supported; this does not establish easy placement. Schematic air does not authorize removing an existing block at that position.
+
 ## File and command
 
 Place the schematic under `lattivium-atlas/schematics/` in the server world directory.
