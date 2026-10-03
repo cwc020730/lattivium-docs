@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "5a5ab10b",
+  "sourceCommit": "e80b3819",
   "commands": [
     "AccessContainerFlow",
     "AcquireContainerItemsFlow",
@@ -164,7 +164,7 @@
     "src/main/java/cwc/autobuildbot/interaction/BlockPlacer.java": "ac70f5235f1ca0f4690adade6b50eb46dc639d2fbeb186b969f1fe8e298512ac",
     "src/main/java/cwc/autobuildbot/navigation/BlockPlacementGoal.java": "7193604f5c92c62cda23995cca34e0d58c17e3f95277ca19c39c820f7a28c7e2",
     "src/main/java/cwc/autobuildbot/flow/construction/BuildPerimeterSandWallFlow.java": "10ed0a6afe108463553efe6114b81c0cb74b3e7c53de2de68a28cb069b08dc67",
-    "src/main/java/cwc/autobuildbot/flow/interaction/MineBlockFlow.java": "783d3b8e53fd409602863fdda60ac68043462f963f896cc4c0db9b7aa72f4ede",
+    "src/main/java/cwc/autobuildbot/flow/interaction/MineBlockFlow.java": "3a89445bb1bf227aa5914f3ba8a146c6eee982e8145097af2b11ccc9fd350aea",
     "src/main/java/cwc/autobuildbot/flow/construction/ClearAndSettleWaterColumnFlow.java": "3ca3f28eac53721abcd24c4a14771b8f7b08862e4205ff512b6788a032654025",
     "src/main/java/cwc/autobuildbot/AutoBuildBot.java": "68739578ae7cbb2c71024fda456409aab9855149e0ad7bfd742a37d4ff94a463",
     "src/main/java/cwc/autobuildbot/debug/testing/DevelopmentHostileSuppression.java": "6a6803f81d037de9607358b2006cf0605f0302734afdc37afa9e53726016dc89",
