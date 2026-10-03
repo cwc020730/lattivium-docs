@@ -294,7 +294,7 @@ outline: 2
 | `egress.x` | `integer` | `必填` |  |
 | `egress.y` | `integer` | `必填` |  |
 | `egress.z` | `integer` | `必填` |  |
-| `depots` | `array` | `必填` | minItems: 1; maxItems: 8 |
+| `depots` | `array` | `[]` | minItems: 0; maxItems: 8 |
 | `depots[].x` | `integer` | `必填` |  |
 | `depots[].y` | `integer` | `必填` |  |
 | `depots[].z` | `integer` | `必填` |  |

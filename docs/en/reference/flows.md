@@ -270,7 +270,7 @@ Clear an inclusive area and store drops in outside depots; optional seal depots 
 
 ## ExcavateLayeredAreaFlow
 
-Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried empty boxes. mode controls shared supply execution; sponge-grid drainage requires declared furnace and furnaceFeet positions.
+Clear a prepared sealed volume from top to bottom. Replace liquids within each layer before mining it, and retain depot and abandoned-drop receipts across layers. The egress lies inside the bottom layer; depots are existing empty shulker boxes outside the volume, while additionalDepots are supported free positions for carried or autonomously acquired empty boxes. At least one storage position is required; existing depots may be empty. mode controls shared supply execution; sponge-grid drainage requires declared furnace and furnaceFeet positions.
 
 ### Command
 
@@ -294,7 +294,7 @@ Clear a prepared sealed volume from top to bottom. Replace liquids within each l
 | `egress.x` | `integer` | `Required` |  |
 | `egress.y` | `integer` | `Required` |  |
 | `egress.z` | `integer` | `Required` |  |
-| `depots` | `array` | `Required` | minItems: 1; maxItems: 8 |
+| `depots` | `array` | `[]` | minItems: 0; maxItems: 8 |
 | `depots[].x` | `integer` | `Required` |  |
 | `depots[].y` | `integer` | `Required` |  |
 | `depots[].z` | `integer` | `Required` |  |

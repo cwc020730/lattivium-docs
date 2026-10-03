@@ -14,7 +14,7 @@ The flow mines from top to bottom, verifies collection and deposits cargo when c
 
 ### Layered clearing
 
-`ExcavateLayeredAreaFlow` clears a prepared, isolated volume. On each layer, the Bot replaces internal fluid with fill material, mines the blocks, and verifies that the entire layer is dry air before descending. `egress` is an access cell inside the bottom layer. Existing empty shulker boxes receive the products; `additionalDepots` can specify supported spare positions.
+`ExcavateLayeredAreaFlow` clears a prepared, isolated volume. On each layer, the Bot replaces internal fluid with fill material, mines the blocks, and verifies that the entire layer is dry air before descending. `egress` is an access cell inside the bottom layer. `depots` declares existing empty shulker boxes; `additionalDepots` declares supported free positions for product storage. The depot list may be empty, but at least one storage position is required across the two lists. The Bot places an empty box when storage is needed. With `autonomousSupplies`, it obtains missing boxes through the shared supply flow, so every depot need not be placed in advance.
 
 When liquid remains below the current layer, filler placement requires stable footing above that layer. Placement extends from existing support into adjacent fluid cells, gradually creating a walkable floor. Both placement navigation and the actual interaction check the footing height and grounded state, keeping the Bot on the completed layer before mining begins.
 
