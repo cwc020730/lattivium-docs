@@ -95,6 +95,8 @@ The plan needs a supported starting deck, a solid foundation beneath every colum
 
 When submerged seagrass obstructs the view of solid seabed, the Bot removes it from above before mining downward. Thin aquatic cover that disappears naturally is recorded in the receipt; every required solid block of original seabed must still be mined.
 
+Column preflight and mining share `AquaticVegetation.supports` for seagrass, tall seagrass and kelp. Both halves of tall seagrass must lie within the declared mining area; a lower half that disappears after harvesting the upper half is recorded separately. Kelp in the adjacent swimming lane does not become authorized for removal merely because it blocks a side ray. The Bot works from directly above the target column and retains the native ray and underwater stance checks.
+
 When box access or another operation moves the Bot away, shared submerged mining first navigates back to the declared water column. Entry retains navigation's cumulative budget; actual entry time does not consume the subsequent dive and mining allowance. Water steering still checks movement progress, breathing, fluids and target reach. The enclosing construction deadline remains effective, and failure does not automatically extend the whole test.
 
 When returning from a flooded pocket beneath the seabed, `SwimToDeckFlow` first calls `SwimToOpenSurfaceFlow` to find a breathable column through loaded, passable connected water. It then swims to the declared deck and boards it. Progress includes both horizontal movement and rising height. If no safe water route exists, the return fails without excavating the roof or adding footholds.
