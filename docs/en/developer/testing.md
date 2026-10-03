@@ -71,6 +71,8 @@ Declare underwater breathing or fire resistance in the scene's `effects` list, w
 
 A dry `construction-survey` request declares `entry`, `arguments` and `preferredStart`. This read-only stage returns the layout to freeze. The common `construction` fixture then submits the same public command and checks scaffolds, road clearance, floor, containers and the station-to-bottom round trip. An observation-budget refusal is diagnostic, not proof that the terrain has no solution. Synthetic `seed` only prepares terrain; execution still needs its complete frozen layout.
 
+For integrated perimeter scenes, `start` is the preferred survey search position and may be in water. Before equipping the Bot or submitting its task, the common fixture rechecks the frozen layout and places the actor at the native survey's safe `start`. That point must remain inside the observed scene. Receipts retain both `preferredStart` and the resolved `initialStart`; the construction coordinates do not move. Explicit dry-site and prepared-layer starts retain their existing contracts.
+
 ### Fixed-size complete site execution
 
 `ExcavateSiteTask` shares read-only observation, frozen layouts, execution and checkpoint replay. Its public entry has a fixed 16×16×5 excavation. Acceptance checks all 1,280 dry-air cells, bottom supports, scaffolds, roads, workstation containers and the Bot's return, rather than trusting task success alone. Partially precleared small scenes verify the lifecycle and do not replace full-solid or real-terrain acceptance.
