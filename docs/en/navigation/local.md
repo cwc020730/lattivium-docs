@@ -48,6 +48,8 @@ Ladders and scaffolding support ascent and controlled descent. The Bot can enter
 
 `SwimToDeckFlow` boards an existing platform: recover to breathable surface water, approach the exit, and succeed only with a native grounded stance on a dry, fully supported deck. It neither builds a platform nor clears obstacles. Its deadline accounts for horizontal starting distance and required ascent, with a minimum of 400 ticks; swimming from a distant shore is not treated as a short jump beside the deck.
 
+Local navigation reuses `SwimToOpenSurfaceFlow` for a submerged departure, moving within connected water to a position where the Bot can surface before path search begins. An open block column above the feet does not prove that an off-center body clears a neighboring platform: rising in place can remain trapped beneath its edge. Surface recovery adjusts horizontal position while retaining connected-water, breathable-space and existing time-budget checks.
+
 ## Search policy
 
 Default `SearchPolicy` allows at most 8192 expansions per A* search session and 16 per tick, with additional flight, drop, partial-path and minimum-height controls. Execution progresses cooperatively across ticks with time budgets.
