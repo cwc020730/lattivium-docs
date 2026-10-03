@@ -53,6 +53,13 @@ python scripts/testctl.py artifacts prune --keep-days 7
 
 长测试记录实际开始时间、预计耗时和进展信号，约 10 分钟复盘；完成或失败后优先核验、接续主线。继续使用 `testctl` 的结果和运行标识，避免重复启动测试或频繁读取完整 trace。
 
+```powershell
+python scripts/testctl.py run status <run-id>
+python scripts/testctl.py run wait <run-id> --timeout 60
+```
+
+`RUNNING` 表示尝试尚未结束，不等于某个施工步骤已完成。观察时结合实际任务、Bot 位置和已完成操作的记录；清理道路净空的挖掘与目标区域逐层挖掘应分别统计。运行中的方块抽查用于判断进展，最终仍需停服后对完整冻结区域和来源库存进行独立验收。
+
 ## 施工场景
 
 `construction` 场景复用同一服务端生命周期，通过公开的 `ExcavateLayeredAreaFlow`、`PreparePerimeterInfrastructureFlow` 或 `PrepareAndExcavatePerimeterFlow` 指令执行。冻结输入声明启动物资、原始地形、允许变化范围和最终方块；围墙方案还包含原生规划出的井、道路和工作站布局。
@@ -96,3 +103,7 @@ python scripts/testctl.py artifacts prune --keep-days 7
 ### 原生测试时钟
 
 原生 GameTest 默认尽快运行。等待异步区块或 POI 读取的场景可设置 `parameters: {"ticksPerSecond":20}`，按普通游戏速率推进，同时保留原断言与 tick 上限。这仅影响测试服务器；省略或设为 `0` 时仍快速运行，允许的正整数范围为 `1–200`。
+
+真实施工场景使用另一项参数 `parameters.tickRate`，默认 `20`，允许 `1–200`，不接受 `0`。加速游戏 tick 不会同比加速数据库规划、区块读取等异步工作，却会更快消耗按 tick 计的操作预算。因此冷启动自主补给先使用 `20`；确认取货和返回已完成后，纯物理施工才适合加速。途中再次进入冷异步补给时，应重新检查速率。
+
+测试框架目前只按场景参数设置起始速率，不会自动识别子流程并切换。额外调整需要保留服务端回执和实际发生阶段，不改变尝试的原始时间上限。报告区分真实耗时、游戏 tick 和速率；不能把加速后的分钟数当作普通游戏速率下的施工耗时。

@@ -53,6 +53,13 @@ Use waiting time for documentation corrections, reviews of shared responsibiliti
 
 Record the test's actual start time, estimated duration and progress signals, and review progress about every 10 minutes. Prioritize verification and continuation when it completes or fails. Keep using `testctl` results and run identities; avoid duplicate attempts or frequent full-trace reads.
 
+```powershell
+python scripts/testctl.py run status <run-id>
+python scripts/testctl.py run wait <run-id> --timeout 60
+```
+
+`RUNNING` means the attempt has not ended; it does not establish that a construction step is complete. Cross-check the actual task, Bot position and completed-operation receipts. Count road-clearance excavation separately from the target area's layers. Live block samples establish progress; final acceptance still independently audits the complete frozen region and source inventories after normal server shutdown.
+
 ## Construction scenes
 
 The `construction` fixture shares the same server lifecycle and submits public `ExcavateLayeredAreaFlow`, `PreparePerimeterInfrastructureFlow` or `PrepareAndExcavatePerimeterFlow` commands. Frozen input declares starter stock, original terrain, permitted changes and final blocks. Perimeter scenes also freeze the native shaft, road and workstation plan.
@@ -96,3 +103,7 @@ After startup, the native Atlas observer verifies source admission instead of tr
 ### Native test clock
 
 Native GameTests run unpaced by default. A case waiting for asynchronous chunk or POI reads can declare `parameters: {"ticksPerSecond":20}` to use the ordinary game rate while preserving its assertions and tick limits. This affects only the test server. Omitted values or `0` retain the fast loop; explicit positive integer rates range from `1` to `200`.
+
+Field construction scenes instead use `parameters.tickRate`, which defaults to `20`, accepts `1–200` and rejects `0`. Faster game ticks do not proportionally accelerate asynchronous database planning or chunk reads, but do spend tick-based operation budgets faster. Start cold autonomous acquisition at `20`; accelerate physical construction only after acquisition and return complete. Recheck the rate if another cold asynchronous supply operation begins.
+
+The framework currently sets the initial scene rate; it does not automatically recognize child flows and switch rates. Record server acknowledgements and the actual phase for additional adjustments, preserving the attempt's original time limit. Distinguish wall time, game ticks and rate in reports; accelerated minutes do not represent construction time at the ordinary game rate.

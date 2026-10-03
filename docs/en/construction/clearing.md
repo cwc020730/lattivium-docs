@@ -56,6 +56,8 @@ Permanent seals remain below the cleared volume; mining recovers temporary fill 
 
 With `excavationDrainageMode` set to `SPONGE_GRID_WHEN_AVAILABLE`, continuous construction first builds one-block-high partitions on suitable wet layers. A partition every four blocks divides the interior into chambers no larger than 3×3. The Bot places a sponge in a chamber, retrieves the wet sponge, dries it with a furnace and fuel at the workstation, and continues clearing. The layer's mining pass recovers the grid and other temporary fill blocks.
 
+Partitions use the same placement order as ordinary liquid filling, growing outward from the layer's dry entrance. Starting at a distant cell in fixed row order can require crossing untreated deep water to reach a placement stance. Growing from the entrance forms standing surfaces progressively; each placement still requires the existing stance and reachability checks.
+
 This top-down view shows two rows of chambers. `#` marks a partition, `·` a chamber cell, and `S` one possible sponge position. The actual position depends on the water and reachable placement poses.
 
 ```text
@@ -124,6 +126,8 @@ Each layer retains its final footing near the shaft. Shared navigation reaches t
 Deep-water filling grows a dry working floor outward from the anchor near the shaft. Mining removes that floor from the far end back toward the shaft. This avoids approaching an unsupported distant corner when the upper wall rim is beyond placement reach. Filling reuses platform navigation, centering and supported edge alignment. A swimming Bot may first recover to dry support; actual placement still requires grounded, dry feet above the active layer so the fill cannot trap it underneath.
 
 With a prepared perimeter, shaft and workstation, [`ExcavateLayeredAreaFlow`](../reference/flows#excavatelayeredareaflow) runs the excavation phase independently. It uses the same supply and drainage implementation as complete construction: `mode` defaults to `REAL` and `drainageMode` to `SOLID_FILL`. Sponge-grid mode requires explicit workstation `furnace` and adjacent `furnaceFeet` positions. Existing output boxes must be empty; preserve occupied boxes outside this operation's output list.
+
+`furnace` is a temporary placement cell: it starts as air, has a reliable floor, and must satisfy the surrounding safety checks. After drying a sponge, the Bot mines and recovers its carried furnace, so the cell returns to air at verification. `furnaceFeet` is the adjacent standing cell.
 
 `autonomousSupplies` defaults to `false`, using finite construction materials carried by the Bot. When enabled, shared material demands, Atlas source planning, acquisition and crafting obtain sand, white concrete, scaffolding, fill material and product-storage shulker boxes. Enabling bottom sealing adds its fill budget to the material demand. Initial fill stock covers the maximum demand of one layer. Between layers, construction checks carried stock, replenishes missing materials through the shared acquisition flow and returns to its work position. Sponge mode also prepares a sponge, furnace and per-layer drying fuel. Front and rear storage rows keep the workstation aisles and supply chests accessible; extra product boxes are acquired and placed when needed. For a solid 32³ volume, at least 6 initial output boxes provide up to 24 product-box positions. Prepare tools and travel equipment before construction. See the [Flow reference](../reference/flows#prepareandexcavateperimeterflow) for parameters.
 
