@@ -45,6 +45,8 @@ If all batches fit the player's 2×2 grid, it uses `ExecuteProductionFlow`. Othe
 
 Existing usable tables can be accessed. Temporary tables must be prepared, placed and recovered. `PrepareCraftingToolFlow` obtains required tool materials through shared sources and bounded production planning. `CraftBatchFlow` runs native menu interactions for a recipe batch.
 
+Packed ingredients or insufficient loose capacity use the shared `EnsureInventoryReadyFlow`. Missing transport boxes use common acquisition, followed by access to the original crafting table. The batch reserves an active inventory or table-access child's declared execution window; completed recovery episodes retain only their actual elapsed time. A short recipe therefore does not truncate box-acquisition travel to a few seconds. The existing 25-minute batch/production caps and any shorter enclosing deadline still apply. Retries retain elapsed costs and do not weaken safe flight landing reserves.
+
 Completion relies on observed products and consumed ingredients. An unrecovered temporary table, unsettled menu items or inventory discrepancies retain recovery obligations.
 
 ## MaterialLedger

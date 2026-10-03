@@ -32,7 +32,7 @@ Material acquisition / business execution scope
 
 Each scope retains its start tick and limit. Parent time continues advancing while a child runs. A new child creates a child scope; the existing parent retains its consumed time.
 
-`ExecutionScope.remainingActiveTicks()` uses the earliest deadline in the synchronous call chain. Area approach uses it to decide when departure must stop to reserve return time.
+`ExecutionScope.remainingActiveTicks()` uses the earliest deadline in the synchronous call chain. Area approach checks it before launching a flight to retain enough time for safe landing.
 
 If a flight still has 5000 ticks available but its source parent has 1000, the operation remains constrained by the parent. Inspect the failed scope, its active child and consumed time together.
 
