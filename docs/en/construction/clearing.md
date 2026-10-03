@@ -56,7 +56,7 @@ Permanent seals remain below the cleared volume; mining recovers temporary fill 
 
 With `excavationDrainageMode` set to `SPONGE_GRID_WHEN_AVAILABLE`, continuous construction first builds one-block-high partitions on suitable wet layers. A partition every four blocks divides the interior into chambers no larger than 3×3. The Bot places a sponge in a chamber, retrieves the wet sponge, dries it with a furnace and fuel at the workstation, and continues clearing. The layer's mining pass recovers the grid and other temporary fill blocks.
 
-Partitions use the same placement order as ordinary liquid filling, growing outward from the layer's dry entrance. Starting at a distant cell in fixed row order can require crossing untreated deep water to reach a placement stance. Growing from the entrance forms standing surfaces progressively; each placement still requires the existing stance and reachability checks.
+The grid grows outward from the layer's dry access cell. Candidate cells must first have a neighboring block that provides placement support; distance to the access cell then determines their order. At a corner, this fills the connecting cell before selecting a closer water cell with no support on any face. Selection reuses the common placement-support check; navigation, native clicking and a dry working stance still require their own validation.
 
 This top-down view shows two rows of chambers. `#` marks a partition, `·` a chamber cell, and `S` one possible sponge position. The actual position depends on the water and reachable placement poses.
 
