@@ -141,6 +141,8 @@ Exhaustion means the work did not complete within its allowance. Source replacem
 
 Most values above come from class defaults and constants. Internal callers can provide `SearchPolicy` or shared budget objects. Public command and server configuration fields are listed in [execution entries](../reference/executables) and [configuration](../reference/config).
 
+At creation, `SwimToDeckFlow` measures required ascent D from the current feet position and horizontal distance H to the deck center. Its local total deadline is `max(400, 200 + 20 × ceil(D) + 40 × ceil(H))` ticks, with D clamped to zero or above. Horizontal allowance accounts for conservative swimming speed; deck support, dry stance and collision checks remain unchanged. Parent deadlines still apply, and extra time does not make an obstructed route passable.
+
 The current interface has no single total-task-budget parameter. Local search policies, an individual Flow timeout and a test runner's wall-time limit affect different layers.
 
 ## Progress during construction resupply
