@@ -73,6 +73,10 @@ Transport preparation may acquire empty boxes or other supplies, so loading incl
 
 It runs `AtlasSupplyLoadFlow`, then `AcquireProductionFlow`. Fulfilled demand and settled inventory leave materials carried by the Bot. When a return target is supplied, reaching it is also required for success.
 
+Demand quantities are the amounts required to be held for this operation. In-memory demand planning credits eligible existing carried materials: direct items in L0/L1 and contents of owned L2 transport boxes. External sources or production inputs cover only the shortfall. Production materials still require native default components, and ledger reservations and box classification remain in effect. L3 external stock does not automatically count as carried inventory.
+
+Crediting packed materials does not make them directly usable. Placement and crafting unpack their current batch through shared inventory turnover. Source pickup receipts, initial carried allocation and final physical quantities are checked separately; existing materials must not become new pickup receipts or cause a duplicate full-demand collection.
+
 `returnTo` combines a dimension and Bot feet position for travel after acquisition. Delivery coordinates identify a container for item transfer. Acquisition planning includes the return leg in source cost and route admission. Delivery targets remain empty, so acquired material stays carried until the caller uses it.
 
 This is an internal reusable component. See [construction supplies](../construction/supplies) for construction demand and integration boundaries.
