@@ -2,6 +2,8 @@
 
 `scripts/testctl.py` is the common development test entry. It schedules native GameTests, navigation, material collection and construction scenes, retaining commands, runtime versions, task identities and acceptance evidence for each attempt. Tests do not require additional Minecraft test commands.
 
+Before adding a native fixture, check absolute coordinates and cleanup bounds of other fixtures in its group: GameTests share a world, so overlapping pools or platforms can be overwritten before another Bot executes. Configuration and old drops may persist in that world. A short reproduction should explicitly establish relevant settings and framework prerequisites, such as food and transport headroom, inside its own footprint. Component success with those resources cannot replace a field test of autonomous acquisition from starter equipment alone.
+
 ## Cases and attempts
 
 Inspect the case and environment before starting an independent attempt. `run wait` observes completion without extending the execution budget.
