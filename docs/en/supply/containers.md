@@ -55,7 +55,9 @@ For a demand of 10 items from a box holding 64:
 
 Return checks cover the original slot, box metadata and remainder. Lost boxes, replaced containers or failed return retain an obligation even after material extraction, requiring recovery or an explicit failure report.
 
-Source-preserving debug uses an accounted clone, extracts items and recovers that clone while preserving source stock. See [execution modes](./delivery#execution-modes).
+Source-preserving debug verifies the original source box and creates a uniquely tagged clone, leaving the original in its source. The Bot still physically places the clone, extracts the requested quantity, breaks it and confirms recovery. It then removes the verified clone with its remaining contents. Acquired items remain with the Bot for subsequent physical construction. See [execution modes](./delivery#execution-modes).
+
+In a trace, the clone's `Take exact borrowed-box contents` child reports `REAL` because it transfers physical items from the placed clone. Its parent `BorrowSourceShulkerFlow` records the `debug_clone_source_box` policy and reports `SOURCE_PRESERVING_DEBUG` in its receipt. A child's mode alone does not establish consumption of the original warehouse. Acceptance must still compare original source inventories and reconcile clone recovery and outstanding obligations.
 
 ## AccessShulkerStagingFlow
 
