@@ -124,6 +124,8 @@ The entry returns a task ID. `demand` specifies an owned direct-use batch; `inco
 
 ## Temporary storage and delivery
 
+Packing across ticks retains temporary ownership of the placed box. Transfers and recovery verify the dimension, Bot and original block entity. Replacing it with the same kind of shulker box does not authorize writing to or breaking the replacement. Releasing the observation token does not settle an outstanding box recovery obligation after failure or cancellation.
+
 L3 holds the Bot's external stock. Delivery containers belong to a separate delivery system; each task can declare one or more.
 
 | Operation | Bot ownership | Purposes and reservations | Delivered quantity |
@@ -158,6 +160,8 @@ The current operation first settles active flight, item use, container menus and
 ```
 
 The response includes `inventories.L0` through `inventories.L3`, `layout`, `layoutReady`, `activeDeliveryContainers` and active `requirements`. Each requirement includes both stock levels, physical and available quantities, reservations and deficits. Task items temporarily held in working slots count as L1 according to their actual purpose.
+
+L3 reports count both physical halves of a double chest once, including when both aliases are registered. Loaded halves must match chest block, facing and complementary LEFT/RIGHT states; an unrelated neighbor is excluded. Unloaded claimed halves and unexpanded loot inventories remain unknown, giving a PARTIAL observation without loading chunks or generating loot. Source exclusions use a conservative protection footprint, separate from the stock count.
 
 `inventoryReservedSlots`, `inventoryDirectSlots` and `inventoryBoxSlots` configure placement. All 36 main-inventory slots must be assigned once. At least two working slots are required, including one hotbar slot.
 
