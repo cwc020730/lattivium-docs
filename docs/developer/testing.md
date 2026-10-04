@@ -70,6 +70,8 @@ python scripts/testctl.py artifacts prune --keep-days 7
 新的证据文件使用紧凑 UTF-8 JSON，CLI 输出仍保留缩进。该方式只省去格式空白，完整保留字段、trace、数量与组件；旧的缩进文件仍可读取，已保存的失败报告和签名不重写。证据总量受环境的 `maxArtifactBytes` 限制，清理或调整预算前应检查实际占用、保留依赖和磁盘余量。
 
 新生成且不可改写的大记录（至少 1 MiB）使用 gzip level 9 无损压缩，仍沿用 `terminal.json`、`preflight.json` 等原文件名。开发脚本通过 `testing.state.read` 读取，由同一入口识别压缩格式并返回完整 JSON；小记录和可变状态仍为普通 JSON。文件损坏、截断或解压后超过 2 GiB 时拒绝读取。原子写入、证据签名和配额继续针对这一份实际文件，不增加旁路存储，也不重压缩历史证据。
+同一次测试阶段的 `physical-after.json` 可引用完整 `preflight.json`，`failure-state.json` 可引用已有完整 `terminal.json`，只保存较小的无损差异。`testing.state.read` 仍还原完整值，并核验基准物理 SHA256 和重建值 SHA256；两份文件由原阶段一起签名、保留，复制时也须一起复制。引用只允许同目录完整基准，不允许外部路径、链接、自引用或差异链；大小限制、数字类型（包括正负零）、数组顺序、删除和 null 都保留，差异过大退回原完整格式。历史文件不修改，也不增加证据配额。
+
 
 ## 状态查询暂时不可用
 
