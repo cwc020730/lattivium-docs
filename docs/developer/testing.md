@@ -157,3 +157,20 @@ python scripts/testctl.py --env dev run start construction-bottom
 测试框架目前只按场景参数设置起始速率，不会自动识别子流程并切换。额外调整需要保留服务端回执和实际发生阶段，不改变尝试的原始时间上限。报告区分真实耗时、游戏 tick 和速率；不能把加速后的分钟数当作普通游戏速率下的施工耗时。
 
 长施工可能在层间再次旅行补给。无法可靠跟踪这些阶段时，自主补给场景应全程保持 `20`，而不是在首次取货结束后一直加速。历史 trace 中仍标为 `STARTED` 的节点可能已经结束，不能单独作为当前子流程或调速依据。
+
+
+### 共享原生区块租约
+
+原生夹具使用同一 `FieldSiteChunkPins` 管理实际 ServerLevel/ChunkPos。重叠租约
+全部释放后，才解除夹具最初创建的强加载票；进入前已有外部票继续保留，重复
+清理不会减少别人的引用。合成夹具和 RecordedGeometry 已接入同一入口，启动
+失败沿同一释放路径，不再各自维护计数或裸解除票。
+
+```powershell
+python scripts/testctl.py --env native run start fixture-chunk-ownership
+python scripts/testctl.py run verify <run-id>
+```
+
+该门禁包含6项所有权控制、33项既有合成回归及Java check。它验证测试资源
+生命周期；其余旧夹具与Python多actor资源清理仍在迁移，不能据此宣布全部夹具
+已经统一。真实施工的世界、来源、工具与盒子审计仍独立执行。

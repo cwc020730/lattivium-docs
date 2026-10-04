@@ -157,3 +157,24 @@ Field construction scenes instead use `parameters.tickRate`, which defaults to `
 The framework currently sets the initial scene rate; it does not automatically recognize child flows and switch rates. Record server acknowledgements and the actual phase for additional adjustments, preserving the attempt's original time limit. Distinguish wall time, game ticks and rate in reports; accelerated minutes do not represent construction time at the ordinary game rate.
 
 Long construction can travel for supplies again between layers. If those transitions cannot be tracked reliably, keep the entire autonomous-supply scene at `20` rather than leaving it accelerated after its first collection. Historical trace nodes still marked `STARTED` may already have ended; they alone cannot establish the active child operation or justify a rate change.
+
+
+### Shared native chunk leases
+
+Native fixtures share `FieldSiteChunkPins`, keyed by the actual ServerLevel and
+ChunkPos. Only the last overlapping owner releases a ticket originally created
+by fixtures. Pre-existing external tickets survive, and repeated cleanup cannot
+release another owner's reference. Crafting fixtures and RecordedGeometry use
+this owner, including startup failure cleanup, instead of private counters or
+unconditional ticket removal.
+
+```powershell
+python scripts/testctl.py --env native run start fixture-chunk-ownership
+python scripts/testctl.py run verify <run-id>
+```
+
+The gate includes six ownership controls, 33 existing crafting regressions and
+Java check. This verifies test-resource lifecycle. Other older fixtures and
+Python multi-actor leases still need migration; it does not establish complete
+fixture unification. Field-state, source-inventory, tool and box audits remain
+separate obligations.
