@@ -47,6 +47,10 @@ python scripts/testctl.py artifacts prune --keep-days 7
 
 Method-body changes can use the existing HotSwap support. Signature, field and entry-index changes require restart. Do not edit Java, test-framework sources or build outputs, or restore worlds during frozen acceptance runs. After controller interruption, reconcile its owned tasks, Bots, measurement windows and chunk tickets before starting another attempt. Cleanup previews do not delete worlds or protected baselines.
 
+After a computer or JVM restart, the old execution stack and in-memory measurement window are gone. `run recover` compares recorded runtime identities and records a departed JVM's window as interrupted without fabricating timing samples. A surviving original JVM must still stop its exact native phase. Missing runtime identity refuses cleanup, and the original interrupted report and failed recovery receipts remain intact.
+
+Cleanup neither rolls back construction nor resumes the old task. Replay a before-operation checkpoint when available. Without one, first stop the server and reconcile saved blocks, facilities, Bot equipment, packed components and all source inventories. Freeze that actual scene and continue the unfinished part through an existing component entry. Keep the exact saved provisions and cumulative failure/time costs; component continuation does not establish fresh autonomous whole-site acceptance.
+
 New evidence files use compact UTF-8 JSON; CLI output remains indented. This removes formatting whitespace while preserving all fields, traces, counts and components. Historical indented files remain readable, and saved failure reports and signatures are not rewritten. The environment's `maxArtifactBytes` bounds retained evidence. Inspect actual usage, retention dependencies and free disk space before pruning or adjusting this budget.
 
 ## Work while long tests run
@@ -110,6 +114,8 @@ Real-terrain acceptance sets `withoutSaturation: true` at the scene's top level.
 Complete construction scenes can enable `autonomousSupplies: true` and declare `stockSources`, each with a `dimension` and `position`. These are existing storage locations, not inventory grants. The common material-acquisition flow performs withdrawals. Sources must be outside the authorized construction footprint, with their neighborhoods included in the environment's checkpoint regions.
 
 After startup, the native Atlas observer verifies source admission instead of trusting classification from a previous server process. Offline before/after audits decode all indexed physical inventory NBT and compare contents and components. Only declared workstation and output containers may change; protection metadata changes are reported separately. A newly discovered source outside the construction footprint needs a surveyed, frozen inventory baseline before acceptance.
+
+`stockSources` declares fixture preloads and admission checks, not the acquisition flow's exclusive source list. A location still classified `UNKNOWN` after cold startup is not admitted. Preloads may use currently verified locations while retaining rejected locations and reasons; the all-indexed-container inventory audit still covers them. Missing neighbor information remains an Atlas issue to investigate, not evidence that stock is absent or permission to force admission by editing the index.
 
 ### Native test clock
 
