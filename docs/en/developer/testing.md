@@ -69,6 +69,8 @@ Cleanup neither rolls back construction nor resumes the old task. Replay a befor
 
 New evidence files use compact UTF-8 JSON; CLI output remains indented. This removes formatting whitespace while preserving all fields, traces, counts and components. Historical indented files remain readable, and saved failure reports and signatures are not rewritten. The environment's `maxArtifactBytes` bounds retained evidence. Inspect actual usage, retention dependencies and free disk space before pruning or adjusting this budget.
 
+New immutable bulk records of at least 1 MiB use lossless gzip level 1 while retaining names such as `terminal.json` and `preflight.json`. Development scripts read them through `testing.state.read`, which detects the encoding and returns the complete JSON value. Small and mutable records remain plain JSON. Corrupt or truncated files and decoded records over 2 GiB are refused. Atomic publication, evidence signatures and quota accounting still cover the same physical file; no sidecar store or historical recompression is introduced.
+
 ## Temporary state observation gaps
 
 Polling uses a filtered Bot summary. It reads the full exact event at an ownership, terminal or resource-wait transition. When the server thread exceeds the request scheduling deadline, the host returns `503 / SERVER_THREAD_TIMEOUT`: this observation is unavailable; it is not a construction-task failure.
