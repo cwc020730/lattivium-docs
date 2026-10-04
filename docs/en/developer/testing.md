@@ -53,6 +53,21 @@ Cleanup neither rolls back construction nor resumes the old task. Replay a befor
 
 New evidence files use compact UTF-8 JSON; CLI output remains indented. This removes formatting whitespace while preserving all fields, traces, counts and components. Historical indented files remain readable, and saved failure reports and signatures are not rewritten. The environment's `maxArtifactBytes` bounds retained evidence. Inspect actual usage, retention dependencies and free disk space before pruning or adjusting this budget.
 
+## Temporary state observation gaps
+
+Polling uses a filtered Bot summary. It reads the full exact event at an ownership, terminal or resource-wait transition. When the server thread exceeds the request scheduling deadline, the host returns `503 / SERVER_THREAD_TIMEOUT`: this observation is unavailable; it is not a construction-task failure.
+
+The shared observation entry retries only this explicit read-only response within a window of at most ten seconds, retaining the original stage deadline and cancellation boundary. It records gaps and recovery in `state-observations.jsonl`; persistent unavailability stops the attempt with failure evidence. Other HTTP errors, lost connections, commands and measurement mutations are not retried. An observation failure never authorizes resubmitting a task.
+
+The short native case checks the actual HTTP timeout response and a healthy summary:
+
+```powershell
+python scripts/testctl.py --env native run start debug-observation
+python scripts/testctl.py run verify <run-id>
+```
+
+This component pass does not establish whole-site acceptance. Field verification still requires the exact task terminal and independent terrain, facility and inventory audits after normal shutdown.
+
 ## Work while long tests run
 
 Use waiting time for documentation corrections, reviews of shared responsibilities or small preparations for the next stage. Choose an independent task that can produce a result in roughly 5–10 minutes; record findings that still need validation and avoid unbounded repository-wide refactoring. Freeze the running Java, build outputs and world state. Verify independent changes separately rather than using an older candidate's pass as evidence for new code.
