@@ -178,3 +178,27 @@ Java check. This verifies test-resource lifecycle. Other older fixtures and
 Python multi-actor leases still need migration; it does not establish complete
 fixture unification. Field-state, source-inventory, tool and box audits remain
 separate obligations.
+
+### Water drops and receipt identity
+
+`STRICT` must reject an ordinary native drop that remains alive and uncollected.
+`BEST_EFFORT` can record its UUID, components, quantity and position within the
+existing recovery limits. Ordinary collection and water fallback share one
+completion predicate: sufficient inventory gain and no still-living bound native
+target. Picking up another matching entity cannot settle a target that remains.
+Water fallback still requires a physical return to the verified dry exit, with
+its existing air, distance, time and cancellation protections.
+
+```powershell
+python scripts/testctl.py --env native run start wet-drop-contracts
+python scripts/testctl.py run verify <run-id>
+```
+
+This gate covers 25 aquatic, 38 mining identity and six ordinary drop policy
+controls, plus Java check. Negative controls need explicit native identity and
+pickup conditions: placement below a platform alone cannot establish that an
+item is uncollectable. It can float, merge or be collected incidentally. Wait for
+native entity sections to load before cleaning ordinary remnants in an isolated
+reused fixture. Fixture limits must include the unchanged operation budget and
+preparation; they do not increase production limits. Component contracts do not
+replace actual sponge recovery/drying or complete field construction audits.
