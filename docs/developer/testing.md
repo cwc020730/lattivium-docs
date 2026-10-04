@@ -193,3 +193,18 @@ python scripts/testctl.py run verify <run-id>
 物品可能浮起、合并或被顺路拾到。持久测试地图中的实体加载应完成后再清理
 隔离夹具的普通残留。夹具 tick 上限须容纳操作原有预算和准备时间，不能借此
 扩大生产预算。这些是组件契约，不能替代真实湿地的海绵回收烘干及完整施工审计。
+
+
+### 短路线与挖掘成本对照
+
+```powershell
+python scripts/testctl.py --env native run start mining-navigation-cost
+python scripts/testctl.py run verify <run-id>
+```
+
+该门禁包含三臂原生合成实验、13项搜索预算/安全回归及Java check。三臂分别测
+直接安全挖掘、默认导航和显式禁飞导航，分开记录导航、对齐和原生挖掘；确认
+地形授权、装备、掉落回执及排队取消。额外反例验证近提示但地面无路的飞行回退，
+以及地面长绕行耗尽短路线探测后仍能返回完整路径并保留累计预算。
+
+它是组件成本对照，不是旧工地中途状态的精确重放，不构成完整自主施工验收。

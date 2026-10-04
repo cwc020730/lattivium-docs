@@ -202,3 +202,20 @@ native entity sections to load before cleaning ordinary remnants in an isolated
 reused fixture. Fixture limits must include the unchanged operation budget and
 preparation; they do not increase production limits. Component contracts do not
 replace actual sponge recovery/drying or complete field construction audits.
+
+
+### Short-route and mining cost controls
+
+```powershell
+python scripts/testctl.py --env native run start mining-navigation-cost
+python scripts/testctl.py run verify <run-id>
+```
+
+The gate includes a three-arm synthetic native experiment, 13 search-budget/safety regressions
+and Java check. The arms separate safe direct mining, default navigation and explicit ground
+navigation, reporting approach, alignment and native mining independently. They verify terrain
+authority, equipment, drop receipts and queued cancellation. Island and long-detour controls
+exercise full-graph fallback and cumulative search budgets after a bounded short-route probe.
+
+This is a component cost comparison, not an exact replay of an old partially excavated field
+or proof of a complete autonomous construction run.

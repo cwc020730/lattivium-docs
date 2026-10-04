@@ -51,6 +51,25 @@ A new A* session receives a fresh node allowance, for example after a partial pa
 
 A request allowing partial paths can return an executable prefix at the node limit and continue from its actual position. Navigation planning and movement ticks remain cumulative. Final success still requires the original arrival condition.
 
+### Bounded short-route probe
+
+A flight-enabled session starting on loaded dry support, with a goal hint or candidate within
+16 heuristic units, first tries a complete non-flight route in the same planner. It reuses the
+existing ground, climb, water, door and parkour edges and safety rules. The probe consumes at
+most 64 expansions or one quarter of the session allowance and accepts only complete goals
+with accumulated route cost at most 16. Hint distance and route cost are distinct measures.
+
+If no such complete route is found, the temporary frontier is cleared and the original flight
+landing discovery and full transport graph resume. Probe expansions and navigation planning
+ticks remain charged; a partial prefix cannot complete the probe. This prioritizes a short
+safe route, without promising the same minimum cost as searching the entire transport graph.
+Unknown terrain, minimum feet height and interaction conditions remain enforced. Requests
+without hints, distant requests and small node budgets retain their previous behavior.
+
+A synthetic native control reduced the same route from 116 to 44 ticks, with island and long
+detour fallbacks verified. Real construction throughput is measured separately; accelerated
+fixture wall time is not interchangeable with field time at 20 TPS.
+
 ## Cumulative local-navigation budgets
 
 `NavigationBudget` captures extra allowance from the initial horizontal distance `d` when `LocalNavigationFlow` is created:
