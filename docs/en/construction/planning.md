@@ -37,3 +37,5 @@ If the search budget yields no plan, report the reason and relevant coordinates.
 Assistance requests and completed infrastructure are reported separately.
 
 Dry sand columns admit open air above the terrain and removable surface vegetation. The Bot reaches the actual ground, mines downward, then pillars back with sand. The start deck uses the same column capability to reach the planned height. Internal unsupported cavities remain a bounded safety refusal.
+
+The same surface-cover owner handles two-block plants. Both halves must be loaded, match the same plant with opposite halves, and lie within the operation's authorized area. The pair is rechecked before mining starts during the approach; both native removal effects must be confirmed before the receipt records them. Outside, mismatched or unstable foundations remain refusals. Dry-column admission and execution use the same classification without treating paired plants as independently removable blocks.
