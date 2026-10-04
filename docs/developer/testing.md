@@ -20,6 +20,22 @@ python scripts/testctl.py report show <run-id>
 
 原生测试使用 `native` 环境。真实场地使用显式登记的服务端环境和冻结案例文件；运行前核验地图、端口、资源上限与快照范围。场景的预期结果必须独立声明，任务返回成功本身不等于验收通过。
 
+### 拾取耗时对照
+
+`dry-pickup-comparison` 在同一块记录地形上顺序执行两个 8×8 干层对照，比较逐次与既有批量拾取。`layered-dry-pickup-comparison` 另验证真实逐层调用方、严格/含水/海绵/未知/大区域的选择、取消和既有恢复契约，最后运行 Java 检查。
+
+```powershell
+python scripts/testctl.py --env native run start dry-pickup-comparison --timeout 360
+python scripts/testctl.py --env native run start layered-dry-pickup-comparison --timeout 600
+python scripts/testctl.py --env native run verify <run-id>
+```
+
+两条命令分开使用，等前一次结束后再启动。夹具使用相同工具、鞘翅、食物、已补给烟花与有限运输余量；先核对顶层净空、容器保护距离和补给水位，再开始计时。保留困难难度与真实饥饿，关闭刷怪及随机方块更新以固定对照地形。结束核验实际空气、物品余额、工具/盒/装备/烟花组件、来源库存和范围外状态。
+
+数量核验同时检查入箱回执和原生的“箱内＋随身＋地上”总量。报告中的 `Abandoned` 是历史放弃数量，`Carried` 与 `Uncollected` 是终态随身和地上数量；后续顺路拾回可以使三者不同。不要把历史放弃直接当作永久损失，也不要用它忽略无来源的额外物品。
+
+这是已补给后的组件测试，不能代替开局仅给三组烟花的自主获取验收。单次顺序对照仍可能受缓存与地形差异影响；报告同时列出两种耗时和掉落损失，不只报告速度。夹具准备失败的耗时保留在开发成本中，不归为被测操作耗时。若同一流程在现场预计仍超出原预算，先测一层的实际吞吐，不直接重跑整轮。
+
 ## 检查点与重跑
 
 在破坏性操作之前暂停并保存检查点。失败后保留原报告，修复代码，再创建新的重跑尝试。

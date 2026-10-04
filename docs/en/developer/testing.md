@@ -20,6 +20,22 @@ python scripts/testctl.py report show <run-id>
 
 Native tests use the `native` environment. Field scenes use explicitly enrolled server environments and frozen case files. Admission checks the world, ports, resource limits and snapshot footprint. Independently declare expected physical results: task success alone is insufficient acceptance evidence.
 
+### Pickup timing controls
+
+`dry-pickup-comparison` sequentially runs immediate and existing batched pickup on the same recorded 8×8 dry slice. `layered-dry-pickup-comparison` also checks the actual layered caller, strict/wet/sponge/unknown/large-area selection, cancellation and existing resume contracts, followed by Java checks.
+
+```powershell
+python scripts/testctl.py --env native run start dry-pickup-comparison --timeout 360
+python scripts/testctl.py --env native run start layered-dry-pickup-comparison --timeout 600
+python scripts/testctl.py --env native run verify <run-id>
+```
+
+Use these commands separately, waiting for the previous run to finish. Both arms receive identical tools, elytra, food, replenished fireworks and finite transport headroom. Verify cleared overhead geometry, container protection spacing and supply waterlines before timing. Keep hard difficulty and real hunger; disable spawning and random block ticks to hold the comparison terrain fixed. Final checks cover physical air, item balances, tool/box/equipment/fuel components, source inventory and outside states.
+
+Quantity checks cover both depot receipts and the native total of stored, carried and ground items. `Abandoned` records historical disposition; `Carried` and `Uncollected` record final inventory and ground quantities. Later incidental pickup can make these differ. Do not treat historical abandonment as permanent loss or use it to overlook unexplained extra items.
+
+This supplied component fixture does not establish autonomous startup with only three rocket stacks. A single ordered pair can still reflect cache and terrain effects. Report both durations and ordinary drop losses. Retain failed setup time as development cost rather than attributing it to the operation being measured. If projected field work still exceeds its original budget, measure one actual layer before another full run.
+
 ## Checkpoints and replay
 
 Pause and save a checkpoint before a destructive operation. Preserve the failed report, repair the code and create a new replay attempt.

@@ -34,6 +34,18 @@ Strict recovery requires the corresponding drop obligations to be settled. Best-
 
 Tools, borrowed shulker boxes, sponges and delivery cargo retain their own return or delivery obligations. The owning task selects the recovery policy.
 
+### Batching ordinary dry-layer drops
+
+Layered excavation delegates recovery policy to the same `ExcavateAreaFlow`. BEST_EFFORT work reuses its existing batch collector for loaded, fluid-free ordinary layers within the established size limit. Strict, wet, sponge-bearing, unloaded and oversized layers keep immediate pickup; 32×32 layers currently do not enable this batch mode. Explicit single-area entries retain their chosen pickup mode.
+
+A batch records native drop identities and the initial inventory. It flushes at 128 pending stacks, 1200 ticks (about 60 seconds at 20 TPS), a food boundary, fewer than four empty inventory slots, or excavation completion. It uses the same `CollectMiningDropsFlow`, recovery budgets, cancellation checkpoints and depot storage.
+
+Fewer individual pickups can increase ordinary drop losses. Each batch still records recovered and abandoned quantities. Tools, carried-box counts/components, supply stock, loans and delivery obligations retain separate checks. Measure retained products alongside speed; a short comparison does not establish whole-site throughput.
+
+Abandonment records the decision to stop pursuing a drop at that time. Later movement may pick it up, and shared inventory observation still includes it. Report historical abandonment, final ground items and final carried items separately; abandonment does not establish permanent loss.
+
+The 2026-10-04 layered 64-cell comparison at 20 TPS measured 100.18 seconds for immediate pickup and 62.78 seconds for batching, with physical clearance and protected stock verified. Batching recorded 23 abandoned items; six were carried and 17 remained on the ground at completion. This small component test does not establish autonomous whole-site supply, sponge drying, bottom sealing or return.
+
 ### Product storage
 
 Excavation products can reside in L1 or in owned L2 transport boxes. `StoreExcavationCargoFlow` uses `EnsureInventoryReadyFlow` to prepare the next batch in L1, then deposits exact quantities through `TransferItemsFlow`. Each batch retains owned transport boxes and updates outstanding cargo from confirmed transfers.
