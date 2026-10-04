@@ -158,6 +158,14 @@ The framework currently sets the initial scene rate; it does not automatically r
 
 Long construction can travel for supplies again between layers. If those transitions cannot be tracked reliably, keep the entire autonomous-supply scene at `20` rather than leaving it accelerated after its first collection. Historical trace nodes still marked `STARTED` may already have ended; they alone cannot establish the active child operation or justify a rate change.
 
+### Reading timing evidence
+
+Controller wall time, task operation time and trace game ticks have different measurement boundaries. Convert ticks with `ticks / 20` only when that entire interval is confirmed to use `20 TPS`. This includes physical actions, waiting and scheduling; it is not method CPU time.
+
+Parent intervals already include their children. Use interval unions or explicit mutually exclusive accounting for navigation, flight, mining and inventory operations; do not add parent and child durations. Count actual `FLOW` nodes rather than counting their `CONDITION` nodes again. Missing terminal records are measurement gaps. Finished child durations do not establish a complete parent duration.
+
+Paired speed comparisons need the same terrain, workload, equipment, execution mode and supply obligations. Different layers or retained continuations can provide throughput references, but are not controlled paired experiments. Native task success still needs physical, inventory and cleanup verification. Retain failed reports; independently gathered component evidence cannot rewrite a whole-attempt conclusion.
+
 
 ### Shared native chunk leases
 
