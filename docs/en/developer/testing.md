@@ -77,6 +77,8 @@ Within one stage, `physical-after.json` may reference its complete `preflight.js
 
 Polling uses a filtered Bot summary. It reads the full exact event at an ownership, terminal or resource-wait transition. When the server thread exceeds the request scheduling deadline, the host returns `503 / SERVER_THREAD_TIMEOUT`: this observation is unavailable; it is not a construction-task failure.
 
+Summary and full responses use one canonical `bots` collection. The obsolete `actors` mirror is removed to avoid serializing the entire task trace twice. Full responses still retain all traces, tasks and cleanup results, with unchanged physical observation coverage. The separate fixture-recovery journal's `actors` schema remains intact, and historical signed snapshots are not rewritten.
+
 The shared observation entry retries only this explicit read-only response within a window of at most ten seconds, retaining the original stage deadline and cancellation boundary. It records gaps and recovery in `state-observations.jsonl`; persistent unavailability stops the attempt with failure evidence. Other HTTP errors, lost connections, commands and measurement mutations are not retried. An observation failure never authorizes resubmitting a task.
 
 The short native case checks the actual HTTP timeout response and a healthy summary:
