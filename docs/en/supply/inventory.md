@@ -140,6 +140,10 @@ A mining approach or alignment child may replenish fuel and temporarily place an
 
 For a two-block plant, pending approach checks retain loaded authority and matching, complementary halves. The same mining target performs full safety checks around both affected halves, and the completion receipt requires both cells to be physically empty. Failure and cancellation retain the existing child-cleanup channel; an unreturned box remains a blocking obligation.
 
+Domain outcomes and cleanup outcomes are retained separately. `ExecutionScope.requireCleanCleanup()` is the common handoff check for Flows and Tasks that drive child operations directly. Failed box, menu or input cleanup retains its obligation and cause, and prevents the next phase. Independent callback, child and root input errors are preserved together; a successful domain receipt does not establish a clean handoff.
+
+`EventHandle.cleanupFailure()` exposes the separate cleanup outcome. Full state snapshots provide each task's `cleanupFailure` and the scheduler's `cleanupBlockedBy`; a root block prevents another operation from being submitted. New full snapshots declare `cleanupSchemaVersion: 1`. The test entry archives the terminal state before checking both fields and rejecting failed cleanup. Historical evidence retains its original coverage without inventing this measurement. Incomplete observations, mismatched task identities and runtimes lacking cleanup measurements cannot establish a new passing test.
+
 ## Temporary storage and delivery
 
 Packing across ticks retains temporary ownership of the placed box. Transfers and recovery verify the dimension, Bot and original block entity. Replacing it with the same kind of shulker box does not authorize writing to or breaking the replacement. Releasing the observation token does not settle an outstanding box recovery obligation after failure or cancellation.
