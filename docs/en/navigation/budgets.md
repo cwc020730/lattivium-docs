@@ -107,6 +107,8 @@ Planning exhaustion reports `PATH_TIMEOUT`; movement or execution-scope exhausti
 
 `FlightTimeBudget` adds one tick per horizontal block and doubles that for round-trip allowance. It captures departure distance and retains the allowance during execution. Long area approaches use legs of at most 4096 blocks, with their own leg-count and return limits. Flight remains subject to parent scopes.
 
+This allowance controls execution time, not rocket quantity or minimum stock, and does not automatically add a return journey to a one-way trip. [Inventory thresholds and supply policy](./fuel) determine rocket reserves separately. Acquisition or construction explicitly requests a return destination when the operation requires one.
+
 The table shows current code constants in ticks. At sustained 20 TPS, 36000 ticks take 30 minutes and 288000 take four hours. At 80 TPS, they take about 7.5 minutes and one hour.
 
 The `TravelToFlow` base does not directly grow with total distance. Portal and approach children can receive distance allowances while the parent base still constrains the journey. `SupplySourceFlow` uses horizontal coordinate distance for its flight-style round-trip allowance; the travel planner separately estimates the actual cross-dimension route.
