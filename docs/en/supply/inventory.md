@@ -2,6 +2,8 @@
 
 Inventory levels determine where items belong, how they reach the Bot's hands and when to arrange them. [Stock requirements](./stock) express quantities. The material ledger owns item obligations and reservations.
 
+Current integration limits: excavation still triggers site deposits from physical empty-slot counts without first requesting shared L1/L2 turnover. Site containers use excavation cargo/depot records rather than the common L3 stock ledger. This page describes the shared inventory interface; it does not establish that every caller's capacity decisions and external stock have been migrated.
+
 ## Four levels
 
 | Level | Purpose | Default main-inventory quota |
@@ -63,9 +65,9 @@ The first request exposes owned stock for direct use, from carried inventory or 
 
 After acquiring transport boxes away from the caller, readiness uses `TravelToFlow` to return to the calling area before continuing. Bounded observed transport time contributes to the parent budget.
 
-Source-backed boundaries using `.withSupplySources(...)` also retain packing headroom. `inventoryPackedSpareSlots` defaults to 27 empty slots across owned transport boxes for later mining drops, working-slot cleanup and material promotion; set it to 0 to disable this reserve. Incoming transport capacity includes this allowance, and readiness checks it again after packing. Missing boxes use shared acquisition. Boxes awaiting workstation installation, borrowed boxes and delivery boxes do not contribute this capacity.
+`.withSupplySources(...)` registers the ability to locate and acquire transport boxes without adding a capacity requirement. Additional packing headroom defaults to zero. Readiness subtracts empty L1 slots and merge capacity, then uses declared incoming quantities and existing L2 capacity to calculate missing transport boxes. Registering sources alone does not trigger a box trip when there is no incoming stock or it fits in L1.
 
-The reserve is established at safe boundaries with source lookup. Construction batches without source lookup use existing carried capacity and authorized L3 storage; they do not gain access to arbitrary external containers. Empty player slots and empty carried-box slots are checked separately. Unoccupied L2 player slots cannot directly hold loose items.
+Tasks that need extra capacity for later mining drops can explicitly call `.withPackingHeadroom(27)`. This requests 27 empty internal slots across owned transport boxes, evaluated together with incoming capacity by the inventory system. It does not require one completely empty box and is separate from the 1,728-rocket stock threshold. Boxes awaiting workstation installation, borrowed boxes and delivery boxes provide no transport capacity. Without a source locator, readiness uses carried capacity and authorized L3 storage; it gains no permission to visit arbitrary containers. Internal box capacity and main-inventory slots are checked separately: unused L2 main-inventory slots cannot directly hold loose materials.
 
 Packing and unpacking select a safe working position, which may move the Bot. Readiness reports inventory state; before continuing construction, the parent uses shared navigation to reach its required stance again. Declare an active loose batch through a [direct material requirement](./stock#direct-materials-for-the-active-operation) when nested turnover must retain it.
 
@@ -118,7 +120,7 @@ Crafting ingredients can also be packed into transport boxes while retaining the
 /ltv schema EnsureInventoryReadyFlow
 ```
 
-The entry returns a task ID. `demand` specifies an owned direct-use batch; `incoming` specifies capacity for the next acquisition. Both accept lists of item IDs and counts. `taskSlots` defaults to `false`; enabling it prepares the batch in L1. `emptySlots` defaults to 2 and `mode` to `REAL`; use `SOURCE_PRESERVING_DEBUG` for source-preserving acquisition. Missing empty transport boxes use Atlas lookup and the shared item acquisition workflow.
+The entry returns a task ID. `demand` specifies an owned direct-use batch; `incoming` specifies capacity for the next acquisition. Both accept lists of item IDs and counts. `packingHeadroomSlots` defaults to 0; set it to 27 to request one box of additional internal capacity, bounded by the configured L2 quota. `taskSlots` defaults to `false`; enabling it prepares the batch in L1. `emptySlots` defaults to 2 and `mode` to `REAL`; use `SOURCE_PRESERVING_DEBUG` for source-preserving acquisition. Missing empty transport boxes use Atlas lookup and the shared item acquisition workflow.
 
 ## Temporary storage and delivery
 

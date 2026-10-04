@@ -100,7 +100,7 @@
   "sourceHashes": {
     "src/main/java/cwc/autobuildbot/command/ExecutionCommandRegistry.java": "29fc2288c4e41c30fad3e91a50b4855cdf186a53181abad0df24f2df93584364",
     "src/main/java/cwc/autobuildbot/command/AutoBuildBotCommands.java": "b83c7e34daabaef3555674b102409b1f5e92e362faf051687f8fbbfc9930a3d5",
-    "src/main/java/cwc/autobuildbot/config/AutoBuildBotConfig.java": "ecc611fec91a26c2253baba8be584b7adfbef42ae80cff8b39c951e3d49bed60",
+    "src/main/java/cwc/autobuildbot/config/AutoBuildBotConfig.java": "b19649b5aff6d079b6be4dcd3e1cdc0351dba5d6aa1649e302e0f6000ceb299d",
     "src/main/java/cwc/autobuildbot/debug/ui/DebugUiHost.java": "90431f258be667cc6f97fed382b9988850cb58b018356903235e26bf0fa0ba2c",
     "src/main/java/cwc/autobuildbot/debug/performance/TickPerformance.java": "1b4002d9c037f9bc2e194d6508aa500ecfc8dc7f817fa67bcf4faeb288578b37",
     "src/main/resources/fabric.mod.json": "439d0964c3c91c160d734da6806623028211279bc259ced9867c71782705d476",
@@ -128,7 +128,7 @@
     "src/main/java/cwc/autobuildbot/command/JsonInputs.java": "2a165db3e3556d119f549599866785569e35b713c66ba3650fd7c29497c89c81",
     "src/main/java/cwc/autobuildbot/command/entries/InteractionEntries.java": "0dff2bbef2bab781cfe6be7226407fa8b0f33cd8cb705cd48dd5624763d5bbf2",
     "src/main/java/cwc/autobuildbot/command/entries/NavigationEntries.java": "73e385b7c53d2c0ea9661e98678475833892f2ec5eb8e6aa4d9b10468d089839",
-    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "c2ff217097a9d06ec25817ceb6771209b18c915c468360aa212afc8fbf47287c",
+    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "58c4a59fe3c7a4740e44e4d21b4f04f5669acd736febd075aa7490860b471e72",
     "src/main/java/cwc/autobuildbot/execution/runtime/BotEventScheduler.java": "8332c28a1a86d9425ff8db85336464d903daed2b0c633b377d402a82a182e860",
     "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "b9ddf73a1a5435a099b8da4e1eff497a63f196fd5e4d65ad57b584a0b1ac344d",
     "src/main/java/cwc/autobuildbot/navigation/TravelArrival.java": "c8dbf0f2b550da89d39a142c3ecf30a1071cba2ff59a179353472a443c5f84b7",

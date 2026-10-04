@@ -780,7 +780,7 @@
     },
     "EnsureInventoryReadyFlow": {
       "kind": "Flow",
-      "description": "Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.",
+      "description": "Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. packingHeadroomSlots explicitly reserves future packing capacity in owned transport boxes, default zero. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -838,6 +838,12 @@
             "minItems": 0,
             "maxItems": 128,
             "default": []
+          },
+          "packingHeadroomSlots": {
+            "type": "integer",
+            "minimum": 0.0,
+            "maximum": 972.0,
+            "default": 0
           },
           "taskSlots": {
             "type": "boolean",

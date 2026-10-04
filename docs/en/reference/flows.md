@@ -209,7 +209,7 @@ Fly toward a position using carried equipment and rockets.
 
 ## EnsureInventoryReadyFlow
 
-Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.
+Prepare an owned direct-use batch, restore inventory levels and free working slots. taskSlots keeps the batch in L1 alongside L0 reserves; incoming declares the next acquisition's capacity. packingHeadroomSlots explicitly reserves future packing capacity in owned transport boxes, default zero. Missing transport boxes use the shared Atlas source lookup and acquisition workflow.
 
 ### Command
 
@@ -228,6 +228,7 @@ Prepare an owned direct-use batch, restore inventory levels and free working slo
 | `incoming` | `array` | `[]` | minItems: 0; maxItems: 128 |
 | `incoming[].item` | `string` | `Required` |  |
 | `incoming[].count` | `integer` | `Required` | minimum: 1 |
+| `packingHeadroomSlots` | `integer` | `0` | minimum: 0; maximum: 972 |
 | `taskSlots` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 

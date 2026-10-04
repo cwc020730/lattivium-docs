@@ -209,7 +209,7 @@ outline: 2
 
 ## EnsureInventoryReadyFlow
 
-准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。
+准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，incoming 声明入库数量，packingHeadroomSlots 显式声明额外盒内空容量，默认 0。缺少运输盒时使用共用来源查询和取货流程。
 
 ### 指令
 
@@ -228,6 +228,7 @@ outline: 2
 | `incoming` | `array` | `[]` | minItems: 0; maxItems: 128 |
 | `incoming[].item` | `string` | `必填` |  |
 | `incoming[].count` | `integer` | `必填` | minimum: 1 |
+| `packingHeadroomSlots` | `integer` | `0` | minimum: 0; maximum: 972 |
 | `taskSlots` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 

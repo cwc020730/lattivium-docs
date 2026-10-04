@@ -29,7 +29,7 @@
 - [BuildSchematicFlow](./flows#buildschematicflow): 在当前维度的指定原点建造原理图。
 - [ClearAndSettleWaterColumnFlow](./flows#clearandsettlewatercolumnflow): 在已调查的有水竖柱内清除障碍，回到相邻干平台后落沙封满；明确指定操作水柱、独立返回水道及上下界，每柱最多 96 格高。
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
-- [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，容量需求通过共用来源查询和取货流程补充空运输盒。
+- [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，incoming 声明入库数量，packingHeadroomSlots 显式声明额外盒内空容量，默认 0。缺少运输盒时使用共用来源查询和取货流程。
 - [ExcavateAreaFlow](./flows#excavateareaflow): 清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。
 - [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。 mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。
 - [FireworkReserveFlow](./flows#fireworkreserveflow): 根据行程距离补充烟花储备。
