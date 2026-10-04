@@ -114,6 +114,10 @@ Crafting ingredients can also be packed into transport boxes while retaining the
 
 `.inTaskSlots()` prepares the requested batch in L1 while retaining L0 items of the same type. For example, steak delivery keeps the reserved L0 food and promotes the task's steak from carried boxes or L3 into L1. `.withPackedCargo(predicate)` packs eligible stock beyond the current direct-use reservations into owned transport boxes.
 
+`EnsureInventoryReadyFlow.nextOutgoingBatch(bot, remaining, predicate, parentId)` prepares an L1 output batch for delivery or excavation storage. An authorized batch already in L1 may discharge through the existing quantity and component verified transfer before unrelated slot restoration. The outgoing operation itself frees the required space. Boxed stock still uses shared unpacking. This result means the output batch is ready; the inventory query may still report `layoutReady: false`. Ordinary incoming stock, direct use and the command's `taskSlots: true` retain full layout readiness. An output target does not automatically become authorized L3 storage or a material source.
+
+Packing selection retains the eligibility predicate and exact components while trying candidates against each owned transport box. An item that cannot fit does not hide later candidates, and a failed partial merge simulation is discarded. Plans compare the actual source slots they would release. A box with all 27 slots occupied may still have matching component merge capacity.
+
 ```text
 /ltv Worker exec EnsureInventoryReadyFlow {"demand":[{"item":"minecraft:sand","count":64}],"emptySlots":2,"taskSlots":true}
 /ltv Worker inventory

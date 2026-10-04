@@ -73,6 +73,10 @@ new EnsureInventoryReadyFlow(bot, 2, parentId)
 
 `.inTaskSlots()` 将所需批次准备到 L1，并同时保留 L0 中同类物品。例如交付牛排时，L0 食物保留在原槽，任务牛排从随身盒或 L3 取出后放入 L1。`.withPackedCargo(predicate)` 要求将符合条件、超出当前直接使用预留的物品装入自有运输盒。
 
+`EnsureInventoryReadyFlow.nextOutgoingBatch(bot, remaining, predicate, parentId)` 为交付和工地卸货准备一批 L1 出库物品。批次已在获准的 L1 来源槽时，可先执行数量与组件核验的转移，释放空位，再归位其他物品；不会因无关 L0 槽物品尚未归位而阻止这次出库。仅有盒装货物时仍需通用拆盒。此结果表示出库批次就绪，不保证查询中的 `layoutReady` 已为 `true`。普通入库、使用准备及指令的 `taskSlots: true` 仍要求完整布局就绪；出库目标不会自动成为 L3 暂存或取货来源。
+
+装箱选择同时保留物品资格谓词和精确组件，逐个尝试每只自有运输盒可容纳的候选。首项放不下时继续检查后项，失败的部分并堆模拟不会写回。选择比较实际转移会释放的来源槽；盒子 27 格都占用时，相同组件的未满堆叠仍可能提供容量。
+
 ```text
 /ltv Worker exec EnsureInventoryReadyFlow {"demand":[{"item":"minecraft:sand","count":64}],"emptySlots":2,"taskSlots":true}
 /ltv Worker inventory
