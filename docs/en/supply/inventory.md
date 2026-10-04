@@ -132,6 +132,14 @@ Packing selection retains the eligibility predicate and exact components while t
 
 The entry returns a task ID. `demand` specifies an owned direct-use batch; `incoming` specifies capacity for the next acquisition. Both accept lists of item IDs and counts. `packingHeadroomSlots` defaults to 0; set it to 27 to request one box of additional internal capacity, bounded by the configured L2 quota. `taskSlots` defaults to `false`; enabling it prepares the batch in L1. `emptySlots` defaults to 2 and `mode` to `REAL`; use `SOURCE_PRESERVING_DEBUG` for source-preserving acquisition. Missing empty transport boxes use Atlas lookup and the shared item acquisition workflow.
 
+## Nested turnover and mining checks
+
+A mining approach or alignment child may replenish fuel and temporarily place an owned transport box. The suspended mining parent lets that transaction finish its transfer and box recovery before rechecking demolition surroundings. It must not interrupt the transaction merely because its newly placed box is protected infrastructure.
+
+`MiningTarget` checks admission when created. `validateMiner` and `BlockMiningSession` recheck current state, authority and protected surroundings when mining resumes and before every native mining effect. A foreign container appearing after turnover still prevents mining; owned boxes receive no protection exemption.
+
+For a two-block plant, pending approach checks retain loaded authority and matching, complementary halves. The same mining target performs full safety checks around both affected halves, and the completion receipt requires both cells to be physically empty. Failure and cancellation retain the existing child-cleanup channel; an unreturned box remains a blocking obligation.
+
 ## Temporary storage and delivery
 
 Packing across ticks retains temporary ownership of the placed box. Transfers and recovery verify the dimension, Bot and original block entity. Replacing it with the same kind of shulker box does not authorize writing to or breaking the replacement. Releasing the observation token does not settle an outstanding box recovery obligation after failure or cancellation.
