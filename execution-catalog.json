@@ -105,6 +105,105 @@
         "count": 64
       }
     },
+    "AcquireMaterialsFlow": {
+      "kind": "Flow",
+      "description": "Acquire a material demand into carried inventory through the shared Atlas, production and inventory workflows. Optional returnTo requires arrival after acquisition; no delivery or construction is performed.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "demand": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "item": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1.0,
+                  "maximum": 2.147483647E9
+                }
+              },
+              "required": [
+                "item",
+                "count"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 128
+          },
+          "returnTo": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "dimension": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "integer",
+                        "minimum": -2.147483648E9,
+                        "maximum": 2.147483647E9
+                      },
+                      "y": {
+                        "type": "integer",
+                        "minimum": -2.147483648E9,
+                        "maximum": 2.147483647E9
+                      },
+                      "z": {
+                        "type": "integer",
+                        "minimum": -2.147483648E9,
+                        "maximum": 2.147483647E9
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "z"
+                    ]
+                  }
+                },
+                "required": [
+                  "dimension",
+                  "position"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "REAL",
+              "DEBUG",
+              "SOURCE_PRESERVING_DEBUG"
+            ],
+            "default": "REAL"
+          }
+        },
+        "required": [
+          "demand"
+        ]
+      },
+      "example": {
+        "demand": [
+          {
+            "item": "minecraft:sand",
+            "count": 64
+          }
+        ]
+      }
+    },
     "ApproachAreaFlow": {
       "kind": "Flow",
       "description": "Travel toward an area using a flight policy.",

@@ -59,6 +59,26 @@ Acquire an exact count from a container in the current dimension.
 /lattivium <Bot> exec AcquireContainerItemsFlow <x> <y> <z> <item> <count>
 ```
 
+## AcquireMaterialsFlow
+
+Acquire a material demand into carried inventory through the shared Atlas, production and inventory workflows. Optional returnTo requires arrival after acquisition; no delivery or construction is performed.
+
+### Command
+
+```text
+/lattivium Worker exec AcquireMaterialsFlow {"demand":[{"item":"minecraft:sand","count":64}]}
+```
+
+### Parameters
+
+| Field | Type | Default | Constraints |
+| --- | --- | --- | --- |
+| `demand` | `array` | `Required` | minItems: 1; maxItems: 128 |
+| `demand[].item` | `string` | `Required` |  |
+| `demand[].count` | `integer` | `Required` | minimum: 1 |
+| `returnTo` | `optional` | `Required` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+
 ## ApproachAreaFlow
 
 Travel toward an area using a flight policy.

@@ -13,6 +13,18 @@
 
 完整参数见 [Task 参考](../reference/tasks)。Atlas 提供库存记录，Bot 在访问来源时核对实物和可交互性。
 
+### 收集并随身携带
+
+只需要取得材料时，可以直接提交需求表：
+
+```text
+/ltv Worker exec AcquireMaterialsFlow {"demand":[{"item":"minecraft:sand","count":64}]}
+```
+
+这个入口复用施工前取货所用的 Atlas 规划、生产、容器取货和库存周转。取得的材料留在 Bot 身上，之后由调用者使用；本入口不安排交付或施工。需求采用普通物品的默认组件规则，装货运输盒不能充当需求表中的空潜影盒。
+
+可选的 `returnTo` 指定完成取货后必须实际到达的维度和脚位；省略时在取货收尾位置完成。`mode` 默认是 `REAL`，开发验收可以使用 `SOURCE_PRESERVING_DEBUG` 保留来源库存。字段见 [AcquireMaterialsFlow](../reference/flows#acquirematerialsflow)。
+
 ## 阅读顺序
 
 | 章节 | 说明 |
@@ -43,7 +55,7 @@
 | `MaterialLedger` | 观察数量、预留用途和结算实际操作 | [物资账目](../supply/crafting#materialledger) |
 | `TravelToFlow` | 按目标维度和到达条件完成移动 | [旅行目标](../navigation/targets#traveltoflow) |
 
-`AtlasSupplyTask` 获取后安排实际交付。内部组件 `AcquireMaterialsFlow` 接受需求表，取得物资并可返回指定脚位，供施工等调用者继续使用。各组件的输入、输出和完成条件在对应章节中说明；可执行的注册入口见[执行入口](../reference/executables)。
+`AtlasSupplyTask` 获取后安排实际交付。`AcquireMaterialsFlow` 接受需求表，取得物资并可返回指定脚位，供施工等调用者继续使用，也可以独立执行。各组件的输入、输出和完成条件在对应章节中说明；可执行的注册入口见[执行入口](../reference/executables)。
 
 ## 规划与执行
 

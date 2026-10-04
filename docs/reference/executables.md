@@ -24,6 +24,7 @@
 
 - [AccessContainerFlow](./flows#accesscontainerflow): 接近并打开容器。
 - [AcquireContainerItemsFlow](./flows#acquirecontaineritemsflow): 从指定容器取得所需物品。
+- [AcquireMaterialsFlow](./flows#acquirematerialsflow): 通过通用 Atlas 规划、生产和库存流程取得需求物品并随身携带；可声明取货后的实际返回位置，不进行交付或施工。
 - [ApproachAreaFlow](./flows#approachareaflow): 在当前维度内通过飞行或地面移动接近目标区域。
 - [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): 围绕边长为 6、12、16 或 32 格的内方形挖沟并落沙封边，每柱最多 96 格高，完成后返回起始工作位。Bot 从有支撑的干燥工作位出发，携带沙、工具及水下生存物资。
 - [BuildSchematicFlow](./flows#buildschematicflow): 在当前维度的指定原点建造原理图。

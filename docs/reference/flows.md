@@ -59,6 +59,26 @@ outline: 2
 /lattivium <Bot> exec AcquireContainerItemsFlow <x> <y> <z> <item> <count>
 ```
 
+## AcquireMaterialsFlow
+
+通过通用 Atlas 规划、生产和库存流程取得需求物品并随身携带；可声明取货后的实际返回位置，不进行交付或施工。
+
+### 指令
+
+```text
+/lattivium Worker exec AcquireMaterialsFlow {"demand":[{"item":"minecraft:sand","count":64}]}
+```
+
+### 参数
+
+| 字段 | 类型 | 默认值 | 约束 |
+| --- | --- | --- | --- |
+| `demand` | `array` | `必填` | minItems: 1; maxItems: 128 |
+| `demand[].item` | `string` | `必填` |  |
+| `demand[].count` | `integer` | `必填` | minimum: 1 |
+| `returnTo` | `optional` | `必填` |  |
+| `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
+
 ## ApproachAreaFlow
 
 在当前维度内通过飞行或地面移动接近目标区域。

@@ -13,6 +13,18 @@ Place `.litematic` or `.materials.json` files in the server world's `lattivium-a
 
 See the [Task reference](../reference/tasks) for complete parameters. Atlas supplies stock observations; the Bot checks physical inventory and access at each source.
 
+### Acquire into carried inventory
+
+Submit a demand map when materials should stay with the Bot:
+
+```text
+/ltv Worker exec AcquireMaterialsFlow {"demand":[{"item":"minecraft:sand","count":64}]}
+```
+
+This entry reuses the Atlas planning, production, container acquisition and inventory turnover used before construction. The caller owns subsequent use of the acquired materials. The entry performs no delivery or construction. Demands require native default item components; filled transport boxes cannot satisfy a demand for empty shulker boxes.
+
+Optional `returnTo` requires physical arrival at the specified dimension and feet coordinates after acquisition. Without it, execution finishes at the acquisition cleanup location. `mode` defaults to `REAL`; development acceptance can use `SOURCE_PRESERVING_DEBUG` to preserve source stock. See [AcquireMaterialsFlow](../reference/flows#acquirematerialsflow) for fields.
+
 ## Reading order
 
 | Chapter | Covers |
@@ -43,7 +55,7 @@ Schematic delivery and preconstruction acquisition share planning, collection an
 | `MaterialLedger` | Observe quantities, reserve purposes and settle operations | [Accounting](../supply/crafting#materialledger) |
 | `TravelToFlow` | Reach a destination dimension and arrival condition | [Travel targets](../navigation/targets#traveltoflow) |
 
-`AtlasSupplyTask` arranges physical delivery after acquisition. The internal `AcquireMaterialsFlow` takes a demand map, obtains supplies and can return to specified feet coordinates for a caller such as construction. Each chapter explains inputs, outputs and completion conditions. Registered commands are listed in [execution entries](../reference/executables).
+`AtlasSupplyTask` arranges physical delivery after acquisition. `AcquireMaterialsFlow` takes a demand map, obtains supplies and can return to specified feet coordinates for a caller such as construction. It also supports independent execution. Each chapter explains inputs, outputs and completion conditions. Registered commands are listed in [execution entries](../reference/executables).
 
 ## Planning and execution
 

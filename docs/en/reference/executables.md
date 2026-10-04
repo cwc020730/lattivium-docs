@@ -24,6 +24,7 @@ An **executable** is an operation with a lifecycle: Task, Flow or Action. Entrie
 
 - [AccessContainerFlow](./flows#accesscontainerflow): Approach and open a container.
 - [AcquireContainerItemsFlow](./flows#acquirecontaineritemsflow): Acquire an exact count from a container in the current dimension.
+- [AcquireMaterialsFlow](./flows#acquirematerialsflow): Acquire a material demand into carried inventory through the shared Atlas, production and inventory workflows. Optional returnTo requires arrival after acquisition; no delivery or construction is performed.
 - [ApproachAreaFlow](./flows#approachareaflow): Travel toward an area using a flight policy.
 - [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): Mine each water-wall column into the original seabed, settle real sand around a 6-, 12-, 16- or 32-block inner square, and return to the starting deck. Wall height is at most 96 blocks. The Bot begins on the supported dry startDeck with sand, tools and underwater survival supplies.
 - [BuildSchematicFlow](./flows#buildschematicflow): Build a schematic at an origin in the current dimension.

@@ -1,6 +1,7 @@
 {
   "AccessContainerFlow": "接近并打开容器。",
   "AcquireContainerItemsFlow": "从指定容器取得所需物品。",
+  "AcquireMaterialsFlow": "通过通用 Atlas 规划、生产和库存流程取得需求物品并随身携带；可声明取货后的实际返回位置，不进行交付或施工。",
   "ApproachAreaFlow": "在当前维度内通过飞行或地面移动接近目标区域。",
   "AtlasProductionPreviewTask": "预览材料生产计划。",
   "AtlasSupplyTask": "根据 Atlas 库存规划、取货、合成并交付材料。",
