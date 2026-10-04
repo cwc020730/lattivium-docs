@@ -13,4 +13,6 @@
 
 完整 Bot 状态包含 `activeTaskId`、`taskState`、`tasks`、`cleanupBlockedBy` 和 `trace`。`tasks` 中每项包含 `taskId`、`description`、`state`、`failure`。服务端在游戏线程生成状态快照。
 
+值为 `null` 的字段会在 JSON 中省略。例如，当前没有清理阻塞时，完整状态不输出 `cleanupBlockedBy`；有阻塞时，它是相关根任务的 UUID。`SUCCEEDED` 是业务终态，输入释放或清理失败仍可能阻塞下一任务。核验时应在 Bot 尚在线、清理尚未被确认解除的终态边界，读取匹配 Bot 的完整状态并检查该阻塞；轻量摘要不提供此信息。
+
 `savedTasks` 包含离线 Bot 的供给检查点；`recoveryIssues` 给出恢复阻塞原因。trace 记录观察、操作与结果，坐标含义以所属字段为准。取消任务遵循[执行控制](./task-control)的清理语义。
