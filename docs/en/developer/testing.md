@@ -20,6 +20,8 @@ python scripts/testctl.py report show <run-id>
 
 Native tests use the `native` environment. Field scenes use explicitly enrolled server environments and frozen case files. Admission checks the world, ports, resource limits and snapshot footprint. Independently declare expected physical results: task success alone is insufficient acceptance evidence.
 
+Load enrolled field neighborhoods and await source readiness before spawning the survival actor. World warmup advances native time and can drown an actor left underwater. Source readiness does not own a separate tick rate; the declared test rate applies once preparation is complete.
+
 ### Pickup timing controls
 
 `dry-pickup-comparison` sequentially runs immediate and existing batched pickup on the same recorded 8×8 dry slice. `layered-dry-pickup-comparison` also checks the actual layered caller, strict/wet/sponge/unknown/large-area selection, cancellation and existing resume contracts, followed by Java checks.
@@ -66,6 +68,8 @@ Method-body changes can use the existing HotSwap support. Signature, field and e
 After a computer or JVM restart, the old execution stack and in-memory measurement window are gone. `run recover` compares recorded runtime identities and records a departed JVM's window as interrupted without fabricating timing samples. A surviving original JVM must still stop its exact native phase. Missing runtime identity refuses cleanup, and the original interrupted report and failed recovery receipts remain intact.
 
 Cleanup neither rolls back construction nor resumes the old task. Replay a before-operation checkpoint when available. Without one, first stop the server and reconcile saved blocks, facilities, Bot equipment, packed components and all source inventories. Freeze that actual scene and continue the unfinished part through an existing component entry. Keep the exact saved provisions and cumulative failure/time costs; component continuation does not establish fresh autonomous whole-site acceptance.
+
+Reconstructing inventory and a starting pose through a construction case's `kit` creates a component fixture; it does not restore complete player state or an arbitrary execution stack. Check air, health and hunger history separately. Matching inventory counts cannot establish that a submerged continuation pose is safe. Preserve native low-air refusals, then replay a real checkpoint or explicitly declare a new safe start. Do not mask preparation differences with survival buffs or weaker navigation protections.
 
 New evidence files use compact UTF-8 JSON; CLI output remains indented. This removes formatting whitespace while preserving all fields, traces, counts and components. Historical indented files remain readable, and saved failure reports and signatures are not rewritten. The environment's `maxArtifactBytes` bounds retained evidence. Inspect actual usage, retention dependencies and free disk space before pruning or adjusting this budget.
 
