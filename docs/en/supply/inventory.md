@@ -63,7 +63,7 @@ new EnsureInventoryReadyFlow(bot, 2, parentId)
 
 The first request exposes owned stock for direct use, from carried inventory or ledger-recorded L3 storage. [Container acquisition](./containers) and [crafting](./crafting) acquire stock that the Bot does not yet own. The second request frees working space and prepares capacity for 2,048 incoming sand. Empty boxes are acquired through the supplied source lookup and the same container-acquisition flow.
 
-After acquiring transport boxes away from the caller, readiness uses `TravelToFlow` to return to the calling area before continuing. Bounded observed transport time contributes to the parent budget.
+After acquiring transport boxes away from the caller, the default `RESTORE_ORIGIN` contract uses `TravelToFlow` to return to the calling area before resuming the paused operation. Position-independent travel preparation can declare `CONTINUE_AT_SOURCE`: readiness still settles capacity and layout, then hands off at the actual position. Currently only initial fuel-capacity preparation selects this continuation; its finishing readiness retains the default return contract. The same inventory owner executes both contracts, preserving acquisition receipts, box custody, failure and cancellation cleanup. Bounded observed transport time contributes to the parent budget.
 
 `.withSupplySources(...)` registers the ability to locate and acquire transport boxes without adding a capacity requirement. Additional packing headroom defaults to zero. Readiness subtracts empty L1 slots and merge capacity, then uses declared incoming quantities and existing L2 capacity to calculate missing transport boxes. Registering sources alone does not trigger a box trip when there is no incoming stock or it fits in L1.
 
