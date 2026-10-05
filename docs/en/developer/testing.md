@@ -156,15 +156,21 @@ Physical inventory and index membership remain separate. Late discovery of an ex
 
 `stockSources` declares fixture preloads and admission checks, not the acquisition flow's exclusive source list. A location still classified `UNKNOWN` after cold startup is not admitted. Preloads may use currently verified locations while retaining rejected locations and reasons; the all-indexed-container inventory audit still covers them. Missing neighbor information remains an Atlas issue to investigate, not evidence that stock is absent or permission to force admission by editing the index.
 
-### Native test clock
+### Test tick-rate caps
 
-Native GameTests run unpaced by default. A case waiting for asynchronous chunk or POI reads can declare `parameters: {"ticksPerSecond":20}` to use the ordinary game rate while preserving its assertions and tick limits. This affects only the test server. Omitted values or `0` retain the fast loop; explicit positive integer rates range from `1` to `200`.
+Native, navigation and construction stages use `parameters.tickRateCap`, with positive integer caps from `1` to `10000`. This is an upper limit; actual TPS depends on machine load. Native GameTests omit the value or use `0` to remain unpaced. Live server scenes default to `20` and reject `0`. Prepared short navigation, dry/wet construction and bottom samples default to `3000`, without disabling vanilla mechanics.
 
-Field construction scenes instead use `parameters.tickRate`, which defaults to `20`, accepts `1–200` and rejects `0`. Faster game ticks do not proportionally accelerate asynchronous database planning or chunk reads, but do spend tick-based operation budgets faster. Start cold autonomous acquisition at `20`; accelerate physical construction only after acquisition and return complete. Recheck the rate if another cold asynchronous supply operation begins.
+```powershell
+python scripts/testctl.py --env dev run start navigation-short --tick-rate-cap 3000
+python scripts/testctl.py --env dev run start construction-dry --tick-rate-cap 3000
+python scripts/testctl.py --env native run start construction-bottom-contracts --tick-rate-cap 3000
+```
 
-The framework currently sets the initial scene rate; it does not automatically recognize child flows and switch rates. Record server acknowledgements and the actual phase for additional adjustments, preserving the attempt's original time limit. Distinguish wall time, game ticks and rate in reports; accelerated minutes do not represent construction time at the ordinary game rate.
+The CLI freezes selected caps into each stage; checkpoints and replays inherit them without editing historical attempts or extending wall budgets. An explicitly declared positive `1–20 TPS` clock is a correctness constraint and is not raised by the CLI. Autonomous acquisition remains at `20`. Historical `tickRate` and `ticksPerSecond` keys retain compatibility; mixed clock fields are refused.
 
-Long construction can travel for supplies again between layers. If those transitions cannot be tracked reliably, keep the entire autonomous-supply scene at `20` rather than leaving it accelerated after its first collection. Historical trace nodes still marked `STARTED` may already have ended; they alone cannot establish the active child operation or justify a rate change.
+Live setup remains at `20`. Before operation, `tick query` verifies the configured cap; stage results store `tickRateCap`, with raw acknowledgements in the command journal. Successful, failed and cancelled cleanup first returns to `20`, then restores the original rate. Atlas/cohort and read-only survey adapters keep their existing clock policy.
+
+Asynchronous database planning and chunk reads do not accelerate proportionally with game ticks. Whole scenes that may re-enter cold supply must explicitly declare `20`, rather than remaining accelerated after their first collection. This parameter does not automatically recognize child flows or switch their rates. Prefer high caps for physical stages whose inputs and dependency boundaries can be frozen separately. Historical `STARTED` nodes cannot establish the current phase. Report wall time, game ticks and configured caps separately; accelerated wall time is not ordinary-rate construction duration.
 
 ### Reading timing evidence
 
