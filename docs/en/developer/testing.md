@@ -176,6 +176,12 @@ Live setup remains at `20`. Before operation, `tick query` verifies the configur
 
 Asynchronous database planning and chunk reads do not scale with game ticks. Shared external-wait budgets allow one high cap throughout construction, including later cold supply. Do not infer the current phase from historical `STARTED` trace nodes. Report wall time, game ticks and the configured cap separately; budget units are not CPU time. Actual TPS and end-to-end speedup still require measurement.
 
+For an exclusively owned test server, `testctl` sets `max-tick-time=-1` at startup. Vanilla's watchdog measures lag against the scheduled next tick. A cap far above available throughput accumulates scheduling lag and can force termination even while the server continues processing actions. Finite controller wall deadlines, cancellation, normal shutdown and surviving-process checks remain active; an occupied runtime is refused before configuration changes. This policy applies only to managed isolated environments and preserves other game mechanics.
+
+A real A02 acquisition sample on 2026-10-05 took `123.672 s` for the operation and `187.484 s` for the complete controller attempt. Its `37785` game ticks averaged approximately `305.5 TPS`, under a configured cap of `3000`. An older `20 TPS` sample with the same demand, start and starter equipment took `1572.320 s`: an observed reduction of about `24 min 09 s`, or `12.7` times the speed. Candidate, index and preferred source preloads differ, so this is a qualified field comparison rather than a controlled rate-only experiment. Independent audits checked terrain and source inventory; passing A02 does not establish whole-construction acceptance. The first watchdog interruption and recovery costs remain separate.
+
+Shared construction starter items accept explicit `enchantments` maps, such as `{"minecraft:respiration":3}` on a helmet. Actual native item components are checked before task submission; declared enchantments do not add potion effects or extra supply.
+
 ### Reading timing evidence
 
 Controller wall time, task operation time and trace game ticks have different measurement boundaries. Convert ticks with `ticks / 20` only when that entire interval is confirmed to use `20 TPS`. This includes physical actions, waiting and scheduling; it is not method CPU time.
