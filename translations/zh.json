@@ -10,7 +10,7 @@
   "DelayTask": "等待指定游戏刻数。",
   "ElytraFlightFlow": "使用鞘翅飞向目标。",
   "ExcavateAreaFlow": "清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。",
-  "ExcavateLayeredAreaFlow": "从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。 mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。",
+  "ExcavateLayeredAreaFlow": "从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。已有潜影盒须已加载，可含普通物品，其原生内容由共享组件读取、复核并保留；新增仓储位置为空位。mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。",
   "ExcavateSiteTask": "准备区外工作站与脚手架井，分层清空 16×16、深 5 格的施工区域。",
   "FireworkReserveFlow": "根据行程距离补充烟花储备。",
   "FireworkUseFlow": "使用烟花推动飞行。",

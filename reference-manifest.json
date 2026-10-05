@@ -129,7 +129,7 @@
     "src/main/java/cwc/autobuildbot/command/JsonInputs.java": "2a165db3e3556d119f549599866785569e35b713c66ba3650fd7c29497c89c81",
     "src/main/java/cwc/autobuildbot/command/entries/InteractionEntries.java": "0dff2bbef2bab781cfe6be7226407fa8b0f33cd8cb705cd48dd5624763d5bbf2",
     "src/main/java/cwc/autobuildbot/command/entries/NavigationEntries.java": "73e385b7c53d2c0ea9661e98678475833892f2ec5eb8e6aa4d9b10468d089839",
-    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "d025c2c75466198cae1e02ff6210c11a3c38e5cf4ee6847fb160870a89d55abf",
+    "src/main/java/cwc/autobuildbot/command/entries/WorkflowEntries.java": "ce38fc72dffbf015e354f14e9d7759ba9504b64d3f9f4d883fe9fbf1555c8e7c",
     "src/main/java/cwc/autobuildbot/execution/runtime/BotEventScheduler.java": "8332c28a1a86d9425ff8db85336464d903daed2b0c633b377d402a82a182e860",
     "src/main/java/cwc/autobuildbot/command/PositionalExecutionArguments.java": "b9ddf73a1a5435a099b8da4e1eff497a63f196fd5e4d65ad57b584a0b1ac344d",
     "src/main/java/cwc/autobuildbot/navigation/TravelArrival.java": "c8dbf0f2b550da89d39a142c3ecf30a1071cba2ff59a179353472a443c5f84b7",

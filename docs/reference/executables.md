@@ -32,7 +32,7 @@
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
 - [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，incoming 声明入库数量，packingHeadroomSlots 显式声明额外盒内空容量，默认 0。缺少运输盒时使用共用来源查询和取货流程。
 - [ExcavateAreaFlow](./flows#excavateareaflow): 清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。
-- [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。 mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。
+- [ExcavateLayeredAreaFlow](./flows#excavatelayeredareaflow): 从上到下逐层清理已隔离场地，先填液体再挖掘，可声明底部隔离，并记录仓储与普通掉落物回执。已有潜影盒须已加载，可含普通物品，其原生内容由共享组件读取、复核并保留；新增仓储位置为空位。mode 复用通用补给执行模式；选择海绵网格时须给出 furnace 和 furnaceFeet。
 - [FireworkReserveFlow](./flows#fireworkreserveflow): 根据行程距离补充烟花储备。
 - [FireworkUseFlow](./flows#fireworkuseflow): 使用烟花推动飞行。
 - [LocalNavigationFlow](./flows#localnavigationflow): 在当前维度内执行局部寻路，到达目标脚位。
