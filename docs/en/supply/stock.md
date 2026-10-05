@@ -77,7 +77,9 @@ flowchart TD
     G --> C
 ```
 
-`ResourceMaintenance` owns budgets and same-resource recursion protection. Requirements belong to the current execution and are cleared when it ends, is cancelled or changes.
+`ResourceMaintenance` owns admission of new maintenance, budgets and same-resource recursion protection. Before starting new food or fuel maintenance, the policies inspect the current operation's unsettled effects. A borrowed box, container transfer or unsettled child operation defers new maintenance, preventing outer travel from preempting an inventory transaction. This uses the Flow settlement state; callers do not add separate box rules.
+
+Admission applies to new maintenance. An active organization transaction can continue to completion, and unsettled outer work does not itself veto legitimate replenishment inside it. Explicit cancellation and deadlines can still leave obligations requiring reconciliation; they do not prove that a box was recovered. Requirements belong to the current execution and are cleared when it ends, is cancelled or changes.
 
 ## Querying inventory
 
