@@ -33,7 +33,7 @@ Partial paths can advance through a useful prefix, observe new terrain and conti
 
 ## Arrival and interaction poses
 
-Ordinary callers request a feet position with `LocalNavigationFlow.toExactFeet`, or an interaction goal with `toGoal`. Navigation selects among its existing walking, jump, swimming, climbing and elytra capabilities. Actual equipment, collision and survival conditions determine availability. Excavation, building and container access do not impose a route-wide dry-ground, minimum-height or no-flight rule merely because of their task type.
+Ordinary callers request a feet position with `LocalNavigationFlow.toExactFeet`, or an interaction goal with `toGoal`. Navigation selects among its existing walking, jump, swimming, climbing and elytra capabilities. Actual equipment, collision and survival conditions determine availability. Excavation, building and container access do not impose a route-wide dry-ground, minimum-height or no-flight rule merely because of their task type. Layered excavation and some platform clearing still declare a minimum mining pose height. This constrains candidate interaction endpoints and the actual mining pose, not intermediate route positions. Explicit transport configuration and facility route contracts still apply.
 
 `BlockPlacementGoal` checks the target, support face, native ray and actor pose. `ApproachBlockPlacementFlow` owns arrival and nearby alignment for ordinary placement, fluid filling and water platforms. Tasks still declare mutation authority, protected recovery obligations and any required return position; those facts do not replace navigation decisions.
 

@@ -18,7 +18,7 @@ The flow mines from top to bottom, verifies collection and deposits cargo when c
 
 When liquid remains below the current layer, filler placement requires stable footing above that layer. Placement extends from existing support into adjacent fluid cells, gradually creating a walkable floor. Both placement navigation and the actual interaction check the footing height and grounded state, keeping the Bot on the completed layer before mining begins.
 
-Within a layer, the Bot may stand on remaining blocks or enter cleared cells with reliable support below. Movement, mining and product recovery share the current layer's height boundary. Mining also validates the actual footing, target reach and fluid safety. Ledge mining uses a verified adjacent support and capture pose.
+Within a layer, the Bot may stand on remaining blocks or enter cleared cells with reliable support below. Ordinary layered mining currently requires a candidate mining pose at or above the target layer Y. This constrains the terminal interaction pose, not the whole route. Placement and product recovery use shared interaction goals, UUID contact and return contracts; the three operations do not share a route-wide layer-height boundary. Actual support, collision, reach and fluid safety remain independently validated. A minimum pose height cannot replace those checks.
 
 A double-height plant can span two layers. Mining its upper half may also remove the lower half when both lie within the parent flow's authorized excavation volume. The mining target must still belong to the active layer, and this permission does not authorize removing the plant's support block. A standalone single-layer operation still refuses a plant half outside its declared volume.
 
