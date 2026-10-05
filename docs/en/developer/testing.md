@@ -166,11 +166,15 @@ python scripts/testctl.py --env dev run start construction-dry --tick-rate-cap 3
 python scripts/testctl.py --env native run start construction-bottom-contracts --tick-rate-cap 3000
 ```
 
-The CLI freezes selected caps into each stage; checkpoints and replays inherit them without editing historical attempts or extending wall budgets. An explicitly declared positive `1–20 TPS` clock is a correctness constraint and is not raised by the CLI. Autonomous acquisition remains at `20`. Historical `tickRate` and `ticksPerSecond` keys retain compatibility; mixed clock fields are refused.
+The CLI freezes selected caps into each stage; checkpoints and replays inherit them without editing historical attempts or extending controller wall budgets. An explicit cap overrides older low-rate parameters. Autonomous acquisition and construction that can re-enter cold supply can use one high rate throughout; live stages default to `20` when no cap is supplied. Historical `tickRate` and `ticksPerSecond` remain decode-only compatibility; mixed fields are refused.
+
+The execution system owns timing. Vanilla movement, mining and furnaces retain game-tick budgets. Pending external futures, queue admission and inventory acknowledgements consume monotonic real time, with each `50 ms` charged as one budget unit. Waits propagate to every enclosing scope; checkpoint, maintenance, navigation, crafting-recovery and acquisition budgets use the same accounting without renewing limits on retries. Physical stalls, external deadlines, errors and cancellation retain their existing failure and cleanup behavior. No temporary switch back to `20 TPS` is needed, and database I/O itself does not become faster.
+
+Native fixture `maxTicks` still bounds game time. A fixture that awaits external data before creating an execution scope needs a test-side external-wait boundary. Use `python scripts/testctl.py --env native run start execution-clock --tick-rate-cap 3000` for bounded native parent/child wait and real-deadline checks.
 
 Live setup remains at `20`. Before operation, `tick query` verifies the configured cap; stage results store `tickRateCap`, with raw acknowledgements in the command journal. Successful, failed and cancelled cleanup first returns to `20`, then restores the original rate. Atlas/cohort and read-only survey adapters keep their existing clock policy.
 
-Asynchronous database planning and chunk reads do not accelerate proportionally with game ticks. Whole scenes that may re-enter cold supply must explicitly declare `20`, rather than remaining accelerated after their first collection. This parameter does not automatically recognize child flows or switch their rates. Prefer high caps for physical stages whose inputs and dependency boundaries can be frozen separately. Historical `STARTED` nodes cannot establish the current phase. Report wall time, game ticks and configured caps separately; accelerated wall time is not ordinary-rate construction duration.
+Asynchronous database planning and chunk reads do not scale with game ticks. Shared external-wait budgets allow one high cap throughout construction, including later cold supply. Do not infer the current phase from historical `STARTED` trace nodes. Report wall time, game ticks and the configured cap separately; budget units are not CPU time. Actual TPS and end-to-end speedup still require measurement.
 
 ### Reading timing evidence
 
