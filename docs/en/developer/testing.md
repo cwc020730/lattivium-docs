@@ -215,11 +215,12 @@ separate obligations.
 
 `STRICT` must reject an ordinary native drop that remains alive and uncollected.
 `BEST_EFFORT` can record its UUID, components, quantity and position within the
-existing recovery limits. Ordinary collection and water fallback share one
+existing recovery limits. Ordinary and underwater collection share the same collector and
 completion predicate: sufficient inventory gain and no still-living bound native
 target. Picking up another matching entity cannot settle a target that remains.
-Water fallback still requires a physical return to the verified dry exit, with
-its existing air, distance, time and cancellation protections.
+Native contact and actual return both use common navigation, retaining native air,
+distance, time and cancellation protection. The real task contract declares the
+return destination.
 
 ```powershell
 python scripts/testctl.py --env native run start wet-drop-contracts
@@ -251,3 +252,20 @@ exercise full-graph fallback and cumulative search budgets after a bounded short
 
 This is a component cost comparison, not an exact replay of an old partially excavated field
 or proof of a complete autonomous construction run.
+
+
+### Shared contact and local handoff gates
+
+```powershell
+python scripts/testctl.py --env native run start navigation-contact-contracts
+python scripts/testctl.py --env native run start excavation-handoff-contracts
+python scripts/testctl.py run verify <run-id>
+```
+
+Run sequentially and verify each terminal result. Contact covers four shared
+navigation controls, five original pickup regressions and Java check. Handoff
+covers three native support/cancellation/checkpoint identity controls, one unchanged
+independent enclosed-pit refusal and Java check. Use
+`navigation-interaction-unification` for broader affected callers. These gates do
+not replace autonomous startup, facilities, excavation, bottom sealing, actual
+return and source-inventory audits. Prior failure records remain retained.

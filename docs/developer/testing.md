@@ -210,10 +210,10 @@ python scripts/testctl.py run verify <run-id>
 ### 水下掉落与回执身份
 
 `STRICT` 不允许将仍存活、未拾取的普通掉落记为放弃后成功；`BEST_EFFORT` 可以
-在原有边界内记录该实体的 UUID、组件、数量和位置。普通拾取与水下回退共用
-完成判定：实际背包增量足够，且绑定的原生目标实体已不再存活；另一个同组件
-实体的拾取不能结算仍活着的目标。水下回退仍须真实返回经核验的干地出口，
-保留原有呼吸、距离、时间和取消保护。
+在原有边界内记录该实体的 UUID、组件、数量和位置。普通与水下拾取共用
+同一 collector 和完成判定：实际背包增量足够，且绑定的原生目标实体已不再存活；另一个同组件
+实体的拾取不能结算仍活着的目标。物品接触和实际返回均由通用导航完成，
+保留原生呼吸、距离、时间和取消保护；返回目的地由真实任务合同声明。
 
 ```powershell
 python scripts/testctl.py --env native run start wet-drop-contracts
@@ -240,3 +240,17 @@ python scripts/testctl.py run verify <run-id>
 以及地面长绕行耗尽短路线探测后仍能返回完整路径并保留累计预算。
 
 它是组件成本对照，不是旧工地中途状态的精确重放，不构成完整自主施工验收。
+
+
+### 共同接触与局部交接门禁
+
+```powershell
+python scripts/testctl.py --env native run start navigation-contact-contracts
+python scripts/testctl.py --env native run start excavation-handoff-contracts
+python scripts/testctl.py run verify <run-id>
+```
+
+依次运行，每次核验终态。接触门禁包含4项共同导航控制、5项原拾取回归与Java check；
+交接门禁包含3项真实支撑、取消/检查点身份控制、1项独立封闭坑拒绝与Java check。
+较广的相关调用方验证使用 `navigation-interaction-unification`。这些门禁不替代
+自主开局、设施、清场、封底、实际返回及来源库存的整场审计；旧失败记录继续保留。

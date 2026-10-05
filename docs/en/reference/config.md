@@ -7,6 +7,7 @@ Edit `config/auto-build-bot.json` while the server is stopped, then restart. Sta
 | `commandPermissionLevel` | `2` | Command permission level, 0–4. |
 | `terminalTaskHistory` | `64` | Retained terminal task records, 0–1024. |
 | `defaultTaskTimeoutTicks` | `600` | Default task timeout in ticks, minimum 20; operations may define their own budgets. |
+| `navigationAllowUnderwater` | `true` | Enables underwater edges in shared navigation for underwater work. Set to `false` to disable them. Potion eligibility and remaining-duration selection are not automatic; native collision and execution-time survival checks remain. |
 | `fireworkSupplyMode` | `FIXED` | Rocket level mode: FIXED or AUTO. |
 | `fireworkSupplyThreshold` | `1728` | FIXED minimum, 1–10000. |
 | `fireworkSupplyTarget` | `3456` | FIXED target, minimum–20000. |

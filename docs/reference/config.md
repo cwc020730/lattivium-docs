@@ -7,6 +7,7 @@
 | `commandPermissionLevel` | `2` | 命令权限等级，0–4。 |
 | `terminalTaskHistory` | `64` | 保留的终态任务数，0–1024。 |
 | `defaultTaskTimeoutTicks` | `600` | 默认任务超时，至少 20 tick；具体操作可自定预算。 |
+| `navigationAllowUnderwater` | `true` | 允许通用寻路生成水下边，供当前水下作业使用。设为 `false` 时不生成；当前不根据呼吸药水或剩余时间自动启用。原生碰撞与执行时生命检查保留。 |
 | `fireworkSupplyMode` | `FIXED` | 烟花水位模式：FIXED 或 AUTO。 |
 | `fireworkSupplyThreshold` | `1728` | FIXED 下限，1–10000。 |
 | `fireworkSupplyTarget` | `3456` | FIXED 补足目标，下限–20000。 |
