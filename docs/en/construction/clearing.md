@@ -32,15 +32,17 @@ The receipt lists completed layers, mined cells, fluid-preparation cells, depot 
 
 Strict recovery requires the corresponding drop obligations to be settled. Best-effort recovery collects ordinary excavation products within configured distance and active-time budgets, recording abandoned items and coordinates.
 
+Aquatic vegetation clearing and temporary road seeds use the shared collector's policy, execution budget and disposition. Their parents do not implement another clock, distance cancellation or loss reconciliation. Bound native UUIDs are observed directly even beyond the nearby discovery window; inventory gained from another matching UUID cannot prove their recovery. Component anomalies or acknowledged cargo disappearing during return propagate as failures, rather than becoming loss-success.
+
 Tools, borrowed shulker boxes, sponges and delivery cargo retain their own return or delivery obligations. The owning task selects the recovery policy.
 
 ### Batching ordinary dry-layer drops
 
-Layered excavation delegates recovery policy to the same `ExcavateAreaFlow`. BEST_EFFORT work reuses its existing batch collector for loaded, fluid-free ordinary layers within the established size limit. Strict, wet, sponge-bearing, unloaded and oversized layers keep immediate pickup; 32×32 layers currently do not enable this batch mode. Explicit single-area entries retain their chosen pickup mode.
+Layered excavation delegates recovery policy to the same `ExcavateAreaFlow`. BEST_EFFORT ordinary work reuses the existing batch collector for loaded sections of at most 1536 cells. Wet layers first use the existing fluid preparation; once drained, they use the same batch contract. A 32×32 layer has 1024 cells and fits this bound, which does not establish whole 32³ acceptance. Strict recovery, native sponge targets, unloaded and oversized sections do not automatically enable batching. Explicit single-area entries retain their chosen pickup mode.
 
-A batch records native drop identities and the initial inventory. It flushes at 128 pending stacks, 1200 ticks (about 60 seconds at 20 TPS), a food boundary, fewer than four empty inventory slots, or excavation completion. It uses the same `CollectMiningDropsFlow`, recovery budgets, cancellation checkpoints and depot storage.
+A batch records native drop identities and the initial inventory. It settles at 128 native receipts, 1200 execution-budget ticks, inventory or preparation transitions, or when the next work position escapes the recovery radius. The task supplies facts such as food, fuel, empty slots and completion; the pending batch settles before preparations that change inventory. It uses the same `CollectMiningDropsFlow`, recovery budgets, cancellation checkpoints and depot storage.
 
-Fewer individual pickups can increase ordinary drop losses. Each batch still records recovered and abandoned quantities. Tools, carried-box counts/components, supply stock, loans and delivery obligations retain separate checks. Measure retained products alongside speed; a short comparison does not establish whole-site throughput.
+Each receipt retains its source and any owned-material obligation. Ordinary recovered products enter the cargo ledger; recovered temporary fill does not become new cargo. Live or merged native entity counts bound attributable inventory gains. Credit is assigned only after the whole batch verifies; rejection leaves no partial ledger updates. UUID accounting is attribution, not proof of touching that particular entity. Tools, carried-box components, supply stock, loans and delivery obligations retain separate checks. Measure products alongside speed; a short comparison does not establish whole-site throughput.
 
 Abandonment records the decision to stop pursuing a drop at that time. Later movement may pick it up, and shared inventory observation still includes it. Report historical abandonment, final ground items and final carried items separately; abandonment does not establish permanent loss.
 
