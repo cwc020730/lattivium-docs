@@ -36,6 +36,8 @@ Aquatic vegetation clearing and temporary road seeds use the shared collector's 
 
 Tools, borrowed shulker boxes, sponges and delivery cargo retain their own return or delivery obligations. The owning task selects the recovery policy.
 
+Current sponge work prefers removal from above the sponge. Mining, underwater arrival and pickup remain owned by their shared systems. An authorized, genuinely unrecoverable wet sponge can be recorded as a loss; only physically recovered quantities enter drying demands. Abandonment is never a drying receipt. Temporary furnaces retain strict recovery: inventory gained from another matching item entity cannot settle the original furnace UUID.
+
 ### Batching ordinary dry-layer drops
 
 Layered excavation delegates recovery policy to the same `ExcavateAreaFlow`. BEST_EFFORT ordinary work reuses the existing batch collector for loaded sections of at most 1536 cells. Wet layers first use the existing fluid preparation; once drained, they use the same batch contract. A 32×32 layer has 1024 cells and fits this bound, which does not establish whole 32³ acceptance. Strict recovery, native sponge targets, unloaded and oversized sections do not automatically enable batching. Explicit single-area entries retain their chosen pickup mode.
@@ -47,6 +49,8 @@ Each receipt retains its source and any owned-material obligation. Ordinary reco
 Abandonment records the decision to stop pursuing a drop at that time. Later movement may pick it up, and shared inventory observation still includes it. Report historical abandonment, final ground items and final carried items separately; abandonment does not establish permanent loss.
 
 The 2026-10-04 layered 64-cell comparison at 20 TPS measured 100.18 seconds for immediate pickup and 62.78 seconds for batching, with physical clearance and protected stock verified. Batching recorded 23 abandoned items; six were carried and 17 remained on the ground at completion. This small component test does not establish autonomous whole-site supply, sponge drying, bottom sealing or return.
+
+A fresh plains 16³ run on 2026-10-05 completed autonomous supply, infrastructure, all 16 layers, bottom verification and actual workstation return from the minimal starting kit. The operation used 583.859 seconds and 260653 game ticks, averaging a measured 446.431 TPS. Independent verification covered 4096 dry-air cells, 256 floor cells, protected items, source stock and changes outside authority. The same tick count at 20 TPS is about 217.21 minutes versus 9.73 minutes here; this is an equivalent estimate, not a paired benchmark. Tools retained the unbreakable fixture limitation, so durability and repair were not accepted. This dry run had no sponge cycles; wet sites and 32³ long runs still require separate evidence.
 
 ### Product storage
 
