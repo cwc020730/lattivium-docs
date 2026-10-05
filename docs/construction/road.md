@@ -24,6 +24,6 @@
 
 ## 实现组件
 
-`BuildBlockFlow`、`PreparePlatformFlow` 与 `ApproachPlatformPlacementFlow` 提供放置和边缘施工能力。
+`BuildBlockFlow`、`PreparePlatformFlow` 与共享的 `ApproachBlockPlacementFlow` 提供放置和边缘施工能力。放置目标负责原生交互站位与射线检查，到达该站位由通用导航执行。
 
 `PrepareSiteRoadFlow` 接收 `SiteInfrastructurePlan`，负责井顶延伸、临时支撑、永久路面、临时块回收和往返核验；场地准备流程调用它来连接井道与工作站。

@@ -43,7 +43,7 @@ Thin supports use their actual collision height. Lily pads, carpets and slabs do
 
 The shared `ContactGoal` declares regions requiring native contact. Navigation owns terminal alignment, native jumping with verified headroom, and landing. Pickup callers do not drive those inputs. Cancellation releases them through navigation, and a subsequent request settles an actual airborne start before planning. Contact cannot replace item quantity, component and UUID receipts.
 
-A local clearing stage within scaffold preparation can declare a real handoff stance whose support survives that clearing. Shared support geometry checks it; ordinary point navigation actually returns there before the stage completes. Checkpoints retain the same destination and revalidate it before restoring work. This completes only the local stage. An unbuilt scaffold is not an existing exit, and its parent still builds and verifies column passage.
+A local clearing stage within scaffold preparation can declare a real handoff stance whose support survives that clearing. Shared support geometry verifies that the remaining support preserves its native feet height; ordinary point navigation actually returns there before the stage completes. Checkpoints retain the same destination and revalidate it before restoring work. This completes only the local stage. An unbuilt scaffold is not an existing exit, and its parent still builds and verifies column passage.
 
 ## Edge execution
 

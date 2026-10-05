@@ -24,6 +24,6 @@ The road has a continuous floor and clear walking space. Its ends connect to the
 
 ## Components
 
-`BuildBlockFlow`, `PreparePlatformFlow` and `ApproachPlatformPlacementFlow` provide block placement and edge-construction capabilities.
+`BuildBlockFlow`, `PreparePlatformFlow` and the shared `ApproachBlockPlacementFlow` provide block placement and edge-construction capabilities. Placement goals check native interaction stances and rays; common navigation executes arrival at the admitted stance.
 
 `PrepareSiteRoadFlow` takes a `SiteInfrastructurePlan` and owns scaffold extension, temporary support, permanent road placement, support recovery and round-trip checks. Site preparation calls it to connect the shaft and workstation.
