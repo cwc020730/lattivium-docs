@@ -11,10 +11,12 @@ A destination identifies a dimension and reference position. An arrival conditio
 | Block coordinates | Integer coordinates identifying one world cell |
 | Target feet | Intended Bot feet position |
 | Reference position | Coordinates guiding area selection or search |
-| Candidate pose | A geometrically valid position the operation can attempt to reach |
+| Candidate pose | A position admitted by shared operation-feasibility checks that navigation can attempt to reach |
 | `PathGoal` | Predicate determining navigation completion |
 
-Container coordinates identify inventory blocks; access workflows choose their interaction poses. Construction can supply multiple admissible positions. Business operations define the conditions and navigation attempts to satisfy them.
+Container coordinates identify inventory blocks. Tasks declare targets, effect authority and explicit requirements; shared operation-pose checks supply interactive candidates, and navigation owns arrival. Access and construction callers do not duplicate route-admission rules.
+
+Mining a layer does not implicitly require the Bot's feet to remain above that layer. An upper tall-grass block, for example, can be mined from a valid stance one block lower. Only an explicitly declared minimum height restricts the request. Native rays, retained footing, lava safety and paired-block authority remain checked at execution.
 
 ## TravelToFlow
 
@@ -47,5 +49,7 @@ Internal callers can supply custom completion conditions. `ApproachAreaFlow.Area
 ## Return positions
 
 A return position uses the same dimension-and-feet semantics as a travel destination. Acquisition and maintenance retain their own original goals or return points and invoke travel from the observed position after children finish.
+
+Temporary item recovery asks shared navigation to resolve the current return stance. A Bot can stand safely on a block edge while its center occupies an excavated cell. Actual support and continuous collision checks resolve an adjacent canonical stance instead of waiting inside recovery for the empty center cell to gain a floor. A falling body waits for native landing rather than treating a nearby lower surface as already reached. Return movement and item receipts are still verified.
 
 Delivery coordinates identify receiving containers; [delivery workflows](../supply/delivery) own physical transfer.
