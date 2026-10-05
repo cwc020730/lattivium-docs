@@ -66,6 +66,8 @@ At safe boundaries, the parent calls a resource policy. The policy evaluates its
 
 Observation reads current physical stock and requirement functions recalculate their levels, but queries and quantity updates do not start turnover. `EnsureInventoryReadyFlow` performs organization; the parent must invoke it at a safe boundary. Updated counts therefore do not mean space has already been released: a missing readiness call can still leave an operation with a full inventory. There is currently no background organizer that can arbitrarily interrupt flight, an open container or a borrowed-box transaction.
 
+Carried-box unpacking reuses current inventory checks before starting and after reaching staging. A native pickup en route may already satisfy the batch; that completes without another withdrawal or new transfer/acquisition credit. Active navigation settles first, and the parent organizer still checks layout and free slots. An empty portion is not always success: insufficient quantities, incompatible components and genuine capacity refusal still reject. Callers must not replace this physical recheck with an older inventory decision.
+
 ```mermaid
 flowchart TD
     A[Parent reaches a safe boundary] --> B[Evaluate requirements and levels]
