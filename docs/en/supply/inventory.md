@@ -94,6 +94,8 @@ flowchart TD
 
 Each native operation verifies quantities, components, menu identity and box recovery. Turnover has a bounded operation budget and reports a specific failure when it cannot satisfy the request.
 
+Readiness material quantities are minima. For owned transport boxes, the shared exchange planner first fits every required minimum, then fills spare capacity in already occupied receiving stacks with matching components. This preference consumes no additional slot and triggers no extra packing or procurement; capacity pressure retains the smallest fitting portion. An already ready request does not unpack again. Acquisition and delivery keep their explicit quantity contracts, and named or otherwise mismatched components cannot replace required materials.
+
 ## Working position for carried boxes
 
 `AccessShulkerStagingFlow` selects a position for placing and recovering a transport box. The placement cell and the cell above remain empty, with a supported 3×3 drop landing area below. Nearby chunks must be loaded, and portal clearance and entity occupancy checks must pass.
