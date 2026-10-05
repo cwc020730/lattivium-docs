@@ -89,15 +89,15 @@ This top-down view shows two rows of chambers. `#` marks a partition, `·` a cha
 ########
 ```
 
-In cross-section, the partition, chamber water, and sponge occupy the same active layer `Y`; the sponge is inside the chamber. The cleared layer `Y+1` is air, and `Y-1` provides a dry solid floor:
+In cross-section, the partition, chamber water, and sponge occupy the same active layer `Y`; the sponge is inside the chamber. The cleared layer `Y+1` is air. Below it may be deeper water within the declared authority or existing solid ground:
 
 ```text
 Y+1     air   air    air    air   air
 Y       wall  water  sponge water wall
-Y-1     floor floor  floor  floor floor
+Y-1     authorized water or existing solid ground
 ```
 
-A sponge chamber needs a dry solid floor and a usable return position. Other fluid cells use fill material. Every completed layer is verified as dry air. The mode uses physically carried sponges, furnace and fuel, with receipts for placement, recovery and drying.
+Grid candidates no longer require a dry solid floor beneath the entire chamber. Native absorption checks still cover the complete effect authority, loaded surroundings and protected infrastructure: authorizing only the current layer does not authorize removing water below it. Working poses, wet-sponge pickup and return use shared navigation; losing a route after drainage cannot count as reaching a raised deck. Chambers that cannot execute safely use fill material and retain the reason. Every completed layer is verified as dry air. The mode uses physically carried sponges, furnace and fuel, with receipts for placement, recovery and drying. Filler fallback is not sponge acceptance evidence.
 
 Before drying, shared inventory readiness prepares the furnace, wet sponge and fuel together as directly usable stock. Drying waits for an active unpacking or packing operation to settle before checking the temporary furnace location again. Stock may temporarily be in a placed box during that operation, so carried counts alone cannot establish a shortage. If failure or cancellation leaves a box unrecovered, its location and recovery obligation remain explicit; construction cannot treat that as an optional drying failure and continue.
 
