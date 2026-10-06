@@ -54,6 +54,8 @@ When both working slots are occupied, the exchange moves the previous working st
 
 Packing first projects consolidation of matching item and component fragments inside owned transport boxes, then checks whether the complete loose batch fits. All 27 slots being occupied does not necessarily mean the box is full. Planning leaves the carried box unchanged; consolidation and insertion commit together in the existing placed-box transaction. Different names or other components do not merge, and installation or delivery boxes remain excluded. Cancellation before box return retains the outstanding box obligation; a completed transfer does not prove the box was recovered.
 
+Construction declares the direct quantity needed for its active batch; the inventory system decides which surplus can be packed, without a separate construction material-category blacklist. With 128 white concrete and a direct claim of 64, the other 64 may be boxed to free space. A direct claim of 128 retains all of it loose and still refuses insufficient capacity. Tools, routine supplies, installation containers and task cargo retain their shared requirement and custody protections.
+
 ```java
 new EnsureInventoryReadyFlow(bot,
     Map.of(Identifier.parse("minecraft:sand"), 64L));
