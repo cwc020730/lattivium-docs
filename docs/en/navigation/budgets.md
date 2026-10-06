@@ -7,13 +7,13 @@ Budgets bound search work, execution time and recovery attempts. Each has a unit
 | Unit | Measures | Used by |
 | --- | --- | --- |
 | Node expansions | A* nodes actually expanded | `PlanningSession` |
-| Server ticks | Advances of game time | Navigation, travel, source and replenishment timeouts |
-| Active ticks | Tick difference minus explicitly suspended intervals | `ExecutionScope` |
+| Server ticks | Advances of game time | Vanilla physical actions and runtime diagnostics |
+| Active budget units | Shared charging of physical progress and real external waits, excluding explicit suspension | `ExecutionScope` and cumulative navigation, travel and supply limits |
 | Planning nanoseconds | Elapsed monotonic planning time | Recipe planning and cooperative search slices |
 | Attempts | Replanning, maintenance or repeated operations | Owner-specific counters |
 | Wall time | Elapsed monotonic time | Asynchronous stock lookup, diagnostics and test-runner deadlines |
 
-Tick allowances change their wall-time meaning with game speed. At sustained 20 TPS, 1200 ticks take about one minute; at 80 TPS, about 15 seconds. Lower TPS makes the same tick allowance take longer. Recipe nanosecond limits follow elapsed computation time.
+Each physical game tick consumes one budget unit. Declared external futures, queue admission and acknowledgements consume monotonic real time at one unit per `50 ms`, propagated to every parent scope. Divide by TPS only for a purely physical interval: 1200 physical ticks take about one minute at 20 TPS or 15 seconds at 80 TPS. Mixed limits cannot be converted this way, and raw trace ticks differ from charged budget. Recipe nanosecond limits still follow computation time. See [shared test timing](../developer/testing).
 
 Active means the execution scope has not been explicitly suspended. Ordinary chunk, database and menu waits still consume active time. Resource waiting uses `TravelFuelWaitDriver` to suspend the original execution. The suspended interval is excluded from its timeout and notified child scopes. Resumption retains previously consumed allowances.
 
@@ -30,7 +30,7 @@ Material acquisition / business execution scope
           -> Path-edge / Action scope
 ```
 
-Each scope retains its start tick and limit. Parent time continues advancing while a child runs. A new child creates a child scope; the existing parent retains its consumed time.
+Each scope retains its charged time and fixed limit. Parent total time advances while a child runs, and a new child never resets the parent. The default contract bounds total time. Capabilities opting into `CompositeExecutionBudget` also bound their own work: a running direct child Flow charges total time without charging the parent's own work again; atomic Actions remain own work. Both use the same clock and suspension rules, without renewing limits on retries or child replacement.
 
 `ExecutionScope.remainingActiveTicks()` uses the earliest deadline in the synchronous call chain. Area approach checks it before launching a flight to retain enough time for safe landing.
 
@@ -81,7 +81,7 @@ Movement limit = 4800 + A - floor(A / 4)
 Execution-scope limit = 9600 + A
 ```
 
-Each planning advance reserves one planning tick; path execution reserves a movement tick. Water recovery during planning also belongs to that phase. Partial segments and displacement replanning retain both counters.
+Planning and movement counters consume charged increments from `ExecutionScope.budgetTick()`, rather than counting raw callbacks independently. Water recovery during planning also belongs to that phase. Partial segments and displacement replanning retain both counters.
 
 | Initial horizontal distance | Planning ticks | Movement ticks | Total ticks | Total at 20 TPS | Total at 80 TPS |
 | --- | --- | --- | --- | --- | --- |
@@ -89,7 +89,7 @@ Each planning advance reserves one planning tick; path execution reserves a move
 | 500 blocks | 6288 | 9264 | 15552 | About 13 minutes | About 3.2 minutes |
 | >=878 blocks | 7800 | 13800 | 21600 | 18 minutes | 4.5 minutes |
 
-These durations describe the maximum active time of the enclosing scope. Planning or movement can exhaust its own limit first. Actual journey duration depends on paths, obstacles and waits.
+These times are physical equivalents at a sustained rate without external waits, not actual deadlines for mixed tasks. Planning or movement can exhaust its own limit first. Actual journey duration depends on paths, obstacles and waits.
 
 Planning exhaustion reports `PATH_TIMEOUT`; movement or execution-scope exhaustion reports `TIMEOUT`. Node exhaustion without an allowed executable prefix can also report `PATH_TIMEOUT`. A search finding no executable path reports `NO_PATH`.
 
@@ -109,7 +109,7 @@ Planning exhaustion reports `PATH_TIMEOUT`; movement or execution-scope exhausti
 
 This allowance controls execution time, not rocket quantity or minimum stock, and does not automatically add a return journey to a one-way trip. [Inventory thresholds and supply policy](./fuel) determine rocket reserves separately. Acquisition or construction explicitly requests a return destination when the operation requires one.
 
-The table shows current code constants in ticks. At sustained 20 TPS, 36000 ticks take 30 minutes and 288000 take four hours. At 80 TPS, they take about 7.5 minutes and one hour.
+The table retains the code's tick constants, charged using the shared budget units above. Purely physical 36000 ticks take about 30 minutes at 20 TPS or 7.5 minutes at 80 TPS; 288000 take about four hours or one hour. These conversions do not predict wall deadlines for travel or production containing asynchronous waits.
 
 The `TravelToFlow` base does not directly grow with total distance. Portal and approach children can receive distance allowances while the parent base still constrains the journey. `SupplySourceFlow` uses horizontal coordinate distance for its flight-style round-trip allowance; the travel planner separately estimates the actual cross-dimension route.
 
