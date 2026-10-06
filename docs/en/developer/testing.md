@@ -291,3 +291,16 @@ When a child returns `PROGRESS` on its actual tick, or first returns `SUCCESS` a
 Construction, acquisition and Atlas fixtures share the equipment-protection contract. Armor remains in its original equipment slot. Durable carried gear is checked by quantity and components across the main inventory, offhand and owned transport boxes, allowing legitimate movement between them. Consumable hand items such as rockets follow their item contract; moving them does not mean armor was lost. Protecting existing gear does not forbid acquiring new tools.
 
 Construction and acquisition preserve exact components. Atlas fixtures that already permit wear retain item-identity and quantity protection, without claiming unchanged durability or components. Boxes, sponges, cargo and source inventories retain their separate checks. New construction reports declare the equipment-protection version and consume the same contract in live acceptance and saved verification. Historical reports gain no additional coverage and their original failures remain unchanged.
+
+### Native posture during external waits
+
+```powershell
+python scripts/testctl.py --env native run start external-wait-posture
+python scripts/testctl.py --env native run verify <run-id>
+```
+
+Native air, gravity and hunger continue while a database or worker request is pending. The shared execution scope permits the input adapter to hold an already reached breathable water surface only when every active child is purely waiting externally and no foreground work or input occurred. It uses native JUMP without changing air, velocity, effects or the world. A deep open water column is not an already reached surface, and this does not replace shared navigation to an exit.
+
+Active diving, foreground movement or posture, and parked unfinished children veto background input. Cancellation, suspension and entity rebinding withdraw it. An adapter-release error must not skip the business owner's cleanup, and both errors remain visible. Atlas, inventory and construction do not implement separate floating branches. Timing, progress and total deadlines retain their existing contracts.
+
+The gate covers eight native waiting-posture controls, twenty execution-clock and cleanup-fault controls, and Java checks. Use `water-egress` for adjacent water navigation. These component proofs do not replace a complete wet construction audit of autonomous supply, sponge recovery and drying, clearing, sealing, actual return and inventories.
