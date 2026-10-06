@@ -82,6 +82,8 @@ Edges check collision, stance, liquids, equipment and control requirements. Navi
 
 Ladders and scaffolding support ascent and controlled descent. The Bot can enter from the air cell above a column, descend through its continuous blocks, and step onto an exit checked for collision and support. Water and upward bubble columns provide ascent. Construction flows establish any required openings first.
 
+At an intermediate column exit, the shared climb executor keeps feedback from actual feet height. If native descent crosses one level below its target, the exit phase uses native jumping to regain that level rather than steering only horizontally. Success still requires ground contact at the target height; changed exit support is refused, and cancellation releases movement, jump and crouch input. Construction and pickup do not add separate descent control or extend the edge deadline.
+
 Water-column construction, ordinary platforms and pickup use shared local navigation for boarding and return. There is no separate construction swimming route.
 
 When enabled, local navigation plans three-dimensional swim edges directly from valid underwater nodes, including descent, ascent and horizontal movement. Air preparation uses the shared `RestoreAirFlow`; callers do not select a second swimming route. Native body collision, fluid and portal checks remain. Execution retains survival and low-air refusal; refusing low-air movement does not prove an emergency return succeeded.
