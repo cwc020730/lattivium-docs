@@ -46,3 +46,11 @@ Area approach considers direct fuel and return reserves. See [rocket estimates a
 ## Inspecting flight state
 
 Trace exposes preparation, ascent, cruise, descent, landing and recovery phases. Arrival verification combines observed dimension, feet, flight state and execution receipts.
+
+## Water-surface departure
+
+Common local navigation can launch from an admitted surface node when usable elytra and rockets are available, then reach a supported destination. Submerged nodes first use shared swimming edges to reach the surface. Navigation owns emergence clearance, entity collision and fuel; construction and recovery callers declare their destinations.
+
+Planning and execution share logical feet, physical stance and the first airborne checkpoint. Short hops and direct flights reuse surface alignment and native jump/fall-flying inputs. Fuel preparation returns to the original logical stance. Fractional slab/chest supports keep their current cell, without an above-cell alias. Changed water/clearance and cancellation retain revalidation and input cleanup.
+
+Twenty-four water/departure and sixteen adjacent dry-landing controls passed. This establishes the shared capability, not a complete wet construction acceptance. The legacy departure cohort still has recorded pre-existing failures.
