@@ -68,6 +68,8 @@ When enabled, local navigation plans three-dimensional swim edges directly from 
 
 Local surface alignment checks connected water in each actual column; fluid-cell heights may differ. Its swept body envelope covers the full rise from the current height, including an off-center shoulder. Unloaded regions, collisions, lava, portals and dry gaps are rejected. Lower flowing surfaces use the same planar control and native buoyancy for recovery, mining and flight departure.
 
+Long submerged segments also follow their validated corridor. If actual feet drift off its centerline, the shared water-edge executor regains that corridor before advancing, rather than swimming diagonally toward a distant endpoint beside neighboring blocks. Vertical edges retain their three-dimensional target; native surface buoyancy, air budgets, collision checks and cancellation cleanup keep the same contracts.
+
 ## Search policy
 
 Default `SearchPolicy` allows at most 8192 expansions per A* search session and 16 per tick, with additional flight, drop, partial-path and minimum-height controls. Execution progresses cooperatively across ticks with time budgets.
