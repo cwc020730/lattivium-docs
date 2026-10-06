@@ -52,6 +52,8 @@ When both working slots are occupied, the exchange moves the previous working st
 
 `EnsureInventoryReadyFlow` accepts a loose batch demand or required empty slots and advances arrangement, packing, unpacking and authorized L3 turnover.
 
+Packing first projects consolidation of matching item and component fragments inside owned transport boxes, then checks whether the complete loose batch fits. All 27 slots being occupied does not necessarily mean the box is full. Planning leaves the carried box unchanged; consolidation and insertion commit together in the existing placed-box transaction. Different names or other components do not merge, and installation or delivery boxes remain excluded. Cancellation before box return retains the outstanding box obligation; a completed transfer does not prove the box was recovered.
+
 ```java
 new EnsureInventoryReadyFlow(bot,
     Map.of(Identifier.parse("minecraft:sand"), 64L));
