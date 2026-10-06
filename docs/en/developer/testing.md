@@ -283,3 +283,11 @@ return and source-inventory audits. Prior failure records remain retained.
 Ordinary operations retain an inclusive overall deadline. An orchestrator can declare fixed local-work and total ceilings: execution excludes only intervals delegated to a running direct child Flow from local cost, while atomic Actions still consume local work. Every child remains included in total cost. Retries, child changes and suspension cannot reset used work or the total ceiling; shorter inclusive ancestor deadlines remain effective.
 
 Mining arrival time uses this common contract. Aquatic clearing composes the public mining and collector ceilings. Navigation retains its own planning, movement and safety limits, and controller wall deadlines remain unchanged. A clearing wrapper therefore cannot truncate legitimate navigation planning with its local-work window. Component regressions do not establish a fresh wet whole-flow acceptance.
+
+When a child returns `PROGRESS` on its actual tick, or first returns `SUCCESS` after clean settlement, the shared execution scope updates progress along the actual ancestor stack. Wrappers need no separate child-progress policy. Waiting, `CONTINUE`, cached success, failure, cancellation and unsettled cleanup provide no such credit. Fixed total deadlines, local-work charges and navigation budgets remain effective.
+
+### Fixture equipment protection
+
+Construction, acquisition and Atlas fixtures share the equipment-protection contract. Armor remains in its original equipment slot. Durable carried gear is checked by quantity and components across the main inventory, offhand and owned transport boxes, allowing legitimate movement between them. Consumable hand items such as rockets follow their item contract; moving them does not mean armor was lost. Protecting existing gear does not forbid acquiring new tools.
+
+Construction and acquisition preserve exact components. Atlas fixtures that already permit wear retain item-identity and quantity protection, without claiming unchanged durability or components. Boxes, sponges, cargo and source inventories retain their separate checks. New construction reports declare the equipment-protection version and consume the same contract in live acceptance and saved verification. Historical reports gain no additional coverage and their original failures remain unchanged.
