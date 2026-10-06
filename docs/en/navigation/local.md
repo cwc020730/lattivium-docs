@@ -31,6 +31,8 @@ Planning and movement have separate tick budgets. Replanning retains those count
 
 Before continuing an incremental search, shared planning rechecks its origin through the existing native start-admission rules. Receding water or changed support can invalidate that origin; planning then discards the session and resolves the request origin again. Live requests use the actor's current feet, while virtual return requests retain their supplied origin. Spent planning time and expansion counts remain cumulative, and the outer budget is unchanged. This check handles invalid origins; existing edge validation still handles changes along the route.
 
+Water-edge destinations also use current native state. When an admitted wet target becomes dry, success still requires actual ground contact at the original target position and height, shared ground admission, and safe support and clearance for the actual body. Missing support, body contact with lava or portals, and unknown chunks cannot become success merely because water receded. Movement that remains in water retains its surface or submerged arrival contract, without construction-specific retries or renewed budgets.
+
 Partial paths can advance through a useful prefix, observe new terrain and continue planning. Overall success still requires the original goal. Operations requiring a validated complete path can use `requiringCompletePath()`.
 
 ## Arrival and interaction poses
