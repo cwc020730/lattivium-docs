@@ -70,6 +70,8 @@ Local surface alignment checks connected water in each actual column; fluid-cell
 
 Long submerged segments also follow their validated corridor. If actual feet drift off its centerline, the shared water-edge executor regains that corridor before advancing, rather than swimming diagonally toward a distant endpoint beside neighboring blocks. Vertical edges retain their three-dimensional target; native surface buoyancy, air budgets, collision checks and cancellation cleanup keep the same contracts.
 
+Short elytra edges consume the planner's selected launch corridor and landing point. Steering corrects horizontal drift during native water emergence toward that corridor. Once over the target column, the existing assisted flight descent keeps the glide brake until close to its support. Entering landing is separate from success, which still requires native ground contact and the planned position and height. This uses the existing assisted velocity controls; it is not unassisted vanilla flight. Construction callers do not supply a second launch or landing policy.
+
 ## Search policy
 
 Default `SearchPolicy` allows at most 8192 expansions per A* search session and 16 per tick, with additional flight, drop, partial-path and minimum-height controls. Execution progresses cooperatively across ticks with time budgets.
