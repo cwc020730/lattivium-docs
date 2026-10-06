@@ -304,3 +304,13 @@ Native air, gravity and hunger continue while a database or worker request is pe
 Active diving, foreground movement or posture, and parked unfinished children veto background input. Cancellation, suspension and entity rebinding withdraw it. An adapter-release error must not skip the business owner's cleanup, and both errors remain visible. Atlas, inventory and construction do not implement separate floating branches. Timing, progress and total deadlines retain their existing contracts.
 
 The gate covers eight native waiting-posture controls, twenty execution-clock and cleanup-fault controls, and Java checks. Use `water-egress` for adjacent water navigation. These component proofs do not replace a complete wet construction audit of autonomous supply, sponge recovery and drying, clearing, sealing, actual return and inventories.
+
+
+### Executable origins and replanning lifecycle
+
+```powershell
+python scripts/testctl.py --env native run start navigation-origin
+python scripts/testctl.py run verify <run-id>
+```
+
+The gate includes six origin controls and adjacent ground, water, displaced recovery, scaffold entry/ascent/descent and recorded portal-room regressions: 91 native controls plus Java check. The broader 21-test vertical movement group has six failures on both the prior and modified production sources; these remain open, and this entry does not establish that the whole vertical group passes. Finite recorded river geometry distinguishes public navigation, a deliberately wrong first-edge entry and normal movement from actual support; it does not replay the historical world's fluid timing. Other controls cover a virtual future origin, cancellation and the original planning limit for a live inadmissible origin. The pending negative repeatedly supplies an explicitly airborne pose to test the contract; it does not claim vanilla gravity would hold an actor in the air. Component success is not new whole-construction acceptance.
