@@ -4,6 +4,8 @@
 
 Before adding a native fixture, check absolute coordinates and cleanup bounds of other fixtures in its group: GameTests share a world, so overlapping pools or platforms can be overwritten before another Bot executes. Configuration and old drops may persist in that world. A short reproduction should explicitly establish relevant settings and framework prerequisites, such as food and transport headroom, inside its own footprint. Component success with those resources cannot replace a field test of autonomous acquisition from starter equipment alone.
 
+Coordinate isolation and chunk-ticket ownership are separate concerns. New fixtures needing forced chunks should reuse the existing `FieldSiteChunkPins` lease and release their own lease during cleanup. It counts shared holders and preserves an external forced-load baseline. Spacing fixtures apart does not prove that overlapping holders cannot unload chunks needed by another task. Some older fixtures still force chunks directly; an existing gate passing does not establish that every caller has migrated.
+
 
 For frozen construction scenes, `preimage` covers the whole observation box; `expected` declares dry operation results and retained facilities. Naturally waterlogged cave plants left unchanged in observation margins are not drainage targets. The common audit still compares exact native states outside authorized effects. Preserve a failed signed attempt after an authoring error; supplemental review cannot rewrite it or grant new full-flow acceptance.
 
