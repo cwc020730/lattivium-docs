@@ -66,6 +66,8 @@ Water-column construction, ordinary platforms and pickup use shared local naviga
 
 When enabled, local navigation plans three-dimensional swim edges directly from valid underwater nodes, including descent, ascent and horizontal movement. Air preparation uses the shared `RestoreAirFlow`; callers do not select a second swimming route. Native body collision, fluid and portal checks remain. Execution retains survival and low-air refusal; refusing low-air movement does not prove an emergency return succeeded.
 
+Local surface alignment checks connected water in each actual column; fluid-cell heights may differ. Its swept body envelope covers the full rise from the current height, including an off-center shoulder. Unloaded regions, collisions, lava, portals and dry gaps are rejected. Lower flowing surfaces use the same planar control and native buoyancy for recovery, mining and flight departure.
+
 ## Search policy
 
 Default `SearchPolicy` allows at most 8192 expansions per A* search session and 16 per tick, with additional flight, drop, partial-path and minimum-height controls. Execution progresses cooperatively across ticks with time budgets.
