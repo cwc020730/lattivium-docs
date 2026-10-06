@@ -60,6 +60,10 @@ Requirements that include `L2` or `L3` count stock in those locations and allow 
 
 Workstations currently register output depots. Only explicitly declared workstation requirements have stock levels; business flows arrange any transport to the station.
 
+Pickup accounting uses the same component-exact carried-stock observation: main inventory, offhand, equipment and the contents of physically carried L2 transport boxes. Legitimate movement between the main inventory and an owned transport box is neither loss nor new acquisition; existing boxed stock cannot earn new pickup credit. Boxes left in the world are not carried stock. Actual quantity loss, component changes and native drop UUID attribution remain checked.
+
+Slot capacity and pickup custody use different views of the same inventory system. Direct pickup and container transfers assess physical main slots; boxed stacks are not extra main-inventory slots. Recovery records retain physical slot and component identity, while new pending-pickup baselines use the carried-stock view. Older records lacking that historical baseline require explicit reconciliation instead of silent reinterpretation.
+
 ## Triggering replenishment
 
 At safe boundaries, the parent calls a resource policy. The policy evaluates its requirement and uses existing carried-box unpacking, `ReplenishSuppliesFlow` and crafting operations. Food also reacts to real hunger; rocket policy maintains travel fuel.
