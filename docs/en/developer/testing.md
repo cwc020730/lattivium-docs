@@ -194,6 +194,10 @@ Parent intervals already include their children. Use interval unions or explicit
 
 Paired speed comparisons need the same terrain, workload, equipment, execution mode and supply obligations. Different layers or retained continuations can provide throughput references, but are not controlled paired experiments. Native task success still needs physical, inventory and cleanup verification. Retain failed reports; independently gathered component evidence cannot rewrite a whole-attempt conclusion.
 
+Measure representative wet layers before assigning a not-yet-started acceptance deadline; do not reuse a dry full-run estimate. In a deep-water 16³ sample on 2026-10-06, six fluid-preparation scopes took about 72–97 seconds each, including about 6–7 seconds for each layer's 16 drying cycles; layer replenishment separately took about 28–44 seconds. Some intervals are nested, so these figures cannot be added into CPU cost or a whole-run acceptance duration. Partition construction, sponge recovery and movement also count.
+
+Record external operation expiry as a test-budget stop, preserving physical progress, cumulative cost and cleanup results. Do not count a disconnect caused by teardown as another business failure. Eight completed layers and sponge recovery/drying are component evidence; they do not establish the complete volume, bottom sealing or return. Historical attempt deadlines and unsuccessful conclusions remain unchanged.
+
 
 ### Shared native chunk leases
 
