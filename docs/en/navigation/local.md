@@ -72,6 +72,8 @@ Long submerged segments also follow their validated corridor. If actual feet dri
 
 Short elytra edges consume the planner's selected launch corridor and landing point. Steering corrects horizontal drift during native water emergence toward that corridor. Once over the target column, the existing assisted flight descent keeps the glide brake until close to its support. Entering landing is separate from success, which still requires native ground contact and the planned position and height. This uses the existing assisted velocity controls; it is not unassisted vanilla flight. Construction callers do not supply a second launch or landing policy.
 
+Submerged transit and destination posture are separate. An open surface destination does not permit rising throughout the preceding submerged corridor. The water-edge executor follows the admitted swim corridor and hands off to native surface posture only in the actual destination column, including when intermediate cells have a grid or other cover. Precise arrival, air checks and input cancellation remain shared navigation responsibilities.
+
 ## Search policy
 
 Default `SearchPolicy` allows at most 8192 expansions per A* search session and 16 per tick, with additional flight, drop, partial-path and minimum-height controls. Execution progresses cooperatively across ticks with time budgets.
