@@ -4,6 +4,9 @@
 
 Before adding a native fixture, check absolute coordinates and cleanup bounds of other fixtures in its group: GameTests share a world, so overlapping pools or platforms can be overwritten before another Bot executes. Configuration and old drops may persist in that world. A short reproduction should explicitly establish relevant settings and framework prerequisites, such as food and transport headroom, inside its own footprint. Component success with those resources cannot replace a field test of autonomous acquisition from starter equipment alone.
 
+
+For frozen construction scenes, `preimage` covers the whole observation box; `expected` declares dry operation results and retained facilities. Naturally waterlogged cave plants left unchanged in observation margins are not drainage targets. The common audit still compares exact native states outside authorized effects. Preserve a failed signed attempt after an authoring error; supplemental review cannot rewrite it or grant new full-flow acceptance.
+
 ## Cases and attempts
 
 Inspect the case and environment before starting an independent attempt. `run wait` observes completion without extending the execution budget.
