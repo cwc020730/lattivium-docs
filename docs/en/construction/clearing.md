@@ -38,6 +38,8 @@ Tools, borrowed shulker boxes, sponges and delivery cargo retain their own retur
 
 Current sponge work prefers removal from above the sponge. Mining, underwater arrival and pickup remain owned by their shared systems. An authorized, genuinely unrecoverable wet sponge can be recorded as a loss; only physically recovered quantities enter drying demands. Abandonment is never a drying receipt. Temporary furnaces retain strict recovery: inventory gained from another matching item entity cannot settle the original furnace UUID.
 
+Item custody and completed return are separate outcomes. The shared collector validates native UUIDs, exact components and inventory gain, then rechecks custody on failure or cancellation. Received wet sponges or strictly protected furnaces can settle their item obligations while a failed return still fails the operation; it does not start drying or advance another layer. Later cargo loss, changed components or dirty child cleanup prevent an earlier receipt from releasing protection.
+
 ### Batching ordinary dry-layer drops
 
 Layered excavation delegates recovery policy to the same `ExcavateAreaFlow`. BEST_EFFORT ordinary work reuses the existing batch collector for loaded sections of at most 1536 cells. Wet layers first use the existing fluid preparation; once drained, they use the same batch contract. A 32×32 layer has 1024 cells and fits this bound, which does not establish whole 32³ acceptance. Strict recovery, native sponge targets, unloaded and oversized sections do not automatically enable batching. Explicit single-area entries retain their chosen pickup mode.
