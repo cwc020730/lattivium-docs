@@ -273,3 +273,9 @@ independent enclosed-pit refusal and Java check. Use
 `navigation-interaction-unification` for broader affected callers. These gates do
 not replace autonomous startup, facilities, excavation, bottom sealing, actual
 return and source-inventory audits. Prior failure records remain retained.
+
+### Parent and child budget boundaries
+
+Ordinary operations retain an inclusive overall deadline. An orchestrator can declare fixed local-work and total ceilings: execution excludes only intervals delegated to a running direct child Flow from local cost, while atomic Actions still consume local work. Every child remains included in total cost. Retries, child changes and suspension cannot reset used work or the total ceiling; shorter inclusive ancestor deadlines remain effective.
+
+Mining arrival time uses this common contract. Aquatic clearing composes the public mining and collector ceilings. Navigation retains its own planning, movement and safety limits, and controller wall deadlines remain unchanged. A clearing wrapper therefore cannot truncate legitimate navigation planning with its local-work window. Component regressions do not establish a fresh wet whole-flow acceptance.
