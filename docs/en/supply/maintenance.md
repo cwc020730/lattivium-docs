@@ -82,3 +82,8 @@ Submission IDs identify executions for observation and control. See [recovery](.
 Shared `PrepareInventoryConsumptionFlow` prepares the next ordinary native batch. If unpacking requires a visit elsewhere, this preparation returns through shared navigation to its original consumption position and observes stock again; callers recheck actual interaction feasibility. Finish the same pending request before geometry checks, then validate actual stance. Inherited source access and material consumption permission are separate contracts; `consumingMaterialOwner(UUID)` authorizes business stock, while trace parentage grants no permission.
 
 Food and propulsion policies retain their triggers. Common `consumptionLimits` checks their roles, weighted nutrition and foreign carried minimums. Exact owned reservations keep their existing reserve/settle receipts; confirmed ordinary effects report `confirmConsumption(removed, returned)` without double settlement. Cancellation retains outstanding box/menu/inventory cleanup and does not reset root-session counts, active time or parent budgets. Native contract gates validate consumption, relocation and cancellation separately from complete construction acceptance.
+
+
+## Local world and maintenance journeys
+
+Parents declare the world required for their local work. Shared `Flow.requireLocalWorld` permits travel while the actual owned child runs, then revalidates its clean successful return before any parent local effect. Without an active child, validation is immediate. Native target state, interaction and safety checks still apply; construction phase names do not determine whether maintenance can transit worlds.
