@@ -57,7 +57,7 @@ Site survey -> Construction demand
 
 Maintenance runs as a child operation. The parent retains its goal, progress and inventory obligations, then continues after the child and its cleanup finish. `ResourceMaintenance` owns active resource types and cumulative budgets, preventing same-resource recursion. Fuel maintenance restricts additional food-replenishment trips.
 
-Acquisition provides rocket and food policies. Infrastructure uses carried supplies. Layered excavation connects `ExcavationSupplies` to the shared `TaskFoodSupply`, `TaskFireworkSupply` and Atlas source lookup, and performs supply trips at safe boundaries. Maintenance observes L0, L1 and owned L2 transport-box contents together; mined cargo retains its reservation after packing. Each stage owns its maintenance lifecycle while sharing resource policies and acquisition components; see [resource maintenance](../guide/supply#resource-maintenance).
+Acquisition provides rocket and food policies. Infrastructure uses carried supplies. Layered excavation connects `ExcavationSupplies` to shared food and fuel policies and admitted sources, and performs supply trips at safe boundaries. Maintenance observes L0, L1 and owned L2 transport-box contents together; mined cargo retains its reservation after packing. Each child scope owns its stock declarations and inherits the root session's active state and cumulative budgets. Ending the child does not reset parent budgets or close borrowed sources; see [shared maintenance](../supply/maintenance#capacity-and-context).
 
 ## Admission boundary
 
@@ -71,7 +71,7 @@ Rocket maintenance first collects existing plain propulsion rockets, then attemp
 
 Borrowed source boxes follow an ownership lifecycle: remove, place, extract exact quantities, recover and return the remainder. Carried transport boxes use shared staging and inventory operations to make loose sand, filler, rockets or food available.
 
-Construction children check carried inventory and unpack or report shortages according to their contracts. Upfront quantity settlement and in-progress shulker access have separate ownership responsibilities.
+Construction consumers declare their next native batch through shared `PrepareInventoryConsumptionFlow`; inventory owns eligible selection and admitted unpacking. Explicit `consumingMaterialOwner(UUID)` grants business stock permission; trace ancestry and target coordinates do not. Native effects recheck common limits and report exact confirmed item deltas. Foreign claims, TOOL reservations and pending box cleanup remain protected. Acquisition and consumption retain separate receipts. Root budgets and inherited source permissions remain unchanged. Consumption and relocation have native contract gates; full field acceptance is recorded separately.
 
 Ordinary mining products follow the configured best-effort recovery policy. Tools, shulker boxes, sponges and inventory consistency retain their own protections. See [product recovery](./clearing#product-recovery).
 

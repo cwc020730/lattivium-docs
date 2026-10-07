@@ -2,7 +2,7 @@
 
 Inventory levels determine where items belong, how they reach the Bot's hands and when to arrange them. [Stock requirements](./stock) express quantities. The material ledger owns item obligations and reservations.
 
-Current integration limits: excavation still triggers site deposits from physical empty-slot counts without first requesting shared L1/L2 turnover. Site containers use excavation cargo/depot records rather than the common L3 stock ledger. This page describes the shared inventory interface; it does not establish that every caller's capacity decisions and external stock have been migrated.
+Excavation, construction, collection and crafting use the shared readiness entry point. Callers declare the next batch, working space and authorized sources; inventory owns arrangement, packing, box replenishment and admitted turnover. Excavation depots retain final-cargo receipts and cancellation recovery, while shared readiness decides receiving capacity. Final delivery and retrievable L3 storage retain distinct custody. Ordinary BEST_EFFORT excavation without a declared depot does not make a distant box trip merely to obtain four empty slots.
 
 ## Four levels
 
@@ -36,6 +36,29 @@ Slot purposes are fixed. Tool tags, the food whitelist and stock-level configura
 
 Food and rockets admitted to L0 must be available for consumption. Cargo reserved by the task stays in L1 or L2. Turnover moves any L0 quantity above the available allowance back to L1, preserving task cargo and routine supplies as separate obligations.
 
+### Consuming an operation's own allocation
+
+Native container placement and deposits apply shared slot, component and ownership protection by default. An operation supplies its declaration owner when consuming its own allocation: workstation installation and stocking may reduce that allocation while other owners' direct stock, tools and borrowed custody remain protected. Callers cannot disable the protection contract or maintain a separate first-box scan. Box procurement uses the same consumable availability: two installation boxes do not fulfill the demand for a third excavation depot box.
+
+
+## Shared inventory relocation
+
+Arrangement, working-slot selection, offhand swaps and Elytra equipment use `InventoryController` to compare actual stock before and after relocation through one `StockRequirements.permitsRelocation` contract. Both sides retain foreign component, location and weighted minima. Arrangement transfers only the permitted excess when a whole stack cannot move. Internal relocation preserves quantity and ledger purposes without recording consumption or acquisition.
+
+Unpacking is also a location transition. Shared box execution compares the original observation with the complete receiving plan, preserving foreign L2 minima before mutation. It cannot unpack protected stock and then lower its floor using the changed observation. Compatible extra stock is omitted when only the exact batch is permitted. Business batch preparation forwards its explicit owners through `EnsureInventoryReadyFlow.withConsumingOwners(Set<UUID>)`.
+
+Moving a rocket stack to the offhand and using one rocket have separate checks. Only use decreases stock and settles TRAVEL. TOOL or cargo reservations permit legal internal relocation; explicit business owners authorize their own declarations while preserving all others.
+
+## Shared consumption preparation
+
+Ordinary construction calls `Flow.prepareInventoryConsumption(item, minimum, consumingOwners, server, tick)` for its next native effect, usually one item. Shared `PrepareInventoryConsumptionFlow` owns eligible quantity selection, admitted L2 unpacking, working-slot selection and cancellation cleanup. The parent calls `finishInventoryConsumptionPreparation` before geometry checks, then revalidates actual stance and reach. Recheck `selectedConsumptionLimit` before mutation; busy menu or inventory custody is unavailable.
+
+`consumingMaterialOwner(UUID)` explicitly authorizes a business declaration. Consumer UUID and explicit business-owner grants are distinct from trace ancestry, target coordinates and inherited source access. A parent with no relevant declaration needs no invented exemption.
+
+`InventoryController.consumptionLimits` combines components, weighted L0/L1/L2 minimums, roles and ledger reservations. Eating and propulsion authorize FOOD/FIREWORKS roles; ordinary material consumption does not. Role permission still retains foreign minimums. Nutrition protection preserves whole items according to actual per-item nutrition. Exact `creditedPurpose`/`creditedReservation` may credit only this consumer's existing reservation for that purpose, never arbitrary TOOL or delivery stock.
+
+After verifying native debits and returned products, submit the exact delta with `confirmConsumption(removed, returned)`: one placed block removes one item and returns none. It neither rescans inventory nor releases claims. Existing reserve/settle consumers keep their receipt contract without double accounting. Packing/unpacking relocate conserved quantities/components, creating no consumption or procurement receipt. Native contract gates verify consumption and relocation rules; complete field acceptance is separate.
+
 ## Selecting an item
 
 `SelectInventorySlotAction` calls `InventoryController.selectForUse`.
@@ -63,7 +86,7 @@ new EnsureInventoryReadyFlow(bot,
     Map.of(Identifier.parse("minecraft:sand"), 64L));
 
 new EnsureInventoryReadyFlow(bot, 2, parentId)
-    .withSupplySources(mode, sources, routes)
+    .withInventorySupplyAccess(new InventorySupplyAccess(mode, sources, routes))
     .withIncomingStock(Map.of(Identifier.parse("minecraft:sand"), 2048L));
 ```
 
@@ -71,7 +94,11 @@ The first request exposes owned stock for direct use, from carried inventory or 
 
 After acquiring transport boxes away from the caller, the default `RESTORE_ORIGIN` contract uses `TravelToFlow` to return to the calling area before resuming the paused operation. Position-independent travel preparation can declare `CONTINUE_AT_SOURCE`: readiness still settles capacity and layout, then hands off at the actual position. Currently only initial fuel-capacity preparation selects this continuation; its finishing readiness retains the default return contract. The same inventory owner executes both contracts, preserving acquisition receipts, box custody, failure and cancellation cleanup. Bounded observed transport time contributes to the parent budget.
 
-`.withSupplySources(...)` registers the ability to locate and acquire transport boxes without adding a capacity requirement. Additional packing headroom defaults to zero. Readiness subtracts empty L1 slots and merge capacity, then uses declared incoming quantities and existing L2 capacity to calculate missing transport boxes. Registering sources alone does not trigger a box trip when there is no incoming stock or it fits in L1.
+`InventorySupplyAccess` registers the ability to locate and acquire transport boxes without adding a capacity requirement. Additional packing headroom defaults to zero. Readiness subtracts empty L1 slots and merge capacity, then uses declared incoming quantities and existing L2 capacity to calculate missing transport boxes. Registering sources alone does not trigger a box trip when there is no incoming stock or it fits in L1.
+
+The root execution declares supply authority, including execution mode, source lookup and permitted routes. Descendants inherit it through their execution scope; insufficient capacity does not authorize switching to an Atlas locator. A restricted entry explicitly masks inheritance. Access borrows the locator without owning it and adds no capacity demand. Crafting, construction and acquisition use the same readiness entry rather than forwarding box-acquisition callbacks.
+
+Direct protection is evaluated against actual slots, components and intersecting claims. Different names or components sharing an item ID cannot satisfy each other's protected quantities. Installation boxes preferentially remain in legal L1 slots, and transport-box classification converges after slot rearrangement. Packing uses actual merge capacity in existing boxes before requesting external supply.
 
 Tasks that need extra capacity for later mining drops can explicitly call `.withPackingHeadroom(27)`. This requests 27 empty internal slots across owned transport boxes, evaluated together with incoming capacity by the inventory system. It does not require one completely empty box and is separate from the 1,728-rocket stock threshold. Boxes awaiting workstation installation, borrowed boxes and delivery boxes provide no transport capacity. Without a source locator, readiness uses carried capacity and authorized L3 storage; it gains no permission to visit arbitrary containers. Internal box capacity and main-inventory slots are checked separately: unused L2 main-inventory slots cannot directly hold loose materials.
 
@@ -111,7 +138,7 @@ Readiness material quantities are minima. For owned transport boxes, the shared 
 
 The current task also remembers its most recently validated staging position. If nearby discovery fails, it searches around that position in the same dimension and uses the existing navigation flow to return. Loaded terrain, support, entity occupancy and interaction rays are checked again. This routing hint does not authorize external inventory transfers and is cleared when the task ends or changes.
 
-When the current stance supports the operation, unpacking starts there. Otherwise, the discovered safe stance guides shared navigation and flight landing discovery; navigation can also reach another valid working position in the search area. Arrival rechecks the actual stance, interaction ray and placement space before unpacking. A Bot on a narrow wall can use nearby safe ground or a registered work area, then its parent flow returns it to the construction stance after turnover.
+When the current stance supports the operation, unpacking starts there. Otherwise, the discovered safe stance guides shared navigation and flight landing discovery; navigation can also reach another valid working position in the search area. Arrival rechecks the actual stance, interaction ray and placement space before unpacking. A Bot on a narrow wall can use nearby safe ground or a registered work area, then shared consumption preparation returns to its original consumption position and the business caller revalidates the construction stance.
 
 Flight to a working position uses directly available rockets; an unopened box cannot fund its own approach. If loose fuel is insufficient before takeoff, the Bot is landed and child cleanup has settled, staging keeps the discovered safe position and replans once through existing ground/water navigation. A missing route remains a failure. This does not open boxes in flight or relax safety checks. The parent continues its next batch after menu, box recovery and inventory receipts are settled.
 
@@ -129,9 +156,11 @@ Crafting ingredients can also be packed into transport boxes while retaining the
 
 Preparation and actual outgoing moves share quantity limits calculated from the source slot, components and declared location. Direct material requirements measured in `items` retain their minimum within the declared L0/L1 levels; keeping the same item only in L2 does not satisfy them. An L1-only requirement cannot use L0 stock. Overlapping requirements each retain their own minimum, so the same stock may satisfy both without adding the minima together. Stock already below its minimum is not reduced further by this output.
 
-`InventoryController.outgoingAvailable(predicate)` reports what can move immediately from eligible L1 source slots. `outgoingRetained(predicate)` reports genuinely protected loose stock. Ordinary cargo temporarily in a workspace or misplaced slot remains L1 cargo that needs arranging; its position does not create another reservation. Delivery, excavation storage and L3 deposits opt into the same limits through `TransferItemsFlow.protectDirectStock()`, recalculated before every actual move and retry. Unmoved quantities remain in the request and confirmed transfer receipts.
+`InventoryController.outgoingAvailable(predicate)` reports what can move immediately from eligible L1 source slots. `outgoingRetained(predicate)` reports genuinely protected loose stock. Ordinary cargo temporarily in a workspace or misplaced slot remains L1 cargo that needs arranging; its position does not create another reservation. `TransferItemsFlow` applies the shared quantity limits to player-inventory output by default. Delivery, excavation storage and L3 deposits need no protection switch. Limits are recalculated before every actual move and retry. Unmoved quantities remain in the request and confirmed transfer receipts.
 
-The material ledger retains tool ownership while permitting authorized final cargo delivery and settlement. A workstation intentionally depositing its prepared materials is material use and retains that separate contract. Raw transfer APIs do not infer either intention from the target coordinates; new callers choose the contract explicitly. These direct item-count limits do not replace food nutrition or total firework replenishment watermarks.
+The material ledger retains tool ownership while permitting authorized final cargo delivery and settlement. A workstation uses `consumingStockOwner(uuid())` to authorize consumption of its own stock declarations when depositing prepared materials. Other owners' declarations remain protected; target coordinates do not grant this permission. These direct item-count limits do not replace food nutrition or total firework replenishment watermarks.
+
+A task declares borrowed turnover sources through `InventorySupplyAccess(mode, sources, routes)`. Child Flows inherit this access during execution; bare readiness does not acquire Atlas authorization. An explicit `withoutInventorySupplyAccess()` restriction applies to the whole subtree and cannot be redeclared by descendants. The source creator closes its locator. The root `ResourceMaintenance` session owns cumulative budgets; see [shared maintenance](./maintenance#capacity-and-context).
 
 Packing selection retains the eligibility predicate and exact components while trying candidates against each owned transport box. An item that cannot fit does not hide later candidates, and a failed partial merge simulation is discarded. Plans compare the actual source slots they would release. A box with all 27 slots occupied may still have matching component merge capacity.
 

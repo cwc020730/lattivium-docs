@@ -57,7 +57,9 @@ Food uses the shared inventory requirement: `foodSupplyThreshold=32` and `foodSu
 
 Capacity workflows organize inventory for the next acquisition, craft or construction operation. See [capacity and batching](./containers#capacity-and-batching).
 
-Transport preparation and actual material acquisition share an execution's maintenance context, budget and last successful fuel source. `AcquireMaterialsFlow` attaches food and fuel policies during acquisition and return. Combined construction enters its construction stage after acquisition.
+One `ResourceMaintenance` session belongs to the root execution. Preparation, acquisition, crafting, return and construction descendants share active maintenance state and cumulative budgets. A child scope owns only its declarations: completion removes them without closing or resetting the parent session. Food and fuel policies require an explicit session instead of convenience constructors that create hidden independent budgets. Root termination closes the session; later tasks inherit neither its declarations nor its authority.
+
+Checkpoint restoration must establish maintenance-budget ownership. Area checkpoint version18 and site checkpoint version14 record this contract. Older versions remain readable for audit but cannot resume directly: reconcile physical stock, facilities and obligations first, without resetting historical budgets.
 
 ## Budget scope
 
@@ -74,3 +76,9 @@ Episode counts, cumulative active ticks, parent preparation allowances and expli
 | Abnormal exit or unsettled cleanup | Report the blocker and reconcile before recovery |
 
 Submission IDs identify executions for observation and control. See [recovery](../guide/recovery) for checkpoint conditions and commands, and [execution control and queues](../reference/task-control) for rejection, queuing and interruption semantics.
+
+## Consumption preparation and parent execution
+
+Shared `PrepareInventoryConsumptionFlow` prepares the next ordinary native batch. If unpacking requires a visit elsewhere, this preparation returns through shared navigation to its original consumption position and observes stock again; callers recheck actual interaction feasibility. Finish the same pending request before geometry checks, then validate actual stance. Inherited source access and material consumption permission are separate contracts; `consumingMaterialOwner(UUID)` authorizes business stock, while trace parentage grants no permission.
+
+Food and propulsion policies retain their triggers. Common `consumptionLimits` checks their roles, weighted nutrition and foreign carried minimums. Exact owned reservations keep their existing reserve/settle receipts; confirmed ordinary effects report `confirmConsumption(removed, returned)` without double settlement. Cancellation retains outstanding box/menu/inventory cleanup and does not reset root-session counts, active time or parent budgets. Native contract gates validate consumption, relocation and cancellation separately from complete construction acceptance.
