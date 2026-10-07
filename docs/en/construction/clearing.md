@@ -188,3 +188,5 @@ Between layers, missing construction materials also use `AcquireMaterialsFlow` f
 ## Relationship to infrastructure
 
 `ExcavateSiteTask` orchestrates site excavation. `PrepareAndExcavatePerimeterFlow` joins facility construction and layered clearing under one entry; its receipt records infrastructure and excavation results separately.
+
+On 2026-10-07 the swamp full run failed during surface-to-submerged navigation after successful autonomous acquisition. A small saved-terrain reproduction showed that upward bobbing clearance had incorrectly constrained downward swim entry. The shared navigation fix preserves surface headroom, disabled-underwater policy and native collision checks; a bounded short-route probe still falls back to the full flight graph without increasing planning allowances. The original failure passed twice, followed by 22 native water-interaction, search-budget, flight-fallback and headroom controls plus build checks. This establishes a component repair, not fresh swamp whole-run acceptance; complete 16³ acceptance remains **3/4**.
