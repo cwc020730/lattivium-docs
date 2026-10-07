@@ -52,6 +52,8 @@ When both working slots are occupied, the exchange moves the previous working st
 
 `EnsureInventoryReadyFlow` accepts a loose batch demand or required empty slots and advances arrangement, packing, unpacking and authorized L3 turnover.
 
+When loose cargo cannot fit into transport boxes, readiness also checks actual receiving space in reserved L0 slots. Eligible, consumable packed stock already owned by the Bot can move into that space through the same unpacking transaction, freeing box capacity before packing and restoring working slots. This is carried-tier turnover, not extra procurement or a change to supply watermarks. Installation and delivery boxes, task reservations and distinct components remain protected. If all admissible roles and transport capacity are full, readiness still refuses; an unused L2 main-inventory slot is not loose-cargo capacity.
+
 Packing first projects consolidation of matching item and component fragments inside owned transport boxes, then checks whether the complete loose batch fits. All 27 slots being occupied does not necessarily mean the box is full. Planning leaves the carried box unchanged; consolidation and insertion commit together in the existing placed-box transaction. Different names or other components do not merge, and installation or delivery boxes remain excluded. Cancellation before box return retains the outstanding box obligation; a completed transfer does not prove the box was recovered.
 
 Construction declares the direct quantity needed for its active batch; the inventory system decides which surplus can be packed, without a separate construction material-category blacklist. With 128 white concrete and a direct claim of 64, the other 64 may be boxed to free space. A direct claim of 128 retains all of it loose and still refuses insufficient capacity. Tools, routine supplies, installation containers and task cargo retain their shared requirement and custody protections.
@@ -85,7 +87,10 @@ flowchart TD
     F -->|Yes| G[Pack L1 into owned L2 transport boxes]
     F -->|No| H{Needed carried stock can be unpacked?}
     H -->|Yes| I[Place, unpack and recover; prepare L1 or L0]
-    H -->|No| J{Empty-box lookup supplied?}
+    H -->|No| O{Owned packed stock fits free reserved slots?}
+    O -->|Yes| P[Use shared unpacking to promote into L0]
+    P --> C
+    O -->|No| J{Empty-box lookup supplied?}
     J -->|Yes| K[Acquire owned transport boxes through shared supply]
     K --> C
     J -->|No| L{Authorized L3 space available?}
