@@ -41,6 +41,18 @@ Atlas → Planner → Execution request
 
 Flows are separated by independently meaningful results, owned state and cleanup boundaries. Flight and mining sessions retain their specialized control state and share lifecycle contracts where useful. This manual documents executable contracts and public API packages; implementation details remain in source.
 
+## Flow and capability ownership
+
+This migration lives on `codex/flow-ownership-refactor`. Source review and short native regressions are separate evidence; they do not establish full construction-field acceptance.
+
+A Flow owns composition phases, child Flow/Action lifetimes, branches on capability facts, and projects results or checkpoints. The relevant capability owns slot and capacity decisions, source ranking, path search, physical control, world surveys, interaction feasibility and native item receipts, including internal work state.
+
+For example, `TransferItemsFlow` schedules transactions while `ContainerTransferSession` verifies native menus and quantities. `MineBlockFlow` composes approach, tool selection and mining while `MiningStance`/`MiningToolSelector` decide stance and tools. `ElytraFlightFlow` composes preparation, takeoff and rocket operations while `FlightControl` maintains physical feedback. Trace and result observations do not authorize another implementation of the policy.
+
+Each Flow defines its required phases; there is no universal business-state enum. `R` in `Flow<R>` is the result type. Capabilities may retain continuous operation state, but they do not create, advance or cancel child execution scopes. Commands and UI integrations still submit root operations through the execution contract and observe their runtime handles.
+
+Structural migration preserves per-tick boundaries, native input ownership, short-circuit evaluation, budgets, partial receipts and cleanup order. Component success does not establish complete field-task success; behavior and ownership are verified separately.
+
 ## Travel composition
 
 ```text

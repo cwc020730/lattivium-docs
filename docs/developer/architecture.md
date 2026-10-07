@@ -41,6 +41,18 @@ Atlas → Planner → Execution request
 
 Flow 按独立结果、状态所有权和清理边界拆分。飞行与挖掘会话保留专用控制状态，在合适处共享生命周期契约。手册覆盖执行契约与公开 API 包，实现细节由源码提供。
 
+## Flow 与能力的职责边界
+
+本轮职责迁移位于 `codex/flow-ownership-refactor` 分支；源码盘点与短场回归分别记录，不能视为完整施工现场已通过。
+
+Flow 维护组合阶段、子 Flow/Action 的生命周期，按能力返回的事实分支，并投影结果或检查点。库存选槽与容量、来源排名、寻路搜索、物理控制、世界勘察、交互可行性及原生物品回执由对应能力实现；它们的内部工作状态也由能力持有。
+
+例如，`TransferItemsFlow` 调度交易，`ContainerTransferSession` 验证原生菜单和数量；`MineBlockFlow` 编排接近、选工具和挖掘，`MiningStance`/`MiningToolSelector` 决定姿态与工具；`ElytraFlightFlow` 编排准备、起飞及烟花子操作，`FlightControl` 维护飞行物理反馈。Flow 可以读取用于追踪或结果投影的事实，但不能再实现另一份规则。
+
+各 Flow 自定义所需阶段，没有统一的业务状态枚举。`Flow<R>` 的 `R` 是结果类型。能力内部可以持有持续操作状态，但不负责创建、推进或取消子 Flow 的执行 scope。命令或 UI 仍通过执行契约提交根操作，并通过运行句柄观察状态。
+
+结构迁移需要保留每 tick 的边界、原生输入 owner、短路求值顺序、预算、部分回执和清理顺序。单个组件通过不等于完整现场任务通过；原生行为和职责边界分别验证。
+
 ## 旅行编排
 
 ```text
