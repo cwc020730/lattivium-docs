@@ -129,7 +129,7 @@ python scripts/testctl.py --env dev run start construction-bottom
 
 ### 水柱与沙墙组件
 
-同一 `construction` 场景也可选择 `ClearAndSettleWaterColumnFlow` 或 `BuildPerimeterSandWallFlow`。水柱明确指定顶部、底部、水下操作通道、返回通道与干平台；沙墙明确指定内区尺寸、上下界及起始平台。场景逐格声明最终沙子，同时声明返回平台的底座和净空。返回检查沿用原生安全站姿：身体可站在平台边缘，但必须接触该平台、落地且存活。
+同一 `construction` 场景也可选择 `ClearAndSettleWaterColumnFlow` 或 `BuildPerimeterSandWallFlow`。水柱明确指定顶部、底部、水下作业位置、放沙前干平台 `deck`，以及可选的落沙后返回点 `finalDeck`（默认等于 `deck`）；返回路径由通用导航选择，不再要求调用方声明独立水道。沙墙明确指定内区尺寸、上下界及起始平台。场景逐格声明最终沙子，同时声明返回平台的底座和净空。返回检查沿用原生安全站姿：身体可站在平台边缘，但必须接触该平台、落地且存活。
 
 需要水下呼吸或防火时，在冻结场景中声明 `effects`，每项为 `id`、`seconds`、`amplifier`。这些属于测试条件，不会改变正式施工的补给规则。旧沙墙已有前缀可通过 `resumeSandColumns` 继续，但冻结原地形必须逐格证明该前缀已填满沙；完整物理验收仍覆盖整圈。检查点回放用于重跑同一操作，不依赖固定测试工地编号。
 

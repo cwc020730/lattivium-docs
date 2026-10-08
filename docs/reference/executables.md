@@ -28,7 +28,7 @@
 - [ApproachAreaFlow](./flows#approachareaflow): 在当前维度内通过飞行或地面移动接近目标区域。
 - [BuildPerimeterSandWallFlow](./flows#buildperimetersandwallflow): 围绕边长为 6、12、16 或 32 格的内方形挖沟并落沙封边，每柱最多 96 格高，完成后返回起始工作位。Bot 从有支撑的干燥工作位出发，携带沙、工具及水下生存物资。
 - [BuildSchematicFlow](./flows#buildschematicflow): 在当前维度的指定原点建造原理图。
-- [ClearAndSettleWaterColumnFlow](./flows#clearandsettlewatercolumnflow): 在已调查的有水竖柱内清除障碍，回到相邻干平台后落沙封满；明确指定操作水柱、独立返回水道及上下界，每柱最多 96 格高。
+- [ClearAndSettleWaterColumnFlow](./flows#clearandsettlewatercolumnflow): 清除声明的有水竖柱内障碍，返回有支撑的干平台 deck 后落沙封满，再到达 finalDeck（默认 deck）。通用导航负责返回路径；每柱最多96格高，Bot携带沙、工具和原版水下生存物资。
 - [ElytraFlightFlow](./flows#elytraflightflow): 使用鞘翅飞向目标。
 - [EnsureInventoryReadyFlow](./flows#ensureinventoryreadyflow): 准备已拥有的直接使用批次，归位库存并释放工作槽；任务批次使用 L1，incoming 声明入库数量，packingHeadroomSlots 显式声明额外盒内空容量，默认 0。缺少运输盒时使用共用来源查询和取货流程。
 - [ExcavateAreaFlow](./flows#excavateareaflow): 清空包含两端的区域并将掉落物存入区外仓储；可指定液体封堵点。

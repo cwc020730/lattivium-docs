@@ -14,18 +14,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -60,18 +60,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -86,7 +86,7 @@
           "count": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -124,7 +124,7 @@
                 "count": {
                   "type": "integer",
                   "minimum": 1.0,
-                  "maximum": 2.147483647E9
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -150,18 +150,18 @@
                     "properties": {
                       "x": {
                         "type": "integer",
-                        "minimum": -2.147483648E9,
-                        "maximum": 2.147483647E9
+                        "minimum": -2147483648.0,
+                        "maximum": 2147483647.0
                       },
                       "y": {
                         "type": "integer",
-                        "minimum": -2.147483648E9,
-                        "maximum": 2.147483647E9
+                        "minimum": -2147483648.0,
+                        "maximum": 2147483647.0
                       },
                       "z": {
                         "type": "integer",
-                        "minimum": -2.147483648E9,
-                        "maximum": 2.147483647E9
+                        "minimum": -2147483648.0,
+                        "maximum": 2147483647.0
                       }
                     },
                     "required": [
@@ -217,18 +217,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -239,20 +239,20 @@
           },
           "arriveDistance": {
             "type": "number",
-            "minimum": 1.0E-6,
-            "maximum": 1.7976931348623157E308,
+            "minimum": 1e-06,
+            "maximum": 1.7976931348623157e+308,
             "default": 0.6
           },
           "settlingTicks": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 240
           },
           "cruiseHeight": {
             "type": "integer",
             "minimum": 321.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 325
           }
         },
@@ -293,18 +293,18 @@
                   "properties": {
                     "x": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "y": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "z": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     }
                   },
                   "required": [
@@ -367,18 +367,18 @@
                   "properties": {
                     "x": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "y": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     },
                     "z": {
                       "type": "integer",
-                      "minimum": -2.147483648E9,
-                      "maximum": 2.147483647E9
+                      "minimum": -2147483648.0,
+                      "maximum": 2147483647.0
                     }
                   },
                   "required": [
@@ -442,18 +442,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -469,13 +469,13 @@
           },
           "bottomY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "topY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "startDeck": {
             "type": "object",
@@ -483,18 +483,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -523,18 +523,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -597,18 +597,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -634,7 +634,7 @@
     },
     "ClearAndSettleWaterColumnFlow": {
       "kind": "Flow",
-      "description": "Clear one declared flooded column, return to a supported dry deck horizontally adjacent to its top, then settle sand into every declared Y and return. Declare an adjacent water operation lane and a separate return lane; height is at most 96 blocks. The Bot carries sand, tools and underwater survival supplies.",
+      "description": "Clear one declared flooded column, return to its supported dry deck, settle sand into every declared Y, then reach finalDeck (defaults to deck). Navigation owns the routes. Height is at most 96 blocks; the Bot carries sand, tools and native underwater survival supplies.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -645,18 +645,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -671,18 +671,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -697,44 +697,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
-              }
-            },
-            "required": [
-              "x",
-              "y",
-              "z"
-            ]
-          },
-          "returnLanding": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "x": {
-                "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
-              },
-              "y": {
-                "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
-              },
-              "z": {
-                "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -749,18 +723,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -769,16 +743,44 @@
               "z"
             ]
           },
-          "returnViaNewColumn": {
-            "type": "boolean",
-            "default": false
+          "finalDeck": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
+                  },
+                  "y": {
+                    "type": "integer",
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
+                  },
+                  "z": {
+                    "type": "integer",
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
           "top",
           "bottom",
           "operationSurface",
-          "returnLanding",
           "deck"
         ]
       },
@@ -797,11 +799,6 @@
           "x": 2,
           "y": 62,
           "z": 3
-        },
-        "returnLanding": {
-          "x": 2,
-          "y": 62,
-          "z": 2
         },
         "deck": {
           "x": 3,
@@ -844,18 +841,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -896,7 +893,7 @@
                 "count": {
                   "type": "integer",
                   "minimum": 1.0,
-                  "maximum": 2.147483647E9
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -926,7 +923,7 @@
                 "count": {
                   "type": "integer",
                   "minimum": 1.0,
-                  "maximum": 2.147483647E9
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -984,18 +981,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1010,18 +1007,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1038,18 +1035,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -1069,18 +1066,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -1133,18 +1130,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1159,18 +1156,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1185,18 +1182,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1213,18 +1210,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -1245,18 +1242,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -1302,18 +1299,18 @@
                 "properties": {
                   "x": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "y": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "z": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   }
                 },
                 "required": [
@@ -1335,18 +1332,18 @@
                 "properties": {
                   "x": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "y": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "z": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   }
                 },
                 "required": [
@@ -1405,18 +1402,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1480,7 +1477,7 @@
           "horizontalDistance": {
             "type": "number",
             "minimum": 0.0,
-            "maximum": 1.7976931348623157E308
+            "maximum": 1.7976931348623157e+308
           }
         },
         "required": [
@@ -1526,18 +1523,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -1572,18 +1569,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -1595,13 +1592,13 @@
           "toleranceDegrees": {
             "type": "number",
             "minimum": 0.0,
-            "maximum": 3.4028234663852886E38,
+            "maximum": 3.4028234663852886e+38,
             "default": 1.5
           },
           "maxAttempts": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9,
+            "maximum": 2147483647.0,
             "default": 3
           }
         },
@@ -1630,18 +1627,18 @@
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "y": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               },
               "z": {
                 "type": "number",
-                "minimum": -1.7976931348623157E308,
-                "maximum": 1.7976931348623157E308
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
               }
             },
             "required": [
@@ -1714,7 +1711,7 @@
           "ticks": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483637E9
+            "maximum": 2147483637.0
           },
           "strength": {
             "type": "number",
@@ -1769,18 +1766,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1818,18 +1815,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1844,18 +1841,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1872,18 +1869,18 @@
                 "properties": {
                   "x": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "y": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   },
                   "z": {
                     "type": "integer",
-                    "minimum": -2.147483648E9,
-                    "maximum": 2.147483647E9
+                    "minimum": -2147483648.0,
+                    "maximum": 2147483647.0
                   }
                 },
                 "required": [
@@ -1932,18 +1929,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -1959,13 +1956,13 @@
           },
           "bottomY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "topY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "outputBoxes": {
             "type": "integer",
@@ -1999,18 +1996,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -2078,18 +2075,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2105,13 +2102,13 @@
           },
           "bottomY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "topY": {
             "type": "integer",
-            "minimum": -2.147483648E9,
-            "maximum": 2.147483647E9
+            "minimum": -2147483648.0,
+            "maximum": 2147483647.0
           },
           "outputBoxes": {
             "type": "integer",
@@ -2137,18 +2134,18 @@
               "properties": {
                 "x": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "y": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 },
                 "z": {
                   "type": "integer",
-                  "minimum": -2.147483648E9,
-                  "maximum": 2.147483647E9
+                  "minimum": -2147483648.0,
+                  "maximum": 2147483647.0
                 }
               },
               "required": [
@@ -2202,18 +2199,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2228,18 +2225,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2290,18 +2287,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2441,18 +2438,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2467,18 +2464,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2493,18 +2490,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2653,12 +2650,12 @@
           "startSlotInclusive": {
             "type": "integer",
             "minimum": 0.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           },
           "endSlotExclusive": {
             "type": "integer",
             "minimum": 0.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -2691,7 +2688,7 @@
           "count": {
             "type": "integer",
             "minimum": 1.0,
-            "maximum": 2.147483647E9
+            "maximum": 2147483647.0
           }
         },
         "required": [
@@ -2722,18 +2719,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [
@@ -2770,18 +2767,18 @@
             "properties": {
               "x": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "y": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               },
               "z": {
                 "type": "integer",
-                "minimum": -2.147483648E9,
-                "maximum": 2.147483647E9
+                "minimum": -2147483648.0,
+                "maximum": 2147483647.0
               }
             },
             "required": [

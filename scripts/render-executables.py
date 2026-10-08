@@ -30,6 +30,8 @@ def rows(schema, en, entry, prefix=''):
             detail.append('Route-selection hint; travel ends after clearing the portal exit' if en else '路线选择参考点；完成条件为离开传送出口触发区')
         if path == 'target' and entry == 'TravelToFlow':
             detail.append('Bot feet; arrival within 0.75 blocks of the bottom center' if en else 'Bot 脚位；到达方块底面中心 0.75 格范围内')
+        if path == 'finalDeck' and entry == 'ClearAndSettleWaterColumnFlow':
+            detail.append('Defaults to deck; accepts deck or the completed column top plus one Y' if en else '省略时使用 deck；可指定 deck 或已完成柱顶上方一格')
         if path == 'dimension' and entry == 'TravelToFlow':
             detail.append('Loaded server dimension identifier' if en else '服务端已加载的维度标识符')
         if path == 'deliveries': detail.append('Distinct container locations' if en else '各交付容器位置互不重复')
@@ -38,7 +40,9 @@ def rows(schema, en, entry, prefix=''):
         if 'enum' in field: detail.append(', '.join(f'`{v}`' for v in field['enum']))
         for bound in ['minimum','maximum','minItems','maxItems']:
             if bound in field and abs(field[bound]) < 2**31-1: detail.append(f'{bound}: {field[bound]:g}')
-        default = json.dumps(field['default'], ensure_ascii=False) if 'default' in field else ('Required' if en else '必填')
+        default = (json.dumps(field['default'], ensure_ascii=False) if 'default' in field
+                   else ('Required' if en else '必填') if name in schema.get('required', [])
+                   else ('May omit' if en else '可省略'))
         yield f'| `{path}` | `{kind}` | `{default}` | {"; ".join(detail)} |'
         yield from rows(field.get('items',field), en, entry, path + ('[].' if kind=='array' else '.'))
 for en in [False, True]:

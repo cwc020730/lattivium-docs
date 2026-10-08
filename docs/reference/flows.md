@@ -76,7 +76,7 @@ outline: 2
 | `demand` | `array` | `必填` | minItems: 1; maxItems: 128 |
 | `demand[].item` | `string` | `必填` |  |
 | `demand[].count` | `integer` | `必填` | minimum: 1 |
-| `returnTo` | `optional` | `必填` |  |
+| `returnTo` | `optional` | `可省略` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## ApproachAreaFlow
@@ -168,12 +168,12 @@ outline: 2
 
 ## ClearAndSettleWaterColumnFlow
 
-在已调查的有水竖柱内清除障碍，回到相邻干平台后落沙封满；明确指定操作水柱、独立返回水道及上下界，每柱最多 96 格高。
+清除声明的有水竖柱内障碍，返回有支撑的干平台 deck 后落沙封满，再到达 finalDeck（默认 deck）。通用导航负责返回路径；每柱最多96格高，Bot携带沙、工具和原版水下生存物资。
 
 ### 指令
 
 ```text
-/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"returnLanding":{"x":2,"y":62,"z":2},"deck":{"x":3,"y":63,"z":2}}
+/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"deck":{"x":3,"y":63,"z":2}}
 ```
 
 ### 参数
@@ -192,15 +192,11 @@ outline: 2
 | `operationSurface.x` | `integer` | `必填` |  |
 | `operationSurface.y` | `integer` | `必填` |  |
 | `operationSurface.z` | `integer` | `必填` |  |
-| `returnLanding` | `object` | `必填` |  |
-| `returnLanding.x` | `integer` | `必填` |  |
-| `returnLanding.y` | `integer` | `必填` |  |
-| `returnLanding.z` | `integer` | `必填` |  |
 | `deck` | `object` | `必填` |  |
 | `deck.x` | `integer` | `必填` |  |
 | `deck.y` | `integer` | `必填` |  |
 | `deck.z` | `integer` | `必填` |  |
-| `returnViaNewColumn` | `boolean` | `false` |  |
+| `finalDeck` | `optional` | `可省略` | 省略时使用 deck；可指定 deck 或已完成柱顶上方一格 |
 
 ## ElytraFlightFlow
 
@@ -327,8 +323,8 @@ outline: 2
 | `autonomousSupplies` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 | `drainageMode` | `string` | `"SOLID_FILL"` | `SOLID_FILL`, `SPONGE_GRID_WHEN_AVAILABLE` |
-| `furnace` | `optional` | `必填` |  |
-| `furnaceFeet` | `optional` | `必填` |  |
+| `furnace` | `optional` | `可省略` |  |
+| `furnaceFeet` | `optional` | `可省略` |  |
 
 ## FireworkReserveFlow
 
@@ -468,7 +464,7 @@ outline: 2
 | `exit.x` | `integer` | `必填` |  |
 | `exit.y` | `integer` | `必填` |  |
 | `exit.z` | `integer` | `必填` |  |
-| `target` | `optional` | `必填` | 路线选择参考点；完成条件为离开传送出口触发区 |
+| `target` | `optional` | `可省略` | 路线选择参考点；完成条件为离开传送出口触发区 |
 
 ### 位置参数写法
 
@@ -507,7 +503,7 @@ outline: 2
 | `stagingAreas[].y` | `integer` | `必填` |  |
 | `stagingAreas[].z` | `integer` | `必填` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
-| `drainageMode` | `optional` | `必填` |  |
+| `drainageMode` | `optional` | `可省略` |  |
 
 ## PreparePerimeterInfrastructureFlow
 

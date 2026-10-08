@@ -76,7 +76,7 @@ Acquire a material demand into carried inventory through the shared Atlas, produ
 | `demand` | `array` | `Required` | minItems: 1; maxItems: 128 |
 | `demand[].item` | `string` | `Required` |  |
 | `demand[].count` | `integer` | `Required` | minimum: 1 |
-| `returnTo` | `optional` | `Required` |  |
+| `returnTo` | `optional` | `May omit` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 
 ## ApproachAreaFlow
@@ -168,12 +168,12 @@ Build a schematic at an origin in the current dimension.
 
 ## ClearAndSettleWaterColumnFlow
 
-Clear one declared flooded column, return to a supported dry deck horizontally adjacent to its top, then settle sand into every declared Y and return. Declare an adjacent water operation lane and a separate return lane; height is at most 96 blocks. The Bot carries sand, tools and underwater survival supplies.
+Clear one declared flooded column, return to its supported dry deck, settle sand into every declared Y, then reach finalDeck (defaults to deck). Navigation owns the routes. Height is at most 96 blocks; the Bot carries sand, tools and native underwater survival supplies.
 
 ### Command
 
 ```text
-/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"returnLanding":{"x":2,"y":62,"z":2},"deck":{"x":3,"y":63,"z":2}}
+/lattivium Worker exec ClearAndSettleWaterColumnFlow {"top":{"x":3,"y":62,"z":3},"bottom":{"x":3,"y":58,"z":3},"operationSurface":{"x":2,"y":62,"z":3},"deck":{"x":3,"y":63,"z":2}}
 ```
 
 ### Parameters
@@ -192,15 +192,11 @@ Clear one declared flooded column, return to a supported dry deck horizontally a
 | `operationSurface.x` | `integer` | `Required` |  |
 | `operationSurface.y` | `integer` | `Required` |  |
 | `operationSurface.z` | `integer` | `Required` |  |
-| `returnLanding` | `object` | `Required` |  |
-| `returnLanding.x` | `integer` | `Required` |  |
-| `returnLanding.y` | `integer` | `Required` |  |
-| `returnLanding.z` | `integer` | `Required` |  |
 | `deck` | `object` | `Required` |  |
 | `deck.x` | `integer` | `Required` |  |
 | `deck.y` | `integer` | `Required` |  |
 | `deck.z` | `integer` | `Required` |  |
-| `returnViaNewColumn` | `boolean` | `false` |  |
+| `finalDeck` | `optional` | `May omit` | Defaults to deck; accepts deck or the completed column top plus one Y |
 
 ## ElytraFlightFlow
 
@@ -327,8 +323,8 @@ Clear a prepared sealed volume from top to bottom. Replace liquids within each l
 | `autonomousSupplies` | `boolean` | `false` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
 | `drainageMode` | `string` | `"SOLID_FILL"` | `SOLID_FILL`, `SPONGE_GRID_WHEN_AVAILABLE` |
-| `furnace` | `optional` | `Required` |  |
-| `furnaceFeet` | `optional` | `Required` |  |
+| `furnace` | `optional` | `May omit` |  |
+| `furnaceFeet` | `optional` | `May omit` |  |
 
 ## FireworkReserveFlow
 
@@ -468,7 +464,7 @@ Traverse the specified portal route and clear the exit; target is a route-select
 | `exit.x` | `integer` | `Required` |  |
 | `exit.y` | `integer` | `Required` |  |
 | `exit.z` | `integer` | `Required` |  |
-| `target` | `optional` | `Required` | Route-selection hint; travel ends after clearing the portal exit |
+| `target` | `optional` | `May omit` | Route-selection hint; travel ends after clearing the portal exit |
 
 ### Positional syntax
 
@@ -507,7 +503,7 @@ Build a four-sided sand perimeter, dry scaffold shaft, road and workstation; the
 | `stagingAreas[].y` | `integer` | `Required` |  |
 | `stagingAreas[].z` | `integer` | `Required` |  |
 | `mode` | `string` | `"REAL"` | `REAL`, `DEBUG`, `SOURCE_PRESERVING_DEBUG` |
-| `drainageMode` | `optional` | `Required` |  |
+| `drainageMode` | `optional` | `May omit` |  |
 
 ## PreparePerimeterInfrastructureFlow
 

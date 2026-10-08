@@ -129,7 +129,7 @@ The first case runs the framework contracts and existing native wet, aquatic, bu
 
 ### Water-column and sand-wall components
 
-The same `construction` fixture can select `ClearAndSettleWaterColumnFlow` or `BuildPerimeterSandWallFlow`. A column declares its top, bottom, underwater operation lane, return lane and dry deck. A wall declares its inner size, vertical bounds and starting deck. Freeze expectations for every sand cell, the return deck's foundation and its headroom. Return checks preserve the native safe stance: the Bot may stand over the deck edge, but its body must overlap that deck while grounded and alive.
+The same `construction` fixture can select `ClearAndSettleWaterColumnFlow` or `BuildPerimeterSandWallFlow`. A column declares its top, bottom, underwater work position, supported dry `deck` before sand placement, and optional `finalDeck` after settling (defaults to `deck`). Common navigation selects the return routes; callers do not declare a private flooded corridor. A wall declares its inner size, vertical bounds and starting deck. Freeze expectations for every sand cell, the return deck's foundation and its headroom. Return checks preserve the native safe stance: the Bot may stand over the deck edge, but its body must overlap that deck while grounded and alive.
 
 Declare underwater breathing or fire resistance in the scene's `effects` list, with `id`, `seconds` and `amplifier`. These are test conditions, not changes to production supply rules. `resumeSandColumns` admits an existing wall prefix only when the frozen terrain proves every prefix cell is already sand; the physical audit still covers the whole wall. Checkpoint replay repeats the same operation without fixed historical test-site identifiers.
 
