@@ -67,6 +67,8 @@ The shared `ContactGoal` declares regions requiring native contact. Navigation o
 
 Surface and underwater edges establish graph-node arrival. An exact destination additionally settles native position and velocity through navigation, without stopping at every intermediate node. Jumping into a surface node must dissipate downward momentum and settle at the breathable surface before handing off to mining or another operation. Interaction owners still validate their rays and effect authorization.
 
+Shared `WaterSurfaceGeometry` resolves water arrival from current native geometry in the destination XZ column. Actual feet must occupy the current surface node cell or the cell above it within that surface's buoyancy height range. Submerged arrival remains subject to underwater configuration and requires the exact resolved submerged node cell. Both check clearance, collision and hazardous media against the actual body AABB. A cached planned water cell is not the current arrival node; precise dry handoff after water recedes retains its existing support, position and settling checks.
+
 A local clearing stage within scaffold preparation can declare a real handoff stance whose support survives that clearing. Shared support geometry verifies that the remaining support preserves its native feet height; ordinary point navigation actually returns there before the stage completes. Checkpoints retain the same destination and revalidate it before restoring work. This completes only the local stage. An unbuilt scaffold is not an existing exit, and its parent still builds and verifies column passage.
 
 ## Edge execution
