@@ -49,7 +49,7 @@ Trace exposes preparation, ascent, cruise, descent, landing and recovery phases.
 
 ## Water-surface departure
 
-Common local navigation can launch from an admitted surface node when usable elytra and rockets are available, then reach a supported destination. Submerged nodes first use shared swimming edges to reach the surface. Navigation owns emergence clearance, entity collision and fuel; construction and recovery callers declare their destinations.
+Common local navigation can launch from an admitted surface node when usable elytra and rockets are available, then reach a supported destination. Submerged nodes first use shared swimming edges to reach the surface. Navigation owns emergence clearance, entity collision and fuel; construction and recovery callers declare their destinations. Vanilla samples its water-contact flag before movement, so shared flight validation cross-checks current body contact and still rejects actual water reentry.
 
 Shared `TakeoffControl` owns water-column steering during surface launch. It continuously corrects horizontal steering through native jump and glide preparation to stay in the admitted continuous open column, rather than aligning only once at startup. Existing takeoff control takes over after water exit; collision, clearance, fuel, cancellation and input release retain the same contract. Construction, mining and recovery callers do not implement separate column steering.
 
