@@ -51,6 +51,8 @@ Trace exposes preparation, ascent, cruise, descent, landing and recovery phases.
 
 Common local navigation can launch from an admitted surface node when usable elytra and rockets are available, then reach a supported destination. Submerged nodes first use shared swimming edges to reach the surface. Navigation owns emergence clearance, entity collision and fuel; construction and recovery callers declare their destinations.
 
+Shared `TakeoffControl` owns water-column steering during surface launch. It continuously corrects horizontal steering through native jump and glide preparation to stay in the admitted continuous open column, rather than aligning only once at startup. Existing takeoff control takes over after water exit; collision, clearance, fuel, cancellation and input release retain the same contract. Construction, mining and recovery callers do not implement separate column steering.
+
 Planning and execution share logical feet, physical stance and the first airborne checkpoint. Short hops and direct flights reuse surface alignment and native jump/fall-flying inputs. Fuel preparation returns to the original logical stance. Fractional slab/chest supports keep their current cell, without an above-cell alias. Changed water/clearance and cancellation retain revalidation and input cleanup.
 
 Twenty-four water/departure and sixteen adjacent dry-landing controls passed. This establishes the shared capability, not a complete wet construction acceptance. The legacy departure cohort still has recorded pre-existing failures.

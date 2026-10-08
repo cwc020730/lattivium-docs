@@ -116,7 +116,11 @@ python scripts/testctl.py run wait <run-id> --timeout 60
 
 `RUNNING` means the attempt has not ended; it does not establish that a construction step is complete. Cross-check the actual task, Bot position and completed-operation receipts. Count road-clearance excavation separately from the target area's layers. Live block samples establish progress; final acceptance still independently audits the complete frozen region and source inventories after normal server shutdown.
 
+About 20 minutes is the current engineering review point for a long test, not an automatic shutdown trigger. Review cumulative time, observed progress, remaining work and the concrete tradeoff before continuing with a bounded expectation. Explicit case wall deadlines, operation budgets, cancellation and safety failures still apply independently; the review itself does not extend them.
+
 ## Construction scenes
+
+The current rerun of the original ocean, river, swamp and plains 16³ whole workflows uses one candidate and explicit frozen conditions: permanent vanilla water breathing and fire resistance, an unbreakable Aqua Affinity helmet, and unbreakable tools. No saturation effect is granted; the Bot acquires food and rockets autonomously from sources. Drainage uses the sponge grid, with existing filler handling water or lava when sponge stock is exhausted. Natural air renewal and potion production are outside this delivery’s prerequisites. Effects and unbreakable equipment are fixture conditions, not acceptance of natural air renewal, durability or repair. Historical whole-flow results remain tied to their own versions and do not replace this four-site rerun.
 
 The `construction` fixture shares the same server lifecycle and submits public `ExcavateLayeredAreaFlow`, `PreparePerimeterInfrastructureFlow` or `PrepareAndExcavatePerimeterFlow` commands. Frozen input declares starter stock, original terrain, permitted changes and final blocks. Perimeter scenes also freeze the native shaft, road and workstation plan.
 
