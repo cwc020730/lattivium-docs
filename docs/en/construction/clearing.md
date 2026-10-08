@@ -40,6 +40,8 @@ Tools, borrowed shulker boxes, sponges and delivery cargo retain their own retur
 
 Current sponge work prefers removal from above the sponge. Mining, underwater arrival and pickup remain owned by their shared systems. An authorized, genuinely unrecoverable wet sponge can be recorded as a loss; only physically recovered quantities enter drying demands. Abandonment is never a drying receipt. Temporary furnaces retain strict recovery: inventory gained from another matching item entity cannot settle the original furnace UUID.
 
+Sponge planning, orchestration and native absorption reuse one immutable effect-authority snapshot instead of copying the entire site for every candidate. Mutable input coordinates are still frozen first; target selection, absorption bounds, facility protection and native checks before execution remain unchanged. This optimization does not replace breathing, pickup or whole wet-site acceptance.
+
 Item custody and completed return are separate outcomes. The shared collector validates native UUIDs, exact components and inventory gain, then rechecks custody on failure or cancellation. Received wet sponges or strictly protected furnaces can settle their item obligations while a failed return still fails the operation; it does not start drying or advance another layer. Later cargo loss, changed components or dirty child cleanup prevent an earlier receipt from releasing protection.
 
 ### Batching ordinary dry-layer drops
