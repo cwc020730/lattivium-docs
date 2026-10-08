@@ -27,6 +27,10 @@ Native tests use the `native` environment. Field scenes use explicitly enrolled 
 
 Load enrolled field neighborhoods and await source readiness before spawning the survival actor. World warmup advances native time and can drown an actor left underwater. Source readiness does not own a separate tick rate; the declared test rate applies once preparation is complete.
 
+At submission, the construction fixture completes equipment, inventory receipts and clock verification before placing the Bot at the existing native survey's admitted position. `actor-before-submit.json` retains actual entity NBT; results record `Pos`, `Health`, `Air` and displacement from the declared position. Displacement is evidence only. Shared native capabilities own surface, breathing and standing geometry; Python adds no feet-coordinate floor-equality admission and grants no air, velocity or survival buffs.
+
+The 2026-10-08 short control `run-03c4d295c6e848dc` ran for `42.324 s / 6765 ticks`, ending with `Health=20 / Air=300`, unchanged observed terrain and strict source inventories, and normal cleanup/shutdown. Its signed status remains `TIMED_OUT` after exhausting the 120-second stage budget. This provides approximately 42 seconds of startup and native surface-wait stability evidence, not autonomous supply or whole-construction acceptance. Preserve the signature and original budget.
+
 ### Pickup timing controls
 
 `dry-pickup-comparison` sequentially runs immediate and existing batched pickup on the same recorded 8×8 dry slice. `layered-dry-pickup-comparison` also checks the actual layered caller, strict/wet/sponge/unknown/large-area selection, cancellation and existing resume contracts, followed by Java checks.
