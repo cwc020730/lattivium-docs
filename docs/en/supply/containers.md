@@ -61,9 +61,11 @@ Source-preserving debug verifies the original source box and creates a uniquely 
 
 In a trace, the clone's `Take exact borrowed-box contents` child reports `REAL` because it transfers physical items from the placed clone. Its parent `BorrowSourceShulkerFlow` records the `debug_clone_source_box` policy and reports `SOURCE_PRESERVING_DEBUG` in its receipt. A child's mode alone does not establish consumption of the original warehouse. Acceptance must still compare original source inventories and reconcile clone recovery and outstanding obligations.
 
+Source-preservation audits use the frozen pre-run Atlas classification. Eligible storage and `UNKNOWN` containers retain exact per-container item/component checks. Containers already marked `PROTECTED` may change contents through vanilla machine operation; those changes remain recorded. Access rejection, container disappearance and index-coverage checks remain. A new protection label at the end cannot exempt an initially eligible source. The shared source audit owns this rule, rather than construction Flows.
+
 ## AccessShulkerStagingFlow
 
-Temporary placement also checks native neighbor updates. A neighbor that already fails `canSurvive` can disappear when a box is placed or recovered, even if the box cell returns to air. Shared `ConstructionSafety` owns this read-only check for shulker boxes, temporary furnaces and crafting tables; stable neighboring plants remain usable. This check covers already invalid neighbors and supplements support, fluid, machine, portal and item-recovery protections.
+Temporary placement and recovery trigger vanilla neighbor updates, which can remove ordinary plants such as mushrooms that already cannot survive. Identified incidental vegetation changes are recorded without adding plant-specific protection or blocking clearing acceptance. Support, fluid, machine, portal and item-recovery protections remain; unknown changes are not automatically treated as vegetation loss.
 
 This component finds and reaches a reusable shulker work position for unpacking, packing and resource maintenance.
 
