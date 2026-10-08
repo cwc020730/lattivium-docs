@@ -115,10 +115,10 @@ Travel-level checks include spendable fuel in carried boxes. Each actual flight 
 
 ```text
 Minimum loose fuel for the current leg: L(d) or H(d)
-Loose target: min(spendable carried stock, max(current leg minimum, directFireworkTarget))
+Single-leg loose preparation target: current leg minimum
 ```
 
-When spendable L0 fuel covers the current leg, `FireworkReserveFlow` admits the flight immediately. If it falls short, the flow calls `EnsureInventoryReadyFlow` to prepare fuel from owned transport boxes in the L0 rocket slots. That preparation target defaults to 192 rockets, with legs capped at 4,096 blocks. Staging must permit safe placement, opening and recovery; stock is checked after the active box transaction settles. Boxes, task cargo and other reservations retain their protections.
+When shared maintenance has already promoted valid inventory into usable fuel for this leg, `FireworkReserveFlow` reuses that state without repeated reorganization. Otherwise, it calls `EnsureInventoryReadyFlow` to prepare the current leg minimum from owned transport boxes in the L0 rocket slots, without adding maintenance reserve targets or spare-slot requirements. Inventory maintenance retains its own stock levels, and legs remain capped at 4,096 blocks. Staging must permit safe placement, opening and recovery; stock is checked after the active box transaction settles. Boxes, task cargo and other reservations retain their protections.
 
 For example, a short hop away from a portal may require 4 rockets. With 166 rockets already in L0, the Bot can leave the portal and find a safe staging position when it later needs to unpack fuel.
 

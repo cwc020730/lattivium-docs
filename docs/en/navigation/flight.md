@@ -35,6 +35,8 @@ Prepare and validate departure
 
 Short hops and long flights use their respective policies. Obstructions, failed launch, resource shortages and changed landing conditions lead to bounded recovery or a classified failure.
 
+A short hop and its path edge share a fixed composite budget for local work and bounded total time. Delegated Flows do not charge local work; fuel preparation and return to departure still charge total time. Takeoff and rocket-use child Flows retain their own limits, and starting a child never renews any ancestor total budget; see [budgets](./budgets#ownership-and-nesting).
+
 **Output:** `NavigationResult`, recording actual feet and navigation statistics. The travel owner then verifies its final arrival condition.
 
 ## Fuel and maintenance
