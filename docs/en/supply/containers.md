@@ -21,6 +21,8 @@ Borrowed boxes, transport boxes and requested empty boxes have distinct purposes
 
 Atlas records container locations, quantities, packed contents and access assessments. `ADMISSIBLE` means observed storage meets the pickup policy, with another check during physical access. `PROTECTED` has an explicit protection reason. `UNKNOWN` means assessment evidence is incomplete.
 
+Access protection governs Bot acquisition; it does not freeze vanilla hoppers, redstone or other machines. Running machines can still transfer items internally, so a changed container quantity and a loss from the whole machine require separate evidence. Tests retain strict source-container auditing; equal aggregate quantities do not automatically exempt a failure.
+
 An unloaded neighboring chunk can leave a complete item record marked `UNKNOWN`. Usable-stock queries and world-stock totals can therefore differ. When allocation is short, shared surveying can visit a candidate, update its observed facts and replan. Recorded quantities and route reachability are assessed separately.
 
 Flight fuel also applies a component filter: rockets with explosion effects are excluded. Packed quantities count through shulker contents, and physical acquisition uses the container and box flows below.
@@ -60,6 +62,8 @@ Source-preserving debug verifies the original source box and creates a uniquely 
 In a trace, the clone's `Take exact borrowed-box contents` child reports `REAL` because it transfers physical items from the placed clone. Its parent `BorrowSourceShulkerFlow` records the `debug_clone_source_box` policy and reports `SOURCE_PRESERVING_DEBUG` in its receipt. A child's mode alone does not establish consumption of the original warehouse. Acceptance must still compare original source inventories and reconcile clone recovery and outstanding obligations.
 
 ## AccessShulkerStagingFlow
+
+Temporary placement also checks native neighbor updates. A neighbor that already fails `canSurvive` can disappear when a box is placed or recovered, even if the box cell returns to air. Shared `ConstructionSafety` owns this read-only check for shulker boxes, temporary furnaces and crafting tables; stable neighboring plants remain usable. This check covers already invalid neighbors and supplements support, fluid, machine, portal and item-recovery protections.
 
 This component finds and reaches a reusable shulker work position for unpacking, packing and resource maintenance.
 
