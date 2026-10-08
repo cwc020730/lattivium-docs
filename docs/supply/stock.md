@@ -103,3 +103,9 @@ flowchart TD
 已加载库存即时读取。未加载容器或尚未揭示战利品的容器列入 `unknownContainers`；受未知库存影响的缺口为 `null`。已加载但容器不存在时列入 `absentContainers`。查询只观察已加载事实，保留战利品表。
 
 空闲 Bot 没有活动执行要求，仍可查询携带实物。诊断命令见[诊断命令](../reference/commands)。
+
+## 来源标记与调试核验
+
+取货只允许 Atlas 判定为 `ADMISSIBLE` 的来源；`PROTECTED` 和 `UNKNOWN` 不作为可取材料。机器容器沿用 Atlas 的保护判定，不另设一套机器识别规则。
+
+`SOURCE_PRESERVING_DEBUG` 的来源审计以测试开始时的标记为准。已经是 `PROTECTED` 的容器不要求内部物品保持不变，漏斗正常传输不会因此使测试失败；容器本体消失或索引覆盖丢失仍会失败。开始时为 `ADMISSIBLE` 或 `UNKNOWN` 的来源继续严格核验，结束时新加的保护标记不能豁免此前变化。工地输出容器另按声明的施工与货物合同核验。

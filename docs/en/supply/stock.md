@@ -99,3 +99,9 @@ The JSON response contains `inventories` and `requirements`. `inventories` lists
 Loaded inventory is read live. Unloaded containers and containers with unrevealed loot appear in `unknownContainers`; deficits affected by unknown stock are `null`. A loaded location without a container appears in `absentContainers`. Queries observe loaded facts and preserve loot tables.
 
 Idle Bots have no active execution requirements; carried stock remains queryable. See [diagnostic commands](../reference/commands).
+
+## Source flags and debug audits
+
+Acquisition permits only sources classified as `ADMISSIBLE` by Atlas. `PROTECTED` and `UNKNOWN` sources are not available materials. Machine containers use the existing Atlas protection decision rather than a separate machine classifier.
+
+Source audits in `SOURCE_PRESERVING_DEBUG` freeze the classification at the start of the test. Containers already marked `PROTECTED` need not retain unchanged contents, so normal hopper transfers do not fail the test. Missing containers or lost index coverage still fail. Sources initially classified as `ADMISSIBLE` or `UNKNOWN` retain strict checks; adding a protection flag at the end cannot exempt earlier changes. Declared site output containers retain their construction and cargo contracts.
